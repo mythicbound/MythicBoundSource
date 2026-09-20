@@ -1,0 +1,45 @@
+{
+	"name": "Credits",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-tap-object",
+					"objectClass": "Touch",
+					"sid": 921552975096732,
+					"parameters": {
+						"object": "MainMenuButtons"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "play",
+					"objectClass": "Audio",
+					"sid": 323874008971107,
+					"parameters": {
+						"audio-file": {
+							"path": "NewClick"
+						},
+						"loop": "not-looping",
+						"volume": "0",
+						"stereo-pan": "0",
+						"tag-optional": "\"\""
+					}
+				},
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 866692396242902,
+					"parameters": {
+						"layout": "Start Screen"
+					}
+				}
+			],
+			"sid": 717282878068968,
+			"isOrBlock": true
+		}
+	],
+	"sid": 552593034460967
+}
