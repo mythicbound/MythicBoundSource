@@ -4230,7 +4230,7 @@
 												{
 													"id": "compare-two-values",
 													"objectClass": "System",
-													"sid": 268428695198426,
+													"sid": 588266405625727,
 													"parameters": {
 														"first-value": "int(SkinAtributesData.At(0, loopindex(\"FindRowSkin\")))",
 														"comparison": 0,
@@ -4242,7 +4242,7 @@
 												{
 													"id": "set-animation",
 													"objectClass": "HairPlayer",
-													"sid": 400062895438186,
+													"sid": 858688436317555,
 													"parameters": {
 														"animation": "\"IdleLeft\" & int(SkinAtributesData.At(1, loopindex(\"FindRowSkin\")))",
 														"from": "beginning"
@@ -4251,25 +4251,52 @@
 												{
 													"id": "set-instvar-value",
 													"objectClass": "HairPlayer",
-													"sid": 154994764398827,
+													"sid": 222146038253979,
 													"parameters": {
 														"instance-variable": "HairType",
 														"value": "int(SkinAtributesData.At(1, loopindex(\"FindRowSkin\")))"
 													}
 												},
 												{
+													"id": "set-instvar-value",
+													"objectClass": "HairPlayer",
+													"sid": 868798814681170,
+													"parameters": {
+														"instance-variable": "BaseHairType",
+														"value": "int(SkinAtributesData.At(1, loopindex(\"FindRowSkin\")))"
+													}
+												},
+												{
+													"id": "set-instvar-value",
+													"objectClass": "HatPlayer",
+													"sid": 493584196203212,
+													"parameters": {
+														"instance-variable": "HatType",
+														"value": "0"
+													}
+												},
+												{
+													"id": "set-animation",
+													"objectClass": "HatPlayer",
+													"sid": 827817551379219,
+													"parameters": {
+														"animation": "\"IdleLeft0\"",
+														"from": "beginning"
+													}
+												},
+												{
 													"callFunction": "syncParts",
-													"sid": 971841898372720
+													"sid": 495840094011779
 												},
 												{
 													"id": "stop-loop",
 													"objectClass": "System",
-													"sid": 961690983130846
+													"sid": 850272187619779
 												},
 												{
 													"id": "set-visible",
 													"objectClass": "DBUG",
-													"sid": 622123954909847,
+													"sid": 281666286609769,
 													"disabled": true,
 													"parameters": {
 														"visibility": "visible"
@@ -4278,7 +4305,7 @@
 												{
 													"id": "set-text",
 													"objectClass": "DBUG",
-													"sid": 802760959409969,
+													"sid": 858614229275118,
 													"disabled": true,
 													"parameters": {
 														"text": "\"row: \" & int(SkinAtributesData.At(0, loopindex(\"FindRowSkin\")))"
@@ -4287,14 +4314,14 @@
 												{
 													"id": "set-text",
 													"objectClass": "DBUG",
-													"sid": 116276593006264,
+													"sid": 736546593080873,
 													"disabled": true,
 													"parameters": {
 														"text": "\"IdleLeft\" & int(SkinAtributesData.At(1, loopindex(\"FindRowSkin\")))"
 													}
 												}
 											],
-											"sid": 960324426342471
+											"sid": 845656761701385
 										}
 									]
 								}
@@ -4752,7 +4779,7 @@
 												{
 													"id": "compare-two-values",
 													"objectClass": "System",
-													"sid": 308267678776801,
+													"sid": 841270516131186,
 													"parameters": {
 														"first-value": "int(SkinAtributesData.At(10, loopindex(\"FindRowSkin\")))",
 														"comparison": 0,
@@ -4764,7 +4791,7 @@
 												{
 													"id": "set-animation",
 													"objectClass": "HatPlayer",
-													"sid": 465249649807791,
+													"sid": 833510939090729,
 													"parameters": {
 														"animation": "\"IdleLeft\" & int(SkinAtributesData.At(11, loopindex(\"FindRowSkin\")))",
 														"from": "beginning"
@@ -4773,25 +4800,43 @@
 												{
 													"id": "set-instvar-value",
 													"objectClass": "HatPlayer",
-													"sid": 353411799476033,
+													"sid": 463503842916920,
 													"parameters": {
 														"instance-variable": "HatType",
 														"value": "int(SkinAtributesData.At(11, loopindex(\"FindRowSkin\")))"
 													}
 												},
 												{
+													"id": "set-instvar-value",
+													"objectClass": "HairPlayer",
+													"sid": 784109028227953,
+													"parameters": {
+														"instance-variable": "HairType",
+														"value": "(HatPlayer.HatType=0) ? HairPlayer.BaseHairType : 0"
+													}
+												},
+												{
+													"id": "set-animation",
+													"objectClass": "HairPlayer",
+													"sid": 698512456008849,
+													"parameters": {
+														"animation": "\"IdleLeft\" & HairPlayer.HairType",
+														"from": "beginning"
+													}
+												},
+												{
 													"callFunction": "syncParts",
-													"sid": 540206690711298
+													"sid": 131384600092373
 												},
 												{
 													"id": "stop-loop",
 													"objectClass": "System",
-													"sid": 699507271864519
+													"sid": 343873893199152
 												},
 												{
 													"id": "set-visible",
 													"objectClass": "DBUG",
-													"sid": 287340537862458,
+													"sid": 115643096988480,
 													"disabled": true,
 													"parameters": {
 														"visibility": "visible"
@@ -4800,7 +4845,7 @@
 												{
 													"id": "set-text",
 													"objectClass": "DBUG",
-													"sid": 245531188347908,
+													"sid": 781756457948045,
 													"disabled": true,
 													"parameters": {
 														"text": "\"IdleLeft\" & int(SkinAtributesData.At(1, loopindex(\"FindRowSkin\")))"
@@ -4809,7 +4854,7 @@
 												{
 													"id": "set-visible",
 													"objectClass": "DBUG",
-													"sid": 172034536508145,
+													"sid": 660161216281394,
 													"disabled": true,
 													"parameters": {
 														"visibility": "visible"
@@ -4818,14 +4863,14 @@
 												{
 													"id": "set-text",
 													"objectClass": "DBUG",
-													"sid": 404222819878284,
+													"sid": 116138206388185,
 													"disabled": true,
 													"parameters": {
 														"text": "\"11,\" & loopindex(\"FindRowSkin\") & \" Output=\" & int(SkinAtributesData.At(11, loopindex(\"FindRowSkin\")))"
 													}
 												}
 											],
-											"sid": 551106144806961
+											"sid": 803366106758144
 										}
 									]
 								}
@@ -5171,7 +5216,7 @@
 				{
 					"id": "set-animation-frame",
 					"objectClass": "ArmsPlayer",
-					"sid": 606697639686723,
+					"sid": 889504710268712,
 					"parameters": {
 						"frame-number": "1"
 					}
@@ -5179,7 +5224,7 @@
 				{
 					"id": "set-instvar-value",
 					"objectClass": "ArmsPlayer",
-					"sid": 604084006167123,
+					"sid": 927029192080776,
 					"parameters": {
 						"instance-variable": "ArmType",
 						"value": "int(TokenAt(PlayerBase.SkinString, 0, \"|\"))"
@@ -5188,7 +5233,7 @@
 				{
 					"id": "set-animation-frame",
 					"objectClass": "ArmsPlayer",
-					"sid": 537398661050265,
+					"sid": 827384095615902,
 					"parameters": {
 						"frame-number": "0"
 					}
@@ -5196,7 +5241,7 @@
 				{
 					"id": "set-animation",
 					"objectClass": "ArmsPlayer",
-					"sid": 684358402331275,
+					"sid": 832655678054840,
 					"parameters": {
 						"animation": "\"IdleLeft\" & ArmsPlayer.ArmType",
 						"from": "beginning"
@@ -5205,7 +5250,7 @@
 				{
 					"id": "set-animation-frame",
 					"objectClass": "HatPlayer",
-					"sid": 450028831697945,
+					"sid": 691417584861631,
 					"parameters": {
 						"frame-number": "1"
 					}
@@ -5213,7 +5258,7 @@
 				{
 					"id": "set-instvar-value",
 					"objectClass": "HatPlayer",
-					"sid": 899580578820703,
+					"sid": 245626604745133,
 					"parameters": {
 						"instance-variable": "HatType",
 						"value": "int(TokenAt(PlayerBase.SkinString, 2, \"|\"))"
@@ -5222,7 +5267,7 @@
 				{
 					"id": "set-animation-frame",
 					"objectClass": "HatPlayer",
-					"sid": 982286342315595,
+					"sid": 133617347229422,
 					"parameters": {
 						"frame-number": "0"
 					}
@@ -5230,7 +5275,7 @@
 				{
 					"id": "set-animation",
 					"objectClass": "HatPlayer",
-					"sid": 803488222560162,
+					"sid": 266226082166076,
 					"parameters": {
 						"animation": "\"IdleLeft\" & HatPlayer.HatType",
 						"from": "beginning"
@@ -5239,7 +5284,7 @@
 				{
 					"id": "set-animation-frame",
 					"objectClass": "HairPlayer",
-					"sid": 388960591842867,
+					"sid": 472671293914531,
 					"parameters": {
 						"frame-number": "1"
 					}
@@ -5247,7 +5292,7 @@
 				{
 					"id": "set-instvar-value",
 					"objectClass": "HairPlayer",
-					"sid": 661459758781366,
+					"sid": 903695469954251,
 					"parameters": {
 						"instance-variable": "HairType",
 						"value": "int(TokenAt(PlayerBase.SkinString, 3, \"|\"))"
@@ -5256,7 +5301,7 @@
 				{
 					"id": "set-animation-frame",
 					"objectClass": "HairPlayer",
-					"sid": 788274747120083,
+					"sid": 124433820526100,
 					"parameters": {
 						"frame-number": "0"
 					}
@@ -5264,16 +5309,25 @@
 				{
 					"id": "set-animation",
 					"objectClass": "HairPlayer",
-					"sid": 243893118923499,
+					"sid": 405485183418926,
 					"parameters": {
 						"animation": "\"IdleLeft\" & HairPlayer.HairType",
 						"from": "beginning"
 					}
 				},
 				{
+					"id": "set-instvar-value",
+					"objectClass": "HairPlayer",
+					"sid": 609406537369725,
+					"parameters": {
+						"instance-variable": "BaseHairType",
+						"value": "HairPlayer.HairType"
+					}
+				},
+				{
 					"id": "set-animation-frame",
 					"objectClass": "FacePlayer",
-					"sid": 793893755701246,
+					"sid": 754553850499822,
 					"parameters": {
 						"frame-number": "1"
 					}
@@ -5281,7 +5335,7 @@
 				{
 					"id": "set-instvar-value",
 					"objectClass": "FacePlayer",
-					"sid": 237469583108288,
+					"sid": 267182211060924,
 					"parameters": {
 						"instance-variable": "FaceType",
 						"value": "int(TokenAt(PlayerBase.SkinString, 4, \"|\"))"
@@ -5290,7 +5344,7 @@
 				{
 					"id": "set-animation-frame",
 					"objectClass": "FacePlayer",
-					"sid": 529787606263444,
+					"sid": 456526715693996,
 					"parameters": {
 						"frame-number": "0"
 					}
@@ -5298,7 +5352,7 @@
 				{
 					"id": "set-animation",
 					"objectClass": "FacePlayer",
-					"sid": 401080185022705,
+					"sid": 226572072817669,
 					"parameters": {
 						"animation": "\"IdleLeft\" & FacePlayer.FaceType",
 						"from": "beginning"
@@ -5307,7 +5361,7 @@
 				{
 					"id": "set-animation-frame",
 					"objectClass": "LowerPlayer",
-					"sid": 754526148212096,
+					"sid": 442760481435932,
 					"parameters": {
 						"frame-number": "1"
 					}
@@ -5315,7 +5369,7 @@
 				{
 					"id": "set-instvar-value",
 					"objectClass": "LowerPlayer",
-					"sid": 884146638225423,
+					"sid": 160545905938556,
 					"parameters": {
 						"instance-variable": "PantsType",
 						"value": "int(TokenAt(PlayerBase.SkinString, 5, \"|\"))"
@@ -5324,7 +5378,7 @@
 				{
 					"id": "set-animation-frame",
 					"objectClass": "LowerPlayer",
-					"sid": 559160912299100,
+					"sid": 883830827371469,
 					"parameters": {
 						"frame-number": "0"
 					}
@@ -5332,7 +5386,7 @@
 				{
 					"id": "set-animation",
 					"objectClass": "LowerPlayer",
-					"sid": 845179830887425,
+					"sid": 113838646139510,
 					"parameters": {
 						"animation": "\"IdleLeft\" & LowerPlayer.PantsType",
 						"from": "beginning"
@@ -5341,7 +5395,7 @@
 				{
 					"id": "set-animation-frame",
 					"objectClass": "ShirtPlayer",
-					"sid": 867574136651449,
+					"sid": 658389610623434,
 					"parameters": {
 						"frame-number": "1"
 					}
@@ -5349,7 +5403,7 @@
 				{
 					"id": "set-instvar-value",
 					"objectClass": "ShirtPlayer",
-					"sid": 834782911363007,
+					"sid": 503596714097707,
 					"parameters": {
 						"instance-variable": "shirtType",
 						"value": "int(TokenAt(PlayerBase.SkinString, 6, \"|\"))"
@@ -5358,7 +5412,7 @@
 				{
 					"id": "set-animation-frame",
 					"objectClass": "ShirtPlayer",
-					"sid": 502744786416273,
+					"sid": 129163633624071,
 					"parameters": {
 						"frame-number": "0"
 					}
@@ -5366,7 +5420,7 @@
 				{
 					"id": "set-animation",
 					"objectClass": "ShirtPlayer",
-					"sid": 442832186140208,
+					"sid": 135249821819839,
 					"parameters": {
 						"animation": "\"IdleLeft\" & ShirtPlayer.shirtType",
 						"from": "beginning"
@@ -5375,7 +5429,7 @@
 				{
 					"id": "set-animation-frame",
 					"objectClass": "WeaponPlayer",
-					"sid": 370678913636047,
+					"sid": 762476601686383,
 					"parameters": {
 						"frame-number": "1"
 					}
@@ -5383,7 +5437,7 @@
 				{
 					"id": "set-animation-frame",
 					"objectClass": "WeaponPlayer",
-					"sid": 811786959143351,
+					"sid": 276256811884142,
 					"parameters": {
 						"frame-number": "0"
 					}
@@ -5391,14 +5445,14 @@
 				{
 					"id": "set-animation",
 					"objectClass": "WeaponPlayer",
-					"sid": 542941824696841,
+					"sid": 169863452836232,
 					"parameters": {
 						"animation": "\"IdleLeft\" & 1",
 						"from": "beginning"
 					}
 				}
 			],
-			"sid": 234928433874262
+			"sid": 183584885102703
 		},
 		{
 			"functionName": "CalculateUnlocked",

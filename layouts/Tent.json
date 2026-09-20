@@ -1598,7 +1598,8 @@
 								"HairType": 0,
 								"HealthIncrease": 0,
 								"ProtectionLow": 0,
-								"ProtectionHigh": 0
+								"ProtectionHigh": 0,
+								"BaseHairType": 0
 							},
 							"behaviors": {
 								"Pin": {
