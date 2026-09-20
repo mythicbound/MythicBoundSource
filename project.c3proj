@@ -664,7 +664,8 @@
 			"Tent",
 			"Mine",
 			"PvpArena",
-			"PlayerCustomizations"
+			"PlayerCustomizations",
+			"Credits"
 		],
 		"subfolders": []
 	},
@@ -675,7 +676,8 @@
 			"Photon_HostClient",
 			"Start Screen",
 			"FirebaseSignUp",
-			"LoadLogic"
+			"LoadLogic",
+			"Credits"
 		],
 		"subfolders": []
 	},

@@ -143,6 +143,32 @@
 						{
 							"id": "compare-instance-variable",
 							"objectClass": "MainMenuButtons",
+							"sid": 536195442701475,
+							"parameters": {
+								"instance-variable": "ButtonUse",
+								"comparison": 0,
+								"value": "\"Credits\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "go-to-layout",
+							"objectClass": "System",
+							"sid": 364282212934724,
+							"parameters": {
+								"layout": "Credits"
+							}
+						}
+					],
+					"sid": 566970807569310
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "MainMenuButtons",
 							"sid": 225944956157518,
 							"parameters": {
 								"instance-variable": "ButtonUse",
@@ -1992,6 +2018,28 @@
 										"comparison": 0,
 										"value": "3000"
 									}
+								},
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 127264028390201,
+									"parameters": {
+										"first-value": "loudoutINVIS.Y",
+										"comparison": 2,
+										"second-value": "85"
+									},
+									"isInverted": true
+								},
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 964587809179119,
+									"parameters": {
+										"first-value": "loudoutINVIS.Y",
+										"comparison": 4,
+										"second-value": "266"
+									},
+									"isInverted": true
 								}
 							],
 							"actions": [
@@ -2145,6 +2193,28 @@
 										"comparison": 0,
 										"value": "3000"
 									}
+								},
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 844353264768292,
+									"parameters": {
+										"first-value": "loudoutINVIS.Y",
+										"comparison": 2,
+										"second-value": "85"
+									},
+									"isInverted": true
+								},
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 325903639910639,
+									"parameters": {
+										"first-value": "loudoutINVIS.Y",
+										"comparison": 4,
+										"second-value": "266"
+									},
+									"isInverted": true
 								}
 							],
 							"actions": [
@@ -2982,6 +3052,32 @@
 										}
 									],
 									"sid": 105333905732072
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "MainMenuButtons",
+											"sid": 904135576904710,
+											"parameters": {
+												"instance-variable": "ButtonUse",
+												"comparison": 0,
+												"value": "\"Credits\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation-frame",
+											"objectClass": "MainMenuButtons",
+											"sid": 901284385668184,
+											"parameters": {
+												"frame-number": "6"
+											}
+										}
+									],
+									"sid": 792734577790452
 								}
 							]
 						},
@@ -3164,6 +3260,32 @@
 										}
 									],
 									"sid": 966381417737655
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "MainMenuButtons",
+											"sid": 217164558458837,
+											"parameters": {
+												"instance-variable": "ButtonUse",
+												"comparison": 0,
+												"value": "\"Credits\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation-frame",
+											"objectClass": "MainMenuButtons",
+											"sid": 667260764072929,
+											"parameters": {
+												"frame-number": "7"
+											}
+										}
+									],
+									"sid": 700293985011394
 								},
 								{
 									"eventType": "block",
@@ -3545,6 +3667,32 @@
 									],
 									"sid": 739529941709208,
 									"disabled": true
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "MainMenuButtons",
+											"sid": 679111849853958,
+											"parameters": {
+												"instance-variable": "ButtonUse",
+												"comparison": 0,
+												"value": "\"Credits\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation-frame",
+											"objectClass": "MainMenuButtons",
+											"sid": 532661996702315,
+											"parameters": {
+												"frame-number": "0"
+											}
+										}
+									],
+									"sid": 838283050419464
 								},
 								{
 									"eventType": "block",
