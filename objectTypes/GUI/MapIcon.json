@@ -1,0 +1,70 @@
+{
+	"name": "MapIcon",
+	"plugin-id": "Sprite",
+	"sid": 383743843904332,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "DragnDrop",
+			"name": "DragDrop",
+			"sid": 666999613018923
+		}
+	],
+	"effectTypes": [
+		{
+			"effectId": "skymen_BetterOutline",
+			"name": "BetterOutline"
+		}
+	],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 720,
+						"height": 720,
+						"originX": 0.001388888888888889,
+						"originY": 0.001394700139470014,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 692774,
+						"collisionPoly": {
+							"points": [
+								0.002777777777777778,
+								0,
+								1,
+								0,
+								1,
+								1,
+								0.002777777777777778,
+								1
+							]
+						},
+						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "Resize",
+								"x": 0.9986111111111111,
+								"y": 0.001388888888888889
+							}
+						],
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 928845880036678,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

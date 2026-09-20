@@ -1,0 +1,29 @@
+{
+	"name": "HealthParticles",
+	"plugin-id": "Particles",
+	"sid": 311792307829633,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Pin",
+			"name": "Pin",
+			"sid": 981492914751197
+		}
+	],
+	"effectTypes": [],
+	"image": {
+		"width": 10,
+		"height": 9,
+		"originX": 0.5,
+		"originY": 0.5,
+		"originalSource": "",
+		"exportFormat": "lossless",
+		"exportQuality": 0.8,
+		"fileType": "image/png",
+		"imageSpriteId": 8513485,
+		"useCollisionPoly": true,
+		"tag": ""
+	}
+}

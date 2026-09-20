@@ -1,0 +1,96 @@
+{
+	"name": "InvLoreBoxMaster",
+	"plugin-id": "Sprite",
+	"sid": 287225364778573,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "Use",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 648024469647055
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Pin",
+			"name": "Pin",
+			"sid": 625216401909928
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 26,
+						"height": 26,
+						"originX": 0.5,
+						"originY": 0,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 5394129,
+						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "Image Point 1",
+								"x": 0,
+								"y": 0
+							},
+							{
+								"name": "Image Point 2",
+								"x": 1,
+								"y": 0
+							},
+							{
+								"name": "Image Point 3",
+								"x": 0,
+								"y": 1
+							},
+							{
+								"name": "Image Point 4",
+								"x": 1,
+								"y": 1
+							},
+							{
+								"name": "Image Point 5",
+								"x": 0.5,
+								"y": 1
+							},
+							{
+								"name": "Image Point 6",
+								"x": 1,
+								"y": 0.5
+							},
+							{
+								"name": "Image Point 7",
+								"x": 0.5,
+								"y": 0
+							},
+							{
+								"name": "Image Point 8",
+								"x": 0,
+								"y": 0.5
+							}
+						],
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 524424489628353,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 0
+			}
+		],
+		"subfolders": []
+	}
+}

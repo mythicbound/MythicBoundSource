@@ -1,0 +1,65 @@
+{
+	"name": "EmotePopup",
+	"plugin-id": "Sprite",
+	"sid": 363966250699497,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Pin",
+			"name": "Pin",
+			"sid": 661467315521321
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 64,
+						"height": 47,
+						"originX": 0.5,
+						"originY": 1.6382978723404256,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 7657129,
+						"collisionPoly": {
+							"points": [
+								0,
+								0.02127659574468085,
+								1,
+								0.02127659574468085,
+								1,
+								0.9787234042553191,
+								0,
+								0.9787234042553191
+							]
+						},
+						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "CenterOfBubble",
+								"x": 0.5,
+								"y": 0.3829787234042553
+							}
+						],
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 828967053143816,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

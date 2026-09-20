@@ -1,0 +1,66 @@
+{
+	"name": "backgroundShade",
+	"plugin-id": "Sprite",
+	"sid": 913098805430258,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "slotnum",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 587024454789597
+		},
+		{
+			"name": "use",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 841078099046707
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Anchor",
+			"name": "Anchor",
+			"sid": 262096919212804
+		},
+		{
+			"behaviorId": "Pin",
+			"name": "Pin",
+			"sid": 416792717927235
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 250,
+						"height": 250,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 3470394,
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 883198820188446,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

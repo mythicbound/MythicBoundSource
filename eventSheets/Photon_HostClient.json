@@ -1,0 +1,2249 @@
+{
+	"name": "Photon_HostClient",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "PhotonRoomID_HostClient",
+			"type": "string",
+			"initialValue": "www.justudio.com.multiplayer.var.test.3",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 411842825186862
+		},
+		{
+			"eventType": "variable",
+			"name": "PhotonMyAliasID_HostClient",
+			"type": "string",
+			"initialValue": "",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 366742775780770
+		},
+		{
+			"eventType": "variable",
+			"name": "PHOTON_ERROR_ROOM_EXIST_HostClient",
+			"type": "number",
+			"initialValue": "32766",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 656905525901574
+		},
+		{
+			"eventType": "variable",
+			"name": "PhotonMyActorNr_HostClient",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 906503513074692
+		},
+		{
+			"eventType": "variable",
+			"name": "isPlayerObjectExist_HostClient",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 737669078266042
+		},
+		{
+			"eventType": "variable",
+			"name": "PhotonMovementUpdateRate_HostClient",
+			"type": "number",
+			"initialValue": "0.3",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 130134306616494
+		},
+		{
+			"eventType": "block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-instvar-value",
+					"objectClass": "PlayerBase",
+					"sid": 305393058074795,
+					"parameters": {
+						"instance-variable": "Info",
+						"value": "\"TStr\" & ( int(PlayerBase.X) + int(PlayerBase.Y) / 10) & \"_ActorNr=\" & PlayerBase.thisMultipleID"
+					}
+				},
+				{
+					"id": "set-position",
+					"objectClass": "status",
+					"sid": 446963697574085,
+					"parameters": {
+						"x": "PlayerBase.X - Self.Width/2",
+						"y": "PlayerBase.Y - Self.Height * 1.5"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "status",
+					"sid": 894400661655431,
+					"parameters": {
+						"text": "PlayerBase.Info"
+					}
+				}
+			],
+			"sid": 234687691036616
+		},
+		{
+			"eventType": "comment",
+			"text": "Initializes the host-client hybrid session and configures initial state"
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "LayoutStart_Photon_HostClient",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-start-of-layout",
+							"objectClass": "System",
+							"sid": 372673155991990
+						}
+					],
+					"actions": [],
+					"sid": 153725586550538,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "set-group-active",
+									"objectClass": "System",
+									"sid": 650150697917930,
+									"parameters": {
+										"group-name": "\"Host_Photon_HostClient\"",
+										"state": "deactivated"
+									}
+								},
+								{
+									"id": "set-group-active",
+									"objectClass": "System",
+									"sid": 518937783275737,
+									"parameters": {
+										"group-name": "\"Client_Photon_HostClient\"",
+										"state": "deactivated"
+									}
+								}
+							],
+							"sid": 602119201759316
+						}
+					]
+				}
+			],
+			"sid": 627290610710924
+		},
+		{
+			"eventType": "comment",
+			"text": "Handles shared multiplayer functionality for both host and client modes"
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Common_Photon_HostClient",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-start-of-layout",
+							"objectClass": "System",
+							"sid": 748700352248048
+						}
+					],
+					"actions": [
+						{
+							"id": "connect10",
+							"objectClass": "Photon",
+							"sid": 298481259860906,
+							"parameters": {
+								"lobby-name": "\"\"",
+								"keep-master-connection": false
+							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "TxtStatus",
+							"sid": 254841520550598,
+							"parameters": {
+								"text": "\"Connect to Photon\""
+							}
+						}
+					],
+					"sid": 357872710154158
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "onjoinedlobby22",
+							"objectClass": "Photon",
+							"sid": 381664110287392
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "TxtStatus",
+							"sid": 294222951147523,
+							"parameters": {
+								"text": "\"Connect to Photon fin\""
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 731874915074087,
+							"parameters": {
+								"variable": "PhotonMyAliasID_HostClient",
+								"value": "int(random(1000000,9999999))"
+							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "TxtStatus",
+							"sid": 438177423736952,
+							"parameters": {
+								"text": "\"Login with ID:\" & PhotonMyAliasID"
+							}
+						},
+						{
+							"id": "createroom11",
+							"objectClass": "Photon",
+							"sid": 115238673157883,
+							"parameters": {
+								"room0": "PhotonRoomID_HostClient",
+								"lobbyname1": "\"\"",
+								"lobbytype4": "default"
+							}
+						}
+					],
+					"sid": 812080110765427
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "onjoinroom14",
+							"objectClass": "Photon",
+							"sid": 861300037549638
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "TxtStatus",
+							"sid": 272759413431477,
+							"parameters": {
+								"text": "\"Joined Room \" & PhotonRoomID & \" MyID=\" & PhotonMyAliasID"
+							}
+						}
+					],
+					"sid": 579177633717272
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "onactorjoin15",
+							"objectClass": "Photon",
+							"sid": 287291477606020
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "TxtStatus",
+							"sid": 543038783704018,
+							"parameters": {
+								"text": "\"Actor Joined Room \" & Photon.ActorNr"
+							}
+						}
+					],
+					"sid": 582698369075676,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 198059740679469,
+									"parameters": {
+										"variable": "PhotonMyActorNr_HostClient",
+										"comparison": 0,
+										"value": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "create-object",
+									"objectClass": "System",
+									"sid": 245614384699770,
+									"parameters": {
+										"object-to-create": "PlayerBase",
+										"layer": "\"Player\"",
+										"x": "random( 100, ViewportWidth(\"Player\")*0.8 )",
+										"y": "random( 100, ViewportHeight(\"Player\")*0.8 )",
+										"create-hierarchy": false,
+										"template-name": "\"\""
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "PlayerBase",
+									"sid": 957788098136126,
+									"parameters": {
+										"instance-variable": "thisMultipleID",
+										"value": "Photon.MyActorNr"
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 300568601239000,
+									"parameters": {
+										"variable": "PhotonMyAliasID_HostClient",
+										"value": "Photon.MyActorNr"
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 743864711041219,
+									"parameters": {
+										"variable": "PhotonMyActorNr_HostClient",
+										"value": "Photon.MyActorNr"
+									}
+								}
+							],
+							"sid": 753799968298597
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 887549945097988,
+									"parameters": {
+										"first-value": "Photon.MasterActorNr",
+										"comparison": 0,
+										"second-value": "PhotonMyActorNr_HostClient"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-group-active",
+									"objectClass": "System",
+									"sid": 229918692809853,
+									"disabled": true,
+									"parameters": {
+										"group-name": "\"Host_Photon_HostClient\"",
+										"state": "activated"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "TxtStatus",
+									"sid": 122010418723543,
+									"parameters": {
+										"text": "\"Host / Set MyID to Player\""
+									}
+								}
+							],
+							"sid": 970706871830743
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 487931747959042
+								}
+							],
+							"actions": [
+								{
+									"id": "set-group-active",
+									"objectClass": "System",
+									"sid": 825052431913414,
+									"disabled": true,
+									"parameters": {
+										"group-name": "\"Client_Photon_HostClient\"",
+										"state": "activated"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "TxtStatus",
+									"sid": 122099867426523,
+									"parameters": {
+										"text": "\"Client \" & Photon.MyRoomName"
+									}
+								},
+								{
+									"id": "set-animation",
+									"objectClass": "PlayerBase",
+									"sid": 737438529646027,
+									"parameters": {
+										"animation": "\"Client\"",
+										"from": "beginning"
+									}
+								}
+							],
+							"sid": 880479024258903
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "onerror0",
+							"objectClass": "Photon",
+							"sid": 702882541467642
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "TxtStatus",
+							"sid": 931513735541187,
+							"parameters": {
+								"text": "\"Error:\" & Photon.ErrorMessage & \" Code:\" & Photon.ErrorCode"
+							}
+						}
+					],
+					"sid": 804276579141144,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 450656300286216,
+									"parameters": {
+										"first-value": "Photon.ErrorCode",
+										"comparison": 0,
+										"second-value": "PHOTON_ERROR_ROOM_EXIST"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "joinroom12",
+									"objectClass": "Photon",
+									"sid": 748521730398607,
+									"parameters": {
+										"room0": "PhotonRoomID_HostClient",
+										"rejoin3": "no",
+										"createifnotexists6": "no",
+										"lobbyname7": "\"\"",
+										"lobbytype10": "default"
+									}
+								}
+							],
+							"sid": 265196070645873
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "onstatechange1",
+							"objectClass": "Photon",
+							"sid": 663014561427571
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "TxtStatus",
+							"sid": 652251901199520,
+							"parameters": {
+								"text": "\"Photon.State:\" & Photon.StateString & \" Code:\" & Photon.State"
+							}
+						}
+					],
+					"sid": 992514204923303
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "ondisconnected24",
+							"objectClass": "Photon",
+							"sid": 915191844426793
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "TxtStatus",
+							"sid": 832289251588556,
+							"parameters": {
+								"text": "\"Disconnected\""
+							}
+						}
+					],
+					"sid": 266639863971610
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "onactorleave16",
+							"objectClass": "Photon",
+							"sid": 711217634926503
+						}
+					],
+					"actions": [],
+					"sid": 600016332044075,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "PlayerBase",
+									"sid": 757481778329071,
+									"parameters": {
+										"instance-variable": "thisMultipleID",
+										"comparison": 0,
+										"value": "str(Photon.ActorNr)"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "destroy",
+									"objectClass": "PlayerBase",
+									"sid": 178297450425506
+								}
+							],
+							"sid": 779279991739349
+						}
+					]
+				}
+			],
+			"sid": 644134233473821
+		},
+		{
+			"eventType": "comment",
+			"text": "Manages host-specific logic including room control and player synchronization"
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Host_Photon_HostClient",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "group",
+					"disabled": false,
+					"title": "Host_Photon_HostClient_UpdateFromClient",
+					"description": "",
+					"isActiveOnStart": true,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "onevent3",
+									"objectClass": "Photon",
+									"sid": 462319363297379,
+									"parameters": {
+										"code0": "10"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 478658542422289,
+									"parameters": {
+										"variable": "isPlayerObjectExist",
+										"value": "0"
+									}
+								}
+							],
+							"sid": 622000216741106,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "for-each-ordered",
+											"objectClass": "System",
+											"sid": 721909411281036,
+											"parameters": {
+												"object": "PlayerBase",
+												"expression": "0",
+												"order": "ascending"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 570612687040889,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "PlayerBase",
+													"sid": 578035611054336,
+													"parameters": {
+														"instance-variable": "thisMultipleID",
+														"comparison": 0,
+														"value": "str(Photon.ActorNr)"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-eventvar-value",
+													"objectClass": "System",
+													"sid": 532720689030391,
+													"parameters": {
+														"variable": "isPlayerObjectExist",
+														"value": "1"
+													}
+												}
+											],
+											"sid": 112973034368849
+										}
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 638239975871389,
+											"parameters": {
+												"variable": "isPlayerObjectExist",
+												"comparison": 0,
+												"value": "0"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "create-object",
+											"objectClass": "System",
+											"sid": 681764521403684,
+											"parameters": {
+												"object-to-create": "PlayerBase",
+												"layer": "\"Player\"",
+												"x": "random( 100, ViewportWidth(\"Player\")*0.8 )",
+												"y": "random( 100, ViewportHeight(\"Player\")*0.8 )",
+												"create-hierarchy": false,
+												"template-name": "\"\""
+											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "PlayerBase",
+											"sid": 243896167655546,
+											"parameters": {
+												"instance-variable": "thisMultipleID",
+												"value": "Photon.ActorNr"
+											}
+										}
+									],
+									"sid": 110278390328320
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "onevent3",
+									"objectClass": "Photon",
+									"sid": 317759946179976,
+									"parameters": {
+										"code0": "11"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "PlayerBase",
+									"sid": 437663497447541,
+									"parameters": {
+										"instance-variable": "thisMultipleID",
+										"comparison": 0,
+										"value": "str(Photon.ActorNr)"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-x",
+									"objectClass": "PlayerBase",
+									"sid": 774082619463396,
+									"disabled": true,
+									"parameters": {
+										"x": "int(Photon.EventData)"
+									}
+								},
+								{
+									"id": "tween-one-property",
+									"objectClass": "PlayerBase",
+									"sid": 734972352939495,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"LocX\"",
+										"property": "offsetX",
+										"end-value": "int(Photon.EventData)",
+										"time": "0.3",
+										"ease": "default",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								}
+							],
+							"sid": 353613187553117
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "onevent3",
+									"objectClass": "Photon",
+									"sid": 907243682841613,
+									"parameters": {
+										"code0": "12"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "PlayerBase",
+									"sid": 648387106250530,
+									"parameters": {
+										"instance-variable": "thisMultipleID",
+										"comparison": 0,
+										"value": "str(Photon.ActorNr)"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-y",
+									"objectClass": "PlayerBase",
+									"sid": 724239481672424,
+									"disabled": true,
+									"parameters": {
+										"y": "int(Photon.EventData)"
+									}
+								},
+								{
+									"id": "tween-one-property",
+									"objectClass": "PlayerBase",
+									"sid": 117147637015969,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"LocY\"",
+										"property": "offsetY",
+										"end-value": "int(Photon.EventData)",
+										"time": "0.3",
+										"ease": "default",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								}
+							],
+							"sid": 644410023655043
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "onevent3",
+									"objectClass": "Photon",
+									"sid": 866714301266577,
+									"parameters": {
+										"code0": "13"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "PlayerBase",
+									"sid": 711965639440415,
+									"parameters": {
+										"instance-variable": "thisMultipleID",
+										"comparison": 0,
+										"value": "str(Photon.ActorNr)"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-angle",
+									"objectClass": "PlayerBase",
+									"sid": 732600819900856,
+									"disabled": true,
+									"parameters": {
+										"angle": "int(Photon.EventData)"
+									}
+								},
+								{
+									"id": "tween-one-property",
+									"objectClass": "PlayerBase",
+									"sid": 213796938618370,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"Angle\"",
+										"property": "offsetAngle",
+										"end-value": "int(Photon.EventData)",
+										"time": "0.3",
+										"ease": "default",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								}
+							],
+							"sid": 258748937339473
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "onevent3",
+									"objectClass": "Photon",
+									"sid": 591898967496948,
+									"parameters": {
+										"code0": "14"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "PlayerBase",
+									"sid": 222297324933357,
+									"parameters": {
+										"instance-variable": "thisMultipleID",
+										"comparison": 0,
+										"value": "str(Photon.ActorNr)"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-instvar-value",
+									"objectClass": "PlayerBase",
+									"sid": 981114923155571,
+									"parameters": {
+										"instance-variable": "Info",
+										"value": "int( Photon.EventData )"
+									}
+								}
+							],
+							"sid": 947339377825527
+						}
+					],
+					"sid": 868488699808782
+				},
+				{
+					"eventType": "group",
+					"disabled": false,
+					"title": "Host_Photon_HostClient_UpdateToClient",
+					"description": "",
+					"isActiveOnStart": true,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "every-x-seconds",
+									"objectClass": "System",
+									"sid": 529154728639207,
+									"parameters": {
+										"interval-seconds": "0.1"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 926973565287639,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "for-each-ordered",
+											"objectClass": "System",
+											"sid": 613426518594752,
+											"parameters": {
+												"object": "PlayerBase",
+												"expression": "0",
+												"order": "ascending"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 507348360008422,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [],
+											"actions": [
+												{
+													"id": "raiseevent17",
+													"objectClass": "Photon",
+													"sid": 728154453119448,
+													"parameters": {
+														"code0": "110",
+														"data1": "PlayerBase.thisMultipleID",
+														"interestgroup2": "0",
+														"cache11": "donotcache",
+														"receivers15": "others",
+														"targetactors16": "\"\"",
+														"webforward19": "no"
+													}
+												}
+											],
+											"sid": 199857315039854
+										}
+									]
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "every-x-seconds",
+									"objectClass": "System",
+									"sid": 246528602337353,
+									"parameters": {
+										"interval-seconds": "PhotonMovementUpdateRate_HostClient"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 696213116115833,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "for-each-ordered",
+											"objectClass": "System",
+											"sid": 835962960443381,
+											"parameters": {
+												"object": "PlayerBase",
+												"expression": "0",
+												"order": "ascending"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 735048076064180,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [],
+											"actions": [
+												{
+													"id": "raiseevent17",
+													"objectClass": "Photon",
+													"sid": 235640192737359,
+													"parameters": {
+														"code0": "111",
+														"data1": "PlayerBase.thisMultipleID & \",\" & PlayerBase.X",
+														"interestgroup2": "0",
+														"cache11": "donotcache",
+														"receivers15": "others",
+														"targetactors16": "\"\"",
+														"webforward19": "no"
+													}
+												},
+												{
+													"id": "raiseevent17",
+													"objectClass": "Photon",
+													"sid": 453988270800705,
+													"parameters": {
+														"code0": "112",
+														"data1": "PlayerBase.thisMultipleID & \",\" & PlayerBase.Y",
+														"interestgroup2": "0",
+														"cache11": "donotcache",
+														"receivers15": "others",
+														"targetactors16": "\"\"",
+														"webforward19": "no"
+													}
+												},
+												{
+													"id": "raiseevent17",
+													"objectClass": "Photon",
+													"sid": 976689828303059,
+													"parameters": {
+														"code0": "113",
+														"data1": "PlayerBase.thisMultipleID & \",\" & PlayerBase.Angle",
+														"interestgroup2": "0",
+														"cache11": "donotcache",
+														"receivers15": "others",
+														"targetactors16": "\"\"",
+														"webforward19": "no"
+													}
+												},
+												{
+													"id": "raiseevent17",
+													"objectClass": "Photon",
+													"sid": 751748080070659,
+													"parameters": {
+														"code0": "114",
+														"data1": "PlayerBase.thisMultipleID & \",\" & PlayerBase.Info",
+														"interestgroup2": "0",
+														"cache11": "donotcache",
+														"receivers15": "others",
+														"targetactors16": "\"\"",
+														"webforward19": "no"
+													}
+												}
+											],
+											"sid": 789412072676794
+										}
+									]
+								}
+							]
+						}
+					],
+					"sid": 540475580400487
+				}
+			],
+			"sid": 163825364957804
+		},
+		{
+			"eventType": "comment",
+			"text": "Manages client-specific logic for communicating with the host"
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Client_Photon_HostClient",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "group",
+					"disabled": false,
+					"title": "Client_Photon_HostClient_UpdateToMasterClient",
+					"description": "",
+					"isActiveOnStart": true,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "every-x-seconds",
+									"objectClass": "System",
+									"sid": 454735691575553,
+									"parameters": {
+										"interval-seconds": "0.1"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "PlayerBase",
+									"sid": 891803394307014,
+									"parameters": {
+										"instance-variable": "thisMultipleID",
+										"comparison": 0,
+										"value": "str(Photon.MyActorNr)"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "raiseevent17",
+									"objectClass": "Photon",
+									"sid": 942035224116581,
+									"parameters": {
+										"code0": "10",
+										"data1": "Photon.MyActorNr",
+										"interestgroup2": "0",
+										"cache11": "donotcache",
+										"receivers15": "masterclient",
+										"targetactors16": "\"\"",
+										"webforward19": "no"
+									}
+								}
+							],
+							"sid": 518799060121208
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "every-x-seconds",
+									"objectClass": "System",
+									"sid": 936533259657553,
+									"parameters": {
+										"interval-seconds": "0.3"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "PlayerBase",
+									"sid": 106868120882865,
+									"parameters": {
+										"instance-variable": "thisMultipleID",
+										"comparison": 0,
+										"value": "str(Photon.MyActorNr)"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "raiseevent17",
+									"objectClass": "Photon",
+									"sid": 913027491408568,
+									"parameters": {
+										"code0": "11",
+										"data1": "PlayerBase.X",
+										"interestgroup2": "0",
+										"cache11": "donotcache",
+										"receivers15": "masterclient",
+										"targetactors16": "\"\"",
+										"webforward19": "no"
+									}
+								},
+								{
+									"id": "raiseevent17",
+									"objectClass": "Photon",
+									"sid": 952344929077018,
+									"parameters": {
+										"code0": "12",
+										"data1": "PlayerBase.Y",
+										"interestgroup2": "0",
+										"cache11": "donotcache",
+										"receivers15": "masterclient",
+										"targetactors16": "\"\"",
+										"webforward19": "no"
+									}
+								},
+								{
+									"id": "raiseevent17",
+									"objectClass": "Photon",
+									"sid": 773807314507358,
+									"parameters": {
+										"code0": "13",
+										"data1": "PlayerBase.Angle",
+										"interestgroup2": "0",
+										"cache11": "donotcache",
+										"receivers15": "masterclient",
+										"targetactors16": "\"\"",
+										"webforward19": "no"
+									}
+								},
+								{
+									"id": "raiseevent17",
+									"objectClass": "Photon",
+									"sid": 165482882315434,
+									"parameters": {
+										"code0": "14",
+										"data1": "PlayerBase.Info",
+										"interestgroup2": "0",
+										"cache11": "donotcache",
+										"receivers15": "masterclient",
+										"targetactors16": "\"\"",
+										"webforward19": "no"
+									}
+								}
+							],
+							"sid": 373997216532320
+						}
+					],
+					"sid": 658069842765264
+				},
+				{
+					"eventType": "group",
+					"disabled": false,
+					"title": "Client_Photon_HostClient_UpdateFromMasterClient",
+					"description": "",
+					"isActiveOnStart": true,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "onevent3",
+									"objectClass": "Photon",
+									"sid": 742128780450491,
+									"parameters": {
+										"code0": "110"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 858654799778358,
+									"parameters": {
+										"variable": "isPlayerObjectExist",
+										"value": "0"
+									}
+								}
+							],
+							"sid": 596503065623879,
+							"children": [
+								{
+									"eventType": "variable",
+									"name": "netActorNr",
+									"type": "number",
+									"initialValue": "0",
+									"comment": "",
+									"isStatic": false,
+									"isConstant": false,
+									"sid": 717383457241411
+								},
+								{
+									"eventType": "block",
+									"conditions": [],
+									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 565669612559758,
+											"parameters": {
+												"variable": "netActorNr",
+												"value": "Photon.EventData"
+											}
+										}
+									],
+									"sid": 773042433614860
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "for-each-ordered",
+											"objectClass": "System",
+											"sid": 643962747881096,
+											"parameters": {
+												"object": "PlayerBase",
+												"expression": "0",
+												"order": "ascending"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 271199148667164,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "PlayerBase",
+													"sid": 431143486377137,
+													"disabled": true,
+													"parameters": {
+														"instance-variable": "thisMultipleID",
+														"comparison": 0,
+														"value": "str(Photon.ActorNr)"
+													}
+												},
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "PlayerBase",
+													"sid": 747014450701452,
+													"parameters": {
+														"instance-variable": "thisMultipleID",
+														"comparison": 0,
+														"value": "str(netActorNr)"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-eventvar-value",
+													"objectClass": "System",
+													"sid": 630941620407395,
+													"parameters": {
+														"variable": "isPlayerObjectExist",
+														"value": "1"
+													}
+												}
+											],
+											"sid": 798108036366447
+										}
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 256565076406028,
+											"parameters": {
+												"variable": "isPlayerObjectExist",
+												"comparison": 0,
+												"value": "0"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "create-object",
+											"objectClass": "System",
+											"sid": 143671666152868,
+											"parameters": {
+												"object-to-create": "PlayerBase",
+												"layer": "\"Player\"",
+												"x": "random( 100, ViewportWidth(\"Player\")*0.8 )",
+												"y": "random( 100, ViewportHeight(\"Player\")*0.8 )",
+												"create-hierarchy": false,
+												"template-name": "\"\""
+											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "PlayerBase",
+											"sid": 738977967755518,
+											"disabled": true,
+											"parameters": {
+												"instance-variable": "thisMultipleID",
+												"value": "Photon.ActorNr"
+											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "PlayerBase",
+											"sid": 703764024207822,
+											"parameters": {
+												"instance-variable": "thisMultipleID",
+												"value": "netActorNr"
+											}
+										}
+									],
+									"sid": 138744870594519
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "onevent3",
+									"objectClass": "Photon",
+									"sid": 120062378593737,
+									"parameters": {
+										"code0": "111"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "PlayerBase",
+									"sid": 684074989355128,
+									"disabled": true,
+									"parameters": {
+										"instance-variable": "thisMultipleID",
+										"comparison": 0,
+										"value": "str(Photon.ActorNr)"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-x",
+									"objectClass": "PlayerBase",
+									"sid": 491747770505047,
+									"disabled": true,
+									"parameters": {
+										"x": "int(Photon.EventData)"
+									}
+								},
+								{
+									"id": "tween-one-property",
+									"objectClass": "PlayerBase",
+									"sid": 985508283423256,
+									"disabled": true,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"LocX\"",
+										"property": "offsetX",
+										"end-value": "int(Photon.EventData)",
+										"time": "0.3",
+										"ease": "default",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								}
+							],
+							"sid": 466468032426730,
+							"children": [
+								{
+									"eventType": "variable",
+									"name": "netActorNr",
+									"type": "number",
+									"initialValue": "0",
+									"comment": "",
+									"isStatic": false,
+									"isConstant": false,
+									"sid": 251764682641462
+								},
+								{
+									"eventType": "variable",
+									"name": "netData",
+									"type": "number",
+									"initialValue": "0",
+									"comment": "",
+									"isStatic": false,
+									"isConstant": false,
+									"sid": 169160167016625
+								},
+								{
+									"eventType": "block",
+									"conditions": [],
+									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 825164262713691,
+											"parameters": {
+												"variable": "netActorNr",
+												"value": "tokenat(Photon.EventData, 0, \",\")"
+											}
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 422793067331483,
+											"parameters": {
+												"variable": "netData",
+												"value": "tokenat(Photon.EventData, 1, \",\")"
+											}
+										},
+										{
+											"id": "execute-javascript",
+											"objectClass": "Browser",
+											"sid": 906250197728726,
+											"disabled": true,
+											"parameters": {
+												"javascript": "\"console.log('netActorNr=\" & netActorNr & \"');\""
+											}
+										},
+										{
+											"id": "execute-javascript",
+											"objectClass": "Browser",
+											"sid": 494470597064714,
+											"disabled": true,
+											"parameters": {
+												"javascript": "\"console.log('MyClientNr=\" & PhotonMyActorNr_HostClient & \"');\""
+											}
+										}
+									],
+									"sid": 344923990502807
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-two-values",
+											"objectClass": "System",
+											"sid": 953683492946833,
+											"parameters": {
+												"first-value": "str(netActorNr)",
+												"comparison": 1,
+												"second-value": "str(PhotonMyActorNr_HostClient)"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 219224737289504,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "PlayerBase",
+													"sid": 971323237443804,
+													"parameters": {
+														"instance-variable": "thisMultipleID",
+														"comparison": 0,
+														"value": "str(netActorNr)"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "tween-one-property",
+													"objectClass": "PlayerBase",
+													"sid": 750102068484578,
+													"behaviorType": "Tween",
+													"parameters": {
+														"tags": "\"LocX\"",
+														"property": "offsetX",
+														"end-value": "int(netData)",
+														"time": "0.3",
+														"ease": "default",
+														"destroy-on-complete": "no",
+														"loop": "no",
+														"ping-pong": "no",
+														"repeat-count": "1"
+													}
+												}
+											],
+											"sid": 628984718616243
+										}
+									]
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "onevent3",
+									"objectClass": "Photon",
+									"sid": 584948789605145,
+									"parameters": {
+										"code0": "112"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "PlayerBase",
+									"sid": 571707183356432,
+									"disabled": true,
+									"parameters": {
+										"instance-variable": "thisMultipleID",
+										"comparison": 0,
+										"value": "str(Photon.ActorNr)"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-y",
+									"objectClass": "PlayerBase",
+									"sid": 383196784567843,
+									"disabled": true,
+									"parameters": {
+										"y": "int(Photon.EventData)"
+									}
+								},
+								{
+									"id": "tween-one-property",
+									"objectClass": "PlayerBase",
+									"sid": 663002912633189,
+									"disabled": true,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"LocY\"",
+										"property": "offsetY",
+										"end-value": "int(Photon.EventData)",
+										"time": "0.3",
+										"ease": "default",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								}
+							],
+							"sid": 906587476958472,
+							"children": [
+								{
+									"eventType": "variable",
+									"name": "netActorNr",
+									"type": "number",
+									"initialValue": "0",
+									"comment": "",
+									"isStatic": false,
+									"isConstant": false,
+									"sid": 908345620123572
+								},
+								{
+									"eventType": "variable",
+									"name": "netData",
+									"type": "number",
+									"initialValue": "0",
+									"comment": "",
+									"isStatic": false,
+									"isConstant": false,
+									"sid": 824644183650368
+								},
+								{
+									"eventType": "block",
+									"conditions": [],
+									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 147807188503068,
+											"parameters": {
+												"variable": "netActorNr",
+												"value": "tokenat(Photon.EventData, 0, \",\")"
+											}
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 614857267468174,
+											"parameters": {
+												"variable": "netData",
+												"value": "tokenat(Photon.EventData, 1, \",\")"
+											}
+										}
+									],
+									"sid": 551449691286921
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-two-values",
+											"objectClass": "System",
+											"sid": 301842035921985,
+											"parameters": {
+												"first-value": "str(netActorNr)",
+												"comparison": 1,
+												"second-value": "str(PhotonMyActorNr_HostClient)"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 525110099054326,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "PlayerBase",
+													"sid": 852117372631743,
+													"parameters": {
+														"instance-variable": "thisMultipleID",
+														"comparison": 0,
+														"value": "str(netActorNr)"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "tween-one-property",
+													"objectClass": "PlayerBase",
+													"sid": 492892645128026,
+													"behaviorType": "Tween",
+													"parameters": {
+														"tags": "\"LocY\"",
+														"property": "offsetY",
+														"end-value": "int( netData )",
+														"time": "0.3",
+														"ease": "default",
+														"destroy-on-complete": "no",
+														"loop": "no",
+														"ping-pong": "no",
+														"repeat-count": "1"
+													}
+												}
+											],
+											"sid": 284815381738091
+										}
+									]
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "onevent3",
+									"objectClass": "Photon",
+									"sid": 541974842240815,
+									"parameters": {
+										"code0": "113"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "PlayerBase",
+									"sid": 256113955124677,
+									"disabled": true,
+									"parameters": {
+										"instance-variable": "thisMultipleID",
+										"comparison": 0,
+										"value": "str(Photon.ActorNr)"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-angle",
+									"objectClass": "PlayerBase",
+									"sid": 119747759702034,
+									"disabled": true,
+									"parameters": {
+										"angle": "int(Photon.EventData)"
+									}
+								},
+								{
+									"id": "tween-one-property",
+									"objectClass": "PlayerBase",
+									"sid": 517525104778641,
+									"disabled": true,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"Angle\"",
+										"property": "offsetAngle",
+										"end-value": "int(Photon.EventData)",
+										"time": "0.3",
+										"ease": "default",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								}
+							],
+							"sid": 130761366183307,
+							"children": [
+								{
+									"eventType": "variable",
+									"name": "netActorNr",
+									"type": "number",
+									"initialValue": "0",
+									"comment": "",
+									"isStatic": false,
+									"isConstant": false,
+									"sid": 488288681646176
+								},
+								{
+									"eventType": "variable",
+									"name": "netData",
+									"type": "number",
+									"initialValue": "0",
+									"comment": "",
+									"isStatic": false,
+									"isConstant": false,
+									"sid": 732525222565067
+								},
+								{
+									"eventType": "block",
+									"conditions": [],
+									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 705615005641012,
+											"parameters": {
+												"variable": "netActorNr",
+												"value": "tokenat(Photon.EventData, 0, \",\")"
+											}
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 316027234833220,
+											"parameters": {
+												"variable": "netData",
+												"value": "tokenat(Photon.EventData, 1, \",\")"
+											}
+										}
+									],
+									"sid": 618224632348708
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-two-values",
+											"objectClass": "System",
+											"sid": 914618399070669,
+											"parameters": {
+												"first-value": "str(netActorNr)",
+												"comparison": 1,
+												"second-value": "str(PhotonMyActorNr_HostClient)"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 878787417169548,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "PlayerBase",
+													"sid": 725603864840771,
+													"parameters": {
+														"instance-variable": "thisMultipleID",
+														"comparison": 0,
+														"value": "str(netActorNr)"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "tween-one-property",
+													"objectClass": "PlayerBase",
+													"sid": 165024465864433,
+													"behaviorType": "Tween",
+													"parameters": {
+														"tags": "\"Angle\"",
+														"property": "offsetAngle",
+														"end-value": "int( netData )",
+														"time": "0.3",
+														"ease": "default",
+														"destroy-on-complete": "no",
+														"loop": "no",
+														"ping-pong": "no",
+														"repeat-count": "1"
+													}
+												}
+											],
+											"sid": 870116276324833
+										}
+									]
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "onevent3",
+									"objectClass": "Photon",
+									"sid": 933553644468099,
+									"parameters": {
+										"code0": "114"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "PlayerBase",
+									"sid": 188348607607174,
+									"disabled": true,
+									"parameters": {
+										"instance-variable": "thisMultipleID",
+										"comparison": 0,
+										"value": "str(Photon.ActorNr)"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-instvar-value",
+									"objectClass": "PlayerBase",
+									"sid": 186882677185118,
+									"disabled": true,
+									"parameters": {
+										"instance-variable": "Info",
+										"value": "int( Photon.EventData )"
+									}
+								}
+							],
+							"sid": 966360483825711,
+							"children": [
+								{
+									"eventType": "variable",
+									"name": "netActorNr",
+									"type": "number",
+									"initialValue": "0",
+									"comment": "",
+									"isStatic": false,
+									"isConstant": false,
+									"sid": 589035356519950
+								},
+								{
+									"eventType": "variable",
+									"name": "netData",
+									"type": "number",
+									"initialValue": "0",
+									"comment": "",
+									"isStatic": false,
+									"isConstant": false,
+									"sid": 279008368637975
+								},
+								{
+									"eventType": "block",
+									"conditions": [],
+									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 551208851794697,
+											"parameters": {
+												"variable": "netActorNr",
+												"value": "tokenat(Photon.EventData, 0, \",\")"
+											}
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 520359470860480,
+											"parameters": {
+												"variable": "netData",
+												"value": "tokenat(Photon.EventData, 1, \",\")"
+											}
+										}
+									],
+									"sid": 153700453361712
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-two-values",
+											"objectClass": "System",
+											"sid": 323972155343071,
+											"parameters": {
+												"first-value": "str(netActorNr)",
+												"comparison": 1,
+												"second-value": "str(PhotonMyActorNr_HostClient)"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 857840640467491,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "PlayerBase",
+													"sid": 708682495342476,
+													"parameters": {
+														"instance-variable": "thisMultipleID",
+														"comparison": 0,
+														"value": "str(netActorNr)"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-instvar-value",
+													"objectClass": "PlayerBase",
+													"sid": 183141643722271,
+													"parameters": {
+														"instance-variable": "Info",
+														"value": "int( netData )"
+													}
+												}
+											],
+											"sid": 462149466472550
+										}
+									]
+								}
+							]
+						}
+					],
+					"sid": 719654661809561
+				}
+			],
+			"sid": 548433088316173
+		},
+		{
+			"eventType": "comment",
+			"text": "Controls switching between host and client roles during gameplay"
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Control_Photon_HostClient",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 536744347762945,
+							"parameters": {
+								"key": 87
+							}
+						}
+					],
+					"actions": [],
+					"sid": 382969159907156,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "PlayerBase",
+									"sid": 648920639633496,
+									"parameters": {
+										"instance-variable": "thisMultipleID",
+										"comparison": 0,
+										"value": "str(Photon.MyActorNr)"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 236400005582437
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 151919446714448,
+							"parameters": {
+								"key": 83
+							}
+						}
+					],
+					"actions": [],
+					"sid": 935641368967068,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "PlayerBase",
+									"sid": 664916972286185,
+									"parameters": {
+										"instance-variable": "thisMultipleID",
+										"comparison": 0,
+										"value": "str(Photon.MyActorNr)"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 545950717354490
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 813050936174205,
+							"parameters": {
+								"key": 65
+							}
+						}
+					],
+					"actions": [],
+					"sid": 284884072274683,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "PlayerBase",
+									"sid": 960369473862351,
+									"parameters": {
+										"instance-variable": "thisMultipleID",
+										"comparison": 0,
+										"value": "str(Photon.MyActorNr)"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 444940170371532
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 934522208260525,
+							"parameters": {
+								"key": 68
+							}
+						}
+					],
+					"actions": [],
+					"sid": 451043965021249,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "PlayerBase",
+									"sid": 882865086354610,
+									"parameters": {
+										"instance-variable": "thisMultipleID",
+										"comparison": 0,
+										"value": "str(Photon.MyActorNr)"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 595052828258202
+						}
+					]
+				}
+			],
+			"sid": 826054949122878
+		},
+		{
+			"eventType": "comment",
+			"text": "Miscellaneous host-client utilities and debugging features"
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Other_Photon_HostClient",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "PlayerBase",
+							"sid": 168156991026110,
+							"parameters": {
+								"instance-variable": "thisMultipleID",
+								"comparison": 0,
+								"value": "str(Photon.MyActorNr)"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation",
+							"objectClass": "PlayerBase",
+							"sid": 613870444277457,
+							"parameters": {
+								"animation": "\"Me\"",
+								"from": "beginning"
+							}
+						}
+					],
+					"sid": 942866051736355
+				}
+			],
+			"sid": 184665445233222
+		},
+		{
+			"eventType": "comment",
+			"text": "Dynamically enables or disables groups based on runtime conditions"
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Dynamic_Photon_GroupOnOff",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 925182990566530,
+							"parameters": {
+								"first-value": "Photon.MasterActorNr",
+								"comparison": 0,
+								"second-value": "PhotonMyActorNr_HostClient"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-group-active",
+							"objectClass": "System",
+							"sid": 730675180765287,
+							"parameters": {
+								"group-name": "\"Host_Photon_HostClient\"",
+								"state": "activated"
+							}
+						},
+						{
+							"id": "set-group-active",
+							"objectClass": "System",
+							"sid": 331560562771466,
+							"parameters": {
+								"group-name": "\"Client_Photon_HostClient\"",
+								"state": "deactivated"
+							}
+						}
+					],
+					"sid": 184669699231496
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 786630685497662
+						}
+					],
+					"actions": [
+						{
+							"id": "set-group-active",
+							"objectClass": "System",
+							"sid": 913877379506068,
+							"parameters": {
+								"group-name": "\"Host_Photon_HostClient\"",
+								"state": "deactivated"
+							}
+						},
+						{
+							"id": "set-group-active",
+							"objectClass": "System",
+							"sid": 931156615252181,
+							"parameters": {
+								"group-name": "\"Client_Photon_HostClient\"",
+								"state": "activated"
+							}
+						}
+					],
+					"sid": 403861952037658
+				}
+			],
+			"sid": 224399204535072
+		}
+	],
+	"sid": 239040796010605
+}

@@ -1,0 +1,24 @@
+{
+	"name": "GUIGunSlotText",
+	"plugin-id": "Text",
+	"sid": 360185154865492,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "slotNumber",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 153149968960038
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Anchor",
+			"name": "Anchor",
+			"sid": 164202596663991
+		}
+	],
+	"effectTypes": []
+}

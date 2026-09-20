@@ -1,0 +1,10 @@
+{
+	"name": "RandomLoginText",
+	"plugin-id": "Text",
+	"sid": 160146598316489,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": []
+}

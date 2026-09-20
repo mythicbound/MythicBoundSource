@@ -1,0 +1,39 @@
+{
+	"name": "ParticleDamageText",
+	"plugin-id": "Text",
+	"sid": 126551653138872,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "PinUID",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 721558039229708
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Bullet",
+			"name": "Bullet",
+			"sid": 949172547870477
+		},
+		{
+			"behaviorId": "Pin",
+			"name": "Pin",
+			"sid": 898671605308948
+		},
+		{
+			"behaviorId": "Fade",
+			"name": "Fade",
+			"sid": 300315470185646
+		}
+	],
+	"effectTypes": [
+		{
+			"effectId": "skymen_BetterOutline",
+			"name": "BetterOutline"
+		}
+	]
+}

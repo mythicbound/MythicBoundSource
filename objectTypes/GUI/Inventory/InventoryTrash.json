@@ -1,0 +1,59 @@
+{
+	"name": "InventoryTrash",
+	"plugin-id": "Sprite",
+	"sid": 306877360055169,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 79,
+						"height": 113,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 2894817,
+						"collisionPoly": {
+							"points": [
+								0,
+								0.008849557522123894,
+								0.9873417721518988,
+								0.008849557522123894,
+								0.9873417721518988,
+								0.9911504424778761,
+								0,
+								0.9911504424778761
+							]
+						},
+						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "Image Point 1",
+								"x": 0.5189873417721519,
+								"y": 0.7079646017699115
+							}
+						],
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 549299909618978,
+				"name": "Inventory",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 0
+			}
+		],
+		"subfolders": []
+	}
+}

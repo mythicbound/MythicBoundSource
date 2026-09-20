@@ -1,0 +1,37 @@
+{
+	"name": "WorldText",
+	"plugin-id": "Text",
+	"sid": 975113147966425,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "sel",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 262906926352922
+		},
+		{
+			"name": "Use",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 302484106364652
+		},
+		{
+			"name": "Data",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 330306643867968
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [
+		{
+			"effectId": "skymen_BetterOutline",
+			"name": "BetterOutline"
+		}
+	]
+}

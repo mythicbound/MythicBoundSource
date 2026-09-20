@@ -1,0 +1,2783 @@
+{
+	"name": "FirebaseSignUp",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "CanSignUp",
+			"type": "boolean",
+			"initialValue": "true",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 438304396926563
+		},
+		{
+			"eventType": "variable",
+			"name": "UsernameIsTaken",
+			"type": "boolean",
+			"initialValue": "true",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 146830514175957
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "FireBaseSignUp",
+			"description": "All the info for the Auth Login",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "Brings User to the sign-Up Page"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-tap-object",
+							"objectClass": "Touch",
+							"sid": 282841755121417,
+							"parameters": {
+								"object": "MainMenuButtons"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "play",
+							"objectClass": "Audio",
+							"sid": 402587528646382,
+							"parameters": {
+								"audio-file": {
+									"path": "NewClick"
+								},
+								"loop": "not-looping",
+								"volume": "0",
+								"stereo-pan": "0",
+								"tag-optional": "\"\""
+							}
+						}
+					],
+					"sid": 618481947117229,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 759745863328395,
+									"parameters": {
+										"first-value": "LayoutName",
+										"comparison": 0,
+										"second-value": "\"FirebaseSignUp\""
+									}
+								}
+							],
+							"actions": [],
+							"sid": 843024007754336,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "MainMenuButtons",
+											"sid": 644505213191574,
+											"parameters": {
+												"instance-variable": "ButtonUse",
+												"comparison": 0,
+												"value": "\"Login\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "go-to-layout",
+											"objectClass": "System",
+											"sid": 539180738406252,
+											"parameters": {
+												"layout": "FirebaseLogin"
+											}
+										}
+									],
+									"sid": 488833815097756
+								}
+							]
+						}
+					],
+					"isOrBlock": true
+				},
+				{
+					"eventType": "comment",
+					"text": "Brings User to the Main Home Page"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-tap-object",
+							"objectClass": "Touch",
+							"sid": 826345576274498,
+							"parameters": {
+								"object": "MainMenuButtons"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 867527830280489,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 465123378154683,
+									"parameters": {
+										"first-value": "LayoutName",
+										"comparison": 0,
+										"second-value": "\"FirebaseSignUp\""
+									}
+								}
+							],
+							"actions": [],
+							"sid": 163571159236338,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "MainMenuButtons",
+											"sid": 111190162342696,
+											"parameters": {
+												"instance-variable": "ButtonUse",
+												"comparison": 0,
+												"value": "\"Home\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "go-to-layout",
+											"objectClass": "System",
+											"sid": 844281942322587,
+											"parameters": {
+												"layout": "Start Screen"
+											}
+										}
+									],
+									"sid": 202833093919452
+								}
+							]
+						}
+					],
+					"isOrBlock": true
+				},
+				{
+					"eventType": "comment",
+					"text": "User Clicked the Sign Up Button"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-tap-object",
+							"objectClass": "Touch",
+							"sid": 769546235264756,
+							"parameters": {
+								"object": "MainMenuButtons"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 305721188958408,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 626814270379800,
+									"parameters": {
+										"first-value": "LayoutName",
+										"comparison": 0,
+										"second-value": "\"FirebaseSignUp\""
+									}
+								}
+							],
+							"actions": [],
+							"sid": 267308595219802,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "MainMenuButtons",
+											"sid": 473957835699386,
+											"parameters": {
+												"instance-variable": "ButtonUse",
+												"comparison": 0,
+												"value": "\"SignUpThroughFire\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-boolean-eventvar",
+											"objectClass": "System",
+											"sid": 303842599442331,
+											"parameters": {
+												"variable": "CanSignUp",
+												"value": "true"
+											}
+										},
+										{
+											"callFunction": "SignUp",
+											"sid": 715258175921305
+										}
+									],
+									"sid": 169575235693353
+								}
+							]
+						}
+					],
+					"isOrBlock": true
+				},
+				{
+					"eventType": "comment",
+					"text": "Debug Button Was Hit"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-tap-object",
+							"objectClass": "Touch",
+							"sid": 584384016478356,
+							"parameters": {
+								"object": "MainMenuButtons"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 895403653560375,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-animation-frame",
+									"objectClass": "MainMenuButtons",
+									"sid": 253666002264720,
+									"parameters": {
+										"comparison": 0,
+										"number": "2"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "AuthErrors",
+									"sid": 726636437973529,
+									"parameters": {
+										"visibility": "toggle"
+									}
+								}
+							],
+							"sid": 258104934984656
+						}
+					],
+					"isOrBlock": true
+				},
+				{
+					"eventType": "comment",
+					"text": "Checks If the Firebase Plugins Loaded"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-loaded",
+							"objectClass": "FirebaseSDK",
+							"sid": 188894358680779
+						}
+					],
+					"actions": [
+						{
+							"id": "set-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 990584736184024,
+							"parameters": {
+								"variable": "IsFirebaseLoaded",
+								"value": "true"
+							}
+						}
+					],
+					"sid": 909905138544581
+				},
+				{
+					"eventType": "comment",
+					"text": "Firebase Start Signup client side"
+				},
+				{
+					"functionName": "SignUp",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [],
+					"sid": 644368737941321,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 972628393693703,
+									"parameters": {
+										"variable": "IsFirebaseLoaded"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-text",
+									"objectClass": "AuthErrors",
+									"sid": 775006205053436,
+									"parameters": {
+										"text": "\"Authentication Is Loaded\""
+									}
+								}
+							],
+							"sid": 963152142333269,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-two-values",
+											"objectClass": "System",
+											"sid": 554093276061201,
+											"parameters": {
+												"first-value": "len(UserNameSignUp.Text)",
+												"comparison": 5,
+												"second-value": "5"
+											}
+										},
+										{
+											"id": "compare-two-values",
+											"objectClass": "System",
+											"sid": 762657535285865,
+											"parameters": {
+												"first-value": "len(UserNameSignUp.Text)",
+												"comparison": 3,
+												"second-value": "20"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-text",
+											"objectClass": "AuthErrors",
+											"sid": 988442264618369,
+											"parameters": {
+												"text": "\"UserName Length Is Good\""
+											}
+										},
+										{
+											"id": "request-url",
+											"objectClass": "AJAX",
+											"sid": 410792144535558,
+											"parameters": {
+												"tag": "\"FilterUsername\"",
+												"url": "\"https://www.purgomalum.com/service/json?text=\"  & urlencode(Usernamesignup.Text)"
+											}
+										}
+									],
+									"sid": 865975835269347
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "else",
+											"objectClass": "System",
+											"sid": 403989131396432
+										}
+									],
+									"actions": [
+										{
+											"id": "set-visible",
+											"objectClass": "LoginInfo",
+											"sid": 639888450067159,
+											"parameters": {
+												"visibility": "visible"
+											}
+										},
+										{
+											"id": "set-text",
+											"objectClass": "LoginInfo",
+											"sid": 283497056692195,
+											"parameters": {
+												"text": "\"Username Needs To Be Between 5-20 Characters\""
+											}
+										}
+									],
+									"sid": 258863075684963
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 303018311023467
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "LoginInfo",
+									"sid": 791308007941810,
+									"parameters": {
+										"visibility": "visible"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "LoginInfo",
+									"sid": 138691244837168,
+									"parameters": {
+										"text": "\"Authentication NOT Loaded, Please Reload\""
+									}
+								}
+							],
+							"sid": 551103591758274
+						}
+					]
+				},
+				{
+					"eventType": "comment",
+					"text": "Firebase Start Signup Server Side"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-adv-trigger",
+							"objectClass": "FirebaseRDBasic",
+							"sid": 461534680191839,
+							"parameters": {
+								"id": "\"CheckUsername\""
+							}
+						}
+					],
+					"actions": [],
+					"sid": 601548635418452,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-adv-noexist2",
+									"objectClass": "FirebaseRDBasic",
+									"sid": 446229111772624,
+									"parameters": {
+										"id": "\"CheckUsername\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 426136537508023,
+									"parameters": {
+										"variable": "UsernameIsTaken",
+										"value": "true"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "LoginInfo",
+									"sid": 967150795456921,
+									"parameters": {
+										"text": "\"Username Is Taken\""
+									}
+								},
+								{
+									"id": "set-visible",
+									"objectClass": "LoginInfo",
+									"sid": 502029372196541,
+									"parameters": {
+										"visibility": "visible"
+									}
+								}
+							],
+							"sid": 442672378727271
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-adv-noexist2",
+									"objectClass": "FirebaseRDBasic",
+									"sid": 258422038048944,
+									"parameters": {
+										"id": "\"CheckUsername\""
+									},
+									"isInverted": true
+								},
+								{
+									"id": "trigger-once-while-true",
+									"objectClass": "System",
+									"sid": 431987103964428
+								}
+							],
+							"actions": [
+								{
+									"id": "set-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 390226616423066,
+									"parameters": {
+										"variable": "UsernameIsTaken",
+										"value": "false"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "AuthErrors",
+									"sid": 822828895762164,
+									"parameters": {
+										"text": "\"Username Is not Taken\""
+									}
+								},
+								{
+									"id": "signupemail",
+									"objectClass": "FirebaseAuthBasic",
+									"sid": 733797246973344,
+									"parameters": {
+										"emaildb": "EmailLogin.Text",
+										"passdb": "PasswordLogin.Text"
+									}
+								}
+							],
+							"sid": 895154302385230
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "error-occured",
+							"objectClass": "FirebaseAuthBasic",
+							"sid": 428254156768239
+						}
+					],
+					"actions": [],
+					"sid": 830835440363208,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 184301866834300,
+									"parameters": {
+										"first-value": "FirebaseAuthBasic.errorCode",
+										"comparison": 0,
+										"second-value": "\"auth/email-already-in-use\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "LoginInfo",
+									"sid": 189768707419334,
+									"parameters": {
+										"visibility": "visible"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "LoginInfo",
+									"sid": 918956209986808,
+									"parameters": {
+										"text": "\"This email is already in use. Try signing in instead.\""
+									}
+								},
+								{
+									"id": "set-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 841050605256187,
+									"parameters": {
+										"variable": "CanSignUp",
+										"value": "false"
+									}
+								}
+							],
+							"sid": 229044526824020
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 925873977409337,
+									"parameters": {
+										"first-value": "FirebaseAuthBasic.errorCode",
+										"comparison": 0,
+										"second-value": "\"auth/invalid-email\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "LoginInfo",
+									"sid": 538286883786437,
+									"parameters": {
+										"visibility": "visible"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "LoginInfo",
+									"sid": 642986908477285,
+									"parameters": {
+										"text": "\"Please enter a valid email address.\""
+									}
+								},
+								{
+									"id": "set-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 928433009707558,
+									"parameters": {
+										"variable": "CanSignUp",
+										"value": "false"
+									}
+								}
+							],
+							"sid": 214106820176504
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 524323068653552,
+									"parameters": {
+										"first-value": "FirebaseAuthBasic.errorCode",
+										"comparison": 0,
+										"second-value": "\"auth/operation-not-allowed\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "LoginInfo",
+									"sid": 913351371275586,
+									"parameters": {
+										"visibility": "visible"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "LoginInfo",
+									"sid": 398771470026511,
+									"parameters": {
+										"text": "\"Email sign-up is currently disabled. Please try later.\""
+									}
+								},
+								{
+									"id": "set-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 235228019572381,
+									"parameters": {
+										"variable": "CanSignUp",
+										"value": "false"
+									}
+								}
+							],
+							"sid": 320349536047029
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 339972543420799,
+									"parameters": {
+										"first-value": "FirebaseAuthBasic.errorCode",
+										"comparison": 0,
+										"second-value": "\"auth/weak-password\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "LoginInfo",
+									"sid": 676576971591715,
+									"parameters": {
+										"visibility": "visible"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "LoginInfo",
+									"sid": 822645146443664,
+									"parameters": {
+										"text": "\"Password must be at least 6 characters long.\""
+									}
+								},
+								{
+									"id": "set-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 661663018049003,
+									"parameters": {
+										"variable": "CanSignUp",
+										"value": "false"
+									}
+								}
+							],
+							"sid": 227282196465359
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 867840146694199,
+									"parameters": {
+										"first-value": "FirebaseAuthBasic.errorCode",
+										"comparison": 0,
+										"second-value": "\"auth/internal-error\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "LoginInfo",
+									"sid": 411321526793911,
+									"parameters": {
+										"visibility": "visible"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "LoginInfo",
+									"sid": 847905648395704,
+									"parameters": {
+										"text": "\"Something went wrong. Please try again later.\""
+									}
+								},
+								{
+									"id": "set-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 321700915293041,
+									"parameters": {
+										"variable": "CanSignUp",
+										"value": "false"
+									}
+								}
+							],
+							"sid": 868981037803851
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 413452892556417,
+									"parameters": {
+										"first-value": "FirebaseAuthBasic.errorCode",
+										"comparison": 0,
+										"second-value": "\"auth/network-request-failed\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "LoginInfo",
+									"sid": 487056193176993,
+									"parameters": {
+										"visibility": "visible"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "LoginInfo",
+									"sid": 914244187436027,
+									"parameters": {
+										"text": "\"Network error. Check your internet connection.\""
+									}
+								},
+								{
+									"id": "set-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 622024679731482,
+									"parameters": {
+										"variable": "CanSignUp",
+										"value": "false"
+									}
+								}
+							],
+							"sid": 312645924731357
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 103248128776468,
+									"parameters": {
+										"first-value": "FirebaseAuthBasic.errorCode",
+										"comparison": 0,
+										"second-value": "\"auth/too-many-requests\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "LoginInfo",
+									"sid": 158567510877342,
+									"parameters": {
+										"visibility": "visible"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "LoginInfo",
+									"sid": 287495326410353,
+									"parameters": {
+										"text": "\"Too many attempts. Please wait and try again.\""
+									}
+								},
+								{
+									"id": "set-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 363460990740077,
+									"parameters": {
+										"variable": "CanSignUp",
+										"value": "false"
+									}
+								}
+							],
+							"sid": 634254943217971
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 258378099688721,
+									"parameters": {
+										"first-value": "FirebaseAuthBasic.errorCode",
+										"comparison": 0,
+										"second-value": "\"auth/invalid-credential\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "LoginInfo",
+									"sid": 560355647236116,
+									"parameters": {
+										"visibility": "visible"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "LoginInfo",
+									"sid": 339055555787607,
+									"parameters": {
+										"text": "\"Invalid credentials. Try again.\""
+									}
+								},
+								{
+									"id": "set-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 116340236625867,
+									"parameters": {
+										"variable": "CanSignUp",
+										"value": "false"
+									}
+								}
+							],
+							"sid": 505128775175072
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 271723883689890,
+									"parameters": {
+										"first-value": "FirebaseAuthBasic.errorCode",
+										"comparison": 0,
+										"second-value": "\"auth/missing-email\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "LoginInfo",
+									"sid": 250070366330460,
+									"parameters": {
+										"visibility": "visible"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "LoginInfo",
+									"sid": 158472145798810,
+									"parameters": {
+										"text": "\"Email is required.\""
+									}
+								},
+								{
+									"id": "set-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 548625253573959,
+									"parameters": {
+										"variable": "CanSignUp",
+										"value": "false"
+									}
+								}
+							],
+							"sid": 777563079877364
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 900441095862052,
+									"parameters": {
+										"first-value": "FirebaseAuthBasic.errorCode",
+										"comparison": 0,
+										"second-value": "\"auth/missing-password\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "LoginInfo",
+									"sid": 903426622353961,
+									"parameters": {
+										"visibility": "visible"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "LoginInfo",
+									"sid": 834873117247731,
+									"parameters": {
+										"text": "\"Password is required.\""
+									}
+								},
+								{
+									"id": "set-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 828559982952599,
+									"parameters": {
+										"variable": "CanSignUp",
+										"value": "false"
+									}
+								}
+							],
+							"sid": 435295481256366
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 498881437385144,
+									"parameters": {
+										"first-value": "FirebaseAuthBasic.errorCode",
+										"comparison": 0,
+										"second-value": "\"auth/invalid-password\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "LoginInfo",
+									"sid": 824211657408509,
+									"parameters": {
+										"visibility": "visible"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "LoginInfo",
+									"sid": 816439843417416,
+									"parameters": {
+										"text": "\"Please choose a valid password.\""
+									}
+								},
+								{
+									"id": "set-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 206794220047256,
+									"parameters": {
+										"variable": "CanSignUp",
+										"value": "false"
+									}
+								}
+							],
+							"sid": 405709860648034
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-signed-in",
+							"objectClass": "FirebaseAuthBasic",
+							"sid": 571361809197030
+						},
+						{
+							"id": "is-new-user",
+							"objectClass": "FirebaseAuthBasic",
+							"sid": 815298253951798
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 157287441816656,
+							"parameters": {
+								"variable": "MyAuthUID",
+								"value": "FirebaseAuthBasic.userID"
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "LoginInfo",
+							"sid": 729029598780732,
+							"parameters": {
+								"visibility": "visible"
+							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "LoginInfo",
+							"sid": 248119340679767,
+							"parameters": {
+								"text": "\"Account Created!\""
+							}
+						},
+						{
+							"id": "advanced-write-leaderboard",
+							"objectClass": "FirebaseRDBasic",
+							"sid": 245026725895326,
+							"parameters": {
+								"locationlink": "\"Users/\"",
+								"key": "MyAuthUID",
+								"separator": "\"\"",
+								"value": "\"\"",
+								"enforce-string": false,
+								"id": "\"\""
+							}
+						},
+						{
+							"id": "advanced-write-leaderboard",
+							"objectClass": "FirebaseRDBasic",
+							"sid": 555692101155388,
+							"parameters": {
+								"locationlink": "\"Users/\" & MyAuthUID",
+								"key": "\"Rank\"",
+								"separator": "\"\"",
+								"value": "\"Beta Tester\"",
+								"enforce-string": false,
+								"id": "\"\""
+							}
+						},
+						{
+							"id": "advanced-write-leaderboard",
+							"objectClass": "FirebaseRDBasic",
+							"sid": 161829383121231,
+							"parameters": {
+								"locationlink": "\"Users/\" & MyAuthUID",
+								"key": "\"Username\"",
+								"separator": "\"\"",
+								"value": "UserNameSignUp.Text",
+								"enforce-string": false,
+								"id": "\"\""
+							}
+						},
+						{
+							"id": "advanced-write-leaderboard",
+							"objectClass": "FirebaseRDBasic",
+							"sid": 862799173149007,
+							"parameters": {
+								"locationlink": "\"Users/\" & MyAuthUID",
+								"key": "\"MaxHealth\"",
+								"separator": "\"\"",
+								"value": "\"100\"",
+								"enforce-string": false,
+								"id": "\"\""
+							}
+						},
+						{
+							"id": "advanced-write-leaderboard",
+							"objectClass": "FirebaseRDBasic",
+							"sid": 497874433575517,
+							"parameters": {
+								"locationlink": "\"Users/\" & MyAuthUID",
+								"key": "\"MaxSpeed\"",
+								"separator": "\"\"",
+								"value": "\"100\"",
+								"enforce-string": false,
+								"id": "\"\""
+							}
+						},
+						{
+							"id": "advanced-write-leaderboard",
+							"objectClass": "FirebaseRDBasic",
+							"sid": 660180390952551,
+							"parameters": {
+								"locationlink": "\"Users/\" & MyAuthUID",
+								"key": "\"Inventory\"",
+								"separator": "\"\"",
+								"value": "\"Null\"",
+								"enforce-string": false,
+								"id": "\"\""
+							}
+						},
+						{
+							"id": "advanced-write-leaderboard",
+							"objectClass": "FirebaseRDBasic",
+							"sid": 691564695901567,
+							"parameters": {
+								"locationlink": "\"Users/\" & MyAuthUID",
+								"key": "\"Position\"",
+								"separator": "\"\"",
+								"value": "\"Null\"",
+								"enforce-string": false,
+								"id": "\"\""
+							}
+						},
+						{
+							"id": "advanced-write-leaderboard",
+							"objectClass": "FirebaseRDBasic",
+							"sid": 807593823950967,
+							"parameters": {
+								"locationlink": "\"Users/\" & MyAuthUID",
+								"key": "\"Coins\"",
+								"separator": "\"\"",
+								"value": "\"0\"",
+								"enforce-string": false,
+								"id": "\"\""
+							}
+						},
+						{
+							"id": "advanced-write-leaderboard",
+							"objectClass": "FirebaseRDBasic",
+							"sid": 597551182756086,
+							"parameters": {
+								"locationlink": "\"Users/\" & MyAuthUID",
+								"key": "\"Level\"",
+								"separator": "\"\"",
+								"value": "\"1\"",
+								"enforce-string": false,
+								"id": "\"\""
+							}
+						},
+						{
+							"id": "advanced-write-leaderboard",
+							"objectClass": "FirebaseRDBasic",
+							"sid": 776887397005398,
+							"parameters": {
+								"locationlink": "\"Users/\" & MyAuthUID",
+								"key": "\"IsBanned\"",
+								"separator": "\"\"",
+								"value": "\"False\"",
+								"enforce-string": false,
+								"id": "\"\""
+							}
+						},
+						{
+							"id": "advanced-write-leaderboard",
+							"objectClass": "FirebaseRDBasic",
+							"sid": 997026812439041,
+							"parameters": {
+								"locationlink": "\"Users/\" & MyAuthUID",
+								"key": "\"IsMuted\"",
+								"separator": "\"\"",
+								"value": "\"False\"",
+								"enforce-string": false,
+								"id": "\"\""
+							}
+						},
+						{
+							"id": "advanced-write-leaderboard",
+							"objectClass": "FirebaseRDBasic",
+							"sid": 679654241563562,
+							"parameters": {
+								"locationlink": "\"Users/\" & MyAuthUID",
+								"key": "\"RankTint\"",
+								"separator": "\"\"",
+								"value": "\"#1f1d86\"",
+								"enforce-string": false,
+								"id": "\"\""
+							}
+						},
+						{
+							"id": "advanced-write-leaderboard",
+							"objectClass": "FirebaseRDBasic",
+							"sid": 381187115671438,
+							"disabled": true,
+							"parameters": {
+								"locationlink": "\"Users/\" & MyAuthUID",
+								"key": "\"RankTint\"",
+								"separator": "\"\"",
+								"value": "\"#FFFFFF\"",
+								"enforce-string": false,
+								"id": "\"\""
+							}
+						},
+						{
+							"id": "advanced-write-leaderboard",
+							"objectClass": "FirebaseRDBasic",
+							"sid": 252699953618027,
+							"parameters": {
+								"locationlink": "\"Users/\" & MyAuthUID",
+								"key": "\"skin\"",
+								"separator": "\"\"",
+								"value": "\"1|0|0|1|1|1|1\"",
+								"enforce-string": false,
+								"id": "\"\""
+							}
+						},
+						{
+							"id": "advanced-write-leaderboard",
+							"objectClass": "FirebaseRDBasic",
+							"sid": 538337202698402,
+							"parameters": {
+								"locationlink": "\"Usernames/\" & lowercase(UserNameSignUp.Text)",
+								"key": "UserNameSignUp.Text",
+								"separator": "\"\"",
+								"value": "FirebaseAuthBasic.userID",
+								"enforce-string": false,
+								"id": "\"\""
+							}
+						},
+						{
+							"id": "update-username",
+							"objectClass": "FirebaseAuthBasic",
+							"sid": 781193186463547,
+							"parameters": {
+								"name": "UserNameSignUp.Text",
+								"photourl": "\"\""
+							}
+						},
+						{
+							"id": "verify-email",
+							"objectClass": "FirebaseAuthBasic",
+							"sid": 593465380472133
+						},
+						{
+							"id": "go-to-layout",
+							"objectClass": "System",
+							"sid": 606503218797321,
+							"parameters": {
+								"layout": "Start Screen"
+							}
+						}
+					],
+					"sid": 923358261356039
+				}
+			],
+			"sid": 423483109247691
+		},
+		{
+			"eventType": "group",
+			"disabled": true,
+			"title": "ErrorSignUp",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"callFunction": "CheckForSignUpErrors",
+							"sid": 147663648524858
+						},
+						{
+							"id": "set-text",
+							"objectClass": "AuthErrors",
+							"sid": 709671605457861,
+							"parameters": {
+								"text": "FirebaseAuthBasic.errorCode"
+							}
+						}
+					],
+					"sid": 918735225395830
+				},
+				{
+					"functionName": "SignUpAuth",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [],
+					"sid": 105753307152335,
+					"disabled": true,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 541414496040317,
+									"parameters": {
+										"first-value": "len(UserNameSignUp.Text)",
+										"comparison": 2,
+										"second-value": "5"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "LoginInfo",
+									"sid": 819167302656328,
+									"parameters": {
+										"visibility": "visible"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "LoginInfo",
+									"sid": 646099194153828,
+									"parameters": {
+										"text": "\"Username Is Too Short\""
+									}
+								},
+								{
+									"id": "set-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 867105487940845,
+									"parameters": {
+										"variable": "CanSignUp",
+										"value": "false"
+									}
+								}
+							],
+							"sid": 766489350021243,
+							"disabled": true
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 821882285000636,
+									"parameters": {
+										"first-value": "len(UserNameSignUp.Text)",
+										"comparison": 5,
+										"second-value": "21"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "LoginInfo",
+									"sid": 993820442825711,
+									"parameters": {
+										"visibility": "visible"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "LoginInfo",
+									"sid": 394654137343639,
+									"parameters": {
+										"text": "\"Username Is Too Long\""
+									}
+								},
+								{
+									"id": "set-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 748302479580713,
+									"parameters": {
+										"variable": "CanSignUp",
+										"value": "false"
+									}
+								}
+							],
+							"sid": 437396182256641,
+							"disabled": true
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 848667185798468,
+									"parameters": {
+										"first-value": "FirebaseRDBasic.readValue(\"Usernames/\" & lowercase(UserNameSignUp.Text))",
+										"comparison": 0,
+										"second-value": "\"\""
+									},
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "LoginInfo",
+									"sid": 678395912552853,
+									"parameters": {
+										"visibility": "visible"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "LoginInfo",
+									"sid": 988280073658373,
+									"parameters": {
+										"text": "\"Username Is Taken\""
+									}
+								},
+								{
+									"id": "set-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 301108638164790,
+									"parameters": {
+										"variable": "CanSignUp",
+										"value": "false"
+									}
+								}
+							],
+							"sid": 473532216167894,
+							"disabled": true
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"callFunction": "SignInAuth",
+									"sid": 880086722508055,
+									"disabled": true
+								}
+							],
+							"sid": 804775865127391,
+							"disabled": true
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [],
+							"sid": 219384380554954,
+							"disabled": true,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-boolean-eventvar",
+											"objectClass": "System",
+											"sid": 822818214486491,
+											"parameters": {
+												"variable": "CanSignUp"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-visible",
+											"objectClass": "LoginInfo",
+											"sid": 412428902676792,
+											"parameters": {
+												"visibility": "invisible"
+											}
+										},
+										{
+											"callFunction": "CheckForSignUpErrors",
+											"sid": 163575073285068
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 404959534037774,
+											"parameters": {
+												"variable": "MyAuthUID",
+												"value": "FirebaseAuthBasic.userID"
+											}
+										}
+									],
+									"sid": 812188656385858,
+									"disabled": true
+								}
+							]
+						}
+					]
+				},
+				{
+					"functionName": "CheckForSignUpErrors",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "signupemail",
+							"objectClass": "FirebaseAuthBasic",
+							"sid": 698621972979747,
+							"parameters": {
+								"emaildb": "EmailLogin.Text",
+								"passdb": "PasswordLogin.Text"
+							}
+						}
+					],
+					"sid": 613361832904293,
+					"disabled": true,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 693786477990808,
+									"parameters": {
+										"first-value": "FirebaseAuthBasic.errorCode",
+										"comparison": 0,
+										"second-value": "\"auth/email-already-in-use\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "LoginInfo",
+									"sid": 438501465040808,
+									"parameters": {
+										"visibility": "visible"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "LoginInfo",
+									"sid": 793933997187350,
+									"parameters": {
+										"text": "\"This email is already in use. Try signing in instead.\""
+									}
+								},
+								{
+									"id": "set-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 894888083832707,
+									"parameters": {
+										"variable": "CanSignUp",
+										"value": "false"
+									}
+								}
+							],
+							"sid": 305355652813296,
+							"disabled": true
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 543152448243881,
+									"parameters": {
+										"first-value": "FirebaseAuthBasic.errorCode",
+										"comparison": 0,
+										"second-value": "\"auth/invalid-email\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "LoginInfo",
+									"sid": 355266838987568,
+									"parameters": {
+										"visibility": "visible"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "LoginInfo",
+									"sid": 202934461460635,
+									"parameters": {
+										"text": "\"Please enter a valid email address.\""
+									}
+								},
+								{
+									"id": "set-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 725802069740496,
+									"parameters": {
+										"variable": "CanSignUp",
+										"value": "false"
+									}
+								}
+							],
+							"sid": 925090332973521,
+							"disabled": true
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 924859381458331,
+									"parameters": {
+										"first-value": "FirebaseAuthBasic.errorCode",
+										"comparison": 0,
+										"second-value": "\"auth/operation-not-allowed\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "LoginInfo",
+									"sid": 157733164964076,
+									"parameters": {
+										"visibility": "visible"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "LoginInfo",
+									"sid": 820271989457476,
+									"parameters": {
+										"text": "\"Email sign-up is currently disabled. Please try later.\""
+									}
+								},
+								{
+									"id": "set-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 655921518284815,
+									"parameters": {
+										"variable": "CanSignUp",
+										"value": "false"
+									}
+								}
+							],
+							"sid": 762648875919968,
+							"disabled": true
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 632478024202501,
+									"parameters": {
+										"first-value": "FirebaseAuthBasic.errorCode",
+										"comparison": 0,
+										"second-value": "\"auth/weak-password\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "LoginInfo",
+									"sid": 498027719819494,
+									"parameters": {
+										"visibility": "visible"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "LoginInfo",
+									"sid": 995959480044539,
+									"parameters": {
+										"text": "\"Password must be at least 6 characters long.\""
+									}
+								},
+								{
+									"id": "set-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 343766572494540,
+									"parameters": {
+										"variable": "CanSignUp",
+										"value": "false"
+									}
+								}
+							],
+							"sid": 162326325444769,
+							"disabled": true
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 561621387788999,
+									"parameters": {
+										"first-value": "FirebaseAuthBasic.errorCode",
+										"comparison": 0,
+										"second-value": "\"auth/internal-error\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "LoginInfo",
+									"sid": 913120238245357,
+									"parameters": {
+										"visibility": "visible"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "LoginInfo",
+									"sid": 131381739351508,
+									"parameters": {
+										"text": "\"Something went wrong. Please try again later.\""
+									}
+								},
+								{
+									"id": "set-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 274746992990133,
+									"parameters": {
+										"variable": "CanSignUp",
+										"value": "false"
+									}
+								}
+							],
+							"sid": 804868012708852,
+							"disabled": true
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 154791689529674,
+									"parameters": {
+										"first-value": "FirebaseAuthBasic.errorCode",
+										"comparison": 0,
+										"second-value": "\"auth/network-request-failed\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "LoginInfo",
+									"sid": 584236243737089,
+									"parameters": {
+										"visibility": "visible"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "LoginInfo",
+									"sid": 287509613010232,
+									"parameters": {
+										"text": "\"Network error. Check your internet connection.\""
+									}
+								},
+								{
+									"id": "set-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 897164916207403,
+									"parameters": {
+										"variable": "CanSignUp",
+										"value": "false"
+									}
+								}
+							],
+							"sid": 400419415424243,
+							"disabled": true
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 661639129908235,
+									"parameters": {
+										"first-value": "FirebaseAuthBasic.errorCode",
+										"comparison": 0,
+										"second-value": "\"auth/too-many-requests\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "LoginInfo",
+									"sid": 419870017915187,
+									"parameters": {
+										"visibility": "visible"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "LoginInfo",
+									"sid": 401642325854164,
+									"parameters": {
+										"text": "\"Too many attempts. Please wait and try again.\""
+									}
+								},
+								{
+									"id": "set-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 484281470061390,
+									"parameters": {
+										"variable": "CanSignUp",
+										"value": "false"
+									}
+								}
+							],
+							"sid": 317342147622193,
+							"disabled": true
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 751072719244182,
+									"parameters": {
+										"first-value": "FirebaseAuthBasic.errorCode",
+										"comparison": 0,
+										"second-value": "\"auth/invalid-credential\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "LoginInfo",
+									"sid": 823545310958094,
+									"parameters": {
+										"visibility": "visible"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "LoginInfo",
+									"sid": 881858384542370,
+									"parameters": {
+										"text": "\"Invalid credentials. Try again.\""
+									}
+								},
+								{
+									"id": "set-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 180732717754191,
+									"parameters": {
+										"variable": "CanSignUp",
+										"value": "false"
+									}
+								}
+							],
+							"sid": 495229812399229,
+							"disabled": true
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 246216320329701,
+									"parameters": {
+										"first-value": "FirebaseAuthBasic.errorCode",
+										"comparison": 0,
+										"second-value": "\"auth/missing-email\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "LoginInfo",
+									"sid": 526673475489357,
+									"parameters": {
+										"visibility": "visible"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "LoginInfo",
+									"sid": 168862344784031,
+									"parameters": {
+										"text": "\"Email is required.\""
+									}
+								},
+								{
+									"id": "set-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 380803121877315,
+									"parameters": {
+										"variable": "CanSignUp",
+										"value": "false"
+									}
+								}
+							],
+							"sid": 431729162247073,
+							"disabled": true
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 661757590987362,
+									"parameters": {
+										"first-value": "FirebaseAuthBasic.errorCode",
+										"comparison": 0,
+										"second-value": "\"auth/missing-password\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "LoginInfo",
+									"sid": 180158442943732,
+									"parameters": {
+										"visibility": "visible"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "LoginInfo",
+									"sid": 843305763742342,
+									"parameters": {
+										"text": "\"Password is required.\""
+									}
+								},
+								{
+									"id": "set-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 609216850377860,
+									"parameters": {
+										"variable": "CanSignUp",
+										"value": "false"
+									}
+								}
+							],
+							"sid": 780812738757567,
+							"disabled": true
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 656922923632702,
+									"parameters": {
+										"first-value": "FirebaseAuthBasic.errorCode",
+										"comparison": 0,
+										"second-value": "\"auth/invalid-password\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "LoginInfo",
+									"sid": 468859456929799,
+									"parameters": {
+										"visibility": "visible"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "LoginInfo",
+									"sid": 499144068656109,
+									"parameters": {
+										"text": "\"Please choose a valid password.\""
+									}
+								},
+								{
+									"id": "set-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 599064239795501,
+									"parameters": {
+										"variable": "CanSignUp",
+										"value": "false"
+									}
+								}
+							],
+							"sid": 459197272357129,
+							"disabled": true
+						},
+						{
+							"eventType": "comment",
+							"text": "If All of this is true, proceed to Sign Up, and there are no errors"
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-signed-in",
+							"objectClass": "FirebaseAuthBasic",
+							"sid": 389963748166340
+						}
+					],
+					"actions": [],
+					"sid": 320547639148966,
+					"disabled": true,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-new-user",
+									"objectClass": "FirebaseAuthBasic",
+									"sid": 194940334377930
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "LoginInfo",
+									"sid": 199736714691752,
+									"parameters": {
+										"visibility": "visible"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "LoginInfo",
+									"sid": 719066678326239,
+									"parameters": {
+										"text": "\"Account Created!\""
+									}
+								},
+								{
+									"id": "advanced-write-leaderboard",
+									"objectClass": "FirebaseRDBasic",
+									"sid": 453023697092890,
+									"parameters": {
+										"locationlink": "\"Users/\" & MyAuthUID",
+										"key": "\"Rank\"",
+										"separator": "\"\"",
+										"value": "\"Ship\"",
+										"enforce-string": false,
+										"id": "\"\""
+									}
+								},
+								{
+									"id": "advanced-write-leaderboard",
+									"objectClass": "FirebaseRDBasic",
+									"sid": 911127719801917,
+									"parameters": {
+										"locationlink": "\"Users/\" & MyAuthUID",
+										"key": "\"Username\"",
+										"separator": "\"\"",
+										"value": "UserNameSignUp.Text",
+										"enforce-string": false,
+										"id": "\"\""
+									}
+								},
+								{
+									"id": "advanced-write-leaderboard",
+									"objectClass": "FirebaseRDBasic",
+									"sid": 504564558088413,
+									"parameters": {
+										"locationlink": "\"Users/\" & MyAuthUID",
+										"key": "\"MaxHealth\"",
+										"separator": "\"\"",
+										"value": "\"100\"",
+										"enforce-string": false,
+										"id": "\"\""
+									}
+								},
+								{
+									"id": "advanced-write-leaderboard",
+									"objectClass": "FirebaseRDBasic",
+									"sid": 893692546433973,
+									"parameters": {
+										"locationlink": "\"Usernames/\" & lowercase(UserNameSignUp.Text)",
+										"key": "UserNameSignUp.Text",
+										"separator": "\"\"",
+										"value": "FirebaseAuthBasic.userID",
+										"enforce-string": false,
+										"id": "\"\""
+									}
+								},
+								{
+									"id": "set-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 241346533050757,
+									"parameters": {
+										"variable": "CanSignUp",
+										"value": "false"
+									}
+								}
+							],
+							"sid": 465804703680323,
+							"disabled": true
+						}
+					]
+				}
+			],
+			"sid": 109898379933784
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-loaded",
+					"objectClass": "FirebaseSDK",
+					"sid": 290747186541667
+				}
+			],
+			"actions": [
+				{
+					"id": "set-text",
+					"objectClass": "LoginInfo",
+					"sid": 520442332690091,
+					"disabled": true,
+					"parameters": {
+						"text": "FirebaseAuthBasic.userID"
+					}
+				},
+				{
+					"id": "set-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 848194184202633,
+					"parameters": {
+						"variable": "IsFirebaseLoaded",
+						"value": "true"
+					}
+				}
+			],
+			"sid": 234462124229282
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 670982611785056,
+					"parameters": {
+						"key": 32
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "advanced-write-leaderboard",
+					"objectClass": "FirebaseRDBasic",
+					"sid": 319392914010856,
+					"parameters": {
+						"locationlink": "\"Usernames/\" & lowercase(UserNameSignUp.Text)",
+						"key": "UserNameSignUp.Text",
+						"separator": "\"\"",
+						"value": "FirebaseAuthBasic.userID",
+						"enforce-string": false,
+						"id": "\"\""
+					}
+				},
+				{
+					"id": "set-visible",
+					"objectClass": "LoginInfo",
+					"sid": 109146829947370,
+					"parameters": {
+						"visibility": "visible"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "LoginInfo",
+					"sid": 442808107273596,
+					"parameters": {
+						"text": "\"usernameadded\""
+					}
+				},
+				{
+					"id": "advanced-write-leaderboard",
+					"objectClass": "FirebaseRDBasic",
+					"sid": 694519045043393,
+					"disabled": true,
+					"parameters": {
+						"locationlink": "\"Usernames/\"",
+						"key": "str(lowercase(UserNameSignUp.Text))",
+						"separator": "\"\"",
+						"value": "str(FirebaseAuthBasic.userID)",
+						"enforce-string": false,
+						"id": "\"\""
+					}
+				}
+			],
+			"sid": 682900497056300,
+			"disabled": true
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "cursor-is-over-object",
+					"objectClass": "Mouse",
+					"sid": 681377101891160,
+					"parameters": {
+						"object": "MainMenuButtons"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 737018562223192,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "mouse-button-is-down",
+							"objectClass": "Mouse",
+							"sid": 606541349009198,
+							"parameters": {
+								"mouse-button": "left"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [],
+					"sid": 616587820001912,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 724391995390921,
+									"parameters": {
+										"first-value": "LayoutName",
+										"comparison": 0,
+										"second-value": "\"FirebaseSignUp\""
+									}
+								}
+							],
+							"actions": [],
+							"sid": 268353694903944,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "MainMenuButtons",
+											"sid": 412404166555981,
+											"parameters": {
+												"instance-variable": "ButtonUse",
+												"comparison": 0,
+												"value": "\"SignUpThroughFire\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation-frame",
+											"objectClass": "MainMenuButtons",
+											"sid": 168130719327025,
+											"parameters": {
+												"frame-number": "9"
+											}
+										}
+									],
+									"sid": 807213882782079
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "MainMenuButtons",
+											"sid": 961972601052705,
+											"parameters": {
+												"instance-variable": "ButtonUse",
+												"comparison": 0,
+												"value": "\"Login\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation-frame",
+											"objectClass": "MainMenuButtons",
+											"sid": 325543080899886,
+											"parameters": {
+												"frame-number": "9"
+											}
+										}
+									],
+									"sid": 492378709463155
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "MainMenuButtons",
+											"sid": 420525772127589,
+											"parameters": {
+												"instance-variable": "ButtonUse",
+												"comparison": 0,
+												"value": "\"SignUp\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation-frame",
+											"objectClass": "MainMenuButtons",
+											"sid": 946822153843215,
+											"parameters": {
+												"frame-number": "9"
+											}
+										}
+									],
+									"sid": 320587512863350
+								}
+							]
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 941527645539519
+						}
+					],
+					"actions": [],
+					"sid": 613172416469845,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 952715961364435,
+									"parameters": {
+										"first-value": "LayoutName",
+										"comparison": 0,
+										"second-value": "\"FirebaseSignUp\""
+									}
+								}
+							],
+							"actions": [],
+							"sid": 176688066510652,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "MainMenuButtons",
+											"sid": 172010301612551,
+											"parameters": {
+												"instance-variable": "ButtonUse",
+												"comparison": 0,
+												"value": "\"SignUpThroughFire\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation-frame",
+											"objectClass": "MainMenuButtons",
+											"sid": 368522999090021,
+											"parameters": {
+												"frame-number": "10"
+											}
+										}
+									],
+									"sid": 301874442047227
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "MainMenuButtons",
+											"sid": 241535649509082,
+											"parameters": {
+												"instance-variable": "ButtonUse",
+												"comparison": 0,
+												"value": "\"Login\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation-frame",
+											"objectClass": "MainMenuButtons",
+											"sid": 584956573847375,
+											"parameters": {
+												"frame-number": "10"
+											}
+										}
+									],
+									"sid": 266243094043691
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "MainMenuButtons",
+											"sid": 997742730574080,
+											"parameters": {
+												"instance-variable": "ButtonUse",
+												"comparison": 0,
+												"value": "\"SignUp\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation-frame",
+											"objectClass": "MainMenuButtons",
+											"sid": 169380760957503,
+											"parameters": {
+												"frame-number": "10"
+											}
+										}
+									],
+									"sid": 732490657802515
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "cursor-is-over-object",
+					"objectClass": "Mouse",
+					"sid": 584637611940685,
+					"parameters": {
+						"object": "MainMenuButtons"
+					},
+					"isInverted": true
+				}
+			],
+			"actions": [],
+			"sid": 674178433756948,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "mouse-button-is-down",
+							"objectClass": "Mouse",
+							"sid": 895617676935502,
+							"parameters": {
+								"mouse-button": "left"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [],
+					"sid": 611983685308928,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 950788521141384,
+									"parameters": {
+										"first-value": "LayoutName",
+										"comparison": 0,
+										"second-value": "\"FirebaseSignUp\""
+									}
+								}
+							],
+							"actions": [],
+							"sid": 468559442989946,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "MainMenuButtons",
+											"sid": 289154897291532,
+											"parameters": {
+												"instance-variable": "ButtonUse",
+												"comparison": 0,
+												"value": "\"SignUpThroughFire\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation-frame",
+											"objectClass": "MainMenuButtons",
+											"sid": 721495363993100,
+											"parameters": {
+												"frame-number": "8"
+											}
+										}
+									],
+									"sid": 927956023817239
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "MainMenuButtons",
+											"sid": 484338831817547,
+											"parameters": {
+												"instance-variable": "ButtonUse",
+												"comparison": 0,
+												"value": "\"Login\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation-frame",
+											"objectClass": "MainMenuButtons",
+											"sid": 908650835471819,
+											"parameters": {
+												"frame-number": "8"
+											}
+										}
+									],
+									"sid": 956090014182301
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "MainMenuButtons",
+											"sid": 360452576466357,
+											"parameters": {
+												"instance-variable": "ButtonUse",
+												"comparison": 0,
+												"value": "\"SignUp\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation-frame",
+											"objectClass": "MainMenuButtons",
+											"sid": 365768703759538,
+											"parameters": {
+												"frame-number": "8"
+											}
+										}
+									],
+									"sid": 949454134335188
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-completed",
+					"objectClass": "AJAX",
+					"sid": 719128765839191,
+					"parameters": {
+						"tag": "\"FilterUsername\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "parse",
+					"objectClass": "FilterChat",
+					"sid": 292117978338236,
+					"parameters": {
+						"data": "AJAX.LastData"
+					}
+				}
+			],
+			"sid": 966662030414667,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 697310793495495,
+							"parameters": {
+								"first-value": "FilterChat.Get(\"result\")",
+								"comparison": 1,
+								"second-value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "UserNameSignUp",
+							"sid": 820324656789263,
+							"parameters": {
+								"text": "FilterChat.Get(\"result\")"
+							}
+						}
+					],
+					"sid": 729252328034327,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "test-regex",
+									"objectClass": "System",
+									"sid": 649204322768945,
+									"parameters": {
+										"string": "UserNameSignUp.Text",
+										"regex": "\"^[A-Za-z0-9_]+$\"",
+										"flags": "\"\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-text",
+									"objectClass": "AuthErrors",
+									"sid": 995172047598507,
+									"parameters": {
+										"text": "\"Username format valid\""
+									}
+								},
+								{
+									"id": "advanced-read-data",
+									"objectClass": "FirebaseRDBasic",
+									"sid": 842726786509725,
+									"parameters": {
+										"location-link": "\"Usernames/\" & lowercase(UserNameSignUp.Text)",
+										"id": "\"CheckUsername\"",
+										"sync": false,
+										"read-json": false,
+										"read-array": false,
+										"read-proui": false
+									}
+								}
+							],
+							"sid": 546734363118611
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 854313779356888
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "LoginInfo",
+									"sid": 406480523736955,
+									"parameters": {
+										"visibility": "visible"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "LoginInfo",
+									"sid": 966181840076536,
+									"parameters": {
+										"text": "\"Username can only contain A–Z, 0–9, and underscores (_)\""
+									}
+								}
+							],
+							"sid": 815140857722569
+						}
+					]
+				}
+			]
+		}
+	],
+	"sid": 285746033498221
+}

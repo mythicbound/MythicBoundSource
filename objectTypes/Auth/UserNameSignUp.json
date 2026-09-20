@@ -1,0 +1,9 @@
+{
+	"name": "UserNameSignUp",
+	"plugin-id": "TextBox",
+	"sid": 204251701758136,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": []
+}

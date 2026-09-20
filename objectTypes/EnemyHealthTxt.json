@@ -1,0 +1,29 @@
+{
+	"name": "EnemyHealthTxt",
+	"plugin-id": "Text",
+	"sid": 968189733818298,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "PinUID",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 799303611188478
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Pin",
+			"name": "Pin",
+			"sid": 828553879701258
+		}
+	],
+	"effectTypes": [
+		{
+			"effectId": "skymen_BetterOutline",
+			"name": "BetterOutline"
+		}
+	]
+}

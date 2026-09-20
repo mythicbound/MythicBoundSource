@@ -1,0 +1,20 @@
+{
+	"name": "Photon",
+	"plugin-id": "Photon",
+	"sid": 537104225537831,
+	"singleglobal-inst": {
+		"type": "Photon",
+		"properties": {
+			"appid": "ece66cb4-2e09-460c-abdc-f17c0dae0317",
+			"appversion": "1.0",
+			"protocol": "wss",
+			"region": "us",
+			"hosttype": "photon cloud",
+			"selfhostedaddress": "localhost:25565",
+			"loglevel": "info"
+		},
+		"uid": 8,
+		"sid": 457265359819425,
+		"tags": ""
+	}
+}

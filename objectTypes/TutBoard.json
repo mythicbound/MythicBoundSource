@@ -1,0 +1,75 @@
+{
+	"name": "TutBoard",
+	"plugin-id": "Sprite",
+	"sid": 453797557289319,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "solid",
+			"name": "Solid",
+			"sid": 428505719146801
+		}
+	],
+	"effectTypes": [
+		{
+			"effectId": "skymen_BetterOutline",
+			"name": "BetterOutline"
+		}
+	],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 57,
+						"height": 61,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 1540868,
+						"collisionPoly": {
+							"points": [
+								0.8440543190958457,
+								0.3187614365160583,
+								0.8401560801563215,
+								0.37887067051702045,
+								0.011695835201520625,
+								0.8360656272735304,
+								0.00584791829789067,
+								0.7522767760545692
+							]
+						},
+						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "Flip1",
+								"x": 0.8421052631578947,
+								"y": 0.3442622950819672
+							},
+							{
+								"name": "Flip2",
+								"x": 0.017543859649122806,
+								"y": 0.7377049180327869
+							}
+						],
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 790048467429469,
+				"name": "TutBoard",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 0
+			}
+		],
+		"subfolders": []
+	}
+}

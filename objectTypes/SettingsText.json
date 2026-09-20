@@ -1,0 +1,10 @@
+{
+	"name": "SettingsText",
+	"plugin-id": "Text",
+	"sid": 559331177526124,
+	"isGlobal": true,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": []
+}

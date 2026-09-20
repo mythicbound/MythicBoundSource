@@ -1,0 +1,23 @@
+{
+	"name": "TradeLabels",
+	"plugin-id": "Text",
+	"sid": 857454306229886,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "sel",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 293139439038618
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [
+		{
+			"effectId": "skymen_BetterOutline",
+			"name": "BetterOutline"
+		}
+	]
+}

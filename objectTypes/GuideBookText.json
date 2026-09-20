@@ -1,0 +1,15 @@
+{
+	"name": "GuideBookText",
+	"plugin-id": "Text",
+	"sid": 242962781119038,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [
+		{
+			"effectId": "skymen_BetterOutline",
+			"name": "BetterOutline"
+		}
+	]
+}

@@ -1,0 +1,15 @@
+{
+	"name": "InteractableText",
+	"plugin-id": "Text",
+	"sid": 838113622274307,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [
+		{
+			"effectId": "skymen_BetterOutline",
+			"name": "BetterOutline"
+		}
+	]
+}

@@ -1,0 +1,36 @@
+{
+	"name": "NameAndLore",
+	"plugin-id": "Text",
+	"sid": 609952413430777,
+	"isGlobal": true,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "SlotNumber",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 421782741991513
+		},
+		{
+			"name": "togglemobilelore",
+			"type": "boolean",
+			"desc": "",
+			"show": true,
+			"sid": 656015489644444
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Pin",
+			"name": "Pin",
+			"sid": 897199177433217
+		}
+	],
+	"effectTypes": [
+		{
+			"effectId": "skymen_BetterOutline",
+			"name": "BetterOutline"
+		}
+	]
+}

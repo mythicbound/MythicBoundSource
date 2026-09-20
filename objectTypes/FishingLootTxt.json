@@ -1,0 +1,15 @@
+{
+	"name": "FishingLootTxt",
+	"plugin-id": "Text",
+	"sid": 312517482003415,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [
+		{
+			"effectId": "skymen_BetterOutline",
+			"name": "BetterOutline"
+		}
+	]
+}

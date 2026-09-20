@@ -1,0 +1,9 @@
+{
+	"name": "EmailLogin",
+	"plugin-id": "TextBox",
+	"sid": 184829747540471,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": []
+}

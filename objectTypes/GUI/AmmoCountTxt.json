@@ -1,0 +1,24 @@
+{
+	"name": "AmmoCountTxt",
+	"plugin-id": "Text",
+	"sid": 341121664191014,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "AmmoType",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 861858697597669
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Anchor",
+			"name": "Anchor",
+			"sid": 214251965832959
+		}
+	],
+	"effectTypes": []
+}

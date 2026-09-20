@@ -1,0 +1,29 @@
+{
+	"name": "InvOptionsTxt",
+	"plugin-id": "Text",
+	"sid": 875591176986499,
+	"isGlobal": true,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "Sel",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 132122887442727
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Pin",
+			"name": "Pin",
+			"sid": 144124128990355
+		}
+	],
+	"effectTypes": [
+		{
+			"effectId": "skymen_BetterOutline",
+			"name": "BetterOutline"
+		}
+	]
+}

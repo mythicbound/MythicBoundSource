@@ -1,0 +1,16 @@
+#TxtChatInput {
+  background-color: #c5c5c5;
+  color: #333;
+  border: 5px solid #7a137a;
+  border-radius: 10px;
+  padding: 1.5vw;
+  font-size: clamp(16px, 2vw, 20px);
+
+  opacity: 0.4;
+  transition: opacity 0.2s ease;
+}
+
+#TxtChatInput:hover,
+#TxtChatInput:focus {
+  opacity: 1;
+}

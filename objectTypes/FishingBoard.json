@@ -1,0 +1,89 @@
+{
+	"name": "FishingBoard",
+	"plugin-id": "Sprite",
+	"sid": 605300891967958,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "solid",
+			"name": "Solid",
+			"sid": 831680427781857
+		}
+	],
+	"effectTypes": [
+		{
+			"effectId": "skymen_BetterOutline",
+			"name": "BetterOutline"
+		}
+	],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 40,
+						"height": 47,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 493309,
+						"collisionPoly": {
+							"points": [
+								0.10576918101718409,
+								0,
+								0.9019229386708713,
+								0.3535188571911189,
+								0.8999999087488575,
+								0.4664484554387198,
+								0.10192301553538874,
+								0.13911616694257514
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					},
+					{
+						"width": 40,
+						"height": 47,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 3887552,
+						"collisionPoly": {
+							"points": [
+								0.12115384294436528,
+								0,
+								0.9019229386708713,
+								0.3535188571911189,
+								0.8999999087488575,
+								0.42389526394935817,
+								0.11538464754055612,
+								0.09819964161567954
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 863557740224843,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 0
+			}
+		],
+		"subfolders": []
+	}
+}

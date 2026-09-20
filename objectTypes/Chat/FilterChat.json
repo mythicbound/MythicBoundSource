@@ -1,0 +1,8 @@
+{
+	"name": "FilterChat",
+	"plugin-id": "Json",
+	"sid": 804926249298150,
+	"isGlobal": true,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": []
+}

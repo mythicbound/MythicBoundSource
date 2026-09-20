@@ -1,0 +1,20 @@
+{
+	"name": "FlipFunction",
+	"plugin-id": "Sprite",
+	"sid": 622730971046266,
+	"instanceVariables": [
+		{
+			"name": "IsFlipFunction",
+			"type": "boolean",
+			"desc": "",
+			"show": true,
+			"sid": 500141917119614
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"NonTileworldobjects",
+		"TutBoard"
+	]
+}

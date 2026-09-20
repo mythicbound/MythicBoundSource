@@ -1,0 +1,15 @@
+{
+	"name": "Gold",
+	"plugin-id": "Text",
+	"sid": 568066181654517,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [
+		{
+			"effectId": "skymen_BetterOutline",
+			"name": "BetterOutline"
+		}
+	]
+}

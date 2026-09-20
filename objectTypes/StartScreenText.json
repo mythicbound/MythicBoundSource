@@ -1,0 +1,10 @@
+{
+	"name": "StartScreenText",
+	"plugin-id": "Text",
+	"sid": 979842697650857,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": []
+}

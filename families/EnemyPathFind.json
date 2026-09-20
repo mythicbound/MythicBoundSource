@@ -1,0 +1,185 @@
+{
+	"name": "EnemyPathFind",
+	"plugin-id": "Sprite",
+	"sid": 686067313772006,
+	"instanceVariables": [
+		{
+			"name": "strPlayerLastLoc",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 379641577189206
+		},
+		{
+			"name": "pathmultipleid",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 533281521025641
+		},
+		{
+			"name": "randOffsetX",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 723521924177961
+		},
+		{
+			"name": "randOffsetY",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 575129812885182
+		},
+		{
+			"name": "Health",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 685379111049366
+		},
+		{
+			"name": "Damage",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 692380777756258
+		},
+		{
+			"name": "OG",
+			"type": "boolean",
+			"desc": "",
+			"show": true,
+			"sid": 961728465318510
+		},
+		{
+			"name": "EnemeyReadRow",
+			"type": "number",
+			"desc": "0 is the header row, 1 is angry plant etc",
+			"show": true,
+			"sid": 419884200156757
+		},
+		{
+			"name": "imcooked",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 719834401008890
+		},
+		{
+			"name": "EnemyRespawnTime",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 225738792545391
+		},
+		{
+			"name": "damagedelay",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 280432392808720
+		},
+		{
+			"name": "kbdistance",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 705951846676898
+		},
+		{
+			"name": "kbspeed",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 276218996059495
+		},
+		{
+			"name": "SpawnLayout",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 522452122404500
+		},
+		{
+			"name": "DamageLeaderboard",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 570891520733567
+		},
+		{
+			"name": "PathX",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 224488404204930
+		},
+		{
+			"name": "PathY",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 881983948298494
+		},
+		{
+			"name": "spawnGen",
+			"type": "number",
+			"desc": "Synced respawn generation this mob is positioned for (server-driven).",
+			"show": true,
+			"sid": 920300000000001
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Pathfinding",
+			"name": "Pathfinding",
+			"sid": 310038246950147
+		},
+		{
+			"behaviorId": "bound",
+			"name": "BoundToLayout",
+			"sid": 182326762976537
+		},
+		{
+			"behaviorId": "solid",
+			"name": "Solid",
+			"sid": 160216125090032
+		},
+		{
+			"behaviorId": "LOS",
+			"name": "LineOfSight",
+			"sid": 368407401244791
+		},
+		{
+			"behaviorId": "LOS",
+			"name": "DamageRange",
+			"sid": 790575108400372
+		},
+		{
+			"behaviorId": "Tween",
+			"name": "Tween",
+			"sid": 220698151286030
+		},
+		{
+			"behaviorId": "custom",
+			"name": "Custom",
+			"sid": 443212409140861
+		}
+	],
+	"effectTypes": [],
+	"members": [
+		"AngryPlant",
+		"MossHunter",
+		"Lumberer",
+		"MagmaMonster",
+		"IronEye",
+		"Jezubluz",
+		"FatFish",
+		"Chicken",
+		"FrozenFury",
+		"Knight",
+		"ChargedRaptor",
+		"Cow"
+	]
+}

@@ -1,0 +1,8 @@
+{
+	"name": "Cryptography",
+	"plugin-id": "Cryptography",
+	"sid": 897491147103913,
+	"isGlobal": true,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": []
+}

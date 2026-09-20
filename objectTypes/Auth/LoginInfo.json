@@ -1,0 +1,15 @@
+{
+	"name": "LoginInfo",
+	"plugin-id": "Text",
+	"sid": 335524328402218,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [
+		{
+			"effectId": "skymen_BetterOutline",
+			"name": "BetterOutline"
+		}
+	]
+}

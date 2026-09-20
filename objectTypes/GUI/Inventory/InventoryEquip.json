@@ -1,0 +1,139 @@
+{
+	"name": "InventoryEquip",
+	"plugin-id": "Sprite",
+	"sid": 770150387452906,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 78,
+						"height": 111,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 5649689,
+						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "TestPointOffset",
+								"x": 0.2692307692307692,
+								"y": 0.16216216216216217
+							}
+						],
+						"duration": 1,
+						"tag": ""
+					},
+					{
+						"width": 79,
+						"height": 113,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 7697609,
+						"collisionPoly": {
+							"points": [
+								0,
+								0.008849557522123894,
+								0.9873417721518988,
+								0.008849557522123894,
+								0.9873417721518988,
+								0.9911504424778761,
+								0,
+								0.9911504424778761
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					},
+					{
+						"width": 514,
+						"height": 113,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 4252987,
+						"collisionPoly": {
+							"points": [
+								0.0019455252918287938,
+								0.008849557522123894,
+								0.9980544747081712,
+								0.008849557522123894,
+								0.9980544747081712,
+								0.9911504424778761,
+								0.0019455252918287938,
+								0.9911504424778761
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					},
+					{
+						"width": 514,
+						"height": 113,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 6129995,
+						"collisionPoly": {
+							"points": [
+								0.0019455252918287938,
+								0.008849557522123894,
+								0.9980544747081712,
+								0.008849557522123894,
+								0.9980544747081712,
+								0.9911504424778761,
+								0.0019455252918287938,
+								0.9911504424778761
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					},
+					{
+						"width": 512,
+						"height": 111,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 3836850,
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 335082804453682,
+				"name": "Inventory",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 0
+			}
+		],
+		"subfolders": []
+	}
+}

@@ -1,0 +1,23 @@
+{
+	"name": "Leaderboard",
+	"plugin-id": "Text",
+	"sid": 960569030105131,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "sel",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 266840630525855
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [
+		{
+			"effectId": "skymen_BetterOutline",
+			"name": "BetterOutline"
+		}
+	]
+}

@@ -1,0 +1,12 @@
+{
+	"name": "InventoryPlugin",
+	"plugin-id": "NSG_Inventory",
+	"sid": 677993528506643,
+	"singleglobal-inst": {
+		"type": "InventoryPlugin",
+		"properties": {},
+		"uid": 1064,
+		"sid": 705065404605340,
+		"tags": ""
+	}
+}

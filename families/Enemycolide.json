@@ -1,0 +1,12 @@
+{
+	"name": "Enemycolide",
+	"plugin-id": "Sprite",
+	"sid": 747485639813108,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"NonTileworldobjects",
+		"InvisWalls"
+	]
+}

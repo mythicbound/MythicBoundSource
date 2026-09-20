@@ -1,0 +1,29 @@
+{
+	"name": "ChatFlow",
+	"plugin-id": "Text",
+	"sid": 438536853334072,
+	"isGlobal": true,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "StartingY",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 902066651756054
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "DragnDrop",
+			"name": "DragDrop",
+			"sid": 459078161428049
+		}
+	],
+	"effectTypes": [
+		{
+			"effectId": "skymen_BetterOutline",
+			"name": "BetterOutline"
+		}
+	]
+}

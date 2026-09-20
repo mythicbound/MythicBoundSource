@@ -1,0 +1,17 @@
+{
+	"name": "Items",
+	"plugin-id": "Sprite",
+	"sid": 829378405760839,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "DragnDrop",
+			"name": "DragDrop",
+			"sid": 414828852835318
+		}
+	],
+	"effectTypes": [],
+	"members": [
+		"InventoryObjects"
+	]
+}

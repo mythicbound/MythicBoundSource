@@ -1,0 +1,35 @@
+{
+	"name": "PlayerFam",
+	"plugin-id": "Sprite",
+	"sid": 703830696859699,
+	"instanceVariables": [
+		{
+			"name": "thisMultipleFAMID",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 752179181337618
+		},
+		{
+			"name": "DestroyBecause1st",
+			"type": "boolean",
+			"desc": "",
+			"show": true,
+			"sid": 647837040864672
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"HairPlayer",
+		"FacePlayer",
+		"ArmsPlayer",
+		"LowerPlayer",
+		"ShirtPlayer",
+		"WeaponPlayer",
+		"HatPlayer",
+		"SlashPlayer",
+		"HelmetPlayer",
+		"SecondaryPlayer"
+	]
+}

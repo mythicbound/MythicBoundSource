@@ -1,0 +1,67 @@
+{
+	"name": "EmoteWheel",
+	"plugin-id": "Sprite",
+	"sid": 474705476025973,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 79,
+						"height": 79,
+						"originX": 0.4936708860759494,
+						"originY": 0.4430379746835443,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 1053579,
+						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "Close",
+								"x": 0.5,
+								"y": 0.5
+							},
+							{
+								"name": "Slot0",
+								"x": 0.4936708860759494,
+								"y": 0.22784810126582278
+							},
+							{
+								"name": "Slot1",
+								"x": 0.7974683544303798,
+								"y": 0.5063291139240507
+							},
+							{
+								"name": "Slot2",
+								"x": 0.4936708860759494,
+								"y": 0.7848101265822784
+							},
+							{
+								"name": "Slot3",
+								"x": 0.189873417721519,
+								"y": 0.5063291139240507
+							}
+						],
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 425427265119439,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 0
+			}
+		],
+		"subfolders": []
+	}
+}

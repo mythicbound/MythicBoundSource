@@ -1,0 +1,9 @@
+{
+	"name": "StartScreenBUTTON",
+	"plugin-id": "Button",
+	"sid": 458118075433093,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": []
+}

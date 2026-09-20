@@ -1,0 +1,18 @@
+{
+	"name": "TutorialMobCanvas",
+	"plugin-id": "DrawingCanvas",
+	"sid": 202680602200506,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "MobIndex",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 130550285927278
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": []
+}

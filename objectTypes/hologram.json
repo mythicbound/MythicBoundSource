@@ -1,0 +1,23 @@
+{
+	"name": "hologram",
+	"plugin-id": "Text",
+	"sid": 134794630214620,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "use",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 256523423717182
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [
+		{
+			"effectId": "skymen_BetterOutline",
+			"name": "BetterOutline"
+		}
+	]
+}

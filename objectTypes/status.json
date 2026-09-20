@@ -1,0 +1,18 @@
+{
+	"name": "status",
+	"plugin-id": "Text",
+	"sid": 709938893043986,
+	"isGlobal": true,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "thisMultipleID",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 302824998588493
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": []
+}

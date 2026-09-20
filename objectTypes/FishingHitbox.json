@@ -1,0 +1,76 @@
+{
+	"name": "FishingHitbox",
+	"plugin-id": "Sprite",
+	"sid": 154643604707889,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "FishingReadID",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 848318276740383
+		},
+		{
+			"name": "LootTable",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 509886551756110
+		},
+		{
+			"name": "Name",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 682424715684560
+		},
+		{
+			"name": "FishTime",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 692529421349824
+		},
+		{
+			"name": "FishableTiles",
+			"type": "string",
+			"desc": "csv table to loop through",
+			"show": true,
+			"sid": 162957205151578
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 1,
+						"height": 1,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 1585722,
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 754815921163264,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

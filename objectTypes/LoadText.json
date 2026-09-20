@@ -1,0 +1,15 @@
+{
+	"name": "LoadText",
+	"plugin-id": "Text",
+	"sid": 524961882294449,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [
+		{
+			"effectId": "skymen_BetterOutline",
+			"name": "BetterOutline"
+		}
+	]
+}

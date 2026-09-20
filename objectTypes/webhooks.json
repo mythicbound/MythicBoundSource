@@ -1,0 +1,8 @@
+{
+	"name": "webhooks",
+	"plugin-id": "Dictionary",
+	"sid": 859349201484833,
+	"isGlobal": true,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": []
+}

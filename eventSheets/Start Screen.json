@@ -1,0 +1,7004 @@
+{
+	"name": "Start Screen",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "MyStartSkinFrame",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 241439012760512
+		},
+		{
+			"eventType": "variable",
+			"name": "IsArrayLoaded",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 573554069803250
+		},
+		{
+			"eventType": "variable",
+			"name": "IsFirebaseLoaded",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "un is no and true is yes",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 262104393349043
+		},
+		{
+			"eventType": "variable",
+			"name": "MyAuthUID",
+			"type": "string",
+			"initialValue": "NOTSET",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 533452803649911
+		},
+		{
+			"eventType": "variable",
+			"name": "MenuUp",
+			"type": "string",
+			"initialValue": "Hair",
+			"comment": "The menu that is shown by name",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 544098222235768
+		},
+		{
+			"eventType": "variable",
+			"name": "OwnedSkinString",
+			"type": "string",
+			"initialValue": "ERROR Please REPORT!!!!",
+			"comment": "the skin string for each of the player's parts for what they own and should be able to select from custom menu eg: 0,1,2|0,1|0,1|0,1|0,1|0",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 462122412073690
+		},
+		{
+			"eventType": "variable",
+			"name": "SentVerification",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 941987974213288
+		},
+		{
+			"eventType": "variable",
+			"name": "IsTut",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 924587879008092
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-tap-object",
+					"objectClass": "Touch",
+					"sid": 361154770943573,
+					"parameters": {
+						"object": "MainMenuButtons"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "play",
+					"objectClass": "Audio",
+					"sid": 704864867089392,
+					"parameters": {
+						"audio-file": {
+							"path": "NewClick"
+						},
+						"loop": "not-looping",
+						"volume": "0",
+						"stereo-pan": "0",
+						"tag-optional": "\"\""
+					}
+				}
+			],
+			"sid": 220503119280657,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "MainMenuButtons",
+							"sid": 504641073141988,
+							"parameters": {
+								"instance-variable": "ButtonUse",
+								"comparison": 0,
+								"value": "\"Login\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "go-to-layout",
+							"objectClass": "System",
+							"sid": 881329134193467,
+							"parameters": {
+								"layout": "FirebaseLogin"
+							}
+						}
+					],
+					"sid": 600378981264384
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "MainMenuButtons",
+							"sid": 225944956157518,
+							"parameters": {
+								"instance-variable": "ButtonUse",
+								"comparison": 0,
+								"value": "\"EditPlayer\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "go-to-layout",
+							"objectClass": "System",
+							"sid": 286052055403582,
+							"parameters": {
+								"layout": "PlayerCustomizations"
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "ArmsPlayer",
+							"sid": 818493955294595,
+							"parameters": {
+								"visibility": "visible"
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "FacePlayer",
+							"sid": 896438453125954,
+							"parameters": {
+								"visibility": "visible"
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "HairPlayer",
+							"sid": 410457812225662,
+							"parameters": {
+								"visibility": "visible"
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "HatPlayer",
+							"sid": 463668278394492,
+							"parameters": {
+								"visibility": "visible"
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "LowerPlayer",
+							"sid": 373437836545861,
+							"parameters": {
+								"visibility": "visible"
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "ShirtPlayer",
+							"sid": 885205171802040,
+							"parameters": {
+								"visibility": "visible"
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "WeaponPlayer",
+							"sid": 274169094850953,
+							"parameters": {
+								"visibility": "visible"
+							}
+						},
+						{
+							"callFunction": "CalculateUnlocked",
+							"sid": 146834476418986
+						}
+					],
+					"sid": 568260492737146,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-signed-in",
+									"objectClass": "FirebaseAuthBasic",
+									"sid": 239140861477335
+								}
+							],
+							"actions": [
+								{
+									"id": "advanced-read-data",
+									"objectClass": "FirebaseRDBasic",
+									"sid": 729713121616495,
+									"parameters": {
+										"location-link": "\"Users/\"&FirebaseAuthBasic.userID&\"/skin\"",
+										"id": "\"Skin\"",
+										"sync": false,
+										"read-json": false,
+										"read-array": false,
+										"read-proui": false
+									}
+								}
+							],
+							"sid": 224538532033027
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 362925092957053
+								}
+							],
+							"actions": [],
+							"sid": 637428527604160
+						}
+					]
+				}
+			],
+			"isOrBlock": true
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-adv-trigger",
+					"objectClass": "FirebaseRDBasic",
+					"sid": 483797982110303,
+					"parameters": {
+						"id": "\"OwnedSkins\""
+					}
+				}
+			],
+			"actions": [],
+			"sid": 280798828179299,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-adv-noexist2",
+							"objectClass": "FirebaseRDBasic",
+							"sid": 174410534037360,
+							"parameters": {
+								"id": "\"OwnedSkins\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 355403307984572,
+							"parameters": {
+								"variable": "OwnedSkinString",
+								"value": "FirebaseRDBasic.readValue(\"OwnedSkins\")"
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "LoginInfo",
+							"sid": 340660268914194,
+							"parameters": {
+								"visibility": "invisible"
+							}
+						}
+					],
+					"sid": 496391662538940
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 254285723136665
+						}
+					],
+					"actions": [
+						{
+							"id": "advanced-write-leaderboard",
+							"objectClass": "FirebaseRDBasic",
+							"sid": 145905317433941,
+							"parameters": {
+								"locationlink": "\"Users/\" & FirebaseAuthBasic.userID",
+								"key": "\"OwnedSkins\"",
+								"separator": "\"\"",
+								"value": "\"0,1,2|0,1|0,1|0,1|0,1|0\"",
+								"enforce-string": false,
+								"id": "\"\""
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "LoginInfo",
+							"sid": 222638410974272,
+							"parameters": {
+								"visibility": "visible"
+							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "LoginInfo",
+							"sid": 864122805709653,
+							"parameters": {
+								"text": "\"Synchronizeing Database, press play again\""
+							}
+						},
+						{
+							"id": "advanced-read-data",
+							"objectClass": "FirebaseRDBasic",
+							"sid": 277887437659543,
+							"parameters": {
+								"location-link": "\"Users/\"&FirebaseAuthBasic.userID&\"/OwnedSkins\"",
+								"id": "\"OwnedSkins\"",
+								"sync": false,
+								"read-json": false,
+								"read-array": false,
+								"read-proui": false
+							}
+						}
+					],
+					"sid": 389460590782402
+				}
+			],
+			"isOrBlock": true
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-adv-trigger",
+					"objectClass": "FirebaseRDBasic",
+					"sid": 162975255405185,
+					"parameters": {
+						"id": "\"playtime\""
+					}
+				}
+			],
+			"actions": [],
+			"sid": 526737234345577,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-adv-noexist2",
+							"objectClass": "FirebaseRDBasic",
+							"sid": 530562648170802,
+							"parameters": {
+								"id": "\"playtime\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "advanced-read-data",
+							"objectClass": "FirebaseRDBasic",
+							"sid": 191964426911073,
+							"parameters": {
+								"location-link": "\"Users/\"&FirebaseAuthBasic.userID&\"/playtime\"",
+								"id": "\"playtime\"",
+								"sync": false,
+								"read-json": false,
+								"read-array": false,
+								"read-proui": false
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "LoginInfo",
+							"sid": 678448846624592,
+							"parameters": {
+								"visibility": "invisible"
+							}
+						}
+					],
+					"sid": 500073118146552
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 958972371031391
+						}
+					],
+					"actions": [
+						{
+							"id": "advanced-write-leaderboard",
+							"objectClass": "FirebaseRDBasic",
+							"sid": 664843542916512,
+							"parameters": {
+								"locationlink": "\"Users/\" & FirebaseAuthBasic.userID",
+								"key": "\"playtime\"",
+								"separator": "\"\"",
+								"value": "\"0\"",
+								"enforce-string": false,
+								"id": "\"\""
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "LoginInfo",
+							"sid": 434127648035220,
+							"parameters": {
+								"visibility": "visible"
+							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "LoginInfo",
+							"sid": 391710434932334,
+							"parameters": {
+								"text": "\"Synchronizeing Database, press play again\""
+							}
+						},
+						{
+							"id": "advanced-read-data",
+							"objectClass": "FirebaseRDBasic",
+							"sid": 966457207288264,
+							"parameters": {
+								"location-link": "\"Users/\"&FirebaseAuthBasic.userID&\"/playtime\"",
+								"id": "\"playtime\"",
+								"sync": false,
+								"read-json": false,
+								"read-array": false,
+								"read-proui": false
+							}
+						}
+					],
+					"sid": 667535531542910
+				}
+			],
+			"isOrBlock": true
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-adv-trigger",
+					"objectClass": "FirebaseRDBasic",
+					"sid": 841120578032428,
+					"parameters": {
+						"id": "\"skin\""
+					}
+				}
+			],
+			"actions": [],
+			"sid": 259301855914661,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-adv-noexist2",
+							"objectClass": "FirebaseRDBasic",
+							"sid": 963515168784039,
+							"parameters": {
+								"id": "\"skin\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "advanced-read-data",
+							"objectClass": "FirebaseRDBasic",
+							"sid": 743727089981058,
+							"parameters": {
+								"location-link": "\"Users/\"&FirebaseAuthBasic.userID&\"/Joins\"",
+								"id": "\"Joins\"",
+								"sync": false,
+								"read-json": false,
+								"read-array": false,
+								"read-proui": false
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "LoginInfo",
+							"sid": 387435640977657,
+							"parameters": {
+								"visibility": "invisible"
+							}
+						}
+					],
+					"sid": 725256287050658
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 648484617012704
+						}
+					],
+					"actions": [
+						{
+							"id": "advanced-write-leaderboard",
+							"objectClass": "FirebaseRDBasic",
+							"sid": 575457619057106,
+							"parameters": {
+								"locationlink": "\"Users/\" & FirebaseAuthBasic.userID",
+								"key": "\"skin\"",
+								"separator": "\"\"",
+								"value": "\"1|0|0|1|1|1|1|1|1|1|1|1\"",
+								"enforce-string": false,
+								"id": "\"\""
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "LoginInfo",
+							"sid": 793065304408023,
+							"parameters": {
+								"visibility": "visible"
+							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "LoginInfo",
+							"sid": 951614714718260,
+							"parameters": {
+								"text": "\"Synchronizeing Database, press play again\""
+							}
+						},
+						{
+							"id": "advanced-read-data",
+							"objectClass": "FirebaseRDBasic",
+							"sid": 894365161685280,
+							"parameters": {
+								"location-link": "\"Users/\"&FirebaseAuthBasic.userID&\"/skin\"",
+								"id": "\"skin\"",
+								"sync": false,
+								"read-json": false,
+								"read-array": false,
+								"read-proui": false
+							}
+						}
+					],
+					"sid": 121430770792988
+				}
+			],
+			"isOrBlock": true
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-adv-trigger",
+					"objectClass": "FirebaseRDBasic",
+					"sid": 712837045432936,
+					"parameters": {
+						"id": "\"Joins\""
+					}
+				}
+			],
+			"actions": [],
+			"sid": 795266447110153,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-adv-noexist2",
+							"objectClass": "FirebaseRDBasic",
+							"sid": 710531431047689,
+							"parameters": {
+								"id": "\"Joins\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "advanced-read-data",
+							"objectClass": "FirebaseRDBasic",
+							"sid": 227825047219159,
+							"parameters": {
+								"location-link": "\"Users/\"&FirebaseAuthBasic.userID&\"/IsBanned\"",
+								"id": "\"isban\"",
+								"sync": false,
+								"read-json": false,
+								"read-array": false,
+								"read-proui": false
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "LoginInfo",
+							"sid": 620328832481629,
+							"parameters": {
+								"visibility": "invisible"
+							}
+						}
+					],
+					"sid": 851277083844565
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 873301107664475
+						}
+					],
+					"actions": [
+						{
+							"id": "advanced-write-leaderboard",
+							"objectClass": "FirebaseRDBasic",
+							"sid": 738965318484013,
+							"parameters": {
+								"locationlink": "\"Users/\" & FirebaseAuthBasic.userID",
+								"key": "\"Joins\"",
+								"separator": "\"\"",
+								"value": "\"0\"",
+								"enforce-string": false,
+								"id": "\"\""
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "LoginInfo",
+							"sid": 133699760570557,
+							"parameters": {
+								"visibility": "visible"
+							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "LoginInfo",
+							"sid": 148972164046177,
+							"parameters": {
+								"text": "\"Synchronizeing Database, press play again\""
+							}
+						},
+						{
+							"id": "advanced-read-data",
+							"objectClass": "FirebaseRDBasic",
+							"sid": 502814466838829,
+							"parameters": {
+								"location-link": "\"Users/\"&FirebaseAuthBasic.userID&\"/Joins\"",
+								"id": "\"Joins\"",
+								"sync": false,
+								"read-json": false,
+								"read-array": false,
+								"read-proui": false
+							}
+						}
+					],
+					"sid": 860835413513677
+				}
+			],
+			"isOrBlock": true
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-ready",
+					"objectClass": "GoogleAds",
+					"sid": 947540322211570
+				}
+			],
+			"actions": [
+				{
+					"id": "create-preroll",
+					"objectClass": "GoogleAds",
+					"sid": 808873061664899
+				}
+			],
+			"sid": 218313004447728
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-rewarded-play",
+					"objectClass": "GoogleAds",
+					"sid": 400210602290516
+				}
+			],
+			"actions": [
+				{
+					"id": "show-rewarded",
+					"objectClass": "GoogleAds",
+					"sid": 143664851010476
+				}
+			],
+			"sid": 684897164152665,
+			"disabled": true
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-adv-trigger",
+					"objectClass": "FirebaseRDBasic",
+					"sid": 312593922259696,
+					"parameters": {
+						"id": "\"IsTut\""
+					}
+				}
+			],
+			"actions": [],
+			"sid": 311794819881908,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-adv-noexist2",
+							"objectClass": "FirebaseRDBasic",
+							"sid": 496212613392402,
+							"parameters": {
+								"id": "\"IsTut\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "advanced-read-data",
+							"objectClass": "FirebaseRDBasic",
+							"sid": 849964666906132,
+							"parameters": {
+								"location-link": "\"Users/\"&FirebaseAuthBasic.userID&\"/IsTut\"",
+								"id": "\"IsTut\"",
+								"sync": false,
+								"read-json": false,
+								"read-array": false,
+								"read-proui": false
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "LoginInfo",
+							"sid": 282541115585771,
+							"parameters": {
+								"visibility": "invisible"
+							}
+						}
+					],
+					"sid": 376295683150998,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 807186506670821,
+									"parameters": {
+										"first-value": "FirebaseRDBasic.readValue(\"IsTut\")",
+										"comparison": 0,
+										"second-value": "\"False\""
+									}
+								},
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 640015413213787,
+									"parameters": {
+										"first-value": "FirebaseRDBasic.readValue(\"IsTut\")",
+										"comparison": 0,
+										"second-value": "\"false\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 225700129599299,
+									"parameters": {
+										"variable": "IsTut",
+										"value": "false"
+									}
+								}
+							],
+							"sid": 138348414208389,
+							"isOrBlock": true
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 751501094828315
+								}
+							],
+							"actions": [
+								{
+									"id": "set-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 279419386003174,
+									"parameters": {
+										"variable": "IsTut",
+										"value": "true"
+									}
+								}
+							],
+							"sid": 876396876917131
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 336802893144113
+						}
+					],
+					"actions": [
+						{
+							"id": "advanced-write-leaderboard",
+							"objectClass": "FirebaseRDBasic",
+							"sid": 703851862816853,
+							"parameters": {
+								"locationlink": "\"Users/\" & FirebaseAuthBasic.userID",
+								"key": "\"IsTut\"",
+								"separator": "\"\"",
+								"value": "\"True\"",
+								"enforce-string": false,
+								"id": "\"\""
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "LoginInfo",
+							"sid": 123429794358876,
+							"parameters": {
+								"visibility": "visible"
+							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "LoginInfo",
+							"sid": 751957271358154,
+							"parameters": {
+								"text": "\"Synchronizeing Database, press play again\""
+							}
+						},
+						{
+							"id": "advanced-read-data",
+							"objectClass": "FirebaseRDBasic",
+							"sid": 729700133820335,
+							"parameters": {
+								"location-link": "\"Users/\"&FirebaseAuthBasic.userID&\"/IsTut\"",
+								"id": "\"IsTut\"",
+								"sync": false,
+								"read-json": false,
+								"read-array": false,
+								"read-proui": false
+							}
+						}
+					],
+					"sid": 158402577572732
+				}
+			],
+			"isOrBlock": true
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-adv-trigger",
+					"objectClass": "FirebaseRDBasic",
+					"sid": 566991543489930,
+					"parameters": {
+						"id": "\"isban\""
+					}
+				}
+			],
+			"actions": [],
+			"sid": 221117558036056,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 879571178870868,
+							"parameters": {
+								"variable": "IsFirebaseLoaded"
+							}
+						},
+						{
+							"id": "is-signed-in",
+							"objectClass": "FirebaseAuthBasic",
+							"sid": 218185907260788
+						}
+					],
+					"actions": [],
+					"sid": 586655880613146,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-fullscreen",
+									"objectClass": "Browser",
+									"sid": 459532040671450
+								}
+							],
+							"actions": [
+								{
+									"id": "cancel-fullscreen",
+									"objectClass": "Browser",
+									"sid": 107841102313005
+								}
+							],
+							"sid": 640697222702445
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 263672556965158,
+									"parameters": {
+										"first-value": "FirebaseRDBasic.readValue(\"isban\")",
+										"comparison": 0,
+										"second-value": "\"False\""
+									}
+								},
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 471822979027722,
+									"parameters": {
+										"first-value": "FirebaseRDBasic.readValue(\"isban\")",
+										"comparison": 0,
+										"second-value": "\"false\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "advanced-write-leaderboard",
+									"objectClass": "FirebaseRDBasic",
+									"sid": 759972513524253,
+									"parameters": {
+										"locationlink": "\"Users/\" & FirebaseAuthBasic.userID",
+										"key": "\"Joins\"",
+										"separator": "\"\"",
+										"value": "FirebaseRDBasic.readValue(\"Joins\")+1",
+										"enforce-string": false,
+										"id": "\"\""
+									}
+								}
+							],
+							"sid": 560489517851366,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [],
+									"actions": [
+										{
+											"id": "set-visible",
+											"objectClass": "LoginInfo",
+											"sid": 998668930368146,
+											"parameters": {
+												"visibility": "invisible"
+											}
+										},
+										{
+											"id": "go-to-layout",
+											"objectClass": "System",
+											"sid": 324731250643528,
+											"parameters": {
+												"layout": "Game"
+											}
+										}
+									],
+									"sid": 919810578438672
+								}
+							],
+							"isOrBlock": true
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 968043737762846
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "LoginInfo",
+									"sid": 210644782558181,
+									"parameters": {
+										"visibility": "visible"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "LoginInfo",
+									"sid": 404925448628258,
+									"parameters": {
+										"text": "\"You Are Banned for Reason: \" & FirebaseRDBasic.readvalue(\"isban\")"
+									}
+								}
+							],
+							"sid": 254068320688515
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 850213097387294
+						}
+					],
+					"actions": [
+						{
+							"id": "set-visible",
+							"objectClass": "LoginInfo",
+							"sid": 272913108138004,
+							"parameters": {
+								"visibility": "visible"
+							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "LoginInfo",
+							"sid": 169876426889554,
+							"parameters": {
+								"text": "\"Unable To Play, Please Login\""
+							}
+						}
+					],
+					"sid": 953882381571781
+				}
+			],
+			"isOrBlock": true
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-tap-object",
+					"objectClass": "Touch",
+					"sid": 871459234917447,
+					"parameters": {
+						"object": "MainMenuButtons"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 902597307380714,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "MainMenuButtons",
+							"sid": 441210018134583,
+							"parameters": {
+								"instance-variable": "ButtonUse",
+								"comparison": 0,
+								"value": "\"Play\""
+							}
+						}
+					],
+					"actions": [],
+					"sid": 462920429046891,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 147980776258148,
+									"parameters": {
+										"variable": "IsFirebaseLoaded"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 732181370308678,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-signed-in",
+											"objectClass": "FirebaseAuthBasic",
+											"sid": 460431129923979
+										}
+									],
+									"actions": [
+										{
+											"id": "set-visible",
+											"objectClass": "LoginInfo",
+											"sid": 753909238885133,
+											"parameters": {
+												"visibility": "invisible"
+											}
+										}
+									],
+									"sid": 102848739227565,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "is-email-verified",
+													"objectClass": "FirebaseAuthBasic",
+													"sid": 629931704707370
+												}
+											],
+											"actions": [
+												{
+													"id": "advanced-read-data",
+													"objectClass": "FirebaseRDBasic",
+													"sid": 671660958341703,
+													"parameters": {
+														"location-link": "\"Users/\"&FirebaseAuthBasic.userID&\"/Joins\"",
+														"id": "\"Joins\"",
+														"sync": false,
+														"read-json": false,
+														"read-array": false,
+														"read-proui": false
+													}
+												},
+												{
+													"id": "advanced-read-data",
+													"objectClass": "FirebaseRDBasic",
+													"sid": 620690278072276,
+													"parameters": {
+														"location-link": "\"Users/\"&FirebaseAuthBasic.userID&\"/IsTut\"",
+														"id": "\"IsTut\"",
+														"sync": false,
+														"read-json": false,
+														"read-array": false,
+														"read-proui": false
+													}
+												},
+												{
+													"id": "advanced-read-data",
+													"objectClass": "FirebaseRDBasic",
+													"sid": 223641172905188,
+													"parameters": {
+														"location-link": "\"Users/\"&FirebaseAuthBasic.userID&\"/OwnedSkins\"",
+														"id": "\"OwnedSkins\"",
+														"sync": false,
+														"read-json": false,
+														"read-array": false,
+														"read-proui": false
+													}
+												},
+												{
+													"id": "advanced-read-data",
+													"objectClass": "FirebaseRDBasic",
+													"sid": 315739546549759,
+													"parameters": {
+														"location-link": "\"Users/\"&FirebaseAuthBasic.userID&\"/playtime\"",
+														"id": "\"playtime\"",
+														"sync": false,
+														"read-json": false,
+														"read-array": false,
+														"read-proui": false
+													}
+												},
+												{
+													"id": "advanced-read-data",
+													"objectClass": "FirebaseRDBasic",
+													"sid": 458926380922661,
+													"parameters": {
+														"location-link": "\"Users/\"&FirebaseAuthBasic.userID&\"/skin\"",
+														"id": "\"skin\"",
+														"sync": false,
+														"read-json": false,
+														"read-array": false,
+														"read-proui": false
+													}
+												}
+											],
+											"sid": 692499228102224
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "else",
+													"objectClass": "System",
+													"sid": 410374233426858
+												}
+											],
+											"actions": [],
+											"sid": 811880066795342,
+											"children": [
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "compare-boolean-eventvar",
+															"objectClass": "System",
+															"sid": 801285113269659,
+															"parameters": {
+																"variable": "SentVerification"
+															},
+															"isInverted": true
+														}
+													],
+													"actions": [
+														{
+															"id": "verify-email",
+															"objectClass": "FirebaseAuthBasic",
+															"sid": 382153580362410
+														},
+														{
+															"id": "set-boolean-eventvar",
+															"objectClass": "System",
+															"sid": 846019833019841,
+															"parameters": {
+																"variable": "SentVerification",
+																"value": "true"
+															}
+														},
+														{
+															"id": "set-text",
+															"objectClass": "LoginInfo",
+															"sid": 849951556375820,
+															"parameters": {
+																"text": "\"Check Your Email for verification (Check spam also)\" & newline &\"If you have already Verified, please reload your tab\""
+															}
+														}
+													],
+													"sid": 496959957959964
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "else",
+															"objectClass": "System",
+															"sid": 115162293417343
+														}
+													],
+													"actions": [
+														{
+															"id": "set-visible",
+															"objectClass": "LoginInfo",
+															"sid": 578020218664098,
+															"parameters": {
+																"visibility": "visible"
+															}
+														},
+														{
+															"id": "set-text",
+															"objectClass": "LoginInfo",
+															"sid": 262458711671372,
+															"parameters": {
+																"text": "\"Check Your Email for verification (Check spam also)\" & newline &\"If you have already Verified, please reload your tab\""
+															}
+														}
+													],
+													"sid": 717997489413140
+												}
+											]
+										}
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "else",
+											"objectClass": "System",
+											"sid": 920284937248822
+										}
+									],
+									"actions": [
+										{
+											"id": "set-visible",
+											"objectClass": "LoginInfo",
+											"sid": 850642759772374,
+											"parameters": {
+												"visibility": "visible"
+											}
+										},
+										{
+											"id": "set-text",
+											"objectClass": "LoginInfo",
+											"sid": 249688111293005,
+											"parameters": {
+												"text": "\"Unable To Play, Please Login\""
+											}
+										}
+									],
+									"sid": 547754813823300
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 754270580349605
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "LoginInfo",
+									"sid": 938807932593070,
+									"parameters": {
+										"visibility": "visible"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "LoginInfo",
+									"sid": 232593507707369,
+									"parameters": {
+										"text": "\"Authentication Is Down, Please Reload Or Wait\""
+									}
+								}
+							],
+							"sid": 302195156446470
+						}
+					]
+				}
+			],
+			"isOrBlock": true
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "cursor-is-over-object",
+					"objectClass": "Mouse",
+					"sid": 640510541852227,
+					"parameters": {
+						"object": "MainMenuButtons"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-scale",
+					"objectClass": "MainMenuButtons",
+					"sid": 205925331216853,
+					"parameters": {
+						"scale": "1.02"
+					}
+				}
+			],
+			"sid": 332392547853588,
+			"disabled": true
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "else",
+					"objectClass": "System",
+					"sid": 157588821221072
+				}
+			],
+			"actions": [
+				{
+					"id": "set-scale",
+					"objectClass": "MainMenuButtons",
+					"sid": 318919868498256,
+					"parameters": {
+						"scale": "1"
+					}
+				}
+			],
+			"sid": 157527851737162,
+			"disabled": true
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-loaded",
+					"objectClass": "FirebaseSDK",
+					"sid": 565073545856526
+				}
+			],
+			"actions": [
+				{
+					"id": "set-text",
+					"objectClass": "LoginInfo",
+					"sid": 472568600643329,
+					"disabled": true,
+					"parameters": {
+						"text": "FirebaseAuthBasic.userID"
+					}
+				},
+				{
+					"id": "set-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 541222394501987,
+					"parameters": {
+						"variable": "IsFirebaseLoaded",
+						"value": "true"
+					}
+				}
+			],
+			"sid": 239600485556786,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-signed-in",
+							"objectClass": "FirebaseAuthBasic",
+							"sid": 593524400287783
+						}
+					],
+					"actions": [
+						{
+							"id": "set-visible",
+							"objectClass": "LoginInfo",
+							"sid": 665804376322915,
+							"parameters": {
+								"visibility": "invisible"
+							}
+						}
+					],
+					"sid": 938125581246101
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 262382502750651
+						}
+					],
+					"actions": [
+						{
+							"id": "set-visible",
+							"objectClass": "LoginInfo",
+							"sid": 306780902875884,
+							"parameters": {
+								"visibility": "visible"
+							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "LoginInfo",
+							"sid": 245584728891374,
+							"parameters": {
+								"text": "\"Unable To Play, Please Login\""
+							}
+						}
+					],
+					"sid": 185755971928468
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 388077919197899
+				}
+			],
+			"actions": [
+				{
+					"id": "set-animation-frame",
+					"objectClass": "MythicBoundBetweanWorldLoadingScreen",
+					"sid": 958860408492385,
+					"parameters": {
+						"frame-number": "random(0,MythicBoundBetweanWorldLoadingScreen.AnimationFrameCount)"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "GameVersion",
+					"sid": 754629794249159,
+					"parameters": {
+						"text": "\"Version: \" & projectversion"
+					}
+				},
+				{
+					"id": "set-enabled",
+					"objectClass": "PlayerBase",
+					"sid": 989528180249722,
+					"behaviorType": "ScrollTo",
+					"parameters": {
+						"state": "disabled"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 111879127667018,
+					"parameters": {
+						"variable": "HealthNumberCur",
+						"value": "100"
+					}
+				},
+				{
+					"id": "wait",
+					"objectClass": "System",
+					"sid": 869427327889327,
+					"parameters": {
+						"seconds": "2",
+						"use-timescale": true
+					}
+				},
+				{
+					"id": "tween-one-property",
+					"objectClass": "MythicBoundBetweanWorldLoadingScreen",
+					"sid": 447549127854531,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"testColorFade\"",
+						"property": "offsetColor",
+						"end-value": "0",
+						"time": "0.5",
+						"ease": "default",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "yes",
+						"repeat-count": "1"
+					}
+				}
+			],
+			"sid": 750508591793757,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-signed-in",
+							"objectClass": "FirebaseAuthBasic",
+							"sid": 654227256919714
+						}
+					],
+					"actions": [
+						{
+							"id": "set-visible",
+							"objectClass": "LoginInfo",
+							"sid": 319751679322493,
+							"parameters": {
+								"visibility": "invisible"
+							}
+						}
+					],
+					"sid": 512228678516708
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 498748514565641
+						}
+					],
+					"actions": [
+						{
+							"id": "set-visible",
+							"objectClass": "LoginInfo",
+							"sid": 999087067724645,
+							"parameters": {
+								"visibility": "visible"
+							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "LoginInfo",
+							"sid": 511754294786498,
+							"parameters": {
+								"text": "\"Unable To Play, Please Login\""
+							}
+						}
+					],
+					"sid": 721445312563478
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 656011387967199,
+							"parameters": {
+								"first-value": "LayoutName",
+								"comparison": 0,
+								"second-value": "\"loadout\""
+							}
+						},
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 123707863958427,
+							"parameters": {
+								"first-value": "LayoutName",
+								"comparison": 0,
+								"second-value": "\"emotes\""
+							}
+						}
+					],
+					"actions": [],
+					"sid": 977370404673482
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-install-available",
+							"objectClass": "Browser",
+							"sid": 141585213133790
+						},
+						{
+							"id": "compare-display-mode",
+							"objectClass": "Browser",
+							"sid": 704721775171076,
+							"parameters": {
+								"display-mode": "standalone"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "request-install",
+							"objectClass": "Browser",
+							"sid": 540519888684916
+						}
+					],
+					"sid": 286959877638157,
+					"disabled": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-at-xy",
+							"objectClass": "MobsStatsData",
+							"sid": 843398579382145,
+							"parameters": {
+								"x": "0",
+								"y": "0",
+								"comparison": 1,
+								"value": "\"MobName (0)\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "go-to-layout",
+							"objectClass": "System",
+							"sid": 427899667603408,
+							"parameters": {
+								"layout": "Load"
+							}
+						}
+					],
+					"sid": 961328675189371
+				}
+			]
+		},
+		{
+			"eventType": "comment",
+			"text": "Handles character customization loadout scrolling and selection in the main menu"
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Load Out Scroll",
+			"description": "Load Out Scroll group",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-start-of-layout",
+							"objectClass": "System",
+							"sid": 632822974772007
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "loudoutINVIS",
+							"sid": 235582501575030,
+							"parameters": {
+								"instance-variable": "sel",
+								"comparison": 0,
+								"value": "3000"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-enabled",
+							"objectClass": "loudoutINVIS",
+							"sid": 105183899061137,
+							"behaviorType": "DragDrop",
+							"parameters": {
+								"state": "enabled"
+							}
+						}
+					],
+					"sid": 631004706936956
+				},
+				{
+					"eventType": "variable",
+					"name": "ScrollYLoadout",
+					"type": "number",
+					"initialValue": "276",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 314711453307897
+				},
+				{
+					"eventType": "variable",
+					"name": "ScrollOffset",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 291277128625869
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-enabled",
+							"objectClass": "loudoutINVIS",
+							"sid": 775107111331847,
+							"behaviorType": "DragDrop"
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 363551739076264,
+							"parameters": {
+								"variable": "ScrollYLoadout",
+								"value": "loudoutINVIS.Y"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 799366608699407,
+							"parameters": {
+								"variable": "ScrollOffset",
+								"value": "((ScrollYLoadout - 85) / 261) * 800\n"
+							}
+						}
+					],
+					"sid": 962878220469595,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "loudoutINVIS",
+									"sid": 842819698123032,
+									"parameters": {
+										"instance-variable": "sel",
+										"comparison": 0,
+										"value": "3000"
+									}
+								},
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 566729720263213,
+									"parameters": {
+										"first-value": "loudoutINVIS.Y",
+										"comparison": 2,
+										"second-value": "85"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "drop",
+									"objectClass": "loudoutINVIS",
+									"sid": 379095854030281,
+									"behaviorType": "DragDrop"
+								},
+								{
+									"id": "set-y",
+									"objectClass": "loudoutINVIS",
+									"sid": 478131234647982,
+									"parameters": {
+										"y": "85"
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 704523171012074,
+									"parameters": {
+										"variable": "ScrollYLoadout",
+										"value": "loudoutINVIS.Y"
+									}
+								}
+							],
+							"sid": 297891140369362
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "loudoutINVIS",
+									"sid": 654926556693961,
+									"parameters": {
+										"instance-variable": "sel",
+										"comparison": 0,
+										"value": "3000"
+									}
+								},
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 296839298411373,
+									"parameters": {
+										"first-value": "loudoutINVIS.Y",
+										"comparison": 4,
+										"second-value": "266"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "drop",
+									"objectClass": "loudoutINVIS",
+									"sid": 824261679412815,
+									"behaviorType": "DragDrop"
+								},
+								{
+									"id": "set-y",
+									"objectClass": "loudoutINVIS",
+									"sid": 957655414273445,
+									"parameters": {
+										"y": "266"
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 727542371062282,
+									"parameters": {
+										"variable": "ScrollYLoadout",
+										"value": "loudoutINVIS.Y"
+									}
+								}
+							],
+							"sid": 271830249575218
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "every-tick",
+							"objectClass": "System",
+							"sid": 150568942155932
+						}
+					],
+					"actions": [],
+					"sid": 761574292680457,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "loudoutINVIS",
+									"sid": 502214255851032,
+									"parameters": {
+										"instance-variable": "StartY",
+										"comparison": 1,
+										"value": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-y",
+									"objectClass": "loudoutINVIS",
+									"sid": 874653051138608,
+									"parameters": {
+										"y": "loudoutINVIS.StartY - ScrollOffset\n"
+									}
+								}
+							],
+							"sid": 728723622850436
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-mouse-wheel",
+							"objectClass": "Mouse",
+							"sid": 162778842514102,
+							"parameters": {
+								"direction": "down"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 642324467575705,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "loudoutINVIS",
+									"sid": 727285290114181,
+									"parameters": {
+										"instance-variable": "sel",
+										"comparison": 0,
+										"value": "3000"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-y",
+									"objectClass": "loudoutINVIS",
+									"sid": 803429800562706,
+									"parameters": {
+										"y": "loudoutINVIS.Y+7"
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 888024348900153,
+									"parameters": {
+										"variable": "ScrollYLoadout",
+										"value": "loudoutINVIS.Y"
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 553461662870910,
+									"parameters": {
+										"variable": "ScrollOffset",
+										"value": "((ScrollYLoadout - 85) / 261) * 800\n"
+									}
+								}
+							],
+							"sid": 809739070986651,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "loudoutINVIS",
+											"sid": 860180351390224,
+											"parameters": {
+												"instance-variable": "sel",
+												"comparison": 0,
+												"value": "3000"
+											}
+										},
+										{
+											"id": "compare-two-values",
+											"objectClass": "System",
+											"sid": 858390959335530,
+											"parameters": {
+												"first-value": "loudoutINVIS.Y",
+												"comparison": 2,
+												"second-value": "85"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-y",
+											"objectClass": "loudoutINVIS",
+											"sid": 485025851789120,
+											"parameters": {
+												"y": "85"
+											}
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 477928114973955,
+											"parameters": {
+												"variable": "ScrollYLoadout",
+												"value": "loudoutINVIS.Y"
+											}
+										}
+									],
+									"sid": 821631781046587
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "loudoutINVIS",
+											"sid": 794308157744366,
+											"parameters": {
+												"instance-variable": "sel",
+												"comparison": 0,
+												"value": "3000"
+											}
+										},
+										{
+											"id": "compare-two-values",
+											"objectClass": "System",
+											"sid": 671911935337036,
+											"parameters": {
+												"first-value": "loudoutINVIS.Y",
+												"comparison": 4,
+												"second-value": "266"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-y",
+											"objectClass": "loudoutINVIS",
+											"sid": 100315006495148,
+											"parameters": {
+												"y": "266"
+											}
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 778654337011863,
+											"parameters": {
+												"variable": "ScrollYLoadout",
+												"value": "loudoutINVIS.Y"
+											}
+										}
+									],
+									"sid": 548872518263765
+								}
+							]
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-mouse-wheel",
+							"objectClass": "Mouse",
+							"sid": 306530981521406,
+							"parameters": {
+								"direction": "up"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 707298654041358,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "loudoutINVIS",
+									"sid": 445388260325458,
+									"parameters": {
+										"instance-variable": "sel",
+										"comparison": 0,
+										"value": "3000"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-y",
+									"objectClass": "loudoutINVIS",
+									"sid": 616677481790050,
+									"parameters": {
+										"y": "loudoutINVIS.Y-7"
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 770527404401706,
+									"parameters": {
+										"variable": "ScrollYLoadout",
+										"value": "loudoutINVIS.Y"
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 614925618925442,
+									"parameters": {
+										"variable": "ScrollOffset",
+										"value": "((ScrollYLoadout - 85) / 261) * 800\n"
+									}
+								}
+							],
+							"sid": 115324351546077,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "loudoutINVIS",
+											"sid": 474808172807124,
+											"parameters": {
+												"instance-variable": "sel",
+												"comparison": 0,
+												"value": "3000"
+											}
+										},
+										{
+											"id": "compare-two-values",
+											"objectClass": "System",
+											"sid": 221767226041458,
+											"parameters": {
+												"first-value": "85",
+												"comparison": 2,
+												"second-value": "276"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-y",
+											"objectClass": "loudoutINVIS",
+											"sid": 140237269528939,
+											"parameters": {
+												"y": "85"
+											}
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 611208941275107,
+											"parameters": {
+												"variable": "ScrollYLoadout",
+												"value": "loudoutINVIS.Y"
+											}
+										}
+									],
+									"sid": 576174707436880
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "loudoutINVIS",
+											"sid": 942398094520344,
+											"parameters": {
+												"instance-variable": "sel",
+												"comparison": 0,
+												"value": "3000"
+											}
+										},
+										{
+											"id": "compare-two-values",
+											"objectClass": "System",
+											"sid": 987612589495417,
+											"parameters": {
+												"first-value": "loudoutINVIS.Y",
+												"comparison": 4,
+												"second-value": "266"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-y",
+											"objectClass": "loudoutINVIS",
+											"sid": 477076023855065,
+											"parameters": {
+												"y": "266"
+											}
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 210962025010970,
+											"parameters": {
+												"variable": "ScrollYLoadout",
+												"value": "loudoutINVIS.Y"
+											}
+										}
+									],
+									"sid": 152615067127490
+								}
+							]
+						}
+					]
+				}
+			],
+			"sid": 568464342407324
+		},
+		{
+			"eventType": "comment",
+			"text": "Manages Firebase authentication and player profile loading from the database"
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "FireBaseSignIn",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-tap-object",
+							"objectClass": "Touch",
+							"sid": 916078030415939,
+							"parameters": {
+								"object": "MainMenuButtons"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 692436302129597,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 502887215342679,
+									"parameters": {
+										"first-value": "LayoutName",
+										"comparison": 0,
+										"second-value": "\"FirebaseLogin\""
+									}
+								}
+							],
+							"actions": [],
+							"sid": 328119419912920,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "MainMenuButtons",
+											"sid": 644437995716756,
+											"parameters": {
+												"instance-variable": "ButtonUse",
+												"comparison": 0,
+												"value": "\"LoginThruFire\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"callFunction": "SignInAuth",
+											"sid": 163071590881125
+										},
+										{
+											"id": "set-visible",
+											"objectClass": "LoginInfo",
+											"sid": 507971505503293,
+											"parameters": {
+												"visibility": "visible"
+											}
+										}
+									],
+									"sid": 340263400529084
+								}
+							]
+						}
+					],
+					"isOrBlock": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-tap-object",
+							"objectClass": "Touch",
+							"sid": 278960450757679,
+							"parameters": {
+								"object": "MainMenuButtons"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 107178860046404,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 600223734003736,
+									"parameters": {
+										"first-value": "LayoutName",
+										"comparison": 0,
+										"second-value": "\"FirebaseLogin\""
+									}
+								}
+							],
+							"actions": [],
+							"sid": 317483391782927,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "MainMenuButtons",
+											"sid": 229560059611606,
+											"parameters": {
+												"instance-variable": "ButtonUse",
+												"comparison": 0,
+												"value": "\"SignUp\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "go-to-layout",
+											"objectClass": "System",
+											"sid": 544053288849430,
+											"parameters": {
+												"layout": "FirebaseSignUp"
+											}
+										}
+									],
+									"sid": 991954734380696
+								}
+							]
+						}
+					],
+					"isOrBlock": true
+				},
+				{
+					"functionName": "SignInAuth",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 125704355620007,
+							"parameters": {
+								"first-value": "LayoutName",
+								"comparison": 0,
+								"second-value": "\"FirebaseLogin\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "signinemail",
+							"objectClass": "FirebaseAuthBasic",
+							"sid": 222987448030833,
+							"parameters": {
+								"emaildb": "EmailLogin.Text",
+								"passdb": "PasswordLogin.Text"
+							}
+						}
+					],
+					"sid": 101164186663324
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-signed-in",
+							"objectClass": "FirebaseAuthBasic",
+							"sid": 331732305529029
+						}
+					],
+					"actions": [],
+					"sid": 261627733300536,
+					"disabled": true,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-adv-noexist2",
+									"objectClass": "FirebaseRDBasic",
+									"sid": 930998473647711,
+									"parameters": {
+										"id": "\"Users/\" & MyAuthUID"
+									},
+									"isInverted": true
+								}
+							],
+							"actions": [],
+							"sid": 357013746544493,
+							"disabled": true
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "error-occured",
+							"objectClass": "FirebaseAuthBasic",
+							"sid": 348508663105742
+						}
+					],
+					"actions": [
+						{
+							"id": "set-visible",
+							"objectClass": "LoginInfo",
+							"sid": 212790689190048,
+							"parameters": {
+								"visibility": "visible"
+							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "LoginInfo",
+							"sid": 699830100299117,
+							"parameters": {
+								"text": "FirebaseAuthBasic.errorMessage"
+							}
+						}
+					],
+					"sid": 975092259420146,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 323378379746144,
+									"parameters": {
+										"first-value": "FirebaseAuthBasic.errorCode",
+										"comparison": 0,
+										"second-value": "\"auth/user-not-found\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "LoginInfo",
+									"sid": 274976236243580,
+									"parameters": {
+										"visibility": "visible"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "LoginInfo",
+									"sid": 543132657519016,
+									"parameters": {
+										"text": "\"Unable to Login, Please Check Your Info\""
+									}
+								},
+								{
+									"id": "set-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 985301795807948,
+									"parameters": {
+										"variable": "CanSignUp",
+										"value": "false"
+									}
+								}
+							],
+							"sid": 190132970811040
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-signed-in",
+							"objectClass": "FirebaseAuthBasic",
+							"sid": 824433777050403
+						}
+					],
+					"actions": [
+						{
+							"id": "set-visible",
+							"objectClass": "LoginInfo",
+							"sid": 347260033046279,
+							"parameters": {
+								"visibility": "visible"
+							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "LoginInfo",
+							"sid": 274440184431093,
+							"parameters": {
+								"text": "\"Sign in Fired\""
+							}
+						}
+					],
+					"sid": 983785439691043,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-signed-in",
+									"objectClass": "FirebaseAuthBasic",
+									"sid": 467168209661518,
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "LoginInfo",
+									"sid": 820386622250320,
+									"parameters": {
+										"visibility": "visible"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "LoginInfo",
+									"sid": 576651319918040,
+									"parameters": {
+										"text": "\"Unable to Login, Please Check Your Info\""
+									}
+								},
+								{
+									"id": "set-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 785026064313105,
+									"parameters": {
+										"variable": "CanSignUp",
+										"value": "false"
+									}
+								}
+							],
+							"sid": 581982588766754
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 557853519985398
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 999495732264206,
+									"parameters": {
+										"variable": "MyAuthUID",
+										"value": "FirebaseAuthBasic.userID"
+									}
+								},
+								{
+									"id": "go-to-layout",
+									"objectClass": "System",
+									"sid": 115371004887416,
+									"parameters": {
+										"layout": "Start Screen"
+									}
+								},
+								{
+									"id": "set-visible",
+									"objectClass": "LoginInfo",
+									"sid": 967636839682180,
+									"parameters": {
+										"visibility": "visible"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "LoginInfo",
+									"sid": 364267639673777,
+									"parameters": {
+										"text": "\"You Have Logged In\""
+									}
+								}
+							],
+							"sid": 530234164555789
+						}
+					]
+				}
+			],
+			"sid": 313913324333256
+		},
+		{
+			"eventType": "comment",
+			"text": "Brings User to the Main Home Page"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-tap-object",
+					"objectClass": "Touch",
+					"sid": 147505197892741,
+					"parameters": {
+						"object": "MainMenuButtons"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 615056354644567,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 533353617936629,
+							"parameters": {
+								"first-value": "LayoutName",
+								"comparison": 0,
+								"second-value": "\"FirebaseLogin\""
+							}
+						},
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 219453869550882,
+							"parameters": {
+								"first-value": "LayoutName",
+								"comparison": 0,
+								"second-value": "\"PlayerCustomizations\""
+							}
+						}
+					],
+					"actions": [],
+					"sid": 192128761500207,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "MainMenuButtons",
+									"sid": 628964344211806,
+									"parameters": {
+										"instance-variable": "ButtonUse",
+										"comparison": 0,
+										"value": "\"Home\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "go-to-layout",
+									"objectClass": "System",
+									"sid": 781587780475069,
+									"parameters": {
+										"layout": "Start Screen"
+									}
+								},
+								{
+									"id": "set-visible",
+									"objectClass": "ArmsPlayer",
+									"sid": 638820266235676,
+									"parameters": {
+										"visibility": "invisible"
+									}
+								},
+								{
+									"id": "set-visible",
+									"objectClass": "FacePlayer",
+									"sid": 175247434178005,
+									"parameters": {
+										"visibility": "invisible"
+									}
+								},
+								{
+									"id": "set-visible",
+									"objectClass": "HairPlayer",
+									"sid": 599319419716427,
+									"parameters": {
+										"visibility": "invisible"
+									}
+								},
+								{
+									"id": "set-visible",
+									"objectClass": "HatPlayer",
+									"sid": 149376031450497,
+									"parameters": {
+										"visibility": "invisible"
+									}
+								},
+								{
+									"id": "set-visible",
+									"objectClass": "LowerPlayer",
+									"sid": 455812799708172,
+									"parameters": {
+										"visibility": "invisible"
+									}
+								},
+								{
+									"id": "set-visible",
+									"objectClass": "ShirtPlayer",
+									"sid": 665875004062509,
+									"parameters": {
+										"visibility": "invisible"
+									}
+								},
+								{
+									"id": "set-visible",
+									"objectClass": "WeaponPlayer",
+									"sid": 967635094517018,
+									"parameters": {
+										"visibility": "invisible"
+									}
+								}
+							],
+							"sid": 894135303576581
+						}
+					],
+					"isOrBlock": true
+				}
+			],
+			"isOrBlock": true
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 395104183452749,
+					"parameters": {
+						"key": 32
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "sign-out",
+					"objectClass": "FirebaseAuthBasic",
+					"sid": 686233789851281
+				}
+			],
+			"sid": 492870989404732,
+			"disabled": true
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "cursor-is-over-object",
+					"objectClass": "Mouse",
+					"sid": 216638492999311,
+					"parameters": {
+						"object": "MainMenuButtons"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 119488791241988,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "mouse-button-is-down",
+							"objectClass": "Mouse",
+							"sid": 118084540328015,
+							"parameters": {
+								"mouse-button": "left"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [],
+					"sid": 136748167458950,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 824248711801205,
+									"parameters": {
+										"first-value": "LayoutName",
+										"comparison": 0,
+										"second-value": "\"Start Screen\""
+									}
+								}
+							],
+							"actions": [],
+							"sid": 705144011373948,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "MainMenuButtons",
+											"sid": 699315739735070,
+											"parameters": {
+												"instance-variable": "ButtonUse",
+												"comparison": 0,
+												"value": "\"Play\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation-frame",
+											"objectClass": "MainMenuButtons",
+											"sid": 519357735730036,
+											"parameters": {
+												"frame-number": "6"
+											}
+										}
+									],
+									"sid": 845523566540659
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "MainMenuButtons",
+											"sid": 156581414827331,
+											"parameters": {
+												"instance-variable": "ButtonUse",
+												"comparison": 0,
+												"value": "\"Login\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation-frame",
+											"objectClass": "MainMenuButtons",
+											"sid": 877920058528211,
+											"parameters": {
+												"frame-number": "6"
+											}
+										}
+									],
+									"sid": 579362926972963
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "MainMenuButtons",
+											"sid": 580847866366056,
+											"parameters": {
+												"instance-variable": "ButtonUse",
+												"comparison": 0,
+												"value": "\"Home\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation-frame",
+											"objectClass": "MainMenuButtons",
+											"sid": 432557521552260,
+											"parameters": {
+												"frame-number": "12"
+											}
+										}
+									],
+									"sid": 550880097563025,
+									"disabled": true
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "MainMenuButtons",
+											"sid": 666607750199765,
+											"parameters": {
+												"instance-variable": "ButtonUse",
+												"comparison": 0,
+												"value": "\"EditPlayer\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation-frame",
+											"objectClass": "MainMenuButtons",
+											"sid": 483603648880489,
+											"parameters": {
+												"frame-number": "6"
+											}
+										}
+									],
+									"sid": 105333905732072
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 447528259840444,
+									"parameters": {
+										"first-value": "LayoutName",
+										"comparison": 0,
+										"second-value": "\"FirebaseLogin\""
+									}
+								}
+							],
+							"actions": [],
+							"sid": 922503436092367,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "MainMenuButtons",
+											"sid": 355354073996209,
+											"parameters": {
+												"instance-variable": "ButtonUse",
+												"comparison": 0,
+												"value": "\"LoginThruFire\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation-frame",
+											"objectClass": "MainMenuButtons",
+											"sid": 143810161492187,
+											"parameters": {
+												"frame-number": "9"
+											}
+										}
+									],
+									"sid": 254581320533721
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "MainMenuButtons",
+											"sid": 677118891836219,
+											"parameters": {
+												"instance-variable": "ButtonUse",
+												"comparison": 0,
+												"value": "\"Login\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation-frame",
+											"objectClass": "MainMenuButtons",
+											"sid": 947192056813861,
+											"parameters": {
+												"frame-number": "9"
+											}
+										}
+									],
+									"sid": 104755616933837
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "MainMenuButtons",
+											"sid": 829738039110799,
+											"parameters": {
+												"instance-variable": "ButtonUse",
+												"comparison": 0,
+												"value": "\"SignUp\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation-frame",
+											"objectClass": "MainMenuButtons",
+											"sid": 550465385554835,
+											"parameters": {
+												"frame-number": "9"
+											}
+										}
+									],
+									"sid": 423360234148693
+								}
+							]
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 170641115371611
+						}
+					],
+					"actions": [],
+					"sid": 182204359665009,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 923470073617963,
+									"parameters": {
+										"first-value": "LayoutName",
+										"comparison": 0,
+										"second-value": "\"Start Screen\""
+									}
+								}
+							],
+							"actions": [],
+							"sid": 930895096693157,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "MainMenuButtons",
+											"sid": 562937344845264,
+											"parameters": {
+												"instance-variable": "ButtonUse",
+												"comparison": 0,
+												"value": "\"Play\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation-frame",
+											"objectClass": "MainMenuButtons",
+											"sid": 186818298361429,
+											"parameters": {
+												"frame-number": "7"
+											}
+										}
+									],
+									"sid": 210075543997003
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "MainMenuButtons",
+											"sid": 320476062803506,
+											"parameters": {
+												"instance-variable": "ButtonUse",
+												"comparison": 0,
+												"value": "\"Login\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation-frame",
+											"objectClass": "MainMenuButtons",
+											"sid": 448881647460991,
+											"parameters": {
+												"frame-number": "7"
+											}
+										}
+									],
+									"sid": 966381417737655
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "MainMenuButtons",
+											"sid": 979709288101380,
+											"parameters": {
+												"instance-variable": "ButtonUse",
+												"comparison": 0,
+												"value": "\"Home\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation-frame",
+											"objectClass": "MainMenuButtons",
+											"sid": 895245736396319,
+											"parameters": {
+												"frame-number": "12"
+											}
+										}
+									],
+									"sid": 301235931516902,
+									"disabled": true
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "MainMenuButtons",
+											"sid": 333101222249168,
+											"parameters": {
+												"instance-variable": "ButtonUse",
+												"comparison": 0,
+												"value": "\"EditPlayer\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation-frame",
+											"objectClass": "MainMenuButtons",
+											"sid": 429038941532550,
+											"parameters": {
+												"frame-number": "7"
+											}
+										}
+									],
+									"sid": 539959991804615
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 990194933513463,
+									"parameters": {
+										"first-value": "LayoutName",
+										"comparison": 0,
+										"second-value": "\"FirebaseLogin\""
+									}
+								}
+							],
+							"actions": [],
+							"sid": 693230271590808,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "MainMenuButtons",
+											"sid": 896111262626817,
+											"parameters": {
+												"instance-variable": "ButtonUse",
+												"comparison": 0,
+												"value": "\"LoginThruFire\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation-frame",
+											"objectClass": "MainMenuButtons",
+											"sid": 665563464172491,
+											"parameters": {
+												"frame-number": "10"
+											}
+										}
+									],
+									"sid": 622391462543234
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "MainMenuButtons",
+											"sid": 935117187097404,
+											"parameters": {
+												"instance-variable": "ButtonUse",
+												"comparison": 0,
+												"value": "\"Login\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation-frame",
+											"objectClass": "MainMenuButtons",
+											"sid": 474481496457341,
+											"parameters": {
+												"frame-number": "10"
+											}
+										}
+									],
+									"sid": 809350425045535
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "MainMenuButtons",
+											"sid": 212646126085951,
+											"parameters": {
+												"instance-variable": "ButtonUse",
+												"comparison": 0,
+												"value": "\"SignUp\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation-frame",
+											"objectClass": "MainMenuButtons",
+											"sid": 742371486640552,
+											"parameters": {
+												"frame-number": "10"
+											}
+										}
+									],
+									"sid": 842699144085875
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "cursor-is-over-object",
+					"objectClass": "Mouse",
+					"sid": 842978692224367,
+					"parameters": {
+						"object": "MainMenuButtons"
+					},
+					"isInverted": true
+				}
+			],
+			"actions": [],
+			"sid": 323478057453644,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "mouse-button-is-down",
+							"objectClass": "Mouse",
+							"sid": 329003712881417,
+							"parameters": {
+								"mouse-button": "left"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [],
+					"sid": 676727156949821,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 213227960240003,
+									"parameters": {
+										"first-value": "LayoutName",
+										"comparison": 0,
+										"second-value": "\"FirebaseLogin\""
+									}
+								}
+							],
+							"actions": [],
+							"sid": 429814548715254,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "MainMenuButtons",
+											"sid": 372377227084943,
+											"parameters": {
+												"instance-variable": "ButtonUse",
+												"comparison": 0,
+												"value": "\"LoginThruFire\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation-frame",
+											"objectClass": "MainMenuButtons",
+											"sid": 494077358066194,
+											"parameters": {
+												"frame-number": "8"
+											}
+										}
+									],
+									"sid": 300311940568718
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "MainMenuButtons",
+											"sid": 676798089604742,
+											"parameters": {
+												"instance-variable": "ButtonUse",
+												"comparison": 0,
+												"value": "\"Login\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation-frame",
+											"objectClass": "MainMenuButtons",
+											"sid": 827369281568705,
+											"parameters": {
+												"frame-number": "8"
+											}
+										}
+									],
+									"sid": 331999442697943
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "MainMenuButtons",
+											"sid": 730201829522410,
+											"parameters": {
+												"instance-variable": "ButtonUse",
+												"comparison": 0,
+												"value": "\"SignUp\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation-frame",
+											"objectClass": "MainMenuButtons",
+											"sid": 869130004072858,
+											"parameters": {
+												"frame-number": "8"
+											}
+										}
+									],
+									"sid": 340723952858110
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 581840694060529,
+									"parameters": {
+										"first-value": "LayoutName",
+										"comparison": 0,
+										"second-value": "\"Start Screen\""
+									}
+								}
+							],
+							"actions": [],
+							"sid": 843744460492109,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "MainMenuButtons",
+											"sid": 372300203624114,
+											"parameters": {
+												"instance-variable": "ButtonUse",
+												"comparison": 0,
+												"value": "\"Play\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation-frame",
+											"objectClass": "MainMenuButtons",
+											"sid": 244625158069721,
+											"parameters": {
+												"frame-number": "0"
+											}
+										}
+									],
+									"sid": 931251291635545
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "MainMenuButtons",
+											"sid": 173839780495395,
+											"parameters": {
+												"instance-variable": "ButtonUse",
+												"comparison": 0,
+												"value": "\"Login\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation-frame",
+											"objectClass": "MainMenuButtons",
+											"sid": 612216660600799,
+											"parameters": {
+												"frame-number": "0"
+											}
+										}
+									],
+									"sid": 508301880702223
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "MainMenuButtons",
+											"sid": 721646846248818,
+											"parameters": {
+												"instance-variable": "ButtonUse",
+												"comparison": 0,
+												"value": "\"Home\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation-frame",
+											"objectClass": "MainMenuButtons",
+											"sid": 257651267526147,
+											"parameters": {
+												"frame-number": "7"
+											}
+										}
+									],
+									"sid": 739529941709208,
+									"disabled": true
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "MainMenuButtons",
+											"sid": 116632911512186,
+											"parameters": {
+												"instance-variable": "ButtonUse",
+												"comparison": 0,
+												"value": "\"EditPlayer\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation-frame",
+											"objectClass": "MainMenuButtons",
+											"sid": 648414729998508,
+											"parameters": {
+												"frame-number": "0"
+											}
+										}
+									],
+									"sid": 758321244952984
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"eventType": "comment",
+			"text": "Controls menu display and navigation between different character customization screens"
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "MenuUp",
+			"description": "Menu that is showing up for player customizations atm",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-tap-object",
+							"objectClass": "Touch",
+							"sid": 330911455741679,
+							"parameters": {
+								"object": "MainMenuButtons"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 467223815392916,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 156599342732089,
+									"parameters": {
+										"first-value": "MainMenuButtons.AnimationFrame",
+										"comparison": 5,
+										"second-value": "11"
+									}
+								},
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 719434189621451,
+									"parameters": {
+										"first-value": "MainMenuButtons.AnimationFrame",
+										"comparison": 3,
+										"second-value": "16"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 946436897522065,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "MainMenuButtons",
+											"sid": 430791921281491,
+											"parameters": {
+												"instance-variable": "ButtonUse",
+												"comparison": 0,
+												"value": "\"Hair\""
+											}
+										},
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "MainMenuButtons",
+											"sid": 998473284136608,
+											"parameters": {
+												"instance-variable": "ButtonUse",
+												"comparison": 0,
+												"value": "\"Face\""
+											}
+										},
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "MainMenuButtons",
+											"sid": 983925253905538,
+											"parameters": {
+												"instance-variable": "ButtonUse",
+												"comparison": 0,
+												"value": "\"Arms\""
+											}
+										},
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "MainMenuButtons",
+											"sid": 959692684494227,
+											"parameters": {
+												"instance-variable": "ButtonUse",
+												"comparison": 0,
+												"value": "\"Shirt\""
+											}
+										},
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "MainMenuButtons",
+											"sid": 643152222103104,
+											"parameters": {
+												"instance-variable": "ButtonUse",
+												"comparison": 0,
+												"value": "\"Pants\""
+											}
+										},
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "MainMenuButtons",
+											"sid": 244039930048359,
+											"parameters": {
+												"instance-variable": "ButtonUse",
+												"comparison": 0,
+												"value": "\"Hat\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 574445627987329,
+											"parameters": {
+												"variable": "MenuUp",
+												"value": "MainMenuButtons.ButtonUse"
+											}
+										},
+										{
+											"callFunction": "FillSkinPack",
+											"sid": 100438306580291
+										}
+									],
+									"sid": 566960344174690,
+									"isOrBlock": true
+								}
+							],
+							"isOrBlock": true
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 575188860633478,
+							"parameters": {
+								"first-value": "LayoutName",
+								"comparison": 0,
+								"second-value": "\"PlayerCustomizations\""
+							}
+						}
+					],
+					"actions": [],
+					"sid": 287529281342266,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "for-each",
+									"objectClass": "System",
+									"sid": 967330832620476,
+									"parameters": {
+										"object": "MainMenuButtons"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 847590122421270,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "MainMenuButtons",
+											"sid": 869977778699854,
+											"parameters": {
+												"instance-variable": "ButtonUse",
+												"comparison": 1,
+												"value": "\"Home\""
+											}
+										}
+									],
+									"actions": [],
+									"sid": 155546623705581,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-eventvar",
+													"objectClass": "System",
+													"sid": 670103501287583,
+													"parameters": {
+														"variable": "MenuUp",
+														"comparison": 0,
+														"value": "MainMenuButtons.ButtonUse"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-y",
+													"objectClass": "MainMenuButtons",
+													"sid": 707908234463870,
+													"parameters": {
+														"y": "MainMenuButtons.startingHeight-10"
+													}
+												}
+											],
+											"sid": 566022974262272,
+											"children": [
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "for-each",
+															"objectClass": "System",
+															"sid": 374253164745325,
+															"parameters": {
+																"object": "loudoutINVIS"
+															}
+														}
+													],
+													"actions": [],
+													"sid": 207714185574554,
+													"children": [
+														{
+															"eventType": "block",
+															"conditions": [
+																{
+																	"id": "compare-instance-variable",
+																	"objectClass": "loudoutINVIS",
+																	"sid": 162874123633253,
+																	"parameters": {
+																		"instance-variable": "sel",
+																		"comparison": 1,
+																		"value": "3000"
+																	}
+																}
+															],
+															"actions": [
+																{
+																	"id": "set-animation",
+																	"objectClass": "loudoutINVIS",
+																	"sid": 436833929494749,
+																	"parameters": {
+																		"animation": "MenuUp",
+																		"from": "beginning"
+																	}
+																}
+															],
+															"sid": 340562560627973,
+															"children": [
+																{
+																	"eventType": "block",
+																	"conditions": [
+																		{
+																			"id": "compare-instance-variable",
+																			"objectClass": "loudoutINVIS",
+																			"sid": 737859203730501,
+																			"parameters": {
+																				"instance-variable": "sel",
+																				"comparison": 4,
+																				"value": "loudoutINVIS.AnimationFrameCount"
+																			}
+																		}
+																	],
+																	"actions": [
+																		{
+																			"id": "set-animation-frame",
+																			"objectClass": "loudoutINVIS",
+																			"sid": 765136610673832,
+																			"parameters": {
+																				"frame-number": "0"
+																			}
+																		},
+																		{
+																			"id": "set-visible",
+																			"objectClass": "loudoutINVIS",
+																			"sid": 892269349090183,
+																			"parameters": {
+																				"visibility": "invisible"
+																			}
+																		}
+																	],
+																	"sid": 969801062941277
+																},
+																{
+																	"eventType": "block",
+																	"conditions": [
+																		{
+																			"id": "else",
+																			"objectClass": "System",
+																			"sid": 933569750267467
+																		}
+																	],
+																	"actions": [
+																		{
+																			"id": "set-animation-frame",
+																			"objectClass": "loudoutINVIS",
+																			"sid": 624498532695582,
+																			"parameters": {
+																				"frame-number": "loudoutINVIS.sel-1"
+																			}
+																		},
+																		{
+																			"id": "set-visible",
+																			"objectClass": "loudoutINVIS",
+																			"sid": 229122017816132,
+																			"parameters": {
+																				"visibility": "visible"
+																			}
+																		}
+																	],
+																	"sid": 644901601634169,
+																	"children": [
+																		{
+																			"eventType": "block",
+																			"conditions": [
+																				{
+																					"id": "compare-y",
+																					"objectClass": "loudoutINVIS",
+																					"sid": 309557145704537,
+																					"parameters": {
+																						"comparison": 3,
+																						"y-co-ordinate": "26.98"
+																					}
+																				}
+																			],
+																			"actions": [
+																				{
+																					"id": "set-visible",
+																					"objectClass": "loudoutINVIS",
+																					"sid": 604619869412843,
+																					"parameters": {
+																						"visibility": "invisible"
+																					}
+																				}
+																			],
+																			"sid": 103922692986535
+																		},
+																		{
+																			"eventType": "block",
+																			"conditions": [
+																				{
+																					"id": "else",
+																					"objectClass": "System",
+																					"sid": 380325031435459
+																				}
+																			],
+																			"actions": [
+																				{
+																					"id": "set-visible",
+																					"objectClass": "loudoutINVIS",
+																					"sid": 607972140840856,
+																					"parameters": {
+																						"visibility": "visible"
+																					}
+																				}
+																			],
+																			"sid": 903114373361491
+																		}
+																	]
+																}
+															]
+														}
+													]
+												}
+											]
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "else",
+													"objectClass": "System",
+													"sid": 294081827457949
+												}
+											],
+											"actions": [
+												{
+													"id": "set-y",
+													"objectClass": "MainMenuButtons",
+													"sid": 177193664998706,
+													"parameters": {
+														"y": "MainMenuButtons.startingHeight"
+													}
+												}
+											],
+											"sid": 414344203997276
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			],
+			"sid": 485494667962774
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-tap-object",
+					"objectClass": "Touch",
+					"sid": 249472219951224,
+					"parameters": {
+						"object": "loudoutINVIS"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "play",
+					"objectClass": "Audio",
+					"sid": 728349860097745,
+					"parameters": {
+						"audio-file": {
+							"path": "NewClick"
+						},
+						"loop": "not-looping",
+						"volume": "0",
+						"stereo-pan": "0",
+						"tag-optional": "\"\""
+					}
+				},
+				{
+					"id": "set-visible",
+					"objectClass": "PlayerBase",
+					"sid": 411673017949096,
+					"parameters": {
+						"visibility": "invisible"
+					}
+				},
+				{
+					"callFunction": "CalculateUnlocked",
+					"sid": 281228994866073
+				}
+			],
+			"sid": 751018151118307,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "loudoutINVIS",
+							"sid": 372621158739666,
+							"parameters": {
+								"instance-variable": "sel",
+								"comparison": 0,
+								"value": "3000"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [],
+					"sid": 159769004332283,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 451028496941615,
+									"parameters": {
+										"variable": "MenuUp",
+										"comparison": 0,
+										"value": "\"Hair\""
+									}
+								}
+							],
+							"actions": [],
+							"sid": 882646376164751,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "for",
+											"objectClass": "System",
+											"sid": 892002653104996,
+											"parameters": {
+												"name": "\"FindRowSkin\"",
+												"start-index": "1",
+												"end-index": "SkinAtributesData.Height-1"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 470750498868376,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 268428695198426,
+													"parameters": {
+														"first-value": "int(SkinAtributesData.At(0, loopindex(\"FindRowSkin\")))",
+														"comparison": 0,
+														"second-value": "loudoutINVIS.AnimationFrame"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-animation",
+													"objectClass": "HairPlayer",
+													"sid": 400062895438186,
+													"parameters": {
+														"animation": "\"IdleLeft\" & int(SkinAtributesData.At(1, loopindex(\"FindRowSkin\")))",
+														"from": "beginning"
+													}
+												},
+												{
+													"id": "set-instvar-value",
+													"objectClass": "HairPlayer",
+													"sid": 154994764398827,
+													"parameters": {
+														"instance-variable": "HairType",
+														"value": "int(SkinAtributesData.At(1, loopindex(\"FindRowSkin\")))"
+													}
+												},
+												{
+													"callFunction": "syncParts",
+													"sid": 971841898372720
+												},
+												{
+													"id": "stop-loop",
+													"objectClass": "System",
+													"sid": 961690983130846
+												},
+												{
+													"id": "set-visible",
+													"objectClass": "DBUG",
+													"sid": 622123954909847,
+													"disabled": true,
+													"parameters": {
+														"visibility": "visible"
+													}
+												},
+												{
+													"id": "set-text",
+													"objectClass": "DBUG",
+													"sid": 802760959409969,
+													"disabled": true,
+													"parameters": {
+														"text": "\"row: \" & int(SkinAtributesData.At(0, loopindex(\"FindRowSkin\")))"
+													}
+												},
+												{
+													"id": "set-text",
+													"objectClass": "DBUG",
+													"sid": 116276593006264,
+													"disabled": true,
+													"parameters": {
+														"text": "\"IdleLeft\" & int(SkinAtributesData.At(1, loopindex(\"FindRowSkin\")))"
+													}
+												}
+											],
+											"sid": 960324426342471
+										}
+									]
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 147717397039400,
+									"parameters": {
+										"variable": "MenuUp",
+										"comparison": 0,
+										"value": "\"Face\""
+									}
+								}
+							],
+							"actions": [],
+							"sid": 882345081010605,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "for",
+											"objectClass": "System",
+											"sid": 467570231943188,
+											"parameters": {
+												"name": "\"FindRowSkin\"",
+												"start-index": "1",
+												"end-index": "SkinAtributesData.Height-1"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 932238157567051,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 591967432077270,
+													"parameters": {
+														"first-value": "int(SkinAtributesData.At(2, loopindex(\"FindRowSkin\")))",
+														"comparison": 0,
+														"second-value": "loudoutINVIS.AnimationFrame"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-animation",
+													"objectClass": "FacePlayer",
+													"sid": 250542849701499,
+													"parameters": {
+														"animation": "\"IdleLeft\" & int(SkinAtributesData.At(3, loopindex(\"FindRowSkin\")))",
+														"from": "beginning"
+													}
+												},
+												{
+													"id": "set-instvar-value",
+													"objectClass": "FacePlayer",
+													"sid": 652350590937164,
+													"parameters": {
+														"instance-variable": "FaceType",
+														"value": "int(SkinAtributesData.At(3, loopindex(\"FindRowSkin\")))"
+													}
+												},
+												{
+													"callFunction": "syncParts",
+													"sid": 111349485130136
+												},
+												{
+													"id": "set-text",
+													"objectClass": "DBUG",
+													"sid": 192514237207711,
+													"parameters": {
+														"text": "\"Frame: \"& loudoutINVIS.AnimationFrame & \" Id to compare: \" & int(SkinAtributesData.At(2, loopindex(\"FindRowSkin\"))) & \" Value: \" & int(SkinAtributesData.At(3, loopindex(\"FindRowSkin\")))"
+													}
+												},
+												{
+													"id": "stop-loop",
+													"objectClass": "System",
+													"sid": 169362804926657
+												},
+												{
+													"id": "set-visible",
+													"objectClass": "DBUG",
+													"sid": 144797990765106,
+													"disabled": true,
+													"parameters": {
+														"visibility": "visible"
+													}
+												},
+												{
+													"id": "set-text",
+													"objectClass": "DBUG",
+													"sid": 109431684779105,
+													"disabled": true,
+													"parameters": {
+														"text": "\"IdleLeft\" & int(SkinAtributesData.At(1, loopindex(\"FindRowSkin\")))"
+													}
+												}
+											],
+											"sid": 280394110699615
+										}
+									]
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 834033688034584,
+									"parameters": {
+										"variable": "MenuUp",
+										"comparison": 0,
+										"value": "\"Arms\""
+									}
+								}
+							],
+							"actions": [],
+							"sid": 891304020232111,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "for",
+											"objectClass": "System",
+											"sid": 816996132460580,
+											"parameters": {
+												"name": "\"FindRowSkin\"",
+												"start-index": "1",
+												"end-index": "SkinAtributesData.Height-1"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 849121628502734,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 576030509413172,
+													"parameters": {
+														"first-value": "int(SkinAtributesData.At(4, loopindex(\"FindRowSkin\")))",
+														"comparison": 0,
+														"second-value": "loudoutINVIS.AnimationFrame"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-animation",
+													"objectClass": "ArmsPlayer",
+													"sid": 179834687998577,
+													"parameters": {
+														"animation": "\"IdleLeft\" & int(SkinAtributesData.At(5, loopindex(\"FindRowSkin\")))",
+														"from": "beginning"
+													}
+												},
+												{
+													"id": "set-instvar-value",
+													"objectClass": "ArmsPlayer",
+													"sid": 970607980790144,
+													"parameters": {
+														"instance-variable": "ArmType",
+														"value": "int(SkinAtributesData.At(5, loopindex(\"FindRowSkin\")))"
+													}
+												},
+												{
+													"callFunction": "syncParts",
+													"sid": 890152360905478
+												},
+												{
+													"id": "stop-loop",
+													"objectClass": "System",
+													"sid": 620005280831421
+												},
+												{
+													"id": "set-visible",
+													"objectClass": "DBUG",
+													"sid": 977357585348703,
+													"disabled": true,
+													"parameters": {
+														"visibility": "visible"
+													}
+												},
+												{
+													"id": "set-text",
+													"objectClass": "DBUG",
+													"sid": 612925500498560,
+													"disabled": true,
+													"parameters": {
+														"text": "\"IdleLeft\" & int(SkinAtributesData.At(1, loopindex(\"FindRowSkin\")))"
+													}
+												}
+											],
+											"sid": 292591886166001
+										}
+									]
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 935552134325617,
+									"parameters": {
+										"variable": "MenuUp",
+										"comparison": 0,
+										"value": "\"Shirt\""
+									}
+								}
+							],
+							"actions": [],
+							"sid": 333389173239854,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "for",
+											"objectClass": "System",
+											"sid": 852852185747962,
+											"parameters": {
+												"name": "\"FindRowSkin\"",
+												"start-index": "1",
+												"end-index": "SkinAtributesData.Height-1"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 582259597358533,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 140518686941742,
+													"parameters": {
+														"first-value": "int(SkinAtributesData.At(6, loopindex(\"FindRowSkin\")))",
+														"comparison": 0,
+														"second-value": "loudoutINVIS.AnimationFrame"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-animation",
+													"objectClass": "ShirtPlayer",
+													"sid": 976049561103102,
+													"parameters": {
+														"animation": "\"IdleLeft\" & int(SkinAtributesData.At(7, loopindex(\"FindRowSkin\")))",
+														"from": "beginning"
+													}
+												},
+												{
+													"id": "set-instvar-value",
+													"objectClass": "ShirtPlayer",
+													"sid": 714038134851065,
+													"parameters": {
+														"instance-variable": "shirtType",
+														"value": "int(SkinAtributesData.At(7, loopindex(\"FindRowSkin\")))"
+													}
+												},
+												{
+													"callFunction": "syncParts",
+													"sid": 868362676388003
+												},
+												{
+													"id": "stop-loop",
+													"objectClass": "System",
+													"sid": 715697690120309
+												},
+												{
+													"id": "set-visible",
+													"objectClass": "DBUG",
+													"sid": 316022917790754,
+													"disabled": true,
+													"parameters": {
+														"visibility": "visible"
+													}
+												},
+												{
+													"id": "set-text",
+													"objectClass": "DBUG",
+													"sid": 285613863760309,
+													"disabled": true,
+													"parameters": {
+														"text": "\"IdleLeft\" & int(SkinAtributesData.At(1, loopindex(\"FindRowSkin\")))"
+													}
+												}
+											],
+											"sid": 298389644680780
+										}
+									]
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 797657617380764,
+									"parameters": {
+										"variable": "MenuUp",
+										"comparison": 0,
+										"value": "\"Pants\""
+									}
+								}
+							],
+							"actions": [],
+							"sid": 678742204259855,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "for",
+											"objectClass": "System",
+											"sid": 700109724097233,
+											"parameters": {
+												"name": "\"FindRowSkin\"",
+												"start-index": "1",
+												"end-index": "SkinAtributesData.Height-1"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 650850544859428,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 815859628874577,
+													"parameters": {
+														"first-value": "int(SkinAtributesData.At(8, loopindex(\"FindRowSkin\")))",
+														"comparison": 0,
+														"second-value": "loudoutINVIS.AnimationFrame"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-animation",
+													"objectClass": "LowerPlayer",
+													"sid": 968834583318232,
+													"parameters": {
+														"animation": "\"IdleLeft\" & int(SkinAtributesData.At(9, loopindex(\"FindRowSkin\")))",
+														"from": "beginning"
+													}
+												},
+												{
+													"id": "set-instvar-value",
+													"objectClass": "LowerPlayer",
+													"sid": 281290733078827,
+													"parameters": {
+														"instance-variable": "PantsType",
+														"value": "int(SkinAtributesData.At(9, loopindex(\"FindRowSkin\")))"
+													}
+												},
+												{
+													"callFunction": "syncParts",
+													"sid": 885466067723207
+												},
+												{
+													"id": "stop-loop",
+													"objectClass": "System",
+													"sid": 678418210245731
+												},
+												{
+													"id": "set-visible",
+													"objectClass": "DBUG",
+													"sid": 456815443277407,
+													"disabled": true,
+													"parameters": {
+														"visibility": "visible"
+													}
+												},
+												{
+													"id": "set-text",
+													"objectClass": "DBUG",
+													"sid": 383139023757189,
+													"disabled": true,
+													"parameters": {
+														"text": "\"9,\" & loopindex(\"FindRowSkin\") & \" Output=\" & int(SkinAtributesData.At(9, loopindex(\"FindRowSkin\")))"
+													}
+												}
+											],
+											"sid": 129925660756697
+										}
+									]
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 293100889758199,
+									"parameters": {
+										"variable": "MenuUp",
+										"comparison": 0,
+										"value": "\"Hat\""
+									}
+								}
+							],
+							"actions": [],
+							"sid": 694597548526533,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "for",
+											"objectClass": "System",
+											"sid": 367105213231045,
+											"parameters": {
+												"name": "\"FindRowSkin\"",
+												"start-index": "1",
+												"end-index": "SkinAtributesData.Height-1"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 409949600560490,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 308267678776801,
+													"parameters": {
+														"first-value": "int(SkinAtributesData.At(10, loopindex(\"FindRowSkin\")))",
+														"comparison": 0,
+														"second-value": "loudoutINVIS.AnimationFrame"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-animation",
+													"objectClass": "HatPlayer",
+													"sid": 465249649807791,
+													"parameters": {
+														"animation": "\"IdleLeft\" & int(SkinAtributesData.At(11, loopindex(\"FindRowSkin\")))",
+														"from": "beginning"
+													}
+												},
+												{
+													"id": "set-instvar-value",
+													"objectClass": "HatPlayer",
+													"sid": 353411799476033,
+													"parameters": {
+														"instance-variable": "HatType",
+														"value": "int(SkinAtributesData.At(11, loopindex(\"FindRowSkin\")))"
+													}
+												},
+												{
+													"callFunction": "syncParts",
+													"sid": 540206690711298
+												},
+												{
+													"id": "stop-loop",
+													"objectClass": "System",
+													"sid": 699507271864519
+												},
+												{
+													"id": "set-visible",
+													"objectClass": "DBUG",
+													"sid": 287340537862458,
+													"disabled": true,
+													"parameters": {
+														"visibility": "visible"
+													}
+												},
+												{
+													"id": "set-text",
+													"objectClass": "DBUG",
+													"sid": 245531188347908,
+													"disabled": true,
+													"parameters": {
+														"text": "\"IdleLeft\" & int(SkinAtributesData.At(1, loopindex(\"FindRowSkin\")))"
+													}
+												},
+												{
+													"id": "set-visible",
+													"objectClass": "DBUG",
+													"sid": 172034536508145,
+													"disabled": true,
+													"parameters": {
+														"visibility": "visible"
+													}
+												},
+												{
+													"id": "set-text",
+													"objectClass": "DBUG",
+													"sid": 404222819878284,
+													"disabled": true,
+													"parameters": {
+														"text": "\"11,\" & loopindex(\"FindRowSkin\") & \" Output=\" & int(SkinAtributesData.At(11, loopindex(\"FindRowSkin\")))"
+													}
+												}
+											],
+											"sid": 551106144806961
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"eventType": "comment",
+			"text": "Synchronizes player character customization parts with the selected appearance"
+		},
+		{
+			"functionName": "syncParts",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-animation-frame",
+					"objectClass": "ArmsPlayer",
+					"sid": 188908650034587,
+					"parameters": {
+						"frame-number": "1"
+					}
+				},
+				{
+					"id": "set-animation-frame",
+					"objectClass": "HatPlayer",
+					"sid": 116090967361118,
+					"parameters": {
+						"frame-number": "1"
+					}
+				},
+				{
+					"id": "set-animation-frame",
+					"objectClass": "HairPlayer",
+					"sid": 472764955380012,
+					"parameters": {
+						"frame-number": "1"
+					}
+				},
+				{
+					"id": "set-animation-frame",
+					"objectClass": "FacePlayer",
+					"sid": 523487764946876,
+					"parameters": {
+						"frame-number": "1"
+					}
+				},
+				{
+					"id": "set-animation-frame",
+					"objectClass": "LowerPlayer",
+					"sid": 606883272016912,
+					"parameters": {
+						"frame-number": "1"
+					}
+				},
+				{
+					"id": "set-animation-frame",
+					"objectClass": "ShirtPlayer",
+					"sid": 556015480704347,
+					"parameters": {
+						"frame-number": "1"
+					}
+				},
+				{
+					"id": "set-animation-frame",
+					"objectClass": "WeaponPlayer",
+					"sid": 232284587026591,
+					"parameters": {
+						"frame-number": "1"
+					}
+				},
+				{
+					"id": "set-animation-frame",
+					"objectClass": "HelmetPlayer",
+					"sid": 833659113500462,
+					"parameters": {
+						"frame-number": "1"
+					}
+				},
+				{
+					"id": "set-animation-frame",
+					"objectClass": "ArmsPlayer",
+					"sid": 517917451166254,
+					"parameters": {
+						"frame-number": "0"
+					}
+				},
+				{
+					"id": "set-animation-frame",
+					"objectClass": "HatPlayer",
+					"sid": 370971236157253,
+					"parameters": {
+						"frame-number": "0"
+					}
+				},
+				{
+					"id": "set-animation-frame",
+					"objectClass": "HairPlayer",
+					"sid": 372007138282088,
+					"parameters": {
+						"frame-number": "0"
+					}
+				},
+				{
+					"id": "set-animation-frame",
+					"objectClass": "FacePlayer",
+					"sid": 782975996939300,
+					"parameters": {
+						"frame-number": "0"
+					}
+				},
+				{
+					"id": "set-animation-frame",
+					"objectClass": "LowerPlayer",
+					"sid": 399371239352535,
+					"parameters": {
+						"frame-number": "0"
+					}
+				},
+				{
+					"id": "set-animation-frame",
+					"objectClass": "ShirtPlayer",
+					"sid": 301304932082722,
+					"parameters": {
+						"frame-number": "0"
+					}
+				},
+				{
+					"id": "set-animation-frame",
+					"objectClass": "WeaponPlayer",
+					"sid": 297805618090974,
+					"parameters": {
+						"frame-number": "0"
+					}
+				},
+				{
+					"id": "set-animation-frame",
+					"objectClass": "HelmetPlayer",
+					"sid": 386291304869965,
+					"parameters": {
+						"frame-number": "0"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "HairPlayer",
+					"sid": 385886853096107,
+					"parameters": {
+						"instance-variable": "HairType",
+						"value": "(HatPlayer.HatType<>0) ? 0 : HairPlayer.HairType"
+					}
+				},
+				{
+					"id": "set-animation",
+					"objectClass": "HairPlayer",
+					"sid": 109929640655167,
+					"parameters": {
+						"animation": "\"IdleLeft\" & HairPlayer.HairType",
+						"from": "beginning"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 390627287287986,
+					"parameters": {
+						"variable": "CustomSkinString",
+						"value": "ArmsPlayer.ArmType &\"|\"& WeaponPlayer.WeaponType &\"|\"& HatPlayer.HatType &\"|\"& HairPlayer.HairType &\"|\"& FacePlayer.FaceType &\"|\"& LowerPlayer.PantsType &\"|\"& ShirtPlayer.shirtType"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "PlayerBase",
+					"sid": 303260233438691,
+					"parameters": {
+						"instance-variable": "SkinString",
+						"value": "ArmsPlayer.ArmType &\"|\"& WeaponPlayer.WeaponType &\"|\"& HatPlayer.HatType &\"|\"& HairPlayer.HairType &\"|\"& FacePlayer.FaceType &\"|\"& LowerPlayer.PantsType &\"|\"& ShirtPlayer.shirtType"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "ShirtPlayer",
+					"sid": 451568179839966,
+					"parameters": {
+						"instance-variable": "BaseShirtType",
+						"value": "ShirtPlayer.shirtType"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "LowerPlayer",
+					"sid": 356236063900766,
+					"parameters": {
+						"instance-variable": "BasePantsType",
+						"value": "LowerPlayer.PantsType"
+					}
+				}
+			],
+			"sid": 898724693859605
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-double-tap-object",
+					"objectClass": "Touch",
+					"sid": 676235962178071,
+					"parameters": {
+						"object": "GameVersion"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 921680915325865,
+					"disabled": true,
+					"parameters": {
+						"layout": "Game"
+					}
+				},
+				{
+					"id": "set-visible",
+					"objectClass": "DetailedDeBug",
+					"sid": 955193672381550,
+					"parameters": {
+						"visibility": "visible"
+					}
+				}
+			],
+			"sid": 707884716534740
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 285274954970590
+				}
+			],
+			"actions": [
+				{
+					"id": "set-text",
+					"objectClass": "DetailedDeBug",
+					"sid": 821586243552138,
+					"parameters": {
+						"text": "\"FPS: \" & fps & newline & \"Tick Count: \" &  tickcount & newline & \"CPU %: \" &  cpuutilisation & newline & \"GPU%: \" &  gpuutilisation & newline & \"Memory (mb): \" & ImageMemoryUsage & newline & \"Object Count: \" & objectcount & newline & \"Multiplayer Latency: \" &  Photon.GetRoundTripTime & newline & \"X: \" &  int(PlayerBase.x) & \" \" & \"Y: \" &  int(PlayerBase.y)"
+					}
+				}
+			],
+			"sid": 390709672443318
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-animation-frame-changed",
+					"objectClass": "MythicBoundBetweanWorldLoadingScreen",
+					"sid": 759404534538079
+				}
+			],
+			"actions": [
+				{
+					"id": "wait",
+					"objectClass": "System",
+					"sid": 184690452472353,
+					"parameters": {
+						"seconds": "2",
+						"use-timescale": true
+					}
+				},
+				{
+					"id": "tween-one-property",
+					"objectClass": "MythicBoundBetweanWorldLoadingScreen",
+					"sid": 173483658014115,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"testColorFade\"",
+						"property": "offsetColor",
+						"end-value": "0",
+						"time": "0.5",
+						"ease": "default",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "yes",
+						"repeat-count": "1"
+					}
+				}
+			],
+			"sid": 979886532310960
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-adv-trigger",
+					"objectClass": "FirebaseRDBasic",
+					"sid": 569641971413992,
+					"parameters": {
+						"id": "\"Skin\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-instvar-value",
+					"objectClass": "PlayerBase",
+					"sid": 157277830274765,
+					"parameters": {
+						"instance-variable": "SkinString",
+						"value": "FirebaseRDBasic.readValue(\"Skin\")"
+					}
+				},
+				{
+					"callFunction": "GlobalSkinHash2",
+					"sid": 391462158746861
+				}
+			],
+			"sid": 469712104103198
+		},
+		{
+			"functionName": "GlobalSkinHash2",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-animation-frame",
+					"objectClass": "ArmsPlayer",
+					"sid": 606697639686723,
+					"parameters": {
+						"frame-number": "1"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "ArmsPlayer",
+					"sid": 604084006167123,
+					"parameters": {
+						"instance-variable": "ArmType",
+						"value": "int(TokenAt(PlayerBase.SkinString, 0, \"|\"))"
+					}
+				},
+				{
+					"id": "set-animation-frame",
+					"objectClass": "ArmsPlayer",
+					"sid": 537398661050265,
+					"parameters": {
+						"frame-number": "0"
+					}
+				},
+				{
+					"id": "set-animation",
+					"objectClass": "ArmsPlayer",
+					"sid": 684358402331275,
+					"parameters": {
+						"animation": "\"IdleLeft\" & ArmsPlayer.ArmType",
+						"from": "beginning"
+					}
+				},
+				{
+					"id": "set-animation-frame",
+					"objectClass": "HatPlayer",
+					"sid": 450028831697945,
+					"parameters": {
+						"frame-number": "1"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "HatPlayer",
+					"sid": 899580578820703,
+					"parameters": {
+						"instance-variable": "HatType",
+						"value": "int(TokenAt(PlayerBase.SkinString, 2, \"|\"))"
+					}
+				},
+				{
+					"id": "set-animation-frame",
+					"objectClass": "HatPlayer",
+					"sid": 982286342315595,
+					"parameters": {
+						"frame-number": "0"
+					}
+				},
+				{
+					"id": "set-animation",
+					"objectClass": "HatPlayer",
+					"sid": 803488222560162,
+					"parameters": {
+						"animation": "\"IdleLeft\" & HatPlayer.HatType",
+						"from": "beginning"
+					}
+				},
+				{
+					"id": "set-animation-frame",
+					"objectClass": "HairPlayer",
+					"sid": 388960591842867,
+					"parameters": {
+						"frame-number": "1"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "HairPlayer",
+					"sid": 661459758781366,
+					"parameters": {
+						"instance-variable": "HairType",
+						"value": "int(TokenAt(PlayerBase.SkinString, 3, \"|\"))"
+					}
+				},
+				{
+					"id": "set-animation-frame",
+					"objectClass": "HairPlayer",
+					"sid": 788274747120083,
+					"parameters": {
+						"frame-number": "0"
+					}
+				},
+				{
+					"id": "set-animation",
+					"objectClass": "HairPlayer",
+					"sid": 243893118923499,
+					"parameters": {
+						"animation": "\"IdleLeft\" & HairPlayer.HairType",
+						"from": "beginning"
+					}
+				},
+				{
+					"id": "set-animation-frame",
+					"objectClass": "FacePlayer",
+					"sid": 793893755701246,
+					"parameters": {
+						"frame-number": "1"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "FacePlayer",
+					"sid": 237469583108288,
+					"parameters": {
+						"instance-variable": "FaceType",
+						"value": "int(TokenAt(PlayerBase.SkinString, 4, \"|\"))"
+					}
+				},
+				{
+					"id": "set-animation-frame",
+					"objectClass": "FacePlayer",
+					"sid": 529787606263444,
+					"parameters": {
+						"frame-number": "0"
+					}
+				},
+				{
+					"id": "set-animation",
+					"objectClass": "FacePlayer",
+					"sid": 401080185022705,
+					"parameters": {
+						"animation": "\"IdleLeft\" & FacePlayer.FaceType",
+						"from": "beginning"
+					}
+				},
+				{
+					"id": "set-animation-frame",
+					"objectClass": "LowerPlayer",
+					"sid": 754526148212096,
+					"parameters": {
+						"frame-number": "1"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "LowerPlayer",
+					"sid": 884146638225423,
+					"parameters": {
+						"instance-variable": "PantsType",
+						"value": "int(TokenAt(PlayerBase.SkinString, 5, \"|\"))"
+					}
+				},
+				{
+					"id": "set-animation-frame",
+					"objectClass": "LowerPlayer",
+					"sid": 559160912299100,
+					"parameters": {
+						"frame-number": "0"
+					}
+				},
+				{
+					"id": "set-animation",
+					"objectClass": "LowerPlayer",
+					"sid": 845179830887425,
+					"parameters": {
+						"animation": "\"IdleLeft\" & LowerPlayer.PantsType",
+						"from": "beginning"
+					}
+				},
+				{
+					"id": "set-animation-frame",
+					"objectClass": "ShirtPlayer",
+					"sid": 867574136651449,
+					"parameters": {
+						"frame-number": "1"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "ShirtPlayer",
+					"sid": 834782911363007,
+					"parameters": {
+						"instance-variable": "shirtType",
+						"value": "int(TokenAt(PlayerBase.SkinString, 6, \"|\"))"
+					}
+				},
+				{
+					"id": "set-animation-frame",
+					"objectClass": "ShirtPlayer",
+					"sid": 502744786416273,
+					"parameters": {
+						"frame-number": "0"
+					}
+				},
+				{
+					"id": "set-animation",
+					"objectClass": "ShirtPlayer",
+					"sid": 442832186140208,
+					"parameters": {
+						"animation": "\"IdleLeft\" & ShirtPlayer.shirtType",
+						"from": "beginning"
+					}
+				},
+				{
+					"id": "set-animation-frame",
+					"objectClass": "WeaponPlayer",
+					"sid": 370678913636047,
+					"parameters": {
+						"frame-number": "1"
+					}
+				},
+				{
+					"id": "set-animation-frame",
+					"objectClass": "WeaponPlayer",
+					"sid": 811786959143351,
+					"parameters": {
+						"frame-number": "0"
+					}
+				},
+				{
+					"id": "set-animation",
+					"objectClass": "WeaponPlayer",
+					"sid": 542941824696841,
+					"parameters": {
+						"animation": "\"IdleLeft\" & 1",
+						"from": "beginning"
+					}
+				}
+			],
+			"sid": 234928433874262
+		},
+		{
+			"functionName": "CalculateUnlocked",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 333105341229985,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-signed-in",
+							"objectClass": "FirebaseAuthBasic",
+							"sid": 995625494934668
+						}
+					],
+					"actions": [
+						{
+							"id": "advanced-read-data",
+							"objectClass": "FirebaseRDBasic",
+							"sid": 737956620613302,
+							"parameters": {
+								"location-link": "\"Users/\"&FirebaseAuthBasic.userID&\"/Rank\"",
+								"id": "\"Rank\"",
+								"sync": false,
+								"read-json": false,
+								"read-array": false,
+								"read-proui": false
+							}
+						}
+					],
+					"sid": 792689153218370
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 846454396827239
+						}
+					],
+					"actions": [],
+					"sid": 187711578293540,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "for",
+									"objectClass": "System",
+									"sid": 656088147584888,
+									"parameters": {
+										"name": "\"FindPlayer\"",
+										"start-index": "1",
+										"end-index": "SkinAtributesData.Height-1"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 407055616543166,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-two-values",
+											"objectClass": "System",
+											"sid": 369481218664555,
+											"parameters": {
+												"first-value": "find(\"|\" & SkinAtributesData.At(13, loopindex(\"FindPlayer\")) & \"|\", \"|Player|\")",
+												"comparison": 5,
+												"second-value": "0"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 196262991316408,
+											"parameters": {
+												"variable": "OwnedSkinString",
+												"value": "SkinAtributesData.At(12, loopindex(\"FindPlayer\"))"
+											}
+										},
+										{
+											"id": "set-text",
+											"objectClass": "DBUG",
+											"sid": 341397327793983,
+											"parameters": {
+												"text": "OwnedSkinString"
+											}
+										},
+										{
+											"callFunction": "FillSkinPack",
+											"sid": 455625929179570
+										},
+										{
+											"id": "stop-loop",
+											"objectClass": "System",
+											"sid": 517091637191650
+										}
+									],
+									"sid": 414596443961355
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-adv-trigger",
+					"objectClass": "FirebaseRDBasic",
+					"sid": 204959271198367,
+					"parameters": {
+						"id": "\"Rank\""
+					}
+				}
+			],
+			"actions": [],
+			"sid": 194817097199163,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for",
+							"objectClass": "System",
+							"sid": 614927142640296,
+							"parameters": {
+								"name": "\"FindDefault\"",
+								"start-index": "1",
+								"end-index": "SkinAtributesData.Height-1"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 612388462828444,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 731249173232775,
+									"parameters": {
+										"first-value": "find(\"|\" & SkinAtributesData.At(13, loopindex(\"FindDefault\")) & \"|\", \"|Player|\")",
+										"comparison": 5,
+										"second-value": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 404412657930250,
+									"parameters": {
+										"variable": "OwnedSkinString",
+										"value": "SkinAtributesData.At(12, loopindex(\"FindDefault\"))"
+									}
+								},
+								{
+									"id": "stop-loop",
+									"objectClass": "System",
+									"sid": 889462528092271
+								}
+							],
+							"sid": 265804859031127
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for",
+							"objectClass": "System",
+							"sid": 992440714891391,
+							"parameters": {
+								"name": "\"FindRank\"",
+								"start-index": "1",
+								"end-index": "SkinAtributesData.Height-1"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 525658639860391,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 402467820228467,
+									"parameters": {
+										"first-value": "SkinAtributesData.At(13, loopindex(\"FindRank\"))",
+										"comparison": 1,
+										"second-value": "\"\""
+									}
+								},
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 307644068301376,
+									"parameters": {
+										"first-value": "find(\"|\" & SkinAtributesData.At(13, loopindex(\"FindRank\")) & \"|\", \"|\" & FirebaseRDBasic.readValue(\"Rank\") & \"|\")",
+										"comparison": 5,
+										"second-value": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 377546957435600,
+									"parameters": {
+										"variable": "OwnedSkinString",
+										"value": "SkinAtributesData.At(12, loopindex(\"FindRank\"))"
+									}
+								},
+								{
+									"id": "stop-loop",
+									"objectClass": "System",
+									"sid": 180016906173939
+								}
+							],
+							"sid": 185862706424542
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "DBUG",
+							"sid": 421026821205207,
+							"parameters": {
+								"text": "OwnedSkinString"
+							}
+						},
+						{
+							"callFunction": "FillSkinPack",
+							"sid": 498461044196662
+						}
+					],
+					"sid": 739537385852110
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 345027729658815,
+					"parameters": {
+						"key": 68
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-visible",
+					"objectClass": "DBUG",
+					"sid": 515317329343856,
+					"parameters": {
+						"visibility": "toggle"
+					}
+				}
+			],
+			"sid": 562604048479984
+		},
+		{
+			"functionName": "FillSkinPack",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 351874442167501,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "loudoutINVIS",
+							"sid": 420884464171427,
+							"parameters": {
+								"instance-variable": "sel",
+								"comparison": 1,
+								"value": "3000"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "destroy",
+							"objectClass": "loudoutINVIS",
+							"sid": 964106576708477
+						}
+					],
+					"sid": 101633757165869
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 396440020626266,
+							"parameters": {
+								"variable": "OwnedSkinString",
+								"comparison": 0,
+								"value": "\"All\""
+							}
+						}
+					],
+					"actions": [],
+					"sid": 541590291081474,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 320588031644473,
+									"parameters": {
+										"variable": "MenuUp",
+										"comparison": 0,
+										"value": "\"Hair\""
+									}
+								}
+							],
+							"actions": [],
+							"sid": 837378313925455,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "for",
+											"objectClass": "System",
+											"sid": 331575925183322,
+											"parameters": {
+												"name": "\"CreateBox\"",
+												"start-index": "1",
+												"end-index": "SkinAtributesData.Height-1"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 443709663331175,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 754003149953253,
+													"parameters": {
+														"first-value": "SkinAtributesData.At(0, loopindex(\"CreateBox\"))",
+														"comparison": 1,
+														"second-value": "\"\""
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "create-object",
+													"objectClass": "System",
+													"sid": 131748640577848,
+													"parameters": {
+														"object-to-create": "loudoutINVIS",
+														"layer": "\"Top Gui\"",
+														"x": "((loopindex(\"CreateBox\")-1)%6)=0 ? 73 : (((loopindex(\"CreateBox\")-1)%6)=1 ? 112 : (((loopindex(\"CreateBox\")-1)%6)=2 ? 151 : (((loopindex(\"CreateBox\")-1)%6)=3 ? 191 : (((loopindex(\"CreateBox\")-1)%6)=4 ? 233 : 269))))",
+														"y": "64+int((loopindex(\"CreateBox\")-1)/6)*36",
+														"create-hierarchy": false,
+														"template-name": "\"\""
+													}
+												},
+												{
+													"id": "set-animation",
+													"objectClass": "loudoutINVIS",
+													"sid": 363615342142178,
+													"parameters": {
+														"animation": "\"Hair\"",
+														"from": "beginning"
+													}
+												},
+												{
+													"id": "set-animation-frame",
+													"objectClass": "loudoutINVIS",
+													"sid": 399197689023587,
+													"parameters": {
+														"frame-number": "int(SkinAtributesData.At(0, loopindex(\"CreateBox\")))"
+													}
+												},
+												{
+													"id": "set-size",
+													"objectClass": "loudoutINVIS",
+													"sid": 519293631954617,
+													"parameters": {
+														"width": "25",
+														"height": "25"
+													}
+												},
+												{
+													"id": "set-position",
+													"objectClass": "loudoutINVIS",
+													"sid": 857294127369257,
+													"parameters": {
+														"x": "((loopindex(\"CreateBox\")-1)%6)=0 ? 73 : (((loopindex(\"CreateBox\")-1)%6)=1 ? 112 : (((loopindex(\"CreateBox\")-1)%6)=2 ? 151 : (((loopindex(\"CreateBox\")-1)%6)=3 ? 191 : (((loopindex(\"CreateBox\")-1)%6)=4 ? 233 : 269))))",
+														"y": "64+int((loopindex(\"CreateBox\")-1)/6)*36"
+													}
+												},
+												{
+													"id": "set-instvar-value",
+													"objectClass": "loudoutINVIS",
+													"sid": 215777747731609,
+													"parameters": {
+														"instance-variable": "StartY",
+														"value": "64+int((loopindex(\"CreateBox\")-1)/6)*36"
+													}
+												},
+												{
+													"id": "set-instvar-value",
+													"objectClass": "loudoutINVIS",
+													"sid": 206035988386058,
+													"parameters": {
+														"instance-variable": "sel",
+														"value": "int(SkinAtributesData.At(0, loopindex(\"CreateBox\")))+1"
+													}
+												}
+											],
+											"sid": 653885327063394
+										}
+									]
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 978183458462206,
+									"parameters": {
+										"variable": "MenuUp",
+										"comparison": 0,
+										"value": "\"Face\""
+									}
+								}
+							],
+							"actions": [],
+							"sid": 690637305565334,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "for",
+											"objectClass": "System",
+											"sid": 281680258036871,
+											"parameters": {
+												"name": "\"CreateBox\"",
+												"start-index": "1",
+												"end-index": "SkinAtributesData.Height-1"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 796266184444147,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 680767056296956,
+													"parameters": {
+														"first-value": "SkinAtributesData.At(2, loopindex(\"CreateBox\"))",
+														"comparison": 1,
+														"second-value": "\"\""
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "create-object",
+													"objectClass": "System",
+													"sid": 910229192668352,
+													"parameters": {
+														"object-to-create": "loudoutINVIS",
+														"layer": "\"Top Gui\"",
+														"x": "((loopindex(\"CreateBox\")-1)%6)=0 ? 73 : (((loopindex(\"CreateBox\")-1)%6)=1 ? 112 : (((loopindex(\"CreateBox\")-1)%6)=2 ? 151 : (((loopindex(\"CreateBox\")-1)%6)=3 ? 191 : (((loopindex(\"CreateBox\")-1)%6)=4 ? 233 : 269))))",
+														"y": "64+int((loopindex(\"CreateBox\")-1)/6)*36",
+														"create-hierarchy": false,
+														"template-name": "\"\""
+													}
+												},
+												{
+													"id": "set-animation",
+													"objectClass": "loudoutINVIS",
+													"sid": 998527454978309,
+													"parameters": {
+														"animation": "\"Face\"",
+														"from": "beginning"
+													}
+												},
+												{
+													"id": "set-animation-frame",
+													"objectClass": "loudoutINVIS",
+													"sid": 127380315602769,
+													"parameters": {
+														"frame-number": "int(SkinAtributesData.At(2, loopindex(\"CreateBox\")))"
+													}
+												},
+												{
+													"id": "set-size",
+													"objectClass": "loudoutINVIS",
+													"sid": 343690236083513,
+													"parameters": {
+														"width": "25",
+														"height": "25"
+													}
+												},
+												{
+													"id": "set-position",
+													"objectClass": "loudoutINVIS",
+													"sid": 606100230652299,
+													"parameters": {
+														"x": "((loopindex(\"CreateBox\")-1)%6)=0 ? 73 : (((loopindex(\"CreateBox\")-1)%6)=1 ? 112 : (((loopindex(\"CreateBox\")-1)%6)=2 ? 151 : (((loopindex(\"CreateBox\")-1)%6)=3 ? 191 : (((loopindex(\"CreateBox\")-1)%6)=4 ? 233 : 269))))",
+														"y": "64+int((loopindex(\"CreateBox\")-1)/6)*36"
+													}
+												},
+												{
+													"id": "set-instvar-value",
+													"objectClass": "loudoutINVIS",
+													"sid": 459312174247859,
+													"parameters": {
+														"instance-variable": "StartY",
+														"value": "64+int((loopindex(\"CreateBox\")-1)/6)*36"
+													}
+												},
+												{
+													"id": "set-instvar-value",
+													"objectClass": "loudoutINVIS",
+													"sid": 619402152291799,
+													"parameters": {
+														"instance-variable": "sel",
+														"value": "int(SkinAtributesData.At(2, loopindex(\"CreateBox\")))+1"
+													}
+												}
+											],
+											"sid": 303009112541802
+										}
+									]
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 979109253077524,
+									"parameters": {
+										"variable": "MenuUp",
+										"comparison": 0,
+										"value": "\"Arms\""
+									}
+								}
+							],
+							"actions": [],
+							"sid": 240476010519423,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "for",
+											"objectClass": "System",
+											"sid": 531852118494844,
+											"parameters": {
+												"name": "\"CreateBox\"",
+												"start-index": "1",
+												"end-index": "SkinAtributesData.Height-1"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 986240048358980,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 673146882341878,
+													"parameters": {
+														"first-value": "SkinAtributesData.At(4, loopindex(\"CreateBox\"))",
+														"comparison": 1,
+														"second-value": "\"\""
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "create-object",
+													"objectClass": "System",
+													"sid": 535397016168275,
+													"parameters": {
+														"object-to-create": "loudoutINVIS",
+														"layer": "\"Top Gui\"",
+														"x": "((loopindex(\"CreateBox\")-1)%6)=0 ? 73 : (((loopindex(\"CreateBox\")-1)%6)=1 ? 112 : (((loopindex(\"CreateBox\")-1)%6)=2 ? 151 : (((loopindex(\"CreateBox\")-1)%6)=3 ? 191 : (((loopindex(\"CreateBox\")-1)%6)=4 ? 233 : 269))))",
+														"y": "64+int((loopindex(\"CreateBox\")-1)/6)*36",
+														"create-hierarchy": false,
+														"template-name": "\"\""
+													}
+												},
+												{
+													"id": "set-animation",
+													"objectClass": "loudoutINVIS",
+													"sid": 720132814738697,
+													"parameters": {
+														"animation": "\"Arms\"",
+														"from": "beginning"
+													}
+												},
+												{
+													"id": "set-animation-frame",
+													"objectClass": "loudoutINVIS",
+													"sid": 918527755557467,
+													"parameters": {
+														"frame-number": "int(SkinAtributesData.At(4, loopindex(\"CreateBox\")))"
+													}
+												},
+												{
+													"id": "set-size",
+													"objectClass": "loudoutINVIS",
+													"sid": 351641138520490,
+													"parameters": {
+														"width": "25",
+														"height": "25"
+													}
+												},
+												{
+													"id": "set-position",
+													"objectClass": "loudoutINVIS",
+													"sid": 635587679155681,
+													"parameters": {
+														"x": "((loopindex(\"CreateBox\")-1)%6)=0 ? 73 : (((loopindex(\"CreateBox\")-1)%6)=1 ? 112 : (((loopindex(\"CreateBox\")-1)%6)=2 ? 151 : (((loopindex(\"CreateBox\")-1)%6)=3 ? 191 : (((loopindex(\"CreateBox\")-1)%6)=4 ? 233 : 269))))",
+														"y": "64+int((loopindex(\"CreateBox\")-1)/6)*36"
+													}
+												},
+												{
+													"id": "set-instvar-value",
+													"objectClass": "loudoutINVIS",
+													"sid": 416583715872370,
+													"parameters": {
+														"instance-variable": "StartY",
+														"value": "64+int((loopindex(\"CreateBox\")-1)/6)*36"
+													}
+												},
+												{
+													"id": "set-instvar-value",
+													"objectClass": "loudoutINVIS",
+													"sid": 497404585973265,
+													"parameters": {
+														"instance-variable": "sel",
+														"value": "int(SkinAtributesData.At(4, loopindex(\"CreateBox\")))+1"
+													}
+												}
+											],
+											"sid": 736476475882401
+										}
+									]
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 645568889559364,
+									"parameters": {
+										"variable": "MenuUp",
+										"comparison": 0,
+										"value": "\"Shirt\""
+									}
+								}
+							],
+							"actions": [],
+							"sid": 664228927359272,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "for",
+											"objectClass": "System",
+											"sid": 526290402777035,
+											"parameters": {
+												"name": "\"CreateBox\"",
+												"start-index": "1",
+												"end-index": "SkinAtributesData.Height-1"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 747013772414180,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 852853793916219,
+													"parameters": {
+														"first-value": "SkinAtributesData.At(6, loopindex(\"CreateBox\"))",
+														"comparison": 1,
+														"second-value": "\"\""
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "create-object",
+													"objectClass": "System",
+													"sid": 138748291905593,
+													"parameters": {
+														"object-to-create": "loudoutINVIS",
+														"layer": "\"Top Gui\"",
+														"x": "((loopindex(\"CreateBox\")-1)%6)=0 ? 73 : (((loopindex(\"CreateBox\")-1)%6)=1 ? 112 : (((loopindex(\"CreateBox\")-1)%6)=2 ? 151 : (((loopindex(\"CreateBox\")-1)%6)=3 ? 191 : (((loopindex(\"CreateBox\")-1)%6)=4 ? 233 : 269))))",
+														"y": "64+int((loopindex(\"CreateBox\")-1)/6)*36",
+														"create-hierarchy": false,
+														"template-name": "\"\""
+													}
+												},
+												{
+													"id": "set-animation",
+													"objectClass": "loudoutINVIS",
+													"sid": 636480885589582,
+													"parameters": {
+														"animation": "\"Shirt\"",
+														"from": "beginning"
+													}
+												},
+												{
+													"id": "set-animation-frame",
+													"objectClass": "loudoutINVIS",
+													"sid": 279375290752701,
+													"parameters": {
+														"frame-number": "int(SkinAtributesData.At(6, loopindex(\"CreateBox\")))"
+													}
+												},
+												{
+													"id": "set-size",
+													"objectClass": "loudoutINVIS",
+													"sid": 742457136281762,
+													"parameters": {
+														"width": "25",
+														"height": "25"
+													}
+												},
+												{
+													"id": "set-position",
+													"objectClass": "loudoutINVIS",
+													"sid": 469289888883631,
+													"parameters": {
+														"x": "((loopindex(\"CreateBox\")-1)%6)=0 ? 73 : (((loopindex(\"CreateBox\")-1)%6)=1 ? 112 : (((loopindex(\"CreateBox\")-1)%6)=2 ? 151 : (((loopindex(\"CreateBox\")-1)%6)=3 ? 191 : (((loopindex(\"CreateBox\")-1)%6)=4 ? 233 : 269))))",
+														"y": "64+int((loopindex(\"CreateBox\")-1)/6)*36"
+													}
+												},
+												{
+													"id": "set-instvar-value",
+													"objectClass": "loudoutINVIS",
+													"sid": 833965781468827,
+													"parameters": {
+														"instance-variable": "StartY",
+														"value": "64+int((loopindex(\"CreateBox\")-1)/6)*36"
+													}
+												},
+												{
+													"id": "set-instvar-value",
+													"objectClass": "loudoutINVIS",
+													"sid": 631460844900759,
+													"parameters": {
+														"instance-variable": "sel",
+														"value": "int(SkinAtributesData.At(6, loopindex(\"CreateBox\")))+1"
+													}
+												}
+											],
+											"sid": 813128593827264
+										}
+									]
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 525980660804262,
+									"parameters": {
+										"variable": "MenuUp",
+										"comparison": 0,
+										"value": "\"Pants\""
+									}
+								}
+							],
+							"actions": [],
+							"sid": 532999485329509,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "for",
+											"objectClass": "System",
+											"sid": 489772492522630,
+											"parameters": {
+												"name": "\"CreateBox\"",
+												"start-index": "1",
+												"end-index": "SkinAtributesData.Height-1"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 653147351891839,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 964260700198798,
+													"parameters": {
+														"first-value": "SkinAtributesData.At(8, loopindex(\"CreateBox\"))",
+														"comparison": 1,
+														"second-value": "\"\""
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "create-object",
+													"objectClass": "System",
+													"sid": 455278360231186,
+													"parameters": {
+														"object-to-create": "loudoutINVIS",
+														"layer": "\"Top Gui\"",
+														"x": "((loopindex(\"CreateBox\")-1)%6)=0 ? 73 : (((loopindex(\"CreateBox\")-1)%6)=1 ? 112 : (((loopindex(\"CreateBox\")-1)%6)=2 ? 151 : (((loopindex(\"CreateBox\")-1)%6)=3 ? 191 : (((loopindex(\"CreateBox\")-1)%6)=4 ? 233 : 269))))",
+														"y": "64+int((loopindex(\"CreateBox\")-1)/6)*36",
+														"create-hierarchy": false,
+														"template-name": "\"\""
+													}
+												},
+												{
+													"id": "set-animation",
+													"objectClass": "loudoutINVIS",
+													"sid": 528414901035829,
+													"parameters": {
+														"animation": "\"Pants\"",
+														"from": "beginning"
+													}
+												},
+												{
+													"id": "set-animation-frame",
+													"objectClass": "loudoutINVIS",
+													"sid": 525973574665301,
+													"parameters": {
+														"frame-number": "int(SkinAtributesData.At(8, loopindex(\"CreateBox\")))"
+													}
+												},
+												{
+													"id": "set-size",
+													"objectClass": "loudoutINVIS",
+													"sid": 339713720018299,
+													"parameters": {
+														"width": "25",
+														"height": "25"
+													}
+												},
+												{
+													"id": "set-position",
+													"objectClass": "loudoutINVIS",
+													"sid": 353762257405730,
+													"parameters": {
+														"x": "((loopindex(\"CreateBox\")-1)%6)=0 ? 73 : (((loopindex(\"CreateBox\")-1)%6)=1 ? 112 : (((loopindex(\"CreateBox\")-1)%6)=2 ? 151 : (((loopindex(\"CreateBox\")-1)%6)=3 ? 191 : (((loopindex(\"CreateBox\")-1)%6)=4 ? 233 : 269))))",
+														"y": "64+int((loopindex(\"CreateBox\")-1)/6)*36"
+													}
+												},
+												{
+													"id": "set-instvar-value",
+													"objectClass": "loudoutINVIS",
+													"sid": 990398317803189,
+													"parameters": {
+														"instance-variable": "StartY",
+														"value": "64+int((loopindex(\"CreateBox\")-1)/6)*36"
+													}
+												},
+												{
+													"id": "set-instvar-value",
+													"objectClass": "loudoutINVIS",
+													"sid": 566704160091043,
+													"parameters": {
+														"instance-variable": "sel",
+														"value": "int(SkinAtributesData.At(8, loopindex(\"CreateBox\")))+1"
+													}
+												}
+											],
+											"sid": 725246105830001
+										}
+									]
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 247532521332171,
+									"parameters": {
+										"variable": "MenuUp",
+										"comparison": 0,
+										"value": "\"Hat\""
+									}
+								}
+							],
+							"actions": [],
+							"sid": 542607608469243,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "for",
+											"objectClass": "System",
+											"sid": 697045444614192,
+											"parameters": {
+												"name": "\"CreateBox\"",
+												"start-index": "1",
+												"end-index": "SkinAtributesData.Height-1"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 547986504202565,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 855179865069338,
+													"parameters": {
+														"first-value": "SkinAtributesData.At(10, loopindex(\"CreateBox\"))",
+														"comparison": 1,
+														"second-value": "\"\""
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "create-object",
+													"objectClass": "System",
+													"sid": 538091946152398,
+													"parameters": {
+														"object-to-create": "loudoutINVIS",
+														"layer": "\"Top Gui\"",
+														"x": "((loopindex(\"CreateBox\")-1)%6)=0 ? 73 : (((loopindex(\"CreateBox\")-1)%6)=1 ? 112 : (((loopindex(\"CreateBox\")-1)%6)=2 ? 151 : (((loopindex(\"CreateBox\")-1)%6)=3 ? 191 : (((loopindex(\"CreateBox\")-1)%6)=4 ? 233 : 269))))",
+														"y": "64+int((loopindex(\"CreateBox\")-1)/6)*36",
+														"create-hierarchy": false,
+														"template-name": "\"\""
+													}
+												},
+												{
+													"id": "set-animation",
+													"objectClass": "loudoutINVIS",
+													"sid": 600054304948559,
+													"parameters": {
+														"animation": "\"Hat\"",
+														"from": "beginning"
+													}
+												},
+												{
+													"id": "set-animation-frame",
+													"objectClass": "loudoutINVIS",
+													"sid": 840652519225695,
+													"parameters": {
+														"frame-number": "int(SkinAtributesData.At(10, loopindex(\"CreateBox\")))"
+													}
+												},
+												{
+													"id": "set-size",
+													"objectClass": "loudoutINVIS",
+													"sid": 807681887653340,
+													"parameters": {
+														"width": "25",
+														"height": "25"
+													}
+												},
+												{
+													"id": "set-position",
+													"objectClass": "loudoutINVIS",
+													"sid": 512623245970776,
+													"parameters": {
+														"x": "((loopindex(\"CreateBox\")-1)%6)=0 ? 73 : (((loopindex(\"CreateBox\")-1)%6)=1 ? 112 : (((loopindex(\"CreateBox\")-1)%6)=2 ? 151 : (((loopindex(\"CreateBox\")-1)%6)=3 ? 191 : (((loopindex(\"CreateBox\")-1)%6)=4 ? 233 : 269))))",
+														"y": "64+int((loopindex(\"CreateBox\")-1)/6)*36"
+													}
+												},
+												{
+													"id": "set-instvar-value",
+													"objectClass": "loudoutINVIS",
+													"sid": 706560398275208,
+													"parameters": {
+														"instance-variable": "StartY",
+														"value": "64+int((loopindex(\"CreateBox\")-1)/6)*36"
+													}
+												},
+												{
+													"id": "set-instvar-value",
+													"objectClass": "loudoutINVIS",
+													"sid": 805257448705810,
+													"parameters": {
+														"instance-variable": "sel",
+														"value": "int(SkinAtributesData.At(10, loopindex(\"CreateBox\")))+1"
+													}
+												}
+											],
+											"sid": 614466571064336
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 298442760931428
+						}
+					],
+					"actions": [],
+					"sid": 743472087841978,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 201007633596585,
+									"parameters": {
+										"variable": "MenuUp",
+										"comparison": 0,
+										"value": "\"Hair\""
+									}
+								}
+							],
+							"actions": [],
+							"sid": 664288806223355,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "for",
+											"objectClass": "System",
+											"sid": 390548380234708,
+											"parameters": {
+												"name": "\"CreateBox\"",
+												"start-index": "0",
+												"end-index": "tokencount(tokenat(OwnedSkinString,0,\"|\"),\"`\")-1"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "create-object",
+											"objectClass": "System",
+											"sid": 287491687993400,
+											"parameters": {
+												"object-to-create": "loudoutINVIS",
+												"layer": "\"Top Gui\"",
+												"x": "(loopindex(\"CreateBox\")%6)=0 ? 73 : ((loopindex(\"CreateBox\")%6)=1 ? 112 : ((loopindex(\"CreateBox\")%6)=2 ? 151 : ((loopindex(\"CreateBox\")%6)=3 ? 191 : ((loopindex(\"CreateBox\")%6)=4 ? 233 : 269))))",
+												"y": "64+int(loopindex(\"CreateBox\")/6)*36",
+												"create-hierarchy": false,
+												"template-name": "\"\""
+											}
+										},
+										{
+											"id": "set-animation",
+											"objectClass": "loudoutINVIS",
+											"sid": 937875972858307,
+											"parameters": {
+												"animation": "\"Hair\"",
+												"from": "beginning"
+											}
+										},
+										{
+											"id": "set-animation-frame",
+											"objectClass": "loudoutINVIS",
+											"sid": 516844697836258,
+											"parameters": {
+												"frame-number": "int(tokenat(tokenat(OwnedSkinString, 0, \"|\"), loopindex(\"CreateBox\"), \"`\"))"
+											}
+										},
+										{
+											"id": "set-size",
+											"objectClass": "loudoutINVIS",
+											"sid": 278189837210678,
+											"parameters": {
+												"width": "25",
+												"height": "25"
+											}
+										},
+										{
+											"id": "set-position",
+											"objectClass": "loudoutINVIS",
+											"sid": 904561911610589,
+											"parameters": {
+												"x": "(loopindex(\"CreateBox\")%6)=0 ? 73 : ((loopindex(\"CreateBox\")%6)=1 ? 112 : ((loopindex(\"CreateBox\")%6)=2 ? 151 : ((loopindex(\"CreateBox\")%6)=3 ? 191 : ((loopindex(\"CreateBox\")%6)=4 ? 233 : 269))))",
+												"y": "64+int(loopindex(\"CreateBox\")/6)*36"
+											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "loudoutINVIS",
+											"sid": 805253185645436,
+											"parameters": {
+												"instance-variable": "StartY",
+												"value": "64+int(loopindex(\"CreateBox\")/6)*36"
+											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "loudoutINVIS",
+											"sid": 116230652684912,
+											"parameters": {
+												"instance-variable": "sel",
+												"value": "int(tokenat(tokenat(OwnedSkinString, 0, \"|\"), loopindex(\"CreateBox\"), \"`\"))+1"
+											}
+										}
+									],
+									"sid": 540324807524020
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 511032226200932,
+									"parameters": {
+										"variable": "MenuUp",
+										"comparison": 0,
+										"value": "\"Face\""
+									}
+								}
+							],
+							"actions": [],
+							"sid": 615472461099100,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "for",
+											"objectClass": "System",
+											"sid": 465183797825448,
+											"parameters": {
+												"name": "\"CreateBox\"",
+												"start-index": "0",
+												"end-index": "tokencount(tokenat(OwnedSkinString,1,\"|\"),\"`\")-1"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "create-object",
+											"objectClass": "System",
+											"sid": 357832762010024,
+											"parameters": {
+												"object-to-create": "loudoutINVIS",
+												"layer": "\"Top Gui\"",
+												"x": "(loopindex(\"CreateBox\")%6)=0 ? 73 : ((loopindex(\"CreateBox\")%6)=1 ? 112 : ((loopindex(\"CreateBox\")%6)=2 ? 151 : ((loopindex(\"CreateBox\")%6)=3 ? 191 : ((loopindex(\"CreateBox\")%6)=4 ? 233 : 269))))",
+												"y": "64+int(loopindex(\"CreateBox\")/6)*36",
+												"create-hierarchy": false,
+												"template-name": "\"\""
+											}
+										},
+										{
+											"id": "set-animation",
+											"objectClass": "loudoutINVIS",
+											"sid": 686052510485900,
+											"parameters": {
+												"animation": "\"Face\"",
+												"from": "beginning"
+											}
+										},
+										{
+											"id": "set-animation-frame",
+											"objectClass": "loudoutINVIS",
+											"sid": 747133099998321,
+											"parameters": {
+												"frame-number": "int(tokenat(tokenat(OwnedSkinString, 1, \"|\"), loopindex(\"CreateBox\"), \"`\"))"
+											}
+										},
+										{
+											"id": "set-size",
+											"objectClass": "loudoutINVIS",
+											"sid": 992740793430326,
+											"parameters": {
+												"width": "25",
+												"height": "25"
+											}
+										},
+										{
+											"id": "set-position",
+											"objectClass": "loudoutINVIS",
+											"sid": 796676547439589,
+											"parameters": {
+												"x": "(loopindex(\"CreateBox\")%6)=0 ? 73 : ((loopindex(\"CreateBox\")%6)=1 ? 112 : ((loopindex(\"CreateBox\")%6)=2 ? 151 : ((loopindex(\"CreateBox\")%6)=3 ? 191 : ((loopindex(\"CreateBox\")%6)=4 ? 233 : 269))))",
+												"y": "64+int(loopindex(\"CreateBox\")/6)*36"
+											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "loudoutINVIS",
+											"sid": 384480500471157,
+											"parameters": {
+												"instance-variable": "StartY",
+												"value": "64+int(loopindex(\"CreateBox\")/6)*36"
+											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "loudoutINVIS",
+											"sid": 340806698014684,
+											"parameters": {
+												"instance-variable": "sel",
+												"value": "int(tokenat(tokenat(OwnedSkinString, 1, \"|\"), loopindex(\"CreateBox\"), \"`\"))+1"
+											}
+										}
+									],
+									"sid": 614714260474362
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 879907072677456,
+									"parameters": {
+										"variable": "MenuUp",
+										"comparison": 0,
+										"value": "\"Arms\""
+									}
+								}
+							],
+							"actions": [],
+							"sid": 940179281787974,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "for",
+											"objectClass": "System",
+											"sid": 129218153531278,
+											"parameters": {
+												"name": "\"CreateBox\"",
+												"start-index": "0",
+												"end-index": "tokencount(tokenat(OwnedSkinString,2,\"|\"),\"`\")-1"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "create-object",
+											"objectClass": "System",
+											"sid": 697455215307746,
+											"parameters": {
+												"object-to-create": "loudoutINVIS",
+												"layer": "\"Top Gui\"",
+												"x": "(loopindex(\"CreateBox\")%6)=0 ? 73 : ((loopindex(\"CreateBox\")%6)=1 ? 112 : ((loopindex(\"CreateBox\")%6)=2 ? 151 : ((loopindex(\"CreateBox\")%6)=3 ? 191 : ((loopindex(\"CreateBox\")%6)=4 ? 233 : 269))))",
+												"y": "64+int(loopindex(\"CreateBox\")/6)*36",
+												"create-hierarchy": false,
+												"template-name": "\"\""
+											}
+										},
+										{
+											"id": "set-animation",
+											"objectClass": "loudoutINVIS",
+											"sid": 981201705553777,
+											"parameters": {
+												"animation": "\"Arms\"",
+												"from": "beginning"
+											}
+										},
+										{
+											"id": "set-animation-frame",
+											"objectClass": "loudoutINVIS",
+											"sid": 929168972619077,
+											"parameters": {
+												"frame-number": "int(tokenat(tokenat(OwnedSkinString, 2, \"|\"), loopindex(\"CreateBox\"), \"`\"))"
+											}
+										},
+										{
+											"id": "set-size",
+											"objectClass": "loudoutINVIS",
+											"sid": 407227388165651,
+											"parameters": {
+												"width": "25",
+												"height": "25"
+											}
+										},
+										{
+											"id": "set-position",
+											"objectClass": "loudoutINVIS",
+											"sid": 692258398002564,
+											"parameters": {
+												"x": "(loopindex(\"CreateBox\")%6)=0 ? 73 : ((loopindex(\"CreateBox\")%6)=1 ? 112 : ((loopindex(\"CreateBox\")%6)=2 ? 151 : ((loopindex(\"CreateBox\")%6)=3 ? 191 : ((loopindex(\"CreateBox\")%6)=4 ? 233 : 269))))",
+												"y": "64+int(loopindex(\"CreateBox\")/6)*36"
+											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "loudoutINVIS",
+											"sid": 956918731314275,
+											"parameters": {
+												"instance-variable": "StartY",
+												"value": "64+int(loopindex(\"CreateBox\")/6)*36"
+											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "loudoutINVIS",
+											"sid": 218795082759131,
+											"parameters": {
+												"instance-variable": "sel",
+												"value": "int(tokenat(tokenat(OwnedSkinString, 2, \"|\"), loopindex(\"CreateBox\"), \"`\"))+1"
+											}
+										}
+									],
+									"sid": 137783943296266
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 311779623654386,
+									"parameters": {
+										"variable": "MenuUp",
+										"comparison": 0,
+										"value": "\"Shirt\""
+									}
+								}
+							],
+							"actions": [],
+							"sid": 159444458701205,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "for",
+											"objectClass": "System",
+											"sid": 974513723528936,
+											"parameters": {
+												"name": "\"CreateBox\"",
+												"start-index": "0",
+												"end-index": "tokencount(tokenat(OwnedSkinString,3,\"|\"),\"`\")-1"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "create-object",
+											"objectClass": "System",
+											"sid": 821435617288376,
+											"parameters": {
+												"object-to-create": "loudoutINVIS",
+												"layer": "\"Top Gui\"",
+												"x": "(loopindex(\"CreateBox\")%6)=0 ? 73 : ((loopindex(\"CreateBox\")%6)=1 ? 112 : ((loopindex(\"CreateBox\")%6)=2 ? 151 : ((loopindex(\"CreateBox\")%6)=3 ? 191 : ((loopindex(\"CreateBox\")%6)=4 ? 233 : 269))))",
+												"y": "64+int(loopindex(\"CreateBox\")/6)*36",
+												"create-hierarchy": false,
+												"template-name": "\"\""
+											}
+										},
+										{
+											"id": "set-animation",
+											"objectClass": "loudoutINVIS",
+											"sid": 411791707358904,
+											"parameters": {
+												"animation": "\"Shirt\"",
+												"from": "beginning"
+											}
+										},
+										{
+											"id": "set-animation-frame",
+											"objectClass": "loudoutINVIS",
+											"sid": 707524502579263,
+											"parameters": {
+												"frame-number": "int(tokenat(tokenat(OwnedSkinString, 3, \"|\"), loopindex(\"CreateBox\"), \"`\"))"
+											}
+										},
+										{
+											"id": "set-size",
+											"objectClass": "loudoutINVIS",
+											"sid": 794460851574313,
+											"parameters": {
+												"width": "25",
+												"height": "25"
+											}
+										},
+										{
+											"id": "set-position",
+											"objectClass": "loudoutINVIS",
+											"sid": 899995552627974,
+											"parameters": {
+												"x": "(loopindex(\"CreateBox\")%6)=0 ? 73 : ((loopindex(\"CreateBox\")%6)=1 ? 112 : ((loopindex(\"CreateBox\")%6)=2 ? 151 : ((loopindex(\"CreateBox\")%6)=3 ? 191 : ((loopindex(\"CreateBox\")%6)=4 ? 233 : 269))))",
+												"y": "64+int(loopindex(\"CreateBox\")/6)*36"
+											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "loudoutINVIS",
+											"sid": 732300408039023,
+											"parameters": {
+												"instance-variable": "StartY",
+												"value": "64+int(loopindex(\"CreateBox\")/6)*36"
+											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "loudoutINVIS",
+											"sid": 837147597922340,
+											"parameters": {
+												"instance-variable": "sel",
+												"value": "int(tokenat(tokenat(OwnedSkinString, 3, \"|\"), loopindex(\"CreateBox\"), \"`\"))+1"
+											}
+										}
+									],
+									"sid": 910545406681136
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 818752946731863,
+									"parameters": {
+										"variable": "MenuUp",
+										"comparison": 0,
+										"value": "\"Pants\""
+									}
+								}
+							],
+							"actions": [],
+							"sid": 432033629306134,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "for",
+											"objectClass": "System",
+											"sid": 939818904416406,
+											"parameters": {
+												"name": "\"CreateBox\"",
+												"start-index": "0",
+												"end-index": "tokencount(tokenat(OwnedSkinString,4,\"|\"),\"`\")-1"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "create-object",
+											"objectClass": "System",
+											"sid": 737369048916641,
+											"parameters": {
+												"object-to-create": "loudoutINVIS",
+												"layer": "\"Top Gui\"",
+												"x": "(loopindex(\"CreateBox\")%6)=0 ? 73 : ((loopindex(\"CreateBox\")%6)=1 ? 112 : ((loopindex(\"CreateBox\")%6)=2 ? 151 : ((loopindex(\"CreateBox\")%6)=3 ? 191 : ((loopindex(\"CreateBox\")%6)=4 ? 233 : 269))))",
+												"y": "64+int(loopindex(\"CreateBox\")/6)*36",
+												"create-hierarchy": false,
+												"template-name": "\"\""
+											}
+										},
+										{
+											"id": "set-animation",
+											"objectClass": "loudoutINVIS",
+											"sid": 225215189852711,
+											"parameters": {
+												"animation": "\"Pants\"",
+												"from": "beginning"
+											}
+										},
+										{
+											"id": "set-animation-frame",
+											"objectClass": "loudoutINVIS",
+											"sid": 864761615165193,
+											"parameters": {
+												"frame-number": "int(tokenat(tokenat(OwnedSkinString, 4, \"|\"), loopindex(\"CreateBox\"), \"`\"))"
+											}
+										},
+										{
+											"id": "set-size",
+											"objectClass": "loudoutINVIS",
+											"sid": 748168535640545,
+											"parameters": {
+												"width": "25",
+												"height": "25"
+											}
+										},
+										{
+											"id": "set-position",
+											"objectClass": "loudoutINVIS",
+											"sid": 521512430919935,
+											"parameters": {
+												"x": "(loopindex(\"CreateBox\")%6)=0 ? 73 : ((loopindex(\"CreateBox\")%6)=1 ? 112 : ((loopindex(\"CreateBox\")%6)=2 ? 151 : ((loopindex(\"CreateBox\")%6)=3 ? 191 : ((loopindex(\"CreateBox\")%6)=4 ? 233 : 269))))",
+												"y": "64+int(loopindex(\"CreateBox\")/6)*36"
+											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "loudoutINVIS",
+											"sid": 472495116725927,
+											"parameters": {
+												"instance-variable": "StartY",
+												"value": "64+int(loopindex(\"CreateBox\")/6)*36"
+											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "loudoutINVIS",
+											"sid": 214975087507381,
+											"parameters": {
+												"instance-variable": "sel",
+												"value": "int(tokenat(tokenat(OwnedSkinString, 4, \"|\"), loopindex(\"CreateBox\"), \"`\"))+1"
+											}
+										}
+									],
+									"sid": 938164272469000
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 602933806018583,
+									"parameters": {
+										"variable": "MenuUp",
+										"comparison": 0,
+										"value": "\"Hat\""
+									}
+								}
+							],
+							"actions": [],
+							"sid": 978234372645316,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "for",
+											"objectClass": "System",
+											"sid": 661456119741204,
+											"parameters": {
+												"name": "\"CreateBox\"",
+												"start-index": "0",
+												"end-index": "tokencount(tokenat(OwnedSkinString,5,\"|\"),\"`\")-1"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "create-object",
+											"objectClass": "System",
+											"sid": 366627857412781,
+											"parameters": {
+												"object-to-create": "loudoutINVIS",
+												"layer": "\"Top Gui\"",
+												"x": "(loopindex(\"CreateBox\")%6)=0 ? 73 : ((loopindex(\"CreateBox\")%6)=1 ? 112 : ((loopindex(\"CreateBox\")%6)=2 ? 151 : ((loopindex(\"CreateBox\")%6)=3 ? 191 : ((loopindex(\"CreateBox\")%6)=4 ? 233 : 269))))",
+												"y": "64+int(loopindex(\"CreateBox\")/6)*36",
+												"create-hierarchy": false,
+												"template-name": "\"\""
+											}
+										},
+										{
+											"id": "set-animation",
+											"objectClass": "loudoutINVIS",
+											"sid": 226316161593512,
+											"parameters": {
+												"animation": "\"Hat\"",
+												"from": "beginning"
+											}
+										},
+										{
+											"id": "set-animation-frame",
+											"objectClass": "loudoutINVIS",
+											"sid": 167187235492083,
+											"parameters": {
+												"frame-number": "int(tokenat(tokenat(OwnedSkinString, 5, \"|\"), loopindex(\"CreateBox\"), \"`\"))"
+											}
+										},
+										{
+											"id": "set-size",
+											"objectClass": "loudoutINVIS",
+											"sid": 737703680278939,
+											"parameters": {
+												"width": "25",
+												"height": "25"
+											}
+										},
+										{
+											"id": "set-position",
+											"objectClass": "loudoutINVIS",
+											"sid": 782961293313312,
+											"parameters": {
+												"x": "(loopindex(\"CreateBox\")%6)=0 ? 73 : ((loopindex(\"CreateBox\")%6)=1 ? 112 : ((loopindex(\"CreateBox\")%6)=2 ? 151 : ((loopindex(\"CreateBox\")%6)=3 ? 191 : ((loopindex(\"CreateBox\")%6)=4 ? 233 : 269))))",
+												"y": "64+int(loopindex(\"CreateBox\")/6)*36"
+											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "loudoutINVIS",
+											"sid": 230247761611618,
+											"parameters": {
+												"instance-variable": "StartY",
+												"value": "64+int(loopindex(\"CreateBox\")/6)*36"
+											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "loudoutINVIS",
+											"sid": 394908178492602,
+											"parameters": {
+												"instance-variable": "sel",
+												"value": "int(tokenat(tokenat(OwnedSkinString, 5, \"|\"), loopindex(\"CreateBox\"), \"`\"))+1"
+											}
+										}
+									],
+									"sid": 928391285437556
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 983547656957784
+				}
+			],
+			"actions": [],
+			"sid": 836003476580297,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 567181326644402,
+							"parameters": {
+								"first-value": "LayoutName",
+								"comparison": 0,
+								"second-value": "\"PlayerCustomizations\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "CalculateUnlocked",
+							"sid": 425224032729076
+						}
+					],
+					"sid": 809529000139789
+				}
+			]
+		}
+	],
+	"sid": 853860833193096
+}

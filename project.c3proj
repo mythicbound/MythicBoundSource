@@ -1,0 +1,922 @@
+{
+	"projectFormatVersion": 1,
+	"savedWithRelease": 49502,
+	"name": "MythicBound",
+	"runtime": "c3",
+	"useWorker": "dom",
+	"bundleAddons": false,
+	"usedAddons": [
+		{
+			"type": "plugin",
+			"id": "AJAX",
+			"name": "AJAX",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "AdvancedRandom",
+			"name": "Advanced Random",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Arr",
+			"name": "Array",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Audio",
+			"name": "Audio",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "BinaryData",
+			"name": "Binary Data",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Browser",
+			"name": "Browser",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Button",
+			"name": "Button",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "CSV",
+			"name": "CSV",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Chadori_Google_Ads",
+			"name": "Google Ads",
+			"author": "Chadori",
+			"bundled": false,
+			"version": "56.0",
+			"sdkVersion": 2
+		},
+		{
+			"type": "plugin",
+			"id": "Clipboard",
+			"name": "Clipboard",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Cryptography",
+			"name": "Cryptography",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Dictionary",
+			"name": "Dictionary",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "DrawingCanvas",
+			"name": "Drawing canvas",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "FileSystem",
+			"name": "File system",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "HTMLElement",
+			"name": "HTML Element",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Json",
+			"name": "JSON",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Keyboard",
+			"name": "Keyboard",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "LocalStorage",
+			"name": "Local storage",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Mouse",
+			"name": "Mouse",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Multiplayer",
+			"name": "Multiplayer",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "NSG_Inventory",
+			"name": "Inventory",
+			"author": "ForConstruct.com",
+			"bundled": false,
+			"version": "1.0.0.11",
+			"sdkVersion": 2
+		},
+		{
+			"type": "plugin",
+			"id": "Particles",
+			"name": "Particles",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Photon",
+			"name": "Photon",
+			"author": "Chadori",
+			"bundled": false,
+			"version": "53.0",
+			"sdkVersion": 2
+		},
+		{
+			"type": "plugin",
+			"id": "Sparsha_FirebaseAuth",
+			"name": "Firebase Auth Basic",
+			"author": "Sparsha",
+			"bundled": false,
+			"version": "8.0.0",
+			"sdkVersion": 2
+		},
+		{
+			"type": "plugin",
+			"id": "Sparsha_FirebaseRealtimeDatabase",
+			"name": "Firebase RD Basic",
+			"author": "Sparsha",
+			"bundled": false,
+			"version": "10.0.0",
+			"sdkVersion": 2
+		},
+		{
+			"type": "plugin",
+			"id": "Sparsha_FirebaseSDK",
+			"name": "Firebase SDK",
+			"author": "Sparsha",
+			"bundled": false,
+			"version": "11.0.0",
+			"sdkVersion": 2
+		},
+		{
+			"type": "plugin",
+			"id": "Sparsha_FirebaseStorageSD",
+			"name": "Firebase Storage",
+			"author": "Sparsha",
+			"bundled": false,
+			"version": "4.0.0",
+			"sdkVersion": 2
+		},
+		{
+			"type": "plugin",
+			"id": "Sparsha_FirestoreBasic",
+			"name": "Firebase Firestore Basic",
+			"author": "Sparsha",
+			"bundled": false,
+			"version": "3.0.0",
+			"sdkVersion": 2
+		},
+		{
+			"type": "plugin",
+			"id": "Sprite",
+			"name": "Sprite",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Text",
+			"name": "Text",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "TextBox",
+			"name": "Text input",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "TiledBg",
+			"name": "Tiled Background",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Tilemap",
+			"name": "Tilemap",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Timeline",
+			"name": "Timeline controller",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Touch",
+			"name": "Touch",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "gamepad",
+			"name": "Gamepad",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "shadowlight",
+			"name": "Shadow light",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "sliderbar",
+			"name": "Slider bar",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Anchor",
+			"name": "Anchor",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Bullet",
+			"name": "Bullet",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "DragnDrop",
+			"name": "Drag & Drop",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "EightDir",
+			"name": "8 Direction",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Fade",
+			"name": "Fade",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "LOS",
+			"name": "Line of sight",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Pathfinding",
+			"name": "Pathfinding",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Pin",
+			"name": "Pin",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Tween",
+			"name": "Tween",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "bound",
+			"name": "Bound to",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "custom",
+			"name": "Custom",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "scrollto",
+			"name": "Scroll To",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "solid",
+			"name": "Solid",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "effect",
+			"id": "brightness",
+			"name": "Brightness",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "effect",
+			"id": "skymen_BetterOutline",
+			"name": "Better Outline",
+			"author": "skymen",
+			"bundled": false,
+			"version": "2.1.0.1"
+		}
+	],
+	"uniqueId": "z34cuyza9qv",
+	"objectTypes": {
+		"items": [
+			"status",
+			"Multiplayer",
+			"TxtStatus",
+			"Keyboard",
+			"Browser",
+			"Photon",
+			"Mouse",
+			"StartScreenBUTTON",
+			"StartScreenText",
+			"StartScreenBround",
+			"DBUG",
+			"roomName",
+			"Lobbys",
+			"MainMenuButtons",
+			"JSON",
+			"ItemsTradesData",
+			"AJAX",
+			"FileSystem",
+			"LocalStorage",
+			"Touch",
+			"loudoutINVIS",
+			"MasterVolume",
+			"Gamepad",
+			"GameVersion",
+			"ItemInfoData",
+			"AdvancedRandom",
+			"MobsStatsData",
+			"NonTileworldobjects",
+			"AngryPlant",
+			"webhooks",
+			"embedDict",
+			"InvisWalls",
+			"Audio",
+			"HealthTxT",
+			"LoadText",
+			"LoadLock",
+			"EnemyHealthTxt",
+			"EnemyHealthTxt2",
+			"MossHunter",
+			"NPC",
+			"InteractableText",
+			"NPCData",
+			"DamageParticles",
+			"ParticleDamageText",
+			"TimelineController",
+			"MiniMapClip",
+			"CSV",
+			"MainMenuTextBtns",
+			"HealthBars",
+			"InvisLayoutTeleporter",
+			"Lumberer",
+			"MagmaMonster",
+			"hologram",
+			"MythicBoundBetweanWorldLoadingScreen",
+			"BinaryData",
+			"TabBackground",
+			"TabNames1",
+			"TabNames2",
+			"TabListInfo",
+			"IronEye",
+			"Exits",
+			"Clipboard",
+			"WorldInfoData",
+			"SkinAtributesData",
+			"Jezubluz",
+			"DetailedDeBug",
+			"SettingsText",
+			"HealthParticles",
+			"TutorialMob",
+			"TutorialMobCanvas",
+			"GuideBookText",
+			"TutorialMenuButtonsAndSprites",
+			"TutBoard",
+			"TutorialCardsAndSuch",
+			"StarterTutorialText",
+			"StarterTutorialButton",
+			"MapResizeHandle",
+			"Block",
+			"CooldownDelay",
+			"FatFish",
+			"Cryptography",
+			"Helath",
+			"Chicken",
+			"MobContainers",
+			"Emote",
+			"EmotePopup",
+			"FrozenFury",
+			"EnemyProjectile",
+			"GoogleAds",
+			"HTMLElement",
+			"Knight",
+			"ItemIndicatorTxt",
+			"ButtonHighlight",
+			"locationPath",
+			"ShadowLight",
+			"Gold",
+			"Cooldowns",
+			"SpriteAtlasBuffer",
+			"SpriteAtlasData",
+			"EmoteWheel",
+			"ChargedRaptor",
+			"RingOfDeath",
+			"Mineable",
+			"InventoryPlugin",
+			"Slots",
+			"deBugInv",
+			"Cow",
+			"InventoryOptionMenu",
+			"InvOptionsTxt",
+			"CompiledTrades",
+			"CraftCounts",
+			"FishingHitbox",
+			"FishingBoard",
+			"MiniGame",
+			"bobber",
+			"PopupBGRND",
+			"FishingBoardMenu",
+			"FIshingMenuButtons",
+			"WaterInfoTxt",
+			"FishingLootTxt"
+		],
+		"subfolders": [
+			{
+				"items": [
+					"TilemapBackground",
+					"Tilemap"
+				],
+				"subfolders": [],
+				"name": "Background"
+			},
+			{
+				"items": [],
+				"subfolders": [],
+				"name": "Items"
+			},
+			{
+				"items": [
+					"backgroundShade",
+					"GUINonChangeText",
+					"AliveCount",
+					"HealthBar",
+					"SelectedSlot",
+					"GUIGunSlotText",
+					"AmmoCountTxt",
+					"MapIcon",
+					"playerLocation",
+					"circlebackgroundshade",
+					"drop",
+					"joycon",
+					"Dpad",
+					"GameMenu",
+					"OtherPlayerLocation"
+				],
+				"subfolders": [
+					{
+						"items": [
+							"InventoryEquip",
+							"InventoryObjects",
+							"CountInventory",
+							"NameAndLore",
+							"InvLoreBox",
+							"InvLoreBoxMaster",
+							"InventoryTrash",
+							"InventoryMain",
+							"InventoryTrade"
+						],
+						"subfolders": [],
+						"name": "Inventory"
+					},
+					{
+						"items": [
+							"Trade",
+							"TradeUIButton",
+							"TradeLabels",
+							"WorldText",
+							"Leaderboard"
+						],
+						"subfolders": [],
+						"name": "TradeUI"
+					}
+				],
+				"name": "GUI"
+			},
+			{
+				"items": [
+					"AuthErrors",
+					"LoginInfo",
+					"FirebaseAuthBasic",
+					"FirebaseFirestoreBasic",
+					"FirebaseRDBasic",
+					"FirebaseSDK",
+					"FirebaseStorage",
+					"EmailLogin",
+					"PasswordLogin",
+					"RandomLoginText",
+					"UserNameSignUp"
+				],
+				"subfolders": [],
+				"name": "Auth"
+			},
+			{
+				"items": [
+					"ChatBox",
+					"ChatFlow",
+					"FilterChat",
+					"ChatMask"
+				],
+				"subfolders": [],
+				"name": "Chat"
+			},
+			{
+				"items": [
+					"HairPlayer",
+					"PlayerBase",
+					"WeaponPlayer",
+					"ShirtPlayer",
+					"LowerPlayer",
+					"FacePlayer",
+					"ArmsPlayer",
+					"HatPlayer",
+					"SlashPlayer",
+					"HelmetPlayer",
+					"SecondaryPlayer"
+				],
+				"subfolders": [],
+				"name": "Player"
+			}
+		]
+	},
+	"functionsName": "Functions",
+	"autosaveData": null,
+	"containers": [
+		{
+			"members": [
+				"PlayerBase",
+				"status"
+			]
+		},
+		{
+			"members": [
+				"ChatBox",
+				"ChatFlow"
+			]
+		}
+	],
+	"families": {
+		"items": [
+			"Enemycolide",
+			"PlayerFam",
+			"EnemyPathFind",
+			"FlipFunction",
+			"Items"
+		],
+		"subfolders": []
+	},
+	"layouts": {
+		"items": [
+			"Game",
+			"Prototype",
+			"Start Screen",
+			"FirebaseLogin",
+			"FirebaseSignUp",
+			"Load",
+			"Tent",
+			"Mine",
+			"PvpArena",
+			"PlayerCustomizations"
+		],
+		"subfolders": []
+	},
+	"eventSheets": {
+		"items": [
+			"C3MultiplayerKit",
+			"Photon_Client",
+			"Photon_HostClient",
+			"Start Screen",
+			"FirebaseSignUp",
+			"LoadLogic"
+		],
+		"subfolders": []
+	},
+	"rootFileFolders": {
+		"script": {
+			"items": [],
+			"subfolders": []
+		},
+		"sound": {
+			"items": [
+				{
+					"name": "attack_whoosh.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 269758997097998,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "footsteps_stone.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 576821990183489,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "attack_slice_1.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 170363360590249,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "attack_slice_2.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 552737090386877,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "attack_slice_3.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 971004473641096,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "attack_punch.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 516404635845157,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "footsteps_grass.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 757645365143617,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Equip 1.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 521707715195890,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "NewClick.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 291781805691154,
+					"file-info": {
+						"purpose": "none"
+					}
+				}
+			],
+			"subfolders": []
+		},
+		"music": {
+			"items": [
+				{
+					"name": "MetroShmetro-BirdBeat.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 657346400904878,
+					"file-info": {
+						"purpose": "none"
+					}
+				}
+			],
+			"subfolders": []
+		},
+		"video": {
+			"items": [],
+			"subfolders": []
+		},
+		"font": {
+			"items": [
+				{
+					"name": "PIXEARG_.TTF",
+					"type": "application/font-sfnt",
+					"sid": 305551865227065,
+					"file-info": {
+						"purpose": "none"
+					}
+				}
+			],
+			"subfolders": []
+		},
+		"icon": {
+			"items": [
+				{
+					"name": "MythicBound.png",
+					"type": "image/png",
+					"sid": 316100386671786,
+					"icon-info": {
+						"purpose": "app-icon"
+					}
+				}
+			],
+			"subfolders": []
+		},
+		"general": {
+			"items": [
+				{
+					"name": "file.css",
+					"type": "text/css",
+					"sid": 487887840190736,
+					"file-info": {
+						"purpose": "stylesheet"
+					}
+				},
+				{
+					"name": "file.html",
+					"type": "text/html",
+					"sid": 222838031475145,
+					"file-info": {
+						"purpose": "html-head-end"
+					}
+				},
+				{
+					"name": "Ads.txt",
+					"type": "text/plain",
+					"sid": 477318536133391,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "sitemap.xml",
+					"type": "text/xml",
+					"sid": 324945200319479,
+					"file-info": {
+						"purpose": "none"
+					}
+				}
+			],
+			"subfolders": []
+		}
+	},
+	"timelines": {
+		"items": [
+			"DamageSize"
+		],
+		"subfolders": [
+			{
+				"items": [],
+				"subfolders": []
+			}
+		]
+	},
+	"flowcharts": {
+		"items": [],
+		"subfolders": []
+	},
+	"models3d": {
+		"items": [],
+		"subfolders": []
+	},
+	"properties": {
+		"description": "Combat Based Progression Game",
+		"version": "1.0.3.277",
+		"autoIncrementVersion": true,
+		"author": "Mythic Team",
+		"authorEmail": "",
+		"authorWebsite": "https://mythicbound.net",
+		"appId": " ",
+		"pixelRounding": false,
+		"zAxisScale": "normalized",
+		"fov": 0.7853981633974483,
+		"useLoaderLayout": true,
+		"fullscreenMode": "letterbox-scale",
+		"fullscreenQuality": "high",
+		"viewportFit": "auto",
+		"backgroundColor": [
+			0,
+			0,
+			0,
+			0
+		],
+		"splashColor": [
+			1,
+			1,
+			1,
+			0
+		],
+		"useThemeColor": false,
+		"themeColor": [
+			1,
+			1,
+			1,
+			0
+		],
+		"orientations": "landscape",
+		"webgpu": "no",
+		"multitexturing": "auto",
+		"gpuPreference": "high-performance",
+		"framerateMode": "vsync",
+		"fixedFramerate": 30,
+		"sampling": "nearest",
+		"downscaling": "low",
+		"renderingMode": "auto",
+		"anisotropicFiltering": "auto",
+		"zNear": 1,
+		"zFar": 10000,
+		"maxSpriteSheetSize": 2048,
+		"loaderStyle": "percent",
+		"preloadSounds": true,
+		"uidAllocationMode": "increment",
+		"cordovaiOSScheme": "app",
+		"cordovaAndroidScheme": "https",
+		"exportFileStructure": "folders",
+		"scriptsType": "module"
+	},
+	"viewportWidth": 512,
+	"viewportHeight": 288,
+	"firstLayout": "Load"
+}

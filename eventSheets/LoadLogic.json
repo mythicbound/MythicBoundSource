@@ -1,0 +1,956 @@
+{
+	"name": "LoadLogic",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "loadingstep",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 832254577868874
+		},
+		{
+			"eventType": "variable",
+			"name": "SSVersion",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 345814230816893
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-animation-frame-changed",
+					"objectClass": "MythicBoundBetweanWorldLoadingScreen",
+					"sid": 506205170012369
+				}
+			],
+			"actions": [
+				{
+					"id": "wait",
+					"objectClass": "System",
+					"sid": 787358977177112,
+					"parameters": {
+						"seconds": "2",
+						"use-timescale": true
+					}
+				},
+				{
+					"id": "tween-one-property",
+					"objectClass": "MythicBoundBetweanWorldLoadingScreen",
+					"sid": 124059141039905,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"testColorFade\"",
+						"property": "offsetColor",
+						"end-value": "0",
+						"time": "0.5",
+						"ease": "default",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "yes",
+						"repeat-count": "1"
+					}
+				}
+			],
+			"sid": 453373160843030
+		},
+		{
+			"eventType": "comment",
+			"text": "Loads all game data including items, trades, loot tables, and other arrays from remote sources"
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "LoadArrays3",
+			"description": "This loads the arrays for all of the items ",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-start-of-layout",
+							"objectClass": "System",
+							"sid": 557519680209127
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation-frame",
+							"objectClass": "MythicBoundBetweanWorldLoadingScreen",
+							"sid": 881722251553006,
+							"parameters": {
+								"frame-number": "random(0,MythicBoundBetweanWorldLoadingScreen.AnimationFrameCount)"
+							}
+						},
+						{
+							"id": "cancel-fullscreen",
+							"objectClass": "Browser",
+							"sid": 323702120820414
+						},
+						{
+							"id": "load-layout-images",
+							"objectClass": "System",
+							"sid": 929751041473008,
+							"parameters": {
+								"layout": "Game"
+							}
+						},
+						{
+							"id": "load-object-images",
+							"objectClass": "System",
+							"sid": 325861432097387,
+							"parameters": {
+								"object": "EnemyPathFind"
+							}
+						},
+						{
+							"id": "load-object-images",
+							"objectClass": "System",
+							"sid": 504374144906920,
+							"parameters": {
+								"object": "PlayerFam"
+							}
+						},
+						{
+							"id": "load-object-images",
+							"objectClass": "System",
+							"sid": 489051493943329,
+							"parameters": {
+								"object": "NonTileworldobjects"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 214497419251803,
+							"parameters": {
+								"seconds": "2",
+								"use-timescale": true
+							}
+						},
+						{
+							"id": "tween-one-property",
+							"objectClass": "MythicBoundBetweanWorldLoadingScreen",
+							"sid": 333573876381738,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"testColorFade\"",
+								"property": "offsetColor",
+								"end-value": "0",
+								"time": "0.5",
+								"ease": "default",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "yes",
+								"repeat-count": "1"
+							}
+						}
+					],
+					"sid": 473315285963170
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-completed",
+							"objectClass": "AJAX",
+							"sid": 204580684299362,
+							"parameters": {
+								"tag": "\"loaditems\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "parse-csv",
+							"objectClass": "CSV",
+							"sid": 978288626722508,
+							"parameters": {
+								"csv": "AJAX.LastData",
+								"delimiter": "\",\"",
+								"array": "ItemsTradesData",
+								"data-type": "auto"
+							}
+						},
+						{
+							"id": "request-url",
+							"objectClass": "AJAX",
+							"sid": 690907085630117,
+							"parameters": {
+								"tag": "\"loadloot\"",
+								"url": "\"https://docs.google.com/spreadsheets/d/1-BBTnfav8b1RO2csaSwK_K75Df8iZHqVdK6VTla87_I/export?format=csv&gid=1644400856\"\r\n"
+							}
+						}
+					],
+					"sid": 991941081662982
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-completed",
+							"objectClass": "AJAX",
+							"sid": 981028494520749,
+							"parameters": {
+								"tag": "\"loadloot\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "parse-csv",
+							"objectClass": "CSV",
+							"sid": 139330343877966,
+							"parameters": {
+								"csv": "AJAX.LastData",
+								"delimiter": "\",\"",
+								"array": "ItemInfoData",
+								"data-type": "auto"
+							}
+						},
+						{
+							"id": "request-url",
+							"objectClass": "AJAX",
+							"sid": 236562241374993,
+							"parameters": {
+								"tag": "\"loadNPC\"",
+								"url": "\"https://docs.google.com/spreadsheets/d/1-BBTnfav8b1RO2csaSwK_K75Df8iZHqVdK6VTla87_I/export?format=csv&gid=1932936161\"\r\n"
+							}
+						}
+					],
+					"sid": 215713350861932
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-completed",
+							"objectClass": "AJAX",
+							"sid": 271794106031344,
+							"parameters": {
+								"tag": "\"loadNPC\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "parse-csv",
+							"objectClass": "CSV",
+							"sid": 655219924870771,
+							"parameters": {
+								"csv": "AJAX.LastData",
+								"delimiter": "\",\"",
+								"array": "NPCData",
+								"data-type": "auto"
+							}
+						},
+						{
+							"id": "request-url",
+							"objectClass": "AJAX",
+							"sid": 121407661741365,
+							"parameters": {
+								"tag": "\"loadSkin\"",
+								"url": "\"https://docs.google.com/spreadsheets/d/1-BBTnfav8b1RO2csaSwK_K75Df8iZHqVdK6VTla87_I/export?format=csv&gid=322859706\""
+							}
+						}
+					],
+					"sid": 468017507993655
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-completed",
+							"objectClass": "AJAX",
+							"sid": 357415382262512,
+							"parameters": {
+								"tag": "\"loadSkin\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "parse-csv",
+							"objectClass": "CSV",
+							"sid": 825965766593876,
+							"parameters": {
+								"csv": "AJAX.LastData",
+								"delimiter": "\",\"",
+								"array": "SkinAtributesData",
+								"data-type": "auto"
+							}
+						},
+						{
+							"id": "request-url",
+							"objectClass": "AJAX",
+							"sid": 675343317674522,
+							"parameters": {
+								"tag": "\"loadWorld\"",
+								"url": "\"https://docs.google.com/spreadsheets/d/1-BBTnfav8b1RO2csaSwK_K75Df8iZHqVdK6VTla87_I/export?format=csv&gid=406276432\""
+							}
+						}
+					],
+					"sid": 774393808780190
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-completed",
+							"objectClass": "AJAX",
+							"sid": 828097669431149,
+							"parameters": {
+								"tag": "\"loadWorld\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "parse-csv",
+							"objectClass": "CSV",
+							"sid": 796808379240867,
+							"parameters": {
+								"csv": "AJAX.LastData",
+								"delimiter": "\",\"",
+								"array": "WorldInfoData",
+								"data-type": "auto"
+							}
+						},
+						{
+							"id": "request-url",
+							"objectClass": "AJAX",
+							"sid": 611681239704666,
+							"parameters": {
+								"tag": "\"loadatlas\"",
+								"url": "\"https://docs.google.com/spreadsheets/d/1-BBTnfav8b1RO2csaSwK_K75Df8iZHqVdK6VTla87_I/export?format=csv&gid=1164187965\""
+							}
+						}
+					],
+					"sid": 384081227626758
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-completed",
+							"objectClass": "AJAX",
+							"sid": 295014065264390,
+							"parameters": {
+								"tag": "\"loadatlas\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "parse-csv",
+							"objectClass": "CSV",
+							"sid": 449868332339789,
+							"parameters": {
+								"csv": "AJAX.LastData",
+								"delimiter": "\",\"",
+								"array": "SpriteAtlasData",
+								"data-type": "auto"
+							}
+						},
+						{
+							"id": "request-url",
+							"objectClass": "AJAX",
+							"sid": 869069943985099,
+							"parameters": {
+								"tag": "\"loadmobs\"",
+								"url": "\"https://docs.google.com/spreadsheets/d/1-BBTnfav8b1RO2csaSwK_K75Df8iZHqVdK6VTla87_I/export?format=csv&gid=492516049\""
+							}
+						}
+					],
+					"sid": 615109756902293
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-completed",
+							"objectClass": "AJAX",
+							"sid": 214045187790516,
+							"parameters": {
+								"tag": "\"loadmobs\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "parse-csv",
+							"objectClass": "CSV",
+							"sid": 664491699431286,
+							"parameters": {
+								"csv": "AJAX.LastData",
+								"delimiter": "\",\"",
+								"array": "MobsStatsData",
+								"data-type": "auto"
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "LoadText",
+							"sid": 902677456326019,
+							"disabled": true,
+							"parameters": {
+								"visibility": "invisible"
+							}
+						},
+						{
+							"id": "go-to-layout",
+							"objectClass": "System",
+							"sid": 637113834921144,
+							"parameters": {
+								"layout": "Start Screen"
+							}
+						}
+					],
+					"sid": 130858851811269
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-any-error",
+							"objectClass": "AJAX",
+							"sid": 167168500621001
+						}
+					],
+					"actions": [
+						{
+							"id": "go-to-layout",
+							"objectClass": "System",
+							"sid": 232203721287196,
+							"parameters": {
+								"layout": "Load"
+							}
+						}
+					],
+					"sid": 800694772958934
+				}
+			],
+			"sid": 962391538221904
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 893774435372780
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "CycleLoading",
+					"sid": 782724980393105
+				},
+				{
+					"id": "set-text",
+					"objectClass": "LoadText",
+					"sid": 781804945545934,
+					"parameters": {
+						"text": "\"Loading\""
+					}
+				},
+				{
+					"id": "request-url",
+					"objectClass": "AJAX",
+					"sid": 680356229066716,
+					"parameters": {
+						"tag": "\"loadLock\"",
+						"url": "\"https://docs.google.com/spreadsheets/d/1-BBTnfav8b1RO2csaSwK_K75Df8iZHqVdK6VTla87_I/export?format=csv&gid=2022156133\""
+					}
+				}
+			],
+			"sid": 575187441246957
+		},
+		{
+			"eventType": "comment",
+			"text": "Implements loading state management and prevents multiple simultaneous data loads"
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "load lock",
+			"description": "This isnt implemented yet...",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-completed",
+							"objectClass": "AJAX",
+							"sid": 412327058453911,
+							"parameters": {
+								"tag": "\"loadLock\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 777329783561531,
+							"disabled": true,
+							"parameters": {
+								"seconds": "0.1",
+								"use-timescale": true
+							}
+						},
+						{
+							"id": "parse-csv",
+							"objectClass": "CSV",
+							"sid": 202514455806776,
+							"disabled": true,
+							"parameters": {
+								"csv": "AJAX.LastData",
+								"delimiter": "\",\"",
+								"array": "LoadLock",
+								"data-type": "auto"
+							}
+						},
+						{
+							"id": "get-item",
+							"objectClass": "LocalStorage",
+							"sid": 539185644823949,
+							"disabled": true,
+							"parameters": {
+								"key": "\"SSVersion\""
+							}
+						},
+						{
+							"id": "request-url",
+							"objectClass": "AJAX",
+							"sid": 817973400427289,
+							"parameters": {
+								"tag": "\"loaditems\"",
+								"url": "\"https://docs.google.com/spreadsheets/d/1-BBTnfav8b1RO2csaSwK_K75Df8iZHqVdK6VTla87_I/export?format=csv&gid=0\""
+							}
+						}
+					],
+					"sid": 502297175211421
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-item-get",
+							"objectClass": "LocalStorage",
+							"sid": 586866086839211,
+							"parameters": {
+								"key": "\"SSVersion\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 413393321962570,
+							"parameters": {
+								"variable": "SSVersion",
+								"value": "LocalStorage.ItemValue"
+							}
+						}
+					],
+					"sid": 159518906360915,
+					"disabled": true,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 863383575775924,
+									"parameters": {
+										"first-value": "LoadLock.At(0, 1)",
+										"comparison": 1,
+										"second-value": "SSVersion"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 729001626577484,
+									"parameters": {
+										"variable": "SSVersion",
+										"value": "LoadLock.At(0, 1)"
+									}
+								},
+								{
+									"id": "set-item",
+									"objectClass": "LocalStorage",
+									"sid": 671004377936517,
+									"parameters": {
+										"key": "\"SSVersion\"",
+										"value": "LoadLock.At(0, 1)"
+									}
+								}
+							],
+							"sid": 928735379396806,
+							"disabled": true
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 764949327073794
+								}
+							],
+							"actions": [
+								{
+									"id": "go-to-layout",
+									"objectClass": "System",
+									"sid": 406043151521039,
+									"parameters": {
+										"layout": "Start Screen"
+									}
+								}
+							],
+							"sid": 975789258910779,
+							"disabled": true
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-item-missing",
+							"objectClass": "LocalStorage",
+							"sid": 791405175252716,
+							"parameters": {
+								"key": "\"SSVersion\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 544086425951811,
+							"parameters": {
+								"variable": "SSVersion",
+								"value": "LocalStorage.ItemValue"
+							}
+						}
+					],
+					"sid": 949989176579437,
+					"disabled": true,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 642550917425678,
+									"parameters": {
+										"first-value": "LoadLock.At(0, 1)",
+										"comparison": 1,
+										"second-value": "SSVersion"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 281499180083787,
+									"parameters": {
+										"variable": "SSVersion",
+										"value": "LoadLock.At(0, 1)"
+									}
+								},
+								{
+									"id": "set-item",
+									"objectClass": "LocalStorage",
+									"sid": 332820305326567,
+									"parameters": {
+										"key": "\"SSVersion\"",
+										"value": "LoadLock.At(0, 1)"
+									}
+								},
+								{
+									"id": "request-url",
+									"objectClass": "AJAX",
+									"sid": 519269987609517,
+									"parameters": {
+										"tag": "\"loaditems\"",
+										"url": "\"https://docs.google.com/spreadsheets/d/1-BBTnfav8b1RO2csaSwK_K75Df8iZHqVdK6VTla87_I/export?format=csv&gid=0\""
+									}
+								}
+							],
+							"sid": 878503641042441,
+							"disabled": true
+						}
+					]
+				}
+			],
+			"sid": 210657948837139
+		},
+		{
+			"eventType": "comment",
+			"text": "Cycles through loading steps and transitions to game when complete"
+		},
+		{
+			"functionName": "CycleLoading",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 240055456233647,
+					"parameters": {
+						"variable": "loadingstep",
+						"value": "(loadingstep+1) % 4"
+					}
+				},
+				{
+					"id": "wait",
+					"objectClass": "System",
+					"sid": 209787481635634,
+					"parameters": {
+						"seconds": "0.5",
+						"use-timescale": true
+					}
+				},
+				{
+					"callFunction": "CycleLoading",
+					"sid": 872511859320985
+				}
+			],
+			"sid": 961973133705937,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 661545750328398,
+							"parameters": {
+								"variable": "loadingstep",
+								"comparison": 0,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "LoadText",
+							"sid": 575941452484621,
+							"parameters": {
+								"text": "\"Loading\""
+							}
+						}
+					],
+					"sid": 928801688555681
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 789239660594466,
+							"parameters": {
+								"variable": "loadingstep",
+								"comparison": 0,
+								"value": "1"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "LoadText",
+							"sid": 597282127422634,
+							"parameters": {
+								"text": "\"Loading.\""
+							}
+						}
+					],
+					"sid": 394127434259047
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 857985229979680,
+							"parameters": {
+								"variable": "loadingstep",
+								"comparison": 0,
+								"value": "2"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "LoadText",
+							"sid": 731057821102235,
+							"parameters": {
+								"text": "\"Loading..\""
+							}
+						}
+					],
+					"sid": 150995683237101
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 403691873930323,
+							"parameters": {
+								"variable": "loadingstep",
+								"comparison": 0,
+								"value": "3"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "LoadText",
+							"sid": 806371592788435,
+							"parameters": {
+								"text": "\"Loading...\""
+							}
+						}
+					],
+					"sid": 973930438747413
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-loaded",
+					"objectClass": "FirebaseSDK",
+					"sid": 589699113097663
+				}
+			],
+			"actions": [
+				{
+					"id": "set-text",
+					"objectClass": "LoginInfo",
+					"sid": 752172197696520,
+					"disabled": true,
+					"parameters": {
+						"text": "FirebaseAuthBasic.userID"
+					}
+				},
+				{
+					"id": "set-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 855296148698853,
+					"parameters": {
+						"variable": "IsFirebaseLoaded",
+						"value": "true"
+					}
+				}
+			],
+			"sid": 426837546743394,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-signed-in",
+							"objectClass": "FirebaseAuthBasic",
+							"sid": 907529135142102
+						}
+					],
+					"actions": [
+						{
+							"id": "set-visible",
+							"objectClass": "LoginInfo",
+							"sid": 369871271483223,
+							"parameters": {
+								"visibility": "invisible"
+							}
+						}
+					],
+					"sid": 552832268793048
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 967056837496474
+						}
+					],
+					"actions": [
+						{
+							"id": "set-visible",
+							"objectClass": "LoginInfo",
+							"sid": 771458004627646,
+							"parameters": {
+								"visibility": "visible"
+							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "LoginInfo",
+							"sid": 165456845669010,
+							"parameters": {
+								"text": "\"Unable To Play, Please Login\""
+							}
+						}
+					],
+					"sid": 619144354765311
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-fullscreen",
+					"objectClass": "Browser",
+					"sid": 542176955862055
+				}
+			],
+			"actions": [
+				{
+					"id": "cancel-fullscreen",
+					"objectClass": "Browser",
+					"sid": 718275058906333
+				}
+			],
+			"sid": 774627659122362
+		}
+	],
+	"sid": 335765987216816
+}

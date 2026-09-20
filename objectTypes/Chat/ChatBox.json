@@ -1,0 +1,9 @@
+{
+	"name": "ChatBox",
+	"plugin-id": "TextBox",
+	"sid": 442937851867342,
+	"isGlobal": true,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": []
+}

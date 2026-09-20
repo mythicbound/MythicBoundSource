@@ -1,0 +1,27 @@
+{
+	"name": "GoogleAds",
+	"plugin-id": "Chadori_Google_Ads",
+	"sid": 283651520742841,
+	"singleglobal-inst": {
+		"type": "GoogleAds",
+		"properties": {
+			"debug": false,
+			"publisher-id": "ca-pub-9428060945172151",
+			"frequency-hint": 120,
+			"channel": "",
+			"preload": "auto",
+			"sound": "off",
+			"admob-interstitial-id": "",
+			"admob-rewarded-id": "",
+			"host-platform": "",
+			"page-url": "mythicbound.net",
+			"child-directed": false,
+			"under-age-of-consent": false,
+			"test": false,
+			"script": "dynamic"
+		},
+		"uid": 1454,
+		"sid": 814258022956569,
+		"tags": ""
+	}
+}
