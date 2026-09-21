@@ -28,8 +28,8 @@
 					{
 						"width": 4,
 						"height": 4,
-						"originX": -0.75,
-						"originY": 0,
+						"originX": 0.5,
+						"originY": 0.5,
 						"originalSource": "",
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
@@ -48,6 +48,13 @@
 							]
 						},
 						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "LineEnd",
+								"x": 0.5,
+								"y": 0.25
+							}
+						],
 						"duration": 1,
 						"tag": ""
 					}

@@ -55485,11 +55485,11 @@
 				{
 					"id": "every-tick",
 					"objectClass": "System",
-					"sid": 775961681838382
+					"sid": 119990442650266
 				}
 			],
 			"actions": [],
-			"sid": 334791316073538,
+			"sid": 508816980612017,
 			"children": [
 				{
 					"eventType": "block",
@@ -55497,14 +55497,14 @@
 						{
 							"id": "for-each",
 							"objectClass": "System",
-							"sid": 566931828591418,
+							"sid": 591896761222617,
 							"parameters": {
 								"object": "FishingLine"
 							}
 						}
 					],
 					"actions": [],
-					"sid": 686721056579926,
+					"sid": 110950768522225,
 					"children": [
 						{
 							"eventType": "block",
@@ -55512,7 +55512,7 @@
 								{
 									"id": "for-each",
 									"objectClass": "System",
-									"sid": 225500616210158,
+									"sid": 615903651982448,
 									"parameters": {
 										"object": "SecondaryPlayer"
 									}
@@ -55520,16 +55520,16 @@
 								{
 									"id": "compare-instance-variable",
 									"objectClass": "SecondaryPlayer",
-									"sid": 897322859832135,
+									"sid": 825600944316900,
 									"parameters": {
 										"instance-variable": "thisMultipleFAMID",
 										"comparison": 0,
-										"value": "FishingLine.OwnerID"
+										"value": "str(FishingLine.OwnerID)"
 									}
 								}
 							],
 							"actions": [],
-							"sid": 560580998480213,
+							"sid": 359859648240165,
 							"children": [
 								{
 									"eventType": "block",
@@ -55537,7 +55537,7 @@
 										{
 											"id": "for-each",
 											"objectClass": "System",
-											"sid": 902643838553450,
+											"sid": 340797532625016,
 											"parameters": {
 												"object": "bobber"
 											}
@@ -55545,7 +55545,7 @@
 										{
 											"id": "compare-instance-variable",
 											"objectClass": "bobber",
-											"sid": 180563440293123,
+											"sid": 194472584884707,
 											"parameters": {
 												"instance-variable": "OwnerID",
 												"comparison": 0,
@@ -55557,7 +55557,7 @@
 										{
 											"id": "set-position",
 											"objectClass": "FishingLine",
-											"sid": 760276080863890,
+											"sid": 366179810627246,
 											"parameters": {
 												"x": "SecondaryPlayer.ImagePointX(\"RodTip\")",
 												"y": "SecondaryPlayer.ImagePointY(\"RodTip\")"
@@ -55566,56 +55566,35 @@
 										{
 											"id": "set-angle",
 											"objectClass": "FishingLine",
-											"sid": 988325066116866,
+											"sid": 620779358176466,
 											"parameters": {
-												"angle": "angle(SecondaryPlayer.ImagePointX(\"RodTip\"), SecondaryPlayer.ImagePointY(\"RodTip\"), bobber.X, bobber.Y)"
+												"angle": "angle(SecondaryPlayer.ImagePointX(\"RodTip\"), SecondaryPlayer.ImagePointY(\"RodTip\"), bobber.ImagePointX(\"LineEnd\"), bobber.ImagePointY(\"LineEnd\"))"
 											}
 										},
 										{
 											"id": "set-width",
 											"objectClass": "FishingLine",
-											"sid": 876849493094077,
+											"sid": 123482738278024,
 											"parameters": {
-												"width": "distance(SecondaryPlayer.ImagePointX(\"RodTip\"), SecondaryPlayer.ImagePointY(\"RodTip\"), bobber.X, bobber.Y)"
+												"width": "distance(SecondaryPlayer.ImagePointX(\"RodTip\"), SecondaryPlayer.ImagePointY(\"RodTip\"), bobber.ImagePointX(\"LineEnd\"), bobber.ImagePointY(\"LineEnd\"))"
+											}
+										},
+										{
+											"id": "set-visible",
+											"objectClass": "FishingLine",
+											"sid": 331850352043199,
+											"parameters": {
+												"visibility": "visible"
 											}
 										}
 									],
-									"sid": 941877240704276
+									"sid": 462486286808223
 								}
 							]
 						}
 					]
 				}
 			]
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "every-tick",
-					"objectClass": "System",
-					"sid": 586167329308222
-				}
-			],
-			"actions": [
-				{
-					"id": "set-visible",
-					"objectClass": "DBUG",
-					"sid": 820210044780320,
-					"parameters": {
-						"visibility": "visible"
-					}
-				},
-				{
-					"id": "set-text",
-					"objectClass": "DBUG",
-					"sid": 621568757187177,
-					"parameters": {
-						"text": "\"Lines: \" & FishingLine.Count & \"  LineOwner: \" & FishingLine.OwnerID & \"  SecOwner: \" & SecondaryPlayer.thisMultipleFAMID & \"  BobOwner: \" & bobber.OwnerID & \"  Casting: \" & SecondaryPlayer.IsCasting"
-					}
-				}
-			],
-			"sid": 396134202148410
 		},
 		{
 			"eventType": "block",
