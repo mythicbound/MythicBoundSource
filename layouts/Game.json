@@ -30837,8 +30837,8 @@
 						"y": -155,
 						"width": 4,
 						"height": 4,
-						"originX": -0.75,
-						"originY": 0,
+						"originX": 0.5,
+						"originY": 0.5,
 						"color": [
 							1,
 							1,
@@ -39358,7 +39358,7 @@
 						"x": -88.1873779296875,
 						"y": -153.00051879882812,
 						"width": 1,
-						"height": 2,
+						"height": 1,
 						"originX": 0,
 						"originY": 0.5,
 						"color": [
