@@ -32047,7 +32047,8 @@
 								"readrow": 0,
 								"UseDelay": 0,
 								"shieldprotection": 0,
-								"shieldfailpercent": 0
+								"shieldfailpercent": 0,
+								"IsCasting": 0
 							},
 							"behaviors": {
 								"Pin": {
