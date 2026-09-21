@@ -30820,7 +30820,9 @@
 					"uid": 178,
 					"sid": 251360372466129,
 					"tags": "",
-					"instanceVariables": {},
+					"instanceVariables": {
+						"OwnerID": 0
+					},
 					"behaviors": {
 						"Tween": {
 							"properties": {
@@ -32702,7 +32704,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": -59.529883978981516,
+						"x": -21.720595954079172,
 						"y": -152.84174639084915,
 						"width": 106.73969263327311,
 						"height": 65,
@@ -39324,6 +39326,41 @@
 						"height": 46.4523929764766,
 						"originX": 0,
 						"originY": 0,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"z": 0,
+						"angle": 0
+					}
+				},
+				{
+					"type": "FishingLine",
+					"properties": {
+						"initially-visible": false,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 194,
+					"sid": 295926177436404,
+					"tags": "",
+					"instanceVariables": {
+						"OwnerID": -1
+					},
+					"behaviors": {},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": -88.1873779296875,
+						"y": -153.00051879882812,
+						"width": 1,
+						"height": 2,
+						"originX": 0,
+						"originY": 0.5,
 						"color": [
 							1,
 							1,

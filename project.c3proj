@@ -517,7 +517,8 @@
 			"FishingBoardMenu",
 			"FIshingMenuButtons",
 			"WaterInfoTxt",
-			"FishingLootTxt"
+			"FishingLootTxt",
+			"FishingLine"
 		],
 		"subfolders": [
 			{

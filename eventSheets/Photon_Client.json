@@ -2368,14 +2368,14 @@
 						{
 							"id": "onjoinroom14",
 							"objectClass": "Photon",
-							"sid": 329124872785029
+							"sid": 773569474189378
 						}
 					],
 					"actions": [
 						{
 							"id": "log",
 							"objectClass": "Browser",
-							"sid": 219963139712381,
+							"sid": 960814855832196,
 							"parameters": {
 								"type": "log",
 								"message": "\"Joinroom\""
@@ -2384,7 +2384,7 @@
 						{
 							"id": "set-visible",
 							"objectClass": "DBUG",
-							"sid": 742492581929296,
+							"sid": 158992187315539,
 							"disabled": true,
 							"parameters": {
 								"visibility": "visible"
@@ -2393,7 +2393,7 @@
 						{
 							"id": "set-text",
 							"objectClass": "DBUG",
-							"sid": 130997802902913,
+							"sid": 393990125300119,
 							"disabled": true,
 							"parameters": {
 								"text": "\"Joined Room\""
@@ -2402,15 +2402,24 @@
 						{
 							"id": "set-instvar-value",
 							"objectClass": "PlayerBase",
-							"sid": 970704172521251,
+							"sid": 354452632967682,
 							"parameters": {
 								"instance-variable": "thisMultipleID",
 								"value": "Photon.MyActorNr"
 							}
 						},
 						{
+							"id": "set-instvar-value",
+							"objectClass": "bobber",
+							"sid": 840827205811676,
+							"parameters": {
+								"instance-variable": "OwnerID",
+								"value": "Photon.MyActorNr"
+							}
+						},
+						{
 							"callFunction": "createPlayers",
-							"sid": 250326989953149,
+							"sid": 210023136193162,
 							"disabled": true,
 							"parameters": [
 								"0",
@@ -2419,7 +2428,7 @@
 							]
 						}
 					],
-					"sid": 252928654178752
+					"sid": 500347294449138
 				},
 				{
 					"eventType": "comment",
@@ -3079,6 +3088,13 @@
 									"id": "destroy",
 									"objectClass": "OtherPlayerLocation",
 									"sid": 862413567133954
+								},
+								{
+									"callFunction": "StopCasting",
+									"sid": 169072383229971,
+									"parameters": [
+										"0"
+									]
 								},
 								{
 									"id": "set-text",
@@ -8692,7 +8708,7 @@
 												{
 													"id": "compare-instance-variable",
 													"objectClass": "SecondaryPlayer",
-													"sid": 535924824058972,
+													"sid": 273061785630617,
 													"parameters": {
 														"instance-variable": "thisMultipleFAMID",
 														"comparison": 0,
@@ -8704,22 +8720,22 @@
 												{
 													"id": "set-animation",
 													"objectClass": "SecondaryPlayer",
-													"sid": 802153566003054,
+													"sid": 512824969825879,
 													"parameters": {
-														"animation": "AnimationBaseName&SecondaryPlayer.SecondaryType",
+														"animation": "AnimationBaseName & SecondaryPlayer.SecondaryType & (SecondaryPlayer.IsCasting = 1 ? \"Cast\" : \"\")",
 														"from": "beginning"
 													}
 												},
 												{
 													"id": "set-animation-frame",
 													"objectClass": "SecondaryPlayer",
-													"sid": 131163414990338,
+													"sid": 807596557939910,
 													"parameters": {
 														"frame-number": "0"
 													}
 												}
 											],
-											"sid": 686012457068177
+											"sid": 436499331843270
 										},
 										{
 											"eventType": "block",
@@ -55088,6 +55104,720 @@
 				}
 			],
 			"sid": 705010463425816
+		},
+		{
+			"functionName": "StartCasting",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "ActorID",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 842131804357560
+				},
+				{
+					"name": "BX",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 186429440838120
+				},
+				{
+					"name": "BY",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 244059128375461
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 351601748958119,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "SecondaryPlayer",
+							"sid": 282984913952628,
+							"parameters": {
+								"instance-variable": "thisMultipleFAMID",
+								"comparison": 0,
+								"value": "str(ActorID)"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "SecondaryPlayer",
+							"sid": 713291104560776,
+							"parameters": {
+								"instance-variable": "IsCasting",
+								"value": "1"
+							}
+						}
+					],
+					"sid": 592666333858575,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "PlayerBase",
+									"sid": 211574900726819,
+									"parameters": {
+										"instance-variable": "thisMultipleID",
+										"comparison": 0,
+										"value": "str(ActorID)"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "SecondaryPlayer",
+									"sid": 637809356013830,
+									"parameters": {
+										"animation": "PlayerBase.AnimationName & SecondaryPlayer.SecondaryType & \"Cast\"",
+										"from": "current-frame"
+									}
+								}
+							],
+							"sid": 561797797446997
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "create-object",
+									"objectClass": "System",
+									"sid": 174663152021002,
+									"parameters": {
+										"object-to-create": "FishingLine",
+										"layer": "\"AbovePlayers\"",
+										"x": "SecondaryPlayer.ImagePointX(\"RodTip\")",
+										"y": "SecondaryPlayer.ImagePointY(\"RodTip\")",
+										"create-hierarchy": false,
+										"template-name": "\"\""
+									}
+								}
+							],
+							"sid": 809958865282079,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-last-created",
+											"objectClass": "System",
+											"sid": 227465654866168,
+											"parameters": {
+												"object": "FishingLine"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-instvar-value",
+											"objectClass": "FishingLine",
+											"sid": 213770660228040,
+											"parameters": {
+												"instance-variable": "OwnerID",
+												"value": "ActorID"
+											}
+										},
+										{
+											"id": "set-visible",
+											"objectClass": "FishingLine",
+											"sid": 799250517244864,
+											"parameters": {
+												"visibility": "visible"
+											}
+										}
+									],
+									"sid": 345963669630288
+								}
+							]
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 508259130639817,
+							"parameters": {
+								"first-value": "ActorID",
+								"comparison": 1,
+								"second-value": "Photon.MyActorNr"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 950252969518785,
+							"parameters": {
+								"object-to-create": "bobber",
+								"layer": "\"AbovePlayers\"",
+								"x": "BX",
+								"y": "BY",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						}
+					],
+					"sid": 338220950251036,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "pick-last-created",
+									"objectClass": "System",
+									"sid": 760171309418721,
+									"parameters": {
+										"object": "bobber"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-instvar-value",
+									"objectClass": "bobber",
+									"sid": 257506277671031,
+									"parameters": {
+										"instance-variable": "OwnerID",
+										"value": "ActorID"
+									}
+								},
+								{
+									"id": "set-visible",
+									"objectClass": "bobber",
+									"sid": 538867671007789,
+									"parameters": {
+										"visibility": "visible"
+									}
+								}
+							],
+							"sid": 588062028316296
+						}
+					]
+				}
+			]
+		},
+		{
+			"functionName": "StopCasting",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "ActorID",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 215736102410699
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 909925075306595,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "SecondaryPlayer",
+							"sid": 808917624819231,
+							"parameters": {
+								"instance-variable": "thisMultipleFAMID",
+								"comparison": 0,
+								"value": "str(ActorID)"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "SecondaryPlayer",
+							"sid": 273597384932560,
+							"parameters": {
+								"instance-variable": "IsCasting",
+								"value": "0"
+							}
+						}
+					],
+					"sid": 457944442518748,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "PlayerBase",
+									"sid": 755292384391918,
+									"parameters": {
+										"instance-variable": "thisMultipleID",
+										"comparison": 0,
+										"value": "str(ActorID)"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "SecondaryPlayer",
+									"sid": 872592175563383,
+									"parameters": {
+										"animation": "PlayerBase.AnimationName & SecondaryPlayer.SecondaryType",
+										"from": "current-frame"
+									}
+								}
+							],
+							"sid": 559389953653485
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 853071113702136,
+							"parameters": {
+								"object": "FishingLine"
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "FishingLine",
+							"sid": 891122326585191,
+							"parameters": {
+								"instance-variable": "OwnerID",
+								"comparison": 0,
+								"value": "ActorID"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "destroy",
+							"objectClass": "FishingLine",
+							"sid": 256820357539480
+						}
+					],
+					"sid": 758180328765727
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 132469444273902,
+							"parameters": {
+								"first-value": "ActorID",
+								"comparison": 1,
+								"second-value": "Photon.MyActorNr"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 632585748807663,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "for-each",
+									"objectClass": "System",
+									"sid": 450726604472664,
+									"parameters": {
+										"object": "bobber"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "bobber",
+									"sid": 788134673232538,
+									"parameters": {
+										"instance-variable": "OwnerID",
+										"comparison": 0,
+										"value": "ActorID"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "destroy",
+									"objectClass": "bobber",
+									"sid": 646575262015427
+								}
+							],
+							"sid": 450198903508101
+						}
+					]
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 775961681838382
+				}
+			],
+			"actions": [],
+			"sid": 334791316073538,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 566931828591418,
+							"parameters": {
+								"object": "FishingLine"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 686721056579926,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "for-each",
+									"objectClass": "System",
+									"sid": 225500616210158,
+									"parameters": {
+										"object": "SecondaryPlayer"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "SecondaryPlayer",
+									"sid": 897322859832135,
+									"parameters": {
+										"instance-variable": "thisMultipleFAMID",
+										"comparison": 0,
+										"value": "FishingLine.OwnerID"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 560580998480213,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "for-each",
+											"objectClass": "System",
+											"sid": 902643838553450,
+											"parameters": {
+												"object": "bobber"
+											}
+										},
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "bobber",
+											"sid": 180563440293123,
+											"parameters": {
+												"instance-variable": "OwnerID",
+												"comparison": 0,
+												"value": "FishingLine.OwnerID"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "FishingLine",
+											"sid": 760276080863890,
+											"parameters": {
+												"x": "SecondaryPlayer.ImagePointX(\"RodTip\")",
+												"y": "SecondaryPlayer.ImagePointY(\"RodTip\")"
+											}
+										},
+										{
+											"id": "set-angle",
+											"objectClass": "FishingLine",
+											"sid": 988325066116866,
+											"parameters": {
+												"angle": "angle(SecondaryPlayer.ImagePointX(\"RodTip\"), SecondaryPlayer.ImagePointY(\"RodTip\"), bobber.X, bobber.Y)"
+											}
+										},
+										{
+											"id": "set-width",
+											"objectClass": "FishingLine",
+											"sid": 876849493094077,
+											"parameters": {
+												"width": "distance(SecondaryPlayer.ImagePointX(\"RodTip\"), SecondaryPlayer.ImagePointY(\"RodTip\"), bobber.X, bobber.Y)"
+											}
+										}
+									],
+									"sid": 941877240704276
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 586167329308222
+				}
+			],
+			"actions": [
+				{
+					"id": "set-visible",
+					"objectClass": "DBUG",
+					"sid": 820210044780320,
+					"parameters": {
+						"visibility": "visible"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "DBUG",
+					"sid": 621568757187177,
+					"parameters": {
+						"text": "\"Lines: \" & FishingLine.Count & \"  LineOwner: \" & FishingLine.OwnerID & \"  SecOwner: \" & SecondaryPlayer.thisMultipleFAMID & \"  BobOwner: \" & bobber.OwnerID & \"  Casting: \" & SecondaryPlayer.IsCasting"
+					}
+				}
+			],
+			"sid": 396134202148410
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "onevent3",
+					"objectClass": "Photon",
+					"sid": 721737985003563,
+					"parameters": {
+						"code0": "79"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 975315666908536,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 352786127973708,
+							"parameters": {
+								"first-value": "TokenAt(Photon.EventData, 1, \"|\")",
+								"comparison": 0,
+								"second-value": "\"start\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "StartCasting",
+							"sid": 803839377364321,
+							"parameters": [
+								"int(TokenAt(Photon.EventData, 0, \"|\"))",
+								"int(TokenAt(Photon.EventData, 2, \"|\"))",
+								"int(TokenAt(Photon.EventData, 3, \"|\"))"
+							]
+						}
+					],
+					"sid": 447955537578609
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 965297244997459
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "StopCasting",
+							"sid": 736697964874518,
+							"parameters": [
+								"int(TokenAt(Photon.EventData, 0, \"|\"))"
+							]
+						}
+					],
+					"sid": 856275495267924
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "for-each",
+					"objectClass": "System",
+					"sid": 545806801869547,
+					"parameters": {
+						"object": "bobber"
+					}
+				},
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "bobber",
+					"sid": 717092742133399,
+					"parameters": {
+						"instance-variable": "OwnerID",
+						"comparison": 0,
+						"value": "Photon.MyActorNr"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 117360611374390,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-visible",
+							"objectClass": "bobber",
+							"sid": 749329552039788
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "SecondaryPlayer",
+							"sid": 305324924591527,
+							"parameters": {
+								"instance-variable": "thisMultipleFAMID",
+								"comparison": 0,
+								"value": "str(Photon.MyActorNr)"
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "SecondaryPlayer",
+							"sid": 836018935738872,
+							"parameters": {
+								"instance-variable": "IsCasting",
+								"comparison": 0,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "StartCasting",
+							"sid": 772425025674752,
+							"parameters": [
+								"Photon.MyActorNr",
+								"bobber.x",
+								"bobber.y"
+							]
+						},
+						{
+							"id": "raiseevent17",
+							"objectClass": "Photon",
+							"sid": 976556349262947,
+							"parameters": {
+								"code0": "79",
+								"data1": "Photon.MyActorNr & \"|start|\" & int(bobber.X) & \"|\" & int(bobber.Y)",
+								"interestgroup2": "0",
+								"cache11": "donotcache",
+								"receivers15": "others",
+								"targetactors16": "\"\"",
+								"webforward19": "no"
+							}
+						}
+					],
+					"sid": 285304802268783
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-visible",
+							"objectClass": "bobber",
+							"sid": 952497373959578,
+							"isInverted": true
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "SecondaryPlayer",
+							"sid": 367417407169094,
+							"parameters": {
+								"instance-variable": "thisMultipleFAMID",
+								"comparison": 0,
+								"value": "str(Photon.MyActorNr)"
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "SecondaryPlayer",
+							"sid": 585569296579499,
+							"parameters": {
+								"instance-variable": "IsCasting",
+								"comparison": 0,
+								"value": "1"
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "StopCasting",
+							"sid": 458993442608194,
+							"parameters": [
+								"Photon.MyActorNr"
+							]
+						},
+						{
+							"id": "raiseevent17",
+							"objectClass": "Photon",
+							"sid": 486584974043950,
+							"parameters": {
+								"code0": "79",
+								"data1": "Photon.MyActorNr & \"|stop|0|0\"",
+								"interestgroup2": "0",
+								"cache11": "donotcache",
+								"receivers15": "others",
+								"targetactors16": "\"\"",
+								"webforward19": "no"
+							}
+						}
+					],
+					"sid": 381446706646514
+				}
+			]
 		}
 	],
 	"sid": 660204678520453

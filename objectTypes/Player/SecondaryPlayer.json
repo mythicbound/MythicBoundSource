@@ -2172,6 +2172,13 @@
 											]
 										},
 										"useCollisionPoly": true,
+										"imagePoints": [
+											{
+												"name": "RodTip",
+												"x": 0.5238095238095238,
+												"y": 0.34782608695652173
+											}
+										],
 										"duration": 1,
 										"tag": ""
 									}
@@ -2209,6 +2216,13 @@
 											]
 										},
 										"useCollisionPoly": true,
+										"imagePoints": [
+											{
+												"name": "RodTip",
+												"x": 0.5238095238095238,
+												"y": 0.34782608695652173
+											}
+										],
 										"duration": 1,
 										"tag": ""
 									},
@@ -2235,6 +2249,13 @@
 											]
 										},
 										"useCollisionPoly": true,
+										"imagePoints": [
+											{
+												"name": "RodTip",
+												"x": 0.5238095238095238,
+												"y": 0.34782608695652173
+											}
+										],
 										"duration": 1,
 										"tag": ""
 									}
@@ -2288,6 +2309,13 @@
 											]
 										},
 										"useCollisionPoly": true,
+										"imagePoints": [
+											{
+												"name": "RodTip",
+												"x": 0.47619047619047616,
+												"y": 0.34782608695652173
+											}
+										],
 										"duration": 1,
 										"tag": ""
 									}
@@ -2341,6 +2369,13 @@
 											]
 										},
 										"useCollisionPoly": true,
+										"imagePoints": [
+											{
+												"name": "RodTip",
+												"x": 0.47619047619047616,
+												"y": 0.34782608695652173
+											}
+										],
 										"duration": 1,
 										"tag": ""
 									},
@@ -2383,6 +2418,13 @@
 											]
 										},
 										"useCollisionPoly": true,
+										"imagePoints": [
+											{
+												"name": "RodTip",
+												"x": 0.47619047619047616,
+												"y": 0.34782608695652173
+											}
+										],
 										"duration": 1,
 										"tag": ""
 									}

@@ -1,58 +1,40 @@
 {
-	"name": "bobber",
+	"name": "FishingLine",
 	"plugin-id": "Sprite",
-	"sid": 574846742596801,
+	"sid": 978294290191979,
 	"isGlobal": false,
 	"editorNewInstanceIsReplica": true,
 	"instanceVariables": [
 		{
 			"name": "OwnerID",
 			"type": "number",
-			"desc": "player ID that \"owns\" this bobber",
+			"desc": "",
 			"show": true,
-			"sid": 311116860544574
+			"sid": 166162402333158
 		}
 	],
-	"behaviorTypes": [
-		{
-			"behaviorId": "Tween",
-			"name": "Tween",
-			"sid": 884094088439637
-		}
-	],
+	"behaviorTypes": [],
 	"effectTypes": [],
 	"animations": {
 		"items": [
 			{
 				"frames": [
 					{
-						"width": 4,
-						"height": 4,
-						"originX": -0.75,
-						"originY": 0,
+						"width": 1,
+						"height": 2,
+						"originX": 0,
+						"originY": 0.5,
 						"originalSource": "",
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
 						"fileType": "image/png",
-						"imageSpriteId": 5201829,
-						"collisionPoly": {
-							"points": [
-								0.25,
-								0.25,
-								0.75,
-								0.25,
-								0.75,
-								0.75,
-								0.25,
-								0.75
-							]
-						},
+						"imageSpriteId": 193339,
 						"useCollisionPoly": true,
 						"duration": 1,
 						"tag": ""
 					}
 				],
-				"sid": 625787364965314,
+				"sid": 262683426564082,
 				"name": "Animation 1",
 				"isLooping": false,
 				"isPingPong": false,
