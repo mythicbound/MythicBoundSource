@@ -809,6 +809,335 @@
 				],
 				"subfolders": [],
 				"name": "Black Head"
+			},
+			{
+				"items": [
+					{
+						"frames": [
+							{
+								"width": 15,
+								"height": 16,
+								"originX": 0.4,
+								"originY": 0.875,
+								"originalSource": "",
+								"exportFormat": "lossless",
+								"exportQuality": 0.8,
+								"fileType": "image/png",
+								"imageSpriteId": 9746374,
+								"collisionPoly": {
+									"points": [
+										0.4,
+										0,
+										0.5333333333333333,
+										0,
+										0.9333333333333333,
+										0,
+										1,
+										1,
+										1,
+										1,
+										0.8666666666666667,
+										1,
+										0,
+										1,
+										0,
+										0.9375,
+										0,
+										0.25,
+										0,
+										0.0625,
+										0.13333333333333333,
+										0
+									]
+								},
+								"useCollisionPoly": true,
+								"duration": 1,
+								"tag": ""
+							},
+							{
+								"width": 15,
+								"height": 16,
+								"originX": 0.4,
+								"originY": 0.8125,
+								"originalSource": "",
+								"exportFormat": "lossless",
+								"exportQuality": 0.8,
+								"fileType": "image/png",
+								"imageSpriteId": 903728,
+								"collisionPoly": {
+									"points": [
+										0.4,
+										0,
+										0.5333333333333333,
+										0,
+										0.9333333333333333,
+										0,
+										1,
+										1,
+										1,
+										1,
+										0.8666666666666667,
+										1,
+										0,
+										1,
+										0,
+										0.875,
+										0,
+										0.1875,
+										0,
+										0,
+										0.13333333333333333,
+										0
+									]
+								},
+								"useCollisionPoly": true,
+								"duration": 1,
+								"tag": ""
+							}
+						],
+						"sid": 749598820851287,
+						"name": "IdleLeft3",
+						"isLooping": true,
+						"isPingPong": false,
+						"repeatCount": 1,
+						"repeatTo": 0,
+						"speed": 2
+					},
+					{
+						"frames": [
+							{
+								"width": 15,
+								"height": 16,
+								"originX": 0.6,
+								"originY": 0.875,
+								"originalSource": "",
+								"exportFormat": "lossless",
+								"exportQuality": 0.8,
+								"fileType": "image/png",
+								"imageSpriteId": 7909442,
+								"collisionPoly": {
+									"points": [
+										0.6,
+										0,
+										0.7333333333333333,
+										0,
+										1,
+										0,
+										1,
+										1,
+										1,
+										1,
+										1,
+										1,
+										0,
+										1,
+										0,
+										0.9375,
+										0,
+										0.25,
+										0.13333333333333333,
+										0.0625,
+										0.3333333333333333,
+										0
+									]
+								},
+								"useCollisionPoly": true,
+								"duration": 1,
+								"tag": ""
+							},
+							{
+								"width": 15,
+								"height": 16,
+								"originX": 0.6,
+								"originY": 0.8125,
+								"originalSource": "",
+								"exportFormat": "lossless",
+								"exportQuality": 0.8,
+								"fileType": "image/png",
+								"imageSpriteId": 792522,
+								"collisionPoly": {
+									"points": [
+										0.6,
+										0,
+										0.7333333333333333,
+										0,
+										1,
+										0,
+										1,
+										1,
+										1,
+										1,
+										1,
+										1,
+										0,
+										1,
+										0,
+										0.9375,
+										0,
+										0.25,
+										0.13333333333333333,
+										0.0625,
+										0.3333333333333333,
+										0
+									]
+								},
+								"useCollisionPoly": true,
+								"duration": 1,
+								"tag": ""
+							}
+						],
+						"sid": 977715309050213,
+						"name": "IdleRight3",
+						"isLooping": true,
+						"isPingPong": false,
+						"repeatCount": 1,
+						"repeatTo": 0,
+						"speed": 2
+					},
+					{
+						"frames": [
+							{
+								"width": 6,
+								"height": 6,
+								"originX": 0.3333333333333333,
+								"originY": 1.3333333333333333,
+								"originalSource": "",
+								"exportFormat": "lossless",
+								"exportQuality": 0.8,
+								"fileType": "image/png",
+								"imageSpriteId": 8452363,
+								"collisionPoly": {
+									"points": [
+										0.3333333333333333,
+										0,
+										0.6666666666666666,
+										0,
+										1,
+										0,
+										1,
+										1,
+										1,
+										1,
+										1,
+										1,
+										0,
+										1,
+										0,
+										1,
+										0,
+										0,
+										0,
+										0,
+										0,
+										0
+									]
+								},
+								"useCollisionPoly": true,
+								"duration": 1,
+								"tag": ""
+							}
+						],
+						"sid": 759638978863301,
+						"name": "IdleUp3",
+						"isLooping": true,
+						"isPingPong": false,
+						"repeatCount": 1,
+						"repeatTo": 0,
+						"speed": 2
+					},
+					{
+						"frames": [
+							{
+								"width": 16,
+								"height": 15,
+								"originX": 0.4375,
+								"originY": 0.8666666666666667,
+								"originalSource": "",
+								"exportFormat": "lossless",
+								"exportQuality": 0.8,
+								"fileType": "image/png",
+								"imageSpriteId": 359294,
+								"useCollisionPoly": true,
+								"duration": 1,
+								"tag": ""
+							},
+							{
+								"width": 16,
+								"height": 15,
+								"originX": 0.4375,
+								"originY": 0.8,
+								"originalSource": "",
+								"exportFormat": "lossless",
+								"exportQuality": 0.8,
+								"fileType": "image/png",
+								"imageSpriteId": 7792562,
+								"useCollisionPoly": true,
+								"duration": 1,
+								"tag": ""
+							}
+						],
+						"sid": 289625818464909,
+						"name": "IdleDown3",
+						"isLooping": true,
+						"isPingPong": false,
+						"repeatCount": 1,
+						"repeatTo": 0,
+						"speed": 2
+					},
+					{
+						"frames": [
+							{
+								"width": 15,
+								"height": 16,
+								"originX": 0.6,
+								"originY": 0.875,
+								"originalSource": "",
+								"exportFormat": "lossless",
+								"exportQuality": 0.8,
+								"fileType": "image/png",
+								"imageSpriteId": 4631700,
+								"collisionPoly": {
+									"points": [
+										0.6,
+										0,
+										0.7333333333333333,
+										0,
+										1,
+										0,
+										1,
+										1,
+										1,
+										1,
+										1,
+										1,
+										0,
+										1,
+										0,
+										0.9375,
+										0,
+										0.25,
+										0.13333333333333333,
+										0.0625,
+										0.3333333333333333,
+										0
+									]
+								},
+								"useCollisionPoly": true,
+								"duration": 1,
+								"tag": ""
+							}
+						],
+						"sid": 994370522881089,
+						"name": "WalkRight3",
+						"isLooping": true,
+						"isPingPong": false,
+						"repeatCount": 1,
+						"repeatTo": 0,
+						"speed": 2
+					}
+				],
+				"subfolders": [],
+				"name": "Tan Head"
 			}
 		]
 	}
