@@ -62,6 +62,36 @@
 			"sid": 278778900699998
 		},
 		{
+			"eventType": "variable",
+			"name": "MyUsername",
+			"type": "string",
+			"initialValue": "",
+			"comment": "Local player's username, mirrored from Firebase for the Discord webhooks.",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 451803579753095
+		},
+		{
+			"eventType": "variable",
+			"name": "MyRank",
+			"type": "string",
+			"initialValue": "",
+			"comment": "Local player's rank, mirrored from Firebase for the Discord webhooks.",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 768743541084212
+		},
+		{
+			"eventType": "variable",
+			"name": "JoinLogSent",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "Guards the Discord join webhook so it fires once per session.",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 244005394611439
+		},
+		{
 			"eventType": "comment",
 			"text": "=== SERVER AUTHORITY (added for mob desync fix) ===  Detects the dedicated C# server via its heartbeat (event 70) and filters GLOBAL enemies by world so only the current layout's mobs are visible/collidable."
 		},
@@ -1655,15 +1685,46 @@
 							"type": "script",
 							"language": "javascript",
 							"script": [
-								"window.addEventListener(\"beforeunload\", function (e) {",
-								"    // Call Construct 3 function",
-								"    if (runtime) {",
-								"        runtime.triggerFunction(\"Write Inv\", []);",
-								"    }",
-								"});",
-								""
-							],
-							"disabled": true
+								"let hasSentLeave = false;",
+								"const sessionStart = Date.now();",
+								"",
+								"function sendLeaveWebhook() {",
+								"  if (hasSentLeave) return;",
+								"  if (runtime.globalVars.ServerOnline) return; // server owns the leave log while online",
+								"",
+								"  const username = runtime.globalVars.MyUsername;",
+								"  const rank = runtime.globalVars.MyRank;",
+								"  if (!username || !rank) return; // never post a nameless leave line",
+								"",
+								"  hasSentLeave = true;",
+								"",
+								"  const _whk = \"MythicBound\";",
+								"  const _whr = atob(\"JQ0AGBpZbUARBxcuFgYMRwAtAloPFCRWAw0LCy0AHh1LfEpNXF5Xd1ZCXV15T0xcXld1V1oGXR5ITB8fFg4fAlZVBj4ADzEucSpDD10SFDhQHywTIyo6NxQVPFojNxoKHl8iIx4YWF07D1gqViY5Mi4FHgYMGQ0jLg==\");",
+								"  let _whu = \"\";",
+								"  for (let _i = 0; _i < _whr.length; _i++) _whu += String.fromCharCode(_whr.charCodeAt(_i) ^ _whk.charCodeAt(_i % _whk.length));",
+								"",
+								"  const durationMs = Date.now() - sessionStart;",
+								"  const minutes = Math.floor(durationMs / 60000);",
+								"  const seconds = Math.floor((durationMs % 60000) / 1000);",
+								"  const durationFormatted = `${minutes}m ${seconds}s`;",
+								"",
+								"  const payload = {",
+								"    content: \"\",",
+								"    embeds: [{",
+								"      title: \"A Player Has Left\",",
+								"      description: `**[${rank}]** ${username} left MythicBound after ${durationFormatted}.`,",
+								"      color: 0xFF0000",
+								"    }]",
+								"  };",
+								"",
+								"  navigator.sendBeacon(_whu, new Blob([JSON.stringify(payload)], { type: \"application/json\" }));",
+								"}",
+								"",
+								"if (!window.leaveWebhookBound) {",
+								"  window.addEventListener(\"pagehide\", sendLeaveWebhook);",
+								"  window.leaveWebhookBound = true;",
+								"}"
+							]
 						},
 						{
 							"id": "set-visible",
@@ -4164,6 +4225,15 @@
 										"instance-variable": "Username",
 										"value": "FirebaseRDBasic.readValue(\"Username\")"
 									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 716989391926178,
+									"parameters": {
+										"variable": "MyUsername",
+										"value": "FirebaseRDBasic.readValue(\"Username\")"
+									}
 								}
 							],
 							"sid": 811988447910530
@@ -4210,6 +4280,15 @@
 									"sid": 785375415406799,
 									"parameters": {
 										"instance-variable": "Rank",
+										"value": "FirebaseRDBasic.readValue(\"Rank\")"
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 645497226047053,
+									"parameters": {
+										"variable": "MyRank",
 										"value": "FirebaseRDBasic.readValue(\"Rank\")"
 									}
 								}
@@ -4366,6 +4445,96 @@
 					"eventType": "block",
 					"conditions": [
 						{
+							"id": "every-tick",
+							"objectClass": "System",
+							"sid": 479058730503276
+						},
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 911451384812067,
+							"parameters": {
+								"variable": "JoinLogSent"
+							},
+							"isInverted": true
+						},
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 380403491673364,
+							"parameters": {
+								"variable": "vanish"
+							},
+							"isInverted": true
+						},
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 473504625439538,
+							"parameters": {
+								"variable": "MyUsername",
+								"comparison": 1,
+								"value": "\"\""
+							}
+						},
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 493135945094383,
+							"parameters": {
+								"variable": "MyRank",
+								"comparison": 1,
+								"value": "\"\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 552331047890992,
+							"parameters": {
+								"variable": "JoinLogSent",
+								"value": "true"
+							}
+						},
+						{
+							"type": "script",
+							"language": "javascript",
+							"script": [
+								"if (runtime.globalVars.ServerOnline) return; // server owns the join log while online",
+								"",
+								"const username = runtime.globalVars.MyUsername;",
+								"const rank = runtime.globalVars.MyRank;",
+								"",
+								"const _whk = \"MythicBound\";",
+								"const _whr = atob(\"JQ0AGBpZbUARBxcuFgYMRwAtAloPFCRWAw0LCy0AHh1LfEpNXF5Xd1ZCXV15T0xcXld1V1oGXR5ITB8fFg4fAlZVBj4ADzEucSpDD10SFDhQHywTIyo6NxQVPFojNxoKHl8iIx4YWF07D1gqViY5Mi4FHgYMGQ0jLg==\");",
+								"let _whu = \"\";",
+								"for (let _i = 0; _i < _whr.length; _i++) _whu += String.fromCharCode(_whr.charCodeAt(_i) ^ _whk.charCodeAt(_i % _whk.length));",
+								"fetch(_whu, {",
+								"  method: \"POST\",",
+								"  headers: { \"Content-Type\": \"application/json\" },",
+								"  body: JSON.stringify({",
+								"    content: \"\",",
+								"    embeds: [{",
+								"      title: \"A Player Has Joined\",",
+								"      description: `**[${rank}]** ${username} has joined MythicBound!`,",
+								"      color: 5763719",
+								"    }]",
+								"  })",
+								"})",
+								".then((res) => { if (res.status === 204) return; return res.json(); })",
+								".then((json) => { if (json) console.log(\"Webhook Response JSON:\", json); })",
+								".catch((err) => console.error(\"Discord webhook error:\", err));"
+							]
+						}
+					],
+					"sid": 329229132024788
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
 							"id": "on-adv-trigger",
 							"objectClass": "FirebaseRDBasic",
 							"sid": 702203615994901,
@@ -4474,100 +4643,8 @@
 									],
 									"actions": [
 										{
-											"type": "script",
-											"language": "javascript",
-											"script": [
-												"if (runtime.globalVars.ServerOnline) return; // server owns the join log while online",
-												"var username = runtime.objects.PlayerBase.getFirstInstance().instVars.Username;",
-												"var rank = runtime.objects.PlayerBase.getFirstInstance().instVars.Rank;",
-												"",
-												"const _whk = \"MythicBound\";",
-												"const _whr = atob(\"JQ0AGBpZbUARBxcuFgYMRwAtAloPFCRWAw0LCy0AHh1LfEpNXF5Xd1ZCXV15T0xcXld1V1oGXR5ITB8fFg4fAlZVBj4ADzEucSpDD10SFDhQHywTIyo6NxQVPFojNxoKHl8iIx4YWF07D1gqViY5Mi4FHgYMGQ0jLg==\");",
-												"let _whu = \"\";",
-												"for (let _i = 0; _i < _whr.length; _i++) _whu += String.fromCharCode(_whr.charCodeAt(_i) ^ _whk.charCodeAt(_i % _whk.length));",
-												"fetch(_whu, {",
-												"  method: \"POST\",",
-												"  headers: {",
-												"    \"Content-Type\": \"application/json\"",
-												"  },",
-												"  body: JSON.stringify({",
-												"    content: \"\",",
-												"    embeds: [",
-												"      {",
-												"        title: \"A Player Has Joined\",",
-												"        description: `**[${rank}]** ${username} has joined MythicBound!`,",
-												"        color: 5763719",
-												"      }",
-												"    ]",
-												"  })",
-												"})",
-												".then((res) => {",
-												"  if (res.status === 204) {",
-												"    console.log(\"Webhook sent successfully.\");",
-												"    return;",
-												"  }",
-												"  return res.json();",
-												"})",
-												".then((json) => {",
-												"  if (json) console.log(\"Webhook Response JSON:\", json);",
-												"})",
-												".catch((err) => console.error(\"Discord webhook error:\", err));"
-											]
-										},
-										{
 											"type": "comment",
 											"text": "Quit Webhook"
-										},
-										{
-											"type": "script",
-											"language": "javascript",
-											"script": [
-												"let player = runtime.objects.PlayerBase.getFirstInstance();",
-												"if (!player) return;",
-												"",
-												"let username = player.instVars.Username;",
-												"let rank = player.instVars.Rank;",
-												"let sessionStart = Date.now();",
-												"",
-												"let hasSentLeave = false;",
-												"",
-												"function sendLeaveWebhook() {",
-												"  if (hasSentLeave) return;",
-												"  if (runtime.globalVars.ServerOnline) return; // server owns the leave log while online",
-												"  hasSentLeave = true;",
-												"",
-												"  const _whk = \"MythicBound\";",
-												"  const _whr = atob(\"JQ0AGBpZbUARBxcuFgYMRwAtAloPFCRWAw0LCy0AHh1LfEpNXF5Xd1ZCXV15T0xcXld1V1oGXR5ITB8fFg4fAlZVBj4ADzEucSpDD10SFDhQHywTIyo6NxQVPFojNxoKHl8iIx4YWF07D1gqViY5Mi4FHgYMGQ0jLg==\");",
-												"  let _whu = \"\";",
-												"  for (let _i = 0; _i < _whr.length; _i++) _whu += String.fromCharCode(_whr.charCodeAt(_i) ^ _whk.charCodeAt(_i % _whk.length));",
-												"",
-												"  let durationMs = Date.now() - sessionStart;",
-												"  let minutes = Math.floor(durationMs / 60000);",
-												"  let seconds = Math.floor((durationMs % 60000) / 1000);",
-												"  let durationFormatted = `${minutes}m ${seconds}s`;",
-												"",
-												"  const payload = {",
-												"    content: \"\",",
-												"    embeds: [{",
-												"      title: \"A Player Has Left\",",
-												"      description: `**[${rank}]** ${username} left MythicBound after ${durationFormatted}.`,",
-												"      color: 0xFF0000 // Red sidebar in discord",
-												"    }]",
-												"  };",
-												"",
-												"  navigator.sendBeacon(",
-												"    _whu,",
-												"    new Blob([JSON.stringify(payload)], { type: \"application/json\" })",
-												"  );",
-												"}",
-												"",
-												"// Only bind once in order to fire one time when exiting the program, and to not cause cross world issues.",
-												"if (!window.leaveWebhookBound) {",
-												"  window.addEventListener(\"pagehide\", sendLeaveWebhook); // fires on tab/app close reliably",
-												"  window.leaveWebhookBound = true;",
-												"}",
-												""
-											]
 										}
 									],
 									"sid": 149202481284938
@@ -5456,28 +5533,18 @@
 										{
 											"id": "is-boolean-instance-variable-set",
 											"objectClass": "PlayerBase",
-											"sid": 450811435412050,
+											"sid": 279457195499492,
 											"parameters": {
 												"instance-variable": "joinmsgsend"
 											},
 											"isInverted": true
-										},
-										{
-											"id": "compare-two-values",
-											"objectClass": "System",
-											"sid": 102858121562576,
-											"parameters": {
-												"first-value": "TokenAt(Photon.EventData, 6, \",\")",
-												"comparison": 1,
-												"second-value": "\"event\""
-											}
 										}
 									],
 									"actions": [
 										{
 											"id": "set-boolean-instvar",
 											"objectClass": "PlayerBase",
-											"sid": 398171036263059,
+											"sid": 615026030882121,
 											"parameters": {
 												"instance-variable": "joinmsgsend",
 												"value": "true"
@@ -5486,13 +5553,13 @@
 										{
 											"id": "set-text",
 											"objectClass": "ChatFlow",
-											"sid": 166731830912122,
+											"sid": 930621241466552,
 											"parameters": {
-												"text": "ChatFlow.Text & newline & \"[color=\" & PlayerBase.RankTint & \"]\\[\" & PlayerBase.Rank & \"][/color] \" & PlayerBase.Username & \" [color=yellow]Has Joined the Game![/color]\"\r\n"
+												"text": "ChatFlow.Text & newline & \"[color=\" & PlayerBase.RankTint & \"]\\[\" & PlayerBase.Rank & \"][/color] \" & PlayerBase.Username & \" [color=yellow]Has Joined the Game.[/color]\"\r\n"
 											}
 										}
 									],
-									"sid": 147328138627192
+									"sid": 426122442183016
 								}
 							]
 						}
