@@ -92,6 +92,76 @@
 			"sid": 244005394611439
 		},
 		{
+			"eventType": "variable",
+			"name": "LineX1",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "Fishing line: rod tip X",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 288768702244897
+		},
+		{
+			"eventType": "variable",
+			"name": "LineY1",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "Fishing line: rod tip Y",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 463794800227996
+		},
+		{
+			"eventType": "variable",
+			"name": "LineX2",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "Fishing line: bobber X",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 270295647470940
+		},
+		{
+			"eventType": "variable",
+			"name": "LineY2",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "Fishing line: bobber Y",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 434660821520372
+		},
+		{
+			"eventType": "variable",
+			"name": "LinePixSteps",
+			"type": "number",
+			"initialValue": "1",
+			"comment": "Fishing line: how many pool pixels are in use this tick",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 202013457133494
+		},
+		{
+			"eventType": "variable",
+			"name": "LinePixSize",
+			"type": "number",
+			"initialValue": "1",
+			"comment": "Fishing line: art pixel size. Raise to 2 for chunkier steps and half the pool cost.",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 768270051697865
+		},
+		{
+			"eventType": "variable",
+			"name": "LinePixPool",
+			"type": "number",
+			"initialValue": "128",
+			"comment": "Fishing line: pixels allocated per caster. Max cast is ~110px, so 128 at size 1.",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 291537910229377
+		},
+		{
 			"eventType": "comment",
 			"text": "=== SERVER AUTHORITY (added for mob desync fix) ===  Detects the dedicated C# server via its heartbeat (event 70) and filters GLOBAL enemies by world so only the current layout's mobs are visible/collidable."
 		},
@@ -2942,9 +3012,86 @@
 										"targetactors16": "\"\"",
 										"webforward19": "no"
 									}
+								},
+								{
+									"id": "raiseevent17",
+									"objectClass": "Photon",
+									"sid": 493160759493239,
+									"parameters": {
+										"code0": "29",
+										"data1": "Photon.MyActorNr & \"|\" & HealthNumberCur & \"|\" & HealthNumberMax",
+										"interestgroup2": "0",
+										"cache11": "donotcache",
+										"receivers15": "others",
+										"targetactors16": "\"\"",
+										"webforward19": "no"
+									}
 								}
 							],
 							"sid": 436806035706850,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "SecondaryPlayer",
+											"sid": 148772804590707,
+											"parameters": {
+												"instance-variable": "thisMultipleFAMID",
+												"comparison": 0,
+												"value": "str(Photon.MyActorNr)"
+											}
+										},
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "SecondaryPlayer",
+											"sid": 129701433967507,
+											"parameters": {
+												"instance-variable": "IsCasting",
+												"comparison": 0,
+												"value": "1"
+											}
+										},
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "bobber",
+											"sid": 266697123415949,
+											"parameters": {
+												"instance-variable": "OwnerID",
+												"comparison": 0,
+												"value": "Photon.MyActorNr"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "wait",
+											"objectClass": "System",
+											"sid": 745432474826122,
+											"parameters": {
+												"seconds": "0.2",
+												"use-timescale": true
+											}
+										},
+										{
+											"id": "raiseevent17",
+											"objectClass": "Photon",
+											"sid": 165999132555625,
+											"parameters": {
+												"code0": "79",
+												"data1": "Photon.MyActorNr & \"|start|\" & int(bobber.X) & \"|\" & int(bobber.Y)",
+												"interestgroup2": "0",
+												"cache11": "donotcache",
+												"receivers15": "others",
+												"targetactors16": "\"\"",
+												"webforward19": "no"
+											}
+										}
+									],
+									"sid": 927443284248879
+								}
+							],
 							"isOrBlock": true
 						}
 					]
@@ -3091,6 +3238,13 @@
 							],
 							"actions": [
 								{
+									"callFunction": "StopCasting",
+									"sid": 241980134840315,
+									"parameters": [
+										"Photon.ActorNr"
+									]
+								},
+								{
 									"id": "destroy",
 									"objectClass": "PlayerBase",
 									"sid": 857183309201596
@@ -3149,13 +3303,6 @@
 									"id": "destroy",
 									"objectClass": "OtherPlayerLocation",
 									"sid": 862413567133954
-								},
-								{
-									"callFunction": "StopCasting",
-									"sid": 169072383229971,
-									"parameters": [
-										"0"
-									]
 								},
 								{
 									"id": "set-text",
@@ -22705,6 +22852,16 @@
 											"parameters": {
 												"unique-id": "int(MiniGame.WaterUID)"
 											}
+										},
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "bobber",
+											"sid": 190395662423839,
+											"parameters": {
+												"instance-variable": "OwnerID",
+												"comparison": 0,
+												"value": "Photon.MyActorNr"
+											}
 										}
 									],
 									"actions": [
@@ -25106,6 +25263,20 @@
 																					"parameters": {
 																						"variable": "PortalJustEntered",
 																						"value": "TokenAt(ChatBox.Text, 1, \" \")"
+																					}
+																				},
+																				{
+																					"id": "raiseevent17",
+																					"objectClass": "Photon",
+																					"sid": 955653148264967,
+																					"parameters": {
+																						"code0": "79",
+																						"data1": "Photon.MyActorNr & \"|stop|0|0\"",
+																						"interestgroup2": "0",
+																						"cache11": "donotcache",
+																						"receivers15": "others",
+																						"targetactors16": "\"\"",
+																						"webforward19": "no"
 																					}
 																				},
 																				{
@@ -37912,6 +38083,20 @@
 							"parameters": {
 								"variable": "PortalJustEntered",
 								"value": "InvisLayoutTeleporter.LayoutName"
+							}
+						},
+						{
+							"id": "raiseevent17",
+							"objectClass": "Photon",
+							"sid": 527254325518699,
+							"parameters": {
+								"code0": "79",
+								"data1": "Photon.MyActorNr & \"|stop|0|0\"",
+								"interestgroup2": "0",
+								"cache11": "donotcache",
+								"receivers15": "others",
+								"targetactors16": "\"\"",
+								"webforward19": "no"
 							}
 						},
 						{
@@ -53679,6 +53864,16 @@
 													}
 												},
 												{
+													"id": "compare-instance-variable",
+													"objectClass": "bobber",
+													"sid": 385796103331345,
+													"parameters": {
+														"instance-variable": "OwnerID",
+														"comparison": 0,
+														"value": "Photon.MyActorNr"
+													}
+												},
+												{
 													"id": "is-visible",
 													"objectClass": "bobber",
 													"sid": 195605052694989,
@@ -54127,6 +54322,16 @@
 															"id": "else",
 															"objectClass": "System",
 															"sid": 119597575100019
+														},
+														{
+															"id": "compare-instance-variable",
+															"objectClass": "bobber",
+															"sid": 368520814747248,
+															"parameters": {
+																"instance-variable": "OwnerID",
+																"comparison": 0,
+																"value": "Photon.MyActorNr"
+															}
 														}
 													],
 													"actions": [
@@ -55377,6 +55582,23 @@
 									"sid": 538867671007789,
 									"parameters": {
 										"visibility": "visible"
+									}
+								},
+								{
+									"id": "tween-one-property",
+									"objectClass": "bobber",
+									"sid": 134121374157790,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"bobber\"",
+										"property": "offsetY",
+										"end-value": "BY-5",
+										"time": "0.8",
+										"ease": "easeinsine",
+										"destroy-on-complete": "no",
+										"loop": "yes",
+										"ping-pong": "yes",
+										"repeat-count": "1"
 									}
 								}
 							],
