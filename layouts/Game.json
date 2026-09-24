@@ -42335,6 +42335,80 @@
 								"z": 0.201,
 								"angle": 0
 							}
+						},
+						{
+							"type": "InvOptionsTxt",
+							"properties": {
+								"text": "Consume",
+								"enable-bbcode": true,
+								"font": "Arial",
+								"size": 4.5,
+								"line-height": 0,
+								"bold": false,
+								"italic": false,
+								"color": [
+									1,
+									1,
+									1,
+									1
+								],
+								"horizontal-alignment": "center",
+								"vertical-alignment": "center",
+								"wrapping": "word",
+								"text-direction": "ltr",
+								"icon-set": -1,
+								"initially-visible": true,
+								"origin": "center",
+								"read-aloud": false
+							},
+							"uid": 398,
+							"sid": 402388180989007,
+							"tags": "",
+							"instanceVariables": {
+								"Sel": 3
+							},
+							"behaviors": {
+								"Pin": {
+									"properties": {
+										"destroy": false
+									}
+								}
+							},
+							"effects": {
+								"BetterOutline": {
+									"isEnabled": true,
+									"parameters": {
+										"color": [
+											0.807843137254902,
+											0.8588235294117647,
+											0.10196078431372549,
+											1
+										],
+										"width": 0.4,
+										"precision-step": 1,
+										"samples": 16,
+										"opacity": 1
+									}
+								}
+							},
+							"showing": true,
+							"locked": false,
+							"world": {
+								"x": 406.8531799316406,
+								"y": -294.4374694824219,
+								"width": 26.195231,
+								"height": 13.643616241497512,
+								"originX": 0.5,
+								"originY": 0.5,
+								"color": [
+									1,
+									1,
+									1,
+									1
+								],
+								"z": 0.201,
+								"angle": 0
+							}
 						}
 					],
 					"sid": 154410460427956,
