@@ -4098,13 +4098,7 @@
 						"repeatCount": 1,
 						"repeatTo": 0,
 						"speed": 2
-					}
-				],
-				"subfolders": [],
-				"name": "Frost Sword"
-			},
-			{
-				"items": [
+					},
 					{
 						"frames": [
 							{
@@ -4209,7 +4203,13 @@
 						"repeatCount": 1,
 						"repeatTo": 0,
 						"speed": 2
-					},
+					}
+				],
+				"subfolders": [],
+				"name": "Frost Sword"
+			},
+			{
+				"items": [
 					{
 						"frames": [
 							{
@@ -4637,6 +4637,37 @@
 				],
 				"subfolders": [],
 				"name": "Charged Sword"
+			},
+			{
+				"items": [
+					{
+						"frames": [
+							{
+								"width": 32,
+								"height": 32,
+								"originX": 2.6875,
+								"originY": 2.6875,
+								"originalSource": "",
+								"exportFormat": "lossless",
+								"exportQuality": 0.8,
+								"fileType": "image/png",
+								"imageSpriteId": 6780287,
+								"useCollisionPoly": true,
+								"duration": 1,
+								"tag": ""
+							}
+						],
+						"sid": 654131996544637,
+						"name": "Animation 1",
+						"isLooping": false,
+						"isPingPong": false,
+						"repeatCount": 1,
+						"repeatTo": 0,
+						"speed": 5
+					}
+				],
+				"subfolders": [],
+				"name": "Dev Cross"
 			}
 		]
 	}
