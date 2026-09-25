@@ -902,7 +902,7 @@
 	},
 	"properties": {
 		"description": "Combat Based Progression Game",
-		"version": "1.0.3.280",
+		"version": "1.0.3.281",
 		"autoIncrementVersion": true,
 		"author": "Mythic Team",
 		"authorEmail": "",

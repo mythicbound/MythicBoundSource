@@ -1962,6 +1962,17 @@
 						{
 							"id": "create-item-type",
 							"objectClass": "InventoryPlugin",
+							"sid": 272220331537651,
+							"parameters": {
+								"type": "\"Food\"",
+								"icon": "InventoryObjects",
+								"max-stack": "999999999",
+								"destroy-at-stack-0": "yes"
+							}
+						},
+						{
+							"id": "create-item-type",
+							"objectClass": "InventoryPlugin",
 							"sid": 390947720913022,
 							"parameters": {
 								"type": "\"NA\"",
@@ -27584,6 +27595,26 @@
 												{
 													"id": "set-item-param",
 													"objectClass": "InventoryPlugin",
+													"sid": 760570036026541,
+													"parameters": {
+														"param0": "Inventoryplugin.ThisItemId",
+														"param1": "\"UseDelay\"",
+														"param2": "ItemInfoData.At(8, loopindex(\"FindType\"))"
+													}
+												},
+												{
+													"id": "set-item-param",
+													"objectClass": "InventoryPlugin",
+													"sid": 619232374489255,
+													"parameters": {
+														"param0": "Inventoryplugin.ThisItemId",
+														"param1": "\"Buff\"",
+														"param2": "ItemInfoData.At(23, loopindex(\"FindType\"))"
+													}
+												},
+												{
+													"id": "set-item-param",
+													"objectClass": "InventoryPlugin",
 													"sid": 398020906112438,
 													"parameters": {
 														"param0": "Inventoryplugin.ThisItemId",
@@ -28274,6 +28305,26 @@
 														"param0": "Inventoryplugin.ThisItemId",
 														"param1": "\"Rarity\"",
 														"param2": "ItemInfoData.At(3, loopindex(\"FindType\"))"
+													}
+												},
+												{
+													"id": "set-item-param",
+													"objectClass": "InventoryPlugin",
+													"sid": 744903083674693,
+													"parameters": {
+														"param0": "Inventoryplugin.ThisItemId",
+														"param1": "\"UseDelay\"",
+														"param2": "ItemInfoData.At(8, loopindex(\"FindType\"))"
+													}
+												},
+												{
+													"id": "set-item-param",
+													"objectClass": "InventoryPlugin",
+													"sid": 283426192274314,
+													"parameters": {
+														"param0": "Inventoryplugin.ThisItemId",
+														"param1": "\"Buff\"",
+														"param2": "ItemInfoData.At(23, loopindex(\"FindType\"))"
 													}
 												},
 												{
@@ -51634,9 +51685,69 @@
 										"height-type": "no",
 										"z": false
 									}
+								},
+								{
+									"id": "set-visible",
+									"objectClass": "InvOptionsTxt",
+									"sid": 276633719542242,
+									"parameters": {
+										"visibility": "visible"
+									}
 								}
 							],
-							"sid": 186850385573505
+							"sid": 186850385573505,
+							"children": [
+								{
+									"eventType": "comment",
+									"text": "Consumable logic show/hide"
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "InvOptionsTxt",
+											"sid": 702327885813268,
+											"parameters": {
+												"instance-variable": "Sel",
+												"comparison": 0,
+												"value": "3"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 539016353970017,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 731019063967164,
+													"parameters": {
+														"first-value": "InventoryPlugin.ItemParam(InventoryPlugin.ItemIdByIconUID(InventoryOptionMenu.LastItemUID), \"LoreStyle\")",
+														"comparison": 0,
+														"second-value": "\"Food\""
+													},
+													"isInverted": true
+												}
+											],
+											"actions": [
+												{
+													"id": "set-visible",
+													"objectClass": "InvOptionsTxt",
+													"sid": 124216506695809,
+													"parameters": {
+														"visibility": "invisible"
+													}
+												}
+											],
+											"sid": 769120393641425
+										}
+									]
+								}
+							]
 						}
 					]
 				}
@@ -51890,6 +52001,16 @@
 			"sid": 499586075895304
 		},
 		{
+			"eventType": "variable",
+			"name": "ConsumeDelay",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 185941905311966
+		},
+		{
 			"eventType": "block",
 			"conditions": [
 				{
@@ -51949,6 +52070,113 @@
 						}
 					],
 					"sid": 951809718162187
+				},
+				{
+					"eventType": "comment",
+					"text": "Consume"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "InvOptionsTxt",
+							"sid": 191847797331616,
+							"parameters": {
+								"instance-variable": "Sel",
+								"comparison": 0,
+								"value": "3"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "split-item",
+							"objectClass": "InventoryPlugin",
+							"sid": 114032150305302,
+							"parameters": {
+								"param0": "InventoryPlugin.ItemIdByIconUID(InventoryOptionMenu.LastItemUID)",
+								"param1": "\"MainInventory\"",
+								"param2": "\"\"",
+								"param3": "round(InventoryPlugin.ItemQuantity(InventoryPlugin.ItemIdByIconUID(InventoryOptionMenu.LastItemUID))/2)"
+							}
+						}
+					],
+					"sid": 689660532513029,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-time",
+									"objectClass": "System",
+									"sid": 347407230449424,
+									"parameters": {
+										"comparison": 5,
+										"time-seconds": "ConsumeDelay"
+									}
+								},
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 729832892612667,
+									"parameters": {
+										"first-value": "InventoryPlugin.ItemParam(InventoryPlugin.ItemIdByIconUID(InventoryOptionMenu.LastItemUID), \"LoreStyle\")",
+										"comparison": 0,
+										"second-value": "\"Food\""
+									}
+								},
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 334154466719313,
+									"parameters": {
+										"first-value": "HealthNumberCur",
+										"comparison": 2,
+										"second-value": "HealthNumberMax"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 460706987705251,
+									"parameters": {
+										"variable": "ConsumeDelay",
+										"value": "time+InventoryPlugin.ItemParam(InventoryPlugin.ItemIdByIconUID(InventoryOptionMenu.LastItemUID), \"UseDelay\")"
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 266782223472887,
+									"parameters": {
+										"variable": "HealthNumberCur",
+										"value": "clamp(HealthNumberCur + InventoryPlugin.ItemParam(InventoryPlugin.ItemIdByIconUID(InventoryOptionMenu.LastItemUID), \"Buff\"), 0, HealthNumberMax)"
+									}
+								},
+								{
+									"id": "set-item-quantity",
+									"objectClass": "InventoryPlugin",
+									"sid": 206208513609924,
+									"parameters": {
+										"param0": "InventoryPlugin.ItemIdByIconUID(InventoryOptionMenu.LastItemUID)",
+										"param1": "InventoryPlugin.ItemQuantity(InventoryPlugin.ItemIdByIconUID(InventoryOptionMenu.LastItemUID))-1"
+									}
+								},
+								{
+									"callFunction": "PullParam",
+									"sid": 160082251369294
+								},
+								{
+									"callFunction": "Write Inv",
+									"sid": 130283629205807
+								}
+							],
+							"sid": 704353272950449
+						}
+					]
 				},
 				{
 					"eventType": "comment",
@@ -54642,6 +54870,14 @@
 															"parameters": {
 																"object": "FishingHitbox"
 															}
+														},
+														{
+															"id": "compare-boolean-eventvar",
+															"objectClass": "System",
+															"sid": 140436324305108,
+															"parameters": {
+																"variable": "IsFishing"
+															}
 														}
 													],
 													"actions": [
@@ -55104,6 +55340,40 @@
 								}
 							],
 							"sid": 479906727337519
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 413443417400152,
+									"parameters": {
+										"first-value": "InventoryPlugin.ItemParam(InventoryPlugin.ItemIdByIconUID(Items.uid), \"LoreStyle\")",
+										"comparison": 0,
+										"second-value": "\"Food\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-text",
+									"objectClass": "NameAndLore",
+									"sid": 645787578357062,
+									"parameters": {
+										"text": "InventoryPlugin.ItemParam(InventoryPlugin.ItemIdByIconUID(Items.uid), \"Rarity\") & \" \" & InventoryPlugin.ItemParam(InventoryPlugin.ItemIdByIconUID(Items.uid), \"Name\") & newline & InventoryPlugin.ItemParam(InventoryPlugin.ItemIdByIconUID(Items.uid), \"Lore\") & newline & \n\"Health Buff: \" & InventoryPlugin.ItemParam(InventoryPlugin.ItemIdByIconUID(Items.uid), \"Buff\")  & newline & \n\"Cooldown (Seconds): \" & InventoryPlugin.ItemParam(InventoryPlugin.ItemIdByIconUID(Items.uid), \"UseDelay\")"
+									}
+								},
+								{
+									"id": "set-height",
+									"objectClass": "NameAndLore",
+									"sid": 317575579861567,
+									"parameters": {
+										"height": "NameAndLore.TextHeight+2"
+									}
+								}
+							],
+							"sid": 712168667089995
 						},
 						{
 							"bookmark": true,
