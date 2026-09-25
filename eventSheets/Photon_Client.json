@@ -12563,6 +12563,10 @@
 							"callFunction": "Write Inv",
 							"sid": 408413336469959,
 							"disabled": true
+						},
+						{
+							"callFunction": "CancelFishing",
+							"sid": 333878774279513
 						}
 					],
 					"sid": 554554178968451,
@@ -12652,6 +12656,15 @@
 									}
 								},
 								{
+									"id": "set-layer-interactive",
+									"objectClass": "System",
+									"sid": 428981974848163,
+									"parameters": {
+										"layer": "\"Inventory\"",
+										"interactive": false
+									}
+								},
+								{
 									"id": "set-visible",
 									"objectClass": "InventoryEquip",
 									"sid": 417047102751702,
@@ -12725,6 +12738,14 @@
 									"sid": 136756181610533,
 									"parameters": {
 										"param0": "\"Craft\""
+									}
+								},
+								{
+									"id": "hide-inventory",
+									"objectClass": "InventoryPlugin",
+									"sid": 455898311930309,
+									"parameters": {
+										"param0": "\"Inspect\""
 									}
 								},
 								{
@@ -13400,6 +13421,14 @@
 									"disabled": true,
 									"parameters": {
 										"opacity": "25"
+									}
+								},
+								{
+									"id": "hide-inventory",
+									"objectClass": "InventoryPlugin",
+									"sid": 657186503622224,
+									"parameters": {
+										"param0": "\"Inspect\""
 									}
 								},
 								{
@@ -40122,13 +40151,334 @@
 					}
 				}
 			],
-			"actions": [
+			"actions": [],
+			"sid": 510264975570434,
+			"children": [
 				{
-					"callFunction": "TriggerPotion",
-					"sid": 606825766986545
+					"eventType": "variable",
+					"name": "lootpickedname",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 571000221768945
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 340275499194255,
+							"parameters": {
+								"variable": "IsFishing"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 941881421619434,
+					"children": [
+						{
+							"eventType": "variable",
+							"name": "EndX",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"isStatic": false,
+							"isConstant": false,
+							"sid": 863315489343858
+						},
+						{
+							"eventType": "variable",
+							"name": "StartX",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"isStatic": false,
+							"isConstant": false,
+							"sid": 431411009478993
+						},
+						{
+							"eventType": "variable",
+							"name": "Origin",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"isStatic": false,
+							"isConstant": false,
+							"sid": 975194050224051
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "pick-by-unique-id",
+									"objectClass": "FishingHitbox",
+									"sid": 442025396021472,
+									"parameters": {
+										"unique-id": "int(MiniGame.WaterUID)"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "bobber",
+									"sid": 821101938326673,
+									"parameters": {
+										"instance-variable": "OwnerID",
+										"comparison": 0,
+										"value": "Photon.MyActorNr"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "stop-all-tweens",
+									"objectClass": "bobber",
+									"sid": 206286880087664,
+									"behaviorType": "Tween"
+								},
+								{
+									"id": "set-visible",
+									"objectClass": "bobber",
+									"sid": 674473100034083,
+									"parameters": {
+										"visibility": "invisible"
+									}
+								},
+								{
+									"id": "set-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 741871853450784,
+									"parameters": {
+										"variable": "IsFishing",
+										"value": "false"
+									}
+								}
+							],
+							"sid": 761310065367578,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "MiniGame",
+											"sid": 234096717374098,
+											"parameters": {
+												"instance-variable": "Type",
+												"comparison": 0,
+												"value": "\"Game\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 150742282204117,
+											"parameters": {
+												"variable": "Origin",
+												"value": "MiniGame.x"
+											}
+										}
+									],
+									"sid": 617377565909755
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "MiniGame",
+											"sid": 249446176914461,
+											"parameters": {
+												"instance-variable": "Type",
+												"comparison": 0,
+												"value": "\"Sel\""
+											}
+										}
+									],
+									"actions": [],
+									"sid": 165629266338714,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 546271897627688,
+													"parameters": {
+														"first-value": "distance(MiniGame.X,0,Origin,0)",
+														"comparison": 3,
+														"second-value": "4"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-eventvar-value",
+													"objectClass": "System",
+													"sid": 896305522543588,
+													"parameters": {
+														"variable": "lootpickedname",
+														"value": "AdvancedRandom.WeightedByName(FishingHitbox.name)"
+													}
+												}
+											],
+											"sid": 148620593295727,
+											"children": [
+												{
+													"bookmark": true,
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "compare-two-values",
+															"objectClass": "System",
+															"sid": 556953579102976,
+															"parameters": {
+																"first-value": "int(InventoryPlugin.ItemParam(InventoryPlugin.ItemIdBySlotId(\"EquipSlots\", \"Secondary\"), \"RodLevel\"))",
+																"comparison": 5,
+																"second-value": "tokenat(lootpickedname,1,\":\")"
+															}
+														}
+													],
+													"actions": [
+														{
+															"callFunction": "DBug",
+															"sid": 561130055776647,
+															"parameters": [
+																"\"You Fished: \" & tokenat(lootpickedname,0,\":\")",
+																false
+															]
+														},
+														{
+															"callFunction": "giveitems",
+															"sid": 193653117558189,
+															"parameters": [
+																"0",
+																"1",
+																"\"\"",
+																"tokenat(lootpickedname,0,\":\")"
+															]
+														}
+													],
+													"sid": 615843215210969
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "else",
+															"objectClass": "System",
+															"sid": 627748579514586
+														}
+													],
+													"actions": [
+														{
+															"callFunction": "DBug",
+															"sid": 223148708360913,
+															"parameters": [
+																"\"Fish Failed:\" & tokenat(lootpickedname,0,\":\") & \" Rod level: \" & int(InventoryPlugin.ItemParam(InventoryPlugin.ItemIdBySlotId(\"EquipSlots\", \"Secondary\"), \"RodLevel\")) & \" Level Needed: \" & tokenat(lootpickedname,1,\":\")",
+																false
+															]
+														}
+													],
+													"sid": 411756189490787
+												}
+											]
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "else",
+													"objectClass": "System",
+													"sid": 639679556663788
+												}
+											],
+											"actions": [
+												{
+													"callFunction": "DBug",
+													"sid": 998436331334844,
+													"parameters": [
+														"\"Fish Failed: \" & \"\" & \" Due to Dis: \" & distance(MiniGame.X,0,Origin,0)",
+														false
+													]
+												}
+											],
+											"sid": 173575207432511
+										}
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "for-each",
+											"objectClass": "System",
+											"sid": 523455136417308,
+											"parameters": {
+												"object": "MiniGame"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-instvar-value",
+											"objectClass": "MiniGame",
+											"sid": 690919125886653,
+											"parameters": {
+												"instance-variable": "WaterUID",
+												"value": "\"\""
+											}
+										},
+										{
+											"id": "stop-all-tweens",
+											"objectClass": "MiniGame",
+											"sid": 812325495088165,
+											"behaviorType": "Tween"
+										},
+										{
+											"id": "remove-from-parent",
+											"objectClass": "MiniGame",
+											"sid": 475627875758771
+										},
+										{
+											"id": "set-position",
+											"objectClass": "MiniGame",
+											"sid": 972295639190663,
+											"parameters": {
+												"x": "-1000",
+												"y": "-1000"
+											}
+										}
+									],
+									"sid": 384540609087054
+								}
+							]
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 148686454624804
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "TriggerPotion",
+							"sid": 595877615125171
+						}
+					],
+					"sid": 905532595964099
 				}
-			],
-			"sid": 510264975570434
+			]
 		},
 		{
 			"eventType": "block",
@@ -51192,7 +51542,17 @@
 			],
 			"eventType": "function-block",
 			"conditions": [],
-			"actions": [],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 717190006611118,
+					"parameters": {
+						"variable": "delayInvOptions",
+						"value": "time+0.25"
+					}
+				}
+			],
 			"sid": 781468902076955,
 			"children": [
 				{
@@ -51520,6 +51880,16 @@
 			"disabled": true
 		},
 		{
+			"eventType": "variable",
+			"name": "delayInvOptions",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 499586075895304
+		},
+		{
 			"eventType": "block",
 			"conditions": [
 				{
@@ -51528,6 +51898,15 @@
 					"sid": 730474020625989,
 					"parameters": {
 						"object": "InvOptionsTxt"
+					}
+				},
+				{
+					"id": "compare-time",
+					"objectClass": "System",
+					"sid": 172079376303568,
+					"parameters": {
+						"comparison": 5,
+						"time-seconds": "delayInvOptions"
 					}
 				}
 			],
@@ -51632,6 +52011,33 @@
 								"0",
 								"\"Stick\""
 							]
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 367429905948798,
+							"parameters": {
+								"variable": "TradeInspectPage",
+								"value": "1"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 452424689724750,
+							"parameters": {
+								"variable": "TradeInspectName",
+								"value": "InventoryPlugin.ItemParam(InventoryPlugin.ItemIdByIconUID(InventoryOptionMenu.LastItemUID), \"RootName\")"
+							}
+						},
+						{
+							"id": "set-layer-interactive",
+							"objectClass": "System",
+							"sid": 854743111159218,
+							"parameters": {
+								"layer": "\"Inventory\"",
+								"interactive": false
+							}
 						}
 					],
 					"sid": 175173292186439,
@@ -51734,10 +52140,10 @@
 								},
 								{
 									"callFunction": "ReadInspect",
-									"sid": 492527708148216,
+									"sid": 658593949052770,
 									"parameters": [
 										"TradeInspectPage",
-										"InventoryPlugin.ItemParam(InventoryPlugin.ItemIdByIconUID(InventoryOptionMenu.LastItemUID), \"RootName\")"
+										"TradeInspectName"
 									]
 								}
 							],
@@ -51824,9 +52230,33 @@
 										"comparison": 0,
 										"number": "1"
 									}
+								},
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 783624725561590,
+									"parameters": {
+										"first-value": "TradeInspectPage ",
+										"comparison": 4,
+										"second-value": "1"
+									}
 								}
 							],
-							"actions": [],
+							"actions": [
+								{
+									"id": "subtract-from-eventvar",
+									"objectClass": "System",
+									"sid": 668057860798733,
+									"parameters": {
+										"variable": "TradeInspectPage",
+										"value": "1"
+									}
+								},
+								{
+									"callFunction": "ShowInspectPage",
+									"sid": 295730765534538
+								}
+							],
 							"sid": 230868399684844
 						},
 						{
@@ -51844,9 +52274,33 @@
 										"comparison": 0,
 										"number": "2"
 									}
+								},
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 749667322840516,
+									"parameters": {
+										"first-value": "TradeInspectPage * 5",
+										"comparison": 2,
+										"second-value": "CompiledTrades.Height"
+									}
 								}
 							],
-							"actions": [],
+							"actions": [
+								{
+									"id": "add-to-eventvar",
+									"objectClass": "System",
+									"sid": 400481257478739,
+									"parameters": {
+										"variable": "TradeInspectPage",
+										"value": "1"
+									}
+								},
+								{
+									"callFunction": "ShowInspectPage",
+									"sid": 366805629996192
+								}
+							],
 							"sid": 187581226074723
 						},
 						{
@@ -51893,6 +52347,15 @@
 									"parameters": {
 										"layer": "\"TradeUI\"",
 										"interactive": false
+									}
+								},
+								{
+									"id": "set-layer-interactive",
+									"objectClass": "System",
+									"sid": 363408097834161,
+									"parameters": {
+										"layer": "\"Inventory\"",
+										"interactive": true
 									}
 								},
 								{
@@ -52421,57 +52884,86 @@
 						{
 							"id": "for",
 							"objectClass": "System",
-							"sid": 968070073432416,
+							"sid": 377920967034052,
 							"parameters": {
 								"name": "\"CompiledTrades\"",
 								"start-index": "0",
-								"end-index": "CompiledTrades.Height"
+								"end-index": "CompiledTrades.Height-1"
 							}
 						}
 					],
-					"actions": [
+					"actions": [],
+					"sid": 989717122284464,
+					"children": [
 						{
-							"callFunction": "SpoofItem",
-							"sid": 182419626112741,
-							"parameters": [
-								"CompiledTrades.At(5, loopindex)",
-								"loopindex+1 &\"_1\"",
-								"\"Inspect\"",
-								"CompiledTrades.At(2, loopindex)"
-							]
-						},
-						{
-							"callFunction": "SpoofItem",
-							"sid": 746522026132847,
-							"parameters": [
-								"CompiledTrades.At(6, loopindex)",
-								"loopindex+1 &\"_2\"",
-								"\"Inspect\"",
-								"CompiledTrades.At(3, loopindex)"
-							]
-						},
-						{
-							"callFunction": "SpoofItem",
-							"sid": 194181990988698,
-							"parameters": [
-								"CompiledTrades.At(7, loopindex)",
-								"loopindex+1 &\"_3\"",
-								"\"Inspect\"",
-								"CompiledTrades.At(4, loopindex)"
-							]
-						},
-						{
-							"callFunction": "SpoofItem",
-							"sid": 902584775380422,
-							"parameters": [
-								"CompiledTrades.At(1, loopindex)",
-								"loopindex+1 &\"_result\"",
-								"\"Inspect\"",
-								"CompiledTrades.At(0, loopindex)"
-							]
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 620845777094997,
+									"parameters": {
+										"first-value": "loopindex(\"CompiledTrades\")",
+										"comparison": 5,
+										"second-value": "(Page-1)*5"
+									}
+								},
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 929815510712535,
+									"parameters": {
+										"first-value": "loopindex(\"CompiledTrades\")",
+										"comparison": 3,
+										"second-value": "(Page-1)*5+4"
+									}
+								}
+							],
+							"actions": [
+								{
+									"callFunction": "SpoofItem",
+									"sid": 306473140795746,
+									"parameters": [
+										"CompiledTrades.At(5, loopindex)",
+										"loopindex(\"CompiledTrades\") - (Page-1)*5 + 1 & \"_1\"",
+										"\"Inspect\"",
+										"CompiledTrades.At(2, loopindex)"
+									]
+								},
+								{
+									"callFunction": "SpoofItem",
+									"sid": 808829558700331,
+									"parameters": [
+										"CompiledTrades.At(6, loopindex)",
+										"loopindex(\"CompiledTrades\") - (Page-1)*5 + 1 & \"_2\"",
+										"\"Inspect\"",
+										"CompiledTrades.At(3, loopindex)"
+									]
+								},
+								{
+									"callFunction": "SpoofItem",
+									"sid": 344237059401367,
+									"parameters": [
+										"CompiledTrades.At(7, loopindex)",
+										"loopindex(\"CompiledTrades\") - (Page-1)*5 + 1 & \"_3\"",
+										"\"Inspect\"",
+										"CompiledTrades.At(4, loopindex)"
+									]
+								},
+								{
+									"callFunction": "SpoofItem",
+									"sid": 430121558166960,
+									"parameters": [
+										"CompiledTrades.At(1, loopindex)",
+										"loopindex(\"CompiledTrades\") - (Page-1)*5 + 1 & \"_result\"",
+										"\"Inspect\"",
+										"CompiledTrades.At(0, loopindex)"
+									]
+								}
+							],
+							"sid": 220865560652703
 						}
-					],
-					"sid": 989717122284464
+					]
 				}
 			]
 		},
@@ -53126,6 +53618,16 @@
 					]
 				}
 			]
+		},
+		{
+			"eventType": "variable",
+			"name": "TradeInspectName",
+			"type": "string",
+			"initialValue": "",
+			"comment": "RootName of the item currently open in the Inspect grid, so page buttons can re-query it.",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 102581804465767
 		},
 		{
 			"eventType": "variable",
@@ -56084,6 +56586,196 @@
 						}
 					],
 					"sid": 381446706646514
+				}
+			]
+		},
+		{
+			"functionName": "ShowInspectPage",
+			"functionDescription": "Clear the Inspect grid and redraw it for the current TradeInspectPage.",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 858034441187580,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for",
+							"objectClass": "System",
+							"sid": 190078478778597,
+							"parameters": {
+								"name": "\"ClearInspectPage\"",
+								"start-index": "1",
+								"end-index": "5"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "destroy-item",
+							"objectClass": "InventoryPlugin",
+							"sid": 855773921543040,
+							"parameters": {
+								"param0": "InventoryPlugin.ItemIdBySlotId(\"Inspect\", loopindex(\"ClearInspectPage\") & \"_1\")"
+							}
+						},
+						{
+							"id": "destroy-item",
+							"objectClass": "InventoryPlugin",
+							"sid": 570387524681535,
+							"parameters": {
+								"param0": "InventoryPlugin.ItemIdBySlotId(\"Inspect\", loopindex(\"ClearInspectPage\") & \"_2\")"
+							}
+						},
+						{
+							"id": "destroy-item",
+							"objectClass": "InventoryPlugin",
+							"sid": 389885871384866,
+							"parameters": {
+								"param0": "InventoryPlugin.ItemIdBySlotId(\"Inspect\", loopindex(\"ClearInspectPage\") & \"_3\")"
+							}
+						},
+						{
+							"id": "destroy-item",
+							"objectClass": "InventoryPlugin",
+							"sid": 732624779402483,
+							"parameters": {
+								"param0": "InventoryPlugin.ItemIdBySlotId(\"Inspect\", loopindex(\"ClearInspectPage\") & \"_result\")"
+							}
+						}
+					],
+					"sid": 440731630260316
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"callFunction": "ReadInspect",
+							"sid": 959531222605238,
+							"parameters": [
+								"TradeInspectPage",
+								"TradeInspectName"
+							]
+						}
+					],
+					"sid": 228137486410982
+				}
+			]
+		},
+		{
+			"functionName": "CancelFishing",
+			"functionDescription": "Abort the local player's cast: hide their bobber, clear IsFishing, and park the minigame. The every-tick cast watcher sees the hidden bobber and broadcasts the stop for us.",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 218431698746972,
+					"parameters": {
+						"variable": "IsFishing",
+						"value": "false"
+					}
+				}
+			],
+			"sid": 862301781067203,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 434314383007080,
+							"parameters": {
+								"object": "bobber"
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "bobber",
+							"sid": 768156231329564,
+							"parameters": {
+								"instance-variable": "OwnerID",
+								"comparison": 0,
+								"value": "Photon.MyActorNr"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "stop-all-tweens",
+							"objectClass": "bobber",
+							"sid": 913853804029891,
+							"behaviorType": "Tween"
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "bobber",
+							"sid": 358844545691011,
+							"parameters": {
+								"visibility": "invisible"
+							}
+						}
+					],
+					"sid": 989727356926517
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 503628944768490,
+							"parameters": {
+								"object": "MiniGame"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "MiniGame",
+							"sid": 332674050187370,
+							"parameters": {
+								"instance-variable": "WaterUID",
+								"value": "\"\""
+							}
+						},
+						{
+							"id": "stop-all-tweens",
+							"objectClass": "MiniGame",
+							"sid": 508969807876395,
+							"behaviorType": "Tween"
+						},
+						{
+							"id": "remove-from-parent",
+							"objectClass": "MiniGame",
+							"sid": 738154761945608
+						},
+						{
+							"id": "set-position",
+							"objectClass": "MiniGame",
+							"sid": 574454282731424,
+							"parameters": {
+								"x": "-1000",
+								"y": "-1000"
+							}
+						}
+					],
+					"sid": 275856509359959
 				}
 			]
 		}
