@@ -12624,690 +12624,11 @@
 							],
 							"actions": [
 								{
-									"id": "destroy-item",
-									"objectClass": "InventoryPlugin",
-									"sid": 307897130521497,
-									"parameters": {
-										"param0": "InventoryPlugin.ItemIdBySlotId(\"Trash\", \"Trash\")"
-									}
-								},
-								{
-									"id": "set-layer-visible",
-									"objectClass": "System",
-									"sid": 120669577748496,
-									"parameters": {
-										"layer": "\"Settings\"",
-										"visibility": "invisible"
-									}
-								},
-								{
-									"id": "set-layer-interactive",
-									"objectClass": "System",
-									"sid": 108116188406754,
-									"parameters": {
-										"layer": "\"Settings\"",
-										"interactive": false
-									}
-								},
-								{
-									"id": "set-layer-visible",
-									"objectClass": "System",
-									"sid": 994086648828403,
-									"parameters": {
-										"layer": "\"Inventory\"",
-										"visibility": "invisible"
-									}
-								},
-								{
-									"id": "set-layer-interactive",
-									"objectClass": "System",
-									"sid": 795595005270843,
-									"parameters": {
-										"layer": "\"Inventory\"",
-										"interactive": false
-									}
-								},
-								{
-									"id": "set-layer-interactive",
-									"objectClass": "System",
-									"sid": 428981974848163,
-									"parameters": {
-										"layer": "\"Inventory\"",
-										"interactive": false
-									}
-								},
-								{
-									"id": "set-visible",
-									"objectClass": "InventoryEquip",
-									"sid": 417047102751702,
-									"parameters": {
-										"visibility": "invisible"
-									}
-								},
-								{
-									"id": "set-layer-visible",
-									"objectClass": "System",
-									"sid": 906184369378826,
-									"parameters": {
-										"layer": "\"Chat\"",
-										"visibility": "invisible"
-									}
-								},
-								{
-									"id": "set-layer-interactive",
-									"objectClass": "System",
-									"sid": 536842869407071,
-									"parameters": {
-										"layer": "\"Chat\"",
-										"interactive": false
-									}
-								},
-								{
-									"id": "set-layer-visible",
-									"objectClass": "System",
-									"sid": 508222182749117,
-									"parameters": {
-										"layer": "\"TradeUI\"",
-										"visibility": "invisible"
-									}
-								},
-								{
-									"id": "set-layer-interactive",
-									"objectClass": "System",
-									"sid": 409316030944621,
-									"parameters": {
-										"layer": "\"TradeUI\"",
-										"interactive": false
-									}
-								},
-								{
-									"id": "hide-inventory",
-									"objectClass": "InventoryPlugin",
-									"sid": 863641018515113,
-									"parameters": {
-										"param0": "\"MainInventory\""
-									}
-								},
-								{
-									"id": "hide-inventory",
-									"objectClass": "InventoryPlugin",
-									"sid": 415557278930662,
-									"parameters": {
-										"param0": "\"EquipSlots\""
-									}
-								},
-								{
-									"id": "hide-inventory",
-									"objectClass": "InventoryPlugin",
-									"sid": 914765628617038,
-									"parameters": {
-										"param0": "\"Trash\""
-									}
-								},
-								{
-									"id": "hide-inventory",
-									"objectClass": "InventoryPlugin",
-									"sid": 136756181610533,
-									"parameters": {
-										"param0": "\"Craft\""
-									}
-								},
-								{
-									"id": "hide-inventory",
-									"objectClass": "InventoryPlugin",
-									"sid": 455898311930309,
-									"parameters": {
-										"param0": "\"Inspect\""
-									}
-								},
-								{
-									"id": "set-layer-visible",
-									"objectClass": "System",
-									"sid": 808031178681788,
-									"parameters": {
-										"layer": "\"Inventory\"",
-										"visibility": "invisible"
-									}
-								},
-								{
-									"id": "set-layer-interactive",
-									"objectClass": "System",
-									"sid": 686320812660423,
-									"parameters": {
-										"layer": "\"Inventory\"",
-										"interactive": false
-									}
-								},
-								{
-									"callFunction": "DBug",
-									"sid": 189902268868746,
-									"disabled": true,
-									"parameters": [
-										"\"Inv Hidden\"",
-										true
-									]
-								},
-								{
-									"id": "destroy",
-									"objectClass": "InventoryMain",
-									"sid": 573734211018030
+									"callFunction": "InventoryClose",
+									"sid": 842020846905154
 								}
 							],
-							"sid": 349905385049065,
-							"children": [
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "compare-instance-variable",
-											"objectClass": "InventoryObjects",
-											"sid": 852610389784878,
-											"parameters": {
-												"instance-variable": "SlotNumber",
-												"comparison": 0,
-												"value": "-1"
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "set-animation",
-											"objectClass": "InventoryObjects",
-											"sid": 217268356810057,
-											"parameters": {
-												"animation": "\"Blank\"",
-												"from": "beginning"
-											}
-										},
-										{
-											"id": "set-animation-frame",
-											"objectClass": "InventoryObjects",
-											"sid": 815321457205849,
-											"parameters": {
-												"frame-number": "0"
-											}
-										},
-										{
-											"id": "set-text",
-											"objectClass": "CountInventory",
-											"sid": 370017638772958,
-											"parameters": {
-												"text": "int(0)"
-											}
-										},
-										{
-											"id": "set-visible",
-											"objectClass": "CountInventory",
-											"sid": 302875424506248,
-											"parameters": {
-												"visibility": "invisible"
-											}
-										}
-									],
-									"sid": 690939084955186
-								},
-								{
-									"eventType": "comment",
-									"text": ""
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "compare-instance-variable",
-											"objectClass": "PlayerBase",
-											"sid": 837449858894659,
-											"parameters": {
-												"instance-variable": "thisMultipleID",
-												"comparison": 0,
-												"value": "str(Photon.MYActorNr)"
-											}
-										},
-										{
-											"id": "compare-instance-variable",
-											"objectClass": "ArmsPlayer",
-											"sid": 377431633131287,
-											"parameters": {
-												"instance-variable": "thisMultipleFAMID",
-												"comparison": 0,
-												"value": "PlayerBase.thisMultipleID"
-											}
-										},
-										{
-											"id": "compare-instance-variable",
-											"objectClass": "HatPlayer",
-											"sid": 805539822604102,
-											"parameters": {
-												"instance-variable": "thisMultipleFAMID",
-												"comparison": 0,
-												"value": "PlayerBase.thisMultipleID"
-											}
-										},
-										{
-											"id": "compare-instance-variable",
-											"objectClass": "HairPlayer",
-											"sid": 734101189593294,
-											"parameters": {
-												"instance-variable": "thisMultipleFAMID",
-												"comparison": 0,
-												"value": "PlayerBase.thisMultipleID"
-											}
-										},
-										{
-											"id": "compare-instance-variable",
-											"objectClass": "FacePlayer",
-											"sid": 302817113136786,
-											"parameters": {
-												"instance-variable": "thisMultipleFAMID",
-												"comparison": 0,
-												"value": "PlayerBase.thisMultipleID"
-											}
-										},
-										{
-											"id": "compare-instance-variable",
-											"objectClass": "LowerPlayer",
-											"sid": 488414183156936,
-											"parameters": {
-												"instance-variable": "thisMultipleFAMID",
-												"comparison": 0,
-												"value": "PlayerBase.thisMultipleID"
-											}
-										},
-										{
-											"id": "compare-instance-variable",
-											"objectClass": "ShirtPlayer",
-											"sid": 405043529063973,
-											"parameters": {
-												"instance-variable": "thisMultipleFAMID",
-												"comparison": 0,
-												"value": "PlayerBase.thisMultipleID"
-											}
-										},
-										{
-											"id": "compare-instance-variable",
-											"objectClass": "WeaponPlayer",
-											"sid": 982560017232841,
-											"parameters": {
-												"instance-variable": "thisMultipleFAMID",
-												"comparison": 0,
-												"value": "PlayerBase.thisMultipleID"
-											}
-										},
-										{
-											"id": "compare-instance-variable",
-											"objectClass": "HelmetPlayer",
-											"sid": 311632338194838,
-											"parameters": {
-												"instance-variable": "thisMultipleFAMID",
-												"comparison": 0,
-												"value": "PlayerBase.thisMultipleID"
-											}
-										},
-										{
-											"id": "compare-instance-variable",
-											"objectClass": "SecondaryPlayer",
-											"sid": 256426793200993,
-											"parameters": {
-												"instance-variable": "thisMultipleFAMID",
-												"comparison": 0,
-												"value": "PlayerBase.thisMultipleID"
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "set-enabled",
-											"objectClass": "PlayerBase",
-											"sid": 432656057422394,
-											"behaviorType": "ScrollTo",
-											"parameters": {
-												"state": "enabled"
-											}
-										},
-										{
-											"id": "set-collisions-enabled",
-											"objectClass": "PlayerBase",
-											"sid": 230384654725137,
-											"parameters": {
-												"collisions": "enabled"
-											}
-										},
-										{
-											"id": "set-scale",
-											"objectClass": "PlayerBase",
-											"sid": 120512422281917,
-											"parameters": {
-												"scale": "1"
-											}
-										},
-										{
-											"id": "set-scale",
-											"objectClass": "LowerPlayer",
-											"sid": 149653866224597,
-											"parameters": {
-												"scale": "1"
-											}
-										},
-										{
-											"id": "set-scale",
-											"objectClass": "ShirtPlayer",
-											"sid": 363656000514630,
-											"parameters": {
-												"scale": "1"
-											}
-										},
-										{
-											"id": "set-scale",
-											"objectClass": "FacePlayer",
-											"sid": 832026456904776,
-											"parameters": {
-												"scale": "1"
-											}
-										},
-										{
-											"id": "set-scale",
-											"objectClass": "HairPlayer",
-											"sid": 497289739043880,
-											"parameters": {
-												"scale": "1"
-											}
-										},
-										{
-											"id": "set-scale",
-											"objectClass": "HatPlayer",
-											"sid": 398694282319555,
-											"parameters": {
-												"scale": "1"
-											}
-										},
-										{
-											"id": "set-scale",
-											"objectClass": "WeaponPlayer",
-											"sid": 115522673584461,
-											"parameters": {
-												"scale": "1"
-											}
-										},
-										{
-											"id": "set-scale",
-											"objectClass": "ArmsPlayer",
-											"sid": 205312672424298,
-											"parameters": {
-												"scale": "1"
-											}
-										},
-										{
-											"id": "set-scale",
-											"objectClass": "HelmetPlayer",
-											"sid": 519533520768335,
-											"parameters": {
-												"scale": "1"
-											}
-										},
-										{
-											"id": "set-scale",
-											"objectClass": "SecondaryPlayer",
-											"sid": 817416471564342,
-											"parameters": {
-												"scale": "1"
-											}
-										},
-										{
-											"id": "move-to-layer",
-											"objectClass": "LowerPlayer",
-											"sid": 929894960212405,
-											"parameters": {
-												"layer": "\"clothes\""
-											}
-										},
-										{
-											"id": "move-to-layer",
-											"objectClass": "ShirtPlayer",
-											"sid": 485452815436307,
-											"parameters": {
-												"layer": "\"clothes\""
-											}
-										},
-										{
-											"id": "move-to-layer",
-											"objectClass": "FacePlayer",
-											"sid": 932217415608394,
-											"parameters": {
-												"layer": "\"Head\""
-											}
-										},
-										{
-											"id": "move-to-layer",
-											"objectClass": "HairPlayer",
-											"sid": 488885743166111,
-											"parameters": {
-												"layer": "\"Hair\""
-											}
-										},
-										{
-											"id": "move-to-layer",
-											"objectClass": "HatPlayer",
-											"sid": 280884777857422,
-											"parameters": {
-												"layer": "\"Hat\""
-											}
-										},
-										{
-											"id": "move-to-layer",
-											"objectClass": "WeaponPlayer",
-											"sid": 908052723041592,
-											"parameters": {
-												"layer": "\"Weapon\""
-											}
-										},
-										{
-											"id": "move-to-layer",
-											"objectClass": "ArmsPlayer",
-											"sid": 786443601830768,
-											"parameters": {
-												"layer": "\"Arms\""
-											}
-										},
-										{
-											"id": "move-to-layer",
-											"objectClass": "HelmetPlayer",
-											"sid": 740543519997212,
-											"parameters": {
-												"layer": "\"Helmet\""
-											}
-										},
-										{
-											"id": "move-to-layer",
-											"objectClass": "SecondaryPlayer",
-											"sid": 420365295113515,
-											"parameters": {
-												"layer": "\"Arms\""
-											}
-										},
-										{
-											"id": "set-position",
-											"objectClass": "PlayerBase",
-											"sid": 529322698110349,
-											"parameters": {
-												"x": "PlayerBase.preinvX",
-												"y": "PlayerBase.preinvY"
-											}
-										},
-										{
-											"callFunction": "PlayerPartsAnimation",
-											"sid": 673469171117185,
-											"parameters": [
-												"PlayerBase.thisMultipleID",
-												"\"IdleRight\""
-											]
-										},
-										{
-											"id": "wait-for-previous-actions",
-											"objectClass": "System",
-											"sid": 747253272896851
-										},
-										{
-											"callFunction": "PlayerPartsAnimation",
-											"sid": 891059139708194,
-											"parameters": [
-												"PlayerBase.thisMultipleID",
-												"prefreezestate"
-											]
-										},
-										{
-											"id": "set-boolean-eventvar",
-											"objectClass": "System",
-											"sid": 632976486791948,
-											"parameters": {
-												"variable": "isfreezeplayer",
-												"value": "false"
-											}
-										},
-										{
-											"id": "set-boolean-instvar",
-											"objectClass": "GameMenu",
-											"sid": 502021355700991,
-											"parameters": {
-												"instance-variable": "IsbuttonToggleOn",
-												"value": "false"
-											}
-										},
-										{
-											"id": "set-boolean-eventvar",
-											"objectClass": "System",
-											"sid": 925579299154989,
-											"parameters": {
-												"variable": "ShowUsernames",
-												"value": "true"
-											}
-										},
-										{
-											"id": "set-visible",
-											"objectClass": "SlashPlayer",
-											"sid": 822237269784471,
-											"parameters": {
-												"visibility": "visible"
-											}
-										}
-									],
-									"sid": 755100415382511,
-									"children": [
-										{
-											"eventType": "block",
-											"conditions": [],
-											"actions": [
-												{
-													"callFunction": "PullStarterTutParts",
-													"sid": 400639103773272
-												}
-											],
-											"sid": 685124461224466
-										}
-									]
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "pick-all",
-											"objectClass": "System",
-											"sid": 427456486984286,
-											"parameters": {
-												"object": "GameMenu"
-											}
-										}
-									],
-									"actions": [],
-									"sid": 503795409127225,
-									"children": [
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "compare-instance-variable",
-													"objectClass": "GameMenu",
-													"sid": 984180375687261,
-													"parameters": {
-														"instance-variable": "id",
-														"comparison": 0,
-														"value": "3"
-													}
-												}
-											],
-											"actions": [],
-											"sid": 554930424612744,
-											"children": [
-												{
-													"eventType": "block",
-													"conditions": [
-														{
-															"id": "compare-animation-frame",
-															"objectClass": "GameMenu",
-															"sid": 887402295817468,
-															"parameters": {
-																"comparison": 0,
-																"number": "6"
-															}
-														}
-													],
-													"actions": [
-														{
-															"id": "set-layer-visible",
-															"objectClass": "System",
-															"sid": 817240289469500,
-															"parameters": {
-																"layer": "\"Chat\"",
-																"visibility": "invisible"
-															}
-														},
-														{
-															"id": "set-layer-interactive",
-															"objectClass": "System",
-															"sid": 409889533338175,
-															"parameters": {
-																"layer": "\"Chat\"",
-																"interactive": false
-															}
-														}
-													],
-													"sid": 551141096792073
-												},
-												{
-													"eventType": "block",
-													"conditions": [
-														{
-															"id": "else",
-															"objectClass": "System",
-															"sid": 357380404476205
-														}
-													],
-													"actions": [
-														{
-															"id": "set-layer-visible",
-															"objectClass": "System",
-															"sid": 630861449900531,
-															"parameters": {
-																"layer": "\"Chat\"",
-																"visibility": "visible"
-															}
-														},
-														{
-															"id": "set-layer-interactive",
-															"objectClass": "System",
-															"sid": 971542652233240,
-															"parameters": {
-																"layer": "\"Chat\"",
-																"interactive": true
-															}
-														}
-													],
-													"sid": 494993423176338
-												}
-											]
-										}
-									]
-								}
-							]
+							"sid": 349905385049065
 						},
 						{
 							"eventType": "block",
@@ -57104,6 +56425,731 @@
 					"sid": 275856509359959
 				}
 			]
+		},
+		{
+			"functionName": "InventoryClose",
+			"functionDescription": "closes the player's Inventory",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 235438115385733,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "destroy-item",
+							"objectClass": "InventoryPlugin",
+							"sid": 478906589253922,
+							"parameters": {
+								"param0": "InventoryPlugin.ItemIdBySlotId(\"Trash\", \"Trash\")"
+							}
+						},
+						{
+							"id": "set-layer-visible",
+							"objectClass": "System",
+							"sid": 845725579916339,
+							"parameters": {
+								"layer": "\"Settings\"",
+								"visibility": "invisible"
+							}
+						},
+						{
+							"id": "set-layer-interactive",
+							"objectClass": "System",
+							"sid": 958706718739363,
+							"parameters": {
+								"layer": "\"Settings\"",
+								"interactive": false
+							}
+						},
+						{
+							"id": "set-layer-visible",
+							"objectClass": "System",
+							"sid": 574699554570359,
+							"parameters": {
+								"layer": "\"Inventory\"",
+								"visibility": "invisible"
+							}
+						},
+						{
+							"id": "set-layer-interactive",
+							"objectClass": "System",
+							"sid": 174161637646146,
+							"parameters": {
+								"layer": "\"Inventory\"",
+								"interactive": false
+							}
+						},
+						{
+							"id": "set-layer-interactive",
+							"objectClass": "System",
+							"sid": 632872757798618,
+							"parameters": {
+								"layer": "\"Inventory\"",
+								"interactive": false
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "InventoryEquip",
+							"sid": 967268429071690,
+							"parameters": {
+								"visibility": "invisible"
+							}
+						},
+						{
+							"id": "set-layer-visible",
+							"objectClass": "System",
+							"sid": 931884501134822,
+							"parameters": {
+								"layer": "\"Chat\"",
+								"visibility": "invisible"
+							}
+						},
+						{
+							"id": "set-layer-interactive",
+							"objectClass": "System",
+							"sid": 617035284288257,
+							"parameters": {
+								"layer": "\"Chat\"",
+								"interactive": false
+							}
+						},
+						{
+							"id": "set-layer-visible",
+							"objectClass": "System",
+							"sid": 475684112941102,
+							"parameters": {
+								"layer": "\"TradeUI\"",
+								"visibility": "invisible"
+							}
+						},
+						{
+							"id": "set-layer-interactive",
+							"objectClass": "System",
+							"sid": 397875821466925,
+							"parameters": {
+								"layer": "\"TradeUI\"",
+								"interactive": false
+							}
+						},
+						{
+							"id": "hide-inventory",
+							"objectClass": "InventoryPlugin",
+							"sid": 854894414878645,
+							"parameters": {
+								"param0": "\"MainInventory\""
+							}
+						},
+						{
+							"id": "hide-inventory",
+							"objectClass": "InventoryPlugin",
+							"sid": 433251640394343,
+							"parameters": {
+								"param0": "\"EquipSlots\""
+							}
+						},
+						{
+							"id": "hide-inventory",
+							"objectClass": "InventoryPlugin",
+							"sid": 514457491270438,
+							"parameters": {
+								"param0": "\"Trash\""
+							}
+						},
+						{
+							"id": "hide-inventory",
+							"objectClass": "InventoryPlugin",
+							"sid": 466892105787684,
+							"parameters": {
+								"param0": "\"Craft\""
+							}
+						},
+						{
+							"id": "hide-inventory",
+							"objectClass": "InventoryPlugin",
+							"sid": 691096050101104,
+							"parameters": {
+								"param0": "\"Inspect\""
+							}
+						},
+						{
+							"id": "set-layer-visible",
+							"objectClass": "System",
+							"sid": 864710549479255,
+							"parameters": {
+								"layer": "\"Inventory\"",
+								"visibility": "invisible"
+							}
+						},
+						{
+							"id": "set-layer-interactive",
+							"objectClass": "System",
+							"sid": 528364434102041,
+							"parameters": {
+								"layer": "\"Inventory\"",
+								"interactive": false
+							}
+						},
+						{
+							"callFunction": "DBug",
+							"sid": 769553579639648,
+							"disabled": true,
+							"parameters": [
+								"\"Inv Hidden\"",
+								true
+							]
+						},
+						{
+							"id": "destroy",
+							"objectClass": "InventoryMain",
+							"sid": 489417776173573
+						}
+					],
+					"sid": 157663606532787,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "InventoryObjects",
+									"sid": 437984748415562,
+									"parameters": {
+										"instance-variable": "SlotNumber",
+										"comparison": 0,
+										"value": "-1"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "InventoryObjects",
+									"sid": 657072467773179,
+									"parameters": {
+										"animation": "\"Blank\"",
+										"from": "beginning"
+									}
+								},
+								{
+									"id": "set-animation-frame",
+									"objectClass": "InventoryObjects",
+									"sid": 676598820305078,
+									"parameters": {
+										"frame-number": "0"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "CountInventory",
+									"sid": 926752743598124,
+									"parameters": {
+										"text": "int(0)"
+									}
+								},
+								{
+									"id": "set-visible",
+									"objectClass": "CountInventory",
+									"sid": 360987629857080,
+									"parameters": {
+										"visibility": "invisible"
+									}
+								}
+							],
+							"sid": 612190984104862
+						},
+						{
+							"eventType": "comment",
+							"text": ""
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "PlayerBase",
+									"sid": 251919706532124,
+									"parameters": {
+										"instance-variable": "thisMultipleID",
+										"comparison": 0,
+										"value": "str(Photon.MYActorNr)"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "ArmsPlayer",
+									"sid": 410114689948476,
+									"parameters": {
+										"instance-variable": "thisMultipleFAMID",
+										"comparison": 0,
+										"value": "PlayerBase.thisMultipleID"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "HatPlayer",
+									"sid": 633468164278514,
+									"parameters": {
+										"instance-variable": "thisMultipleFAMID",
+										"comparison": 0,
+										"value": "PlayerBase.thisMultipleID"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "HairPlayer",
+									"sid": 767051690896572,
+									"parameters": {
+										"instance-variable": "thisMultipleFAMID",
+										"comparison": 0,
+										"value": "PlayerBase.thisMultipleID"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "FacePlayer",
+									"sid": 475638035079791,
+									"parameters": {
+										"instance-variable": "thisMultipleFAMID",
+										"comparison": 0,
+										"value": "PlayerBase.thisMultipleID"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "LowerPlayer",
+									"sid": 939262580617962,
+									"parameters": {
+										"instance-variable": "thisMultipleFAMID",
+										"comparison": 0,
+										"value": "PlayerBase.thisMultipleID"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "ShirtPlayer",
+									"sid": 443915110093594,
+									"parameters": {
+										"instance-variable": "thisMultipleFAMID",
+										"comparison": 0,
+										"value": "PlayerBase.thisMultipleID"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "WeaponPlayer",
+									"sid": 387342052478677,
+									"parameters": {
+										"instance-variable": "thisMultipleFAMID",
+										"comparison": 0,
+										"value": "PlayerBase.thisMultipleID"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "HelmetPlayer",
+									"sid": 586577094352578,
+									"parameters": {
+										"instance-variable": "thisMultipleFAMID",
+										"comparison": 0,
+										"value": "PlayerBase.thisMultipleID"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "SecondaryPlayer",
+									"sid": 105639978149844,
+									"parameters": {
+										"instance-variable": "thisMultipleFAMID",
+										"comparison": 0,
+										"value": "PlayerBase.thisMultipleID"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-enabled",
+									"objectClass": "PlayerBase",
+									"sid": 314832794378870,
+									"behaviorType": "ScrollTo",
+									"parameters": {
+										"state": "enabled"
+									}
+								},
+								{
+									"id": "set-collisions-enabled",
+									"objectClass": "PlayerBase",
+									"sid": 639629545624930,
+									"parameters": {
+										"collisions": "enabled"
+									}
+								},
+								{
+									"id": "set-scale",
+									"objectClass": "PlayerBase",
+									"sid": 271747346582384,
+									"parameters": {
+										"scale": "1"
+									}
+								},
+								{
+									"id": "set-scale",
+									"objectClass": "LowerPlayer",
+									"sid": 882300981041466,
+									"parameters": {
+										"scale": "1"
+									}
+								},
+								{
+									"id": "set-scale",
+									"objectClass": "ShirtPlayer",
+									"sid": 418022115221202,
+									"parameters": {
+										"scale": "1"
+									}
+								},
+								{
+									"id": "set-scale",
+									"objectClass": "FacePlayer",
+									"sid": 306453190138348,
+									"parameters": {
+										"scale": "1"
+									}
+								},
+								{
+									"id": "set-scale",
+									"objectClass": "HairPlayer",
+									"sid": 747078749990868,
+									"parameters": {
+										"scale": "1"
+									}
+								},
+								{
+									"id": "set-scale",
+									"objectClass": "HatPlayer",
+									"sid": 750957001355417,
+									"parameters": {
+										"scale": "1"
+									}
+								},
+								{
+									"id": "set-scale",
+									"objectClass": "WeaponPlayer",
+									"sid": 184000962462060,
+									"parameters": {
+										"scale": "1"
+									}
+								},
+								{
+									"id": "set-scale",
+									"objectClass": "ArmsPlayer",
+									"sid": 387561350055124,
+									"parameters": {
+										"scale": "1"
+									}
+								},
+								{
+									"id": "set-scale",
+									"objectClass": "HelmetPlayer",
+									"sid": 777433669589564,
+									"parameters": {
+										"scale": "1"
+									}
+								},
+								{
+									"id": "set-scale",
+									"objectClass": "SecondaryPlayer",
+									"sid": 417640043191119,
+									"parameters": {
+										"scale": "1"
+									}
+								},
+								{
+									"id": "move-to-layer",
+									"objectClass": "LowerPlayer",
+									"sid": 940950001120861,
+									"parameters": {
+										"layer": "\"clothes\""
+									}
+								},
+								{
+									"id": "move-to-layer",
+									"objectClass": "ShirtPlayer",
+									"sid": 959105172172996,
+									"parameters": {
+										"layer": "\"clothes\""
+									}
+								},
+								{
+									"id": "move-to-layer",
+									"objectClass": "FacePlayer",
+									"sid": 792099439483856,
+									"parameters": {
+										"layer": "\"Head\""
+									}
+								},
+								{
+									"id": "move-to-layer",
+									"objectClass": "HairPlayer",
+									"sid": 654757319973832,
+									"parameters": {
+										"layer": "\"Hair\""
+									}
+								},
+								{
+									"id": "move-to-layer",
+									"objectClass": "HatPlayer",
+									"sid": 323917389976864,
+									"parameters": {
+										"layer": "\"Hat\""
+									}
+								},
+								{
+									"id": "move-to-layer",
+									"objectClass": "WeaponPlayer",
+									"sid": 259142193714925,
+									"parameters": {
+										"layer": "\"Weapon\""
+									}
+								},
+								{
+									"id": "move-to-layer",
+									"objectClass": "ArmsPlayer",
+									"sid": 797380381437410,
+									"parameters": {
+										"layer": "\"Arms\""
+									}
+								},
+								{
+									"id": "move-to-layer",
+									"objectClass": "HelmetPlayer",
+									"sid": 373185016980976,
+									"parameters": {
+										"layer": "\"Helmet\""
+									}
+								},
+								{
+									"id": "move-to-layer",
+									"objectClass": "SecondaryPlayer",
+									"sid": 845220591349161,
+									"parameters": {
+										"layer": "\"Arms\""
+									}
+								},
+								{
+									"id": "set-position",
+									"objectClass": "PlayerBase",
+									"sid": 590694575447619,
+									"parameters": {
+										"x": "PlayerBase.preinvX",
+										"y": "PlayerBase.preinvY"
+									}
+								},
+								{
+									"callFunction": "PlayerPartsAnimation",
+									"sid": 281580176517530,
+									"parameters": [
+										"PlayerBase.thisMultipleID",
+										"\"IdleRight\""
+									]
+								},
+								{
+									"id": "wait-for-previous-actions",
+									"objectClass": "System",
+									"sid": 435457666802920
+								},
+								{
+									"callFunction": "PlayerPartsAnimation",
+									"sid": 961526431891258,
+									"parameters": [
+										"PlayerBase.thisMultipleID",
+										"prefreezestate"
+									]
+								},
+								{
+									"id": "set-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 758530042048326,
+									"parameters": {
+										"variable": "isfreezeplayer",
+										"value": "false"
+									}
+								},
+								{
+									"id": "set-boolean-instvar",
+									"objectClass": "GameMenu",
+									"sid": 928574770296553,
+									"parameters": {
+										"instance-variable": "IsbuttonToggleOn",
+										"value": "false"
+									}
+								},
+								{
+									"id": "set-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 291856792916807,
+									"parameters": {
+										"variable": "ShowUsernames",
+										"value": "true"
+									}
+								},
+								{
+									"id": "set-visible",
+									"objectClass": "SlashPlayer",
+									"sid": 388090107765781,
+									"parameters": {
+										"visibility": "visible"
+									}
+								}
+							],
+							"sid": 560936075824936,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [],
+									"actions": [
+										{
+											"callFunction": "PullStarterTutParts",
+											"sid": 732521591822650
+										}
+									],
+									"sid": 487697153343086
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "pick-all",
+									"objectClass": "System",
+									"sid": 106282247777484,
+									"parameters": {
+										"object": "GameMenu"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 443687310977228,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "GameMenu",
+											"sid": 922389757846665,
+											"parameters": {
+												"instance-variable": "id",
+												"comparison": 0,
+												"value": "3"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 267832110358742,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-animation-frame",
+													"objectClass": "GameMenu",
+													"sid": 136517472034662,
+													"parameters": {
+														"comparison": 0,
+														"number": "6"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-layer-visible",
+													"objectClass": "System",
+													"sid": 856391597062849,
+													"parameters": {
+														"layer": "\"Chat\"",
+														"visibility": "invisible"
+													}
+												},
+												{
+													"id": "set-layer-interactive",
+													"objectClass": "System",
+													"sid": 737629359457655,
+													"parameters": {
+														"layer": "\"Chat\"",
+														"interactive": false
+													}
+												}
+											],
+											"sid": 150170256028276
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "else",
+													"objectClass": "System",
+													"sid": 716020167122621
+												}
+											],
+											"actions": [
+												{
+													"id": "set-layer-visible",
+													"objectClass": "System",
+													"sid": 471177040438651,
+													"parameters": {
+														"layer": "\"Chat\"",
+														"visibility": "visible"
+													}
+												},
+												{
+													"id": "set-layer-interactive",
+													"objectClass": "System",
+													"sid": 312779775314189,
+													"parameters": {
+														"layer": "\"Chat\"",
+														"interactive": true
+													}
+												}
+											],
+											"sid": 695130455746470
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 175397565638860,
+					"parameters": {
+						"key": 27
+					}
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "InventoryClose",
+					"sid": 383247023485145
+				}
+			],
+			"sid": 319972134209323
 		}
 	],
 	"sid": 660204678520453
