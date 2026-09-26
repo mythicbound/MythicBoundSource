@@ -39269,7 +39269,7 @@
 				{
 					"type": "WorldText",
 					"properties": {
-						"text": "Discord Link (Tap to open/copy to clipboard):\nhttps://discord.com/invite/nxtDyUKDrc",
+						"text": "Discord Link (Shift Tap to open/copy to clipboard):\nhttps://discord.com/invite/nxtDyUKDrc",
 						"enable-bbcode": false,
 						"font": "PIXEARG_",
 						"size": 6,
@@ -39322,7 +39322,7 @@
 					"world": {
 						"x": 895,
 						"y": 414,
-						"width": 219.6328438552579,
+						"width": 245.6328438552579,
 						"height": 46.4523929764766,
 						"originX": 0,
 						"originY": 0,

@@ -4697,7 +4697,7 @@
 						],
 						"sid": 654131996544637,
 						"name": "IdleLeft12",
-						"isLooping": false,
+						"isLooping": true,
 						"isPingPong": false,
 						"repeatCount": 1,
 						"repeatTo": 0,
@@ -4760,7 +4760,7 @@
 						],
 						"sid": 253728505784974,
 						"name": "IdleRight12",
-						"isLooping": false,
+						"isLooping": true,
 						"isPingPong": false,
 						"repeatCount": 1,
 						"repeatTo": 0,
@@ -4901,7 +4901,7 @@
 						],
 						"sid": 211825455702321,
 						"name": "WalkRight12",
-						"isLooping": false,
+						"isLooping": true,
 						"isPingPong": false,
 						"repeatCount": 1,
 						"repeatTo": 0,
@@ -4986,63 +4986,11 @@
 								"useCollisionPoly": true,
 								"duration": 1,
 								"tag": ""
-							},
-							{
-								"width": 22,
-								"height": 31,
-								"originX": 0,
-								"originY": 0.5,
-								"originalSource": "",
-								"exportFormat": "lossless",
-								"exportQuality": 0.8,
-								"fileType": "image/png",
-								"imageSpriteId": 6373184,
-								"collisionPoly": {
-									"points": [
-										0,
-										0,
-										1,
-										0,
-										1,
-										0.967741935483871,
-										0,
-										0.967741935483871
-									]
-								},
-								"useCollisionPoly": true,
-								"duration": 1,
-								"tag": ""
-							},
-							{
-								"width": 22,
-								"height": 32,
-								"originX": 0,
-								"originY": 0.5,
-								"originalSource": "",
-								"exportFormat": "lossless",
-								"exportQuality": 0.8,
-								"fileType": "image/png",
-								"imageSpriteId": 5621309,
-								"collisionPoly": {
-									"points": [
-										0,
-										0,
-										1,
-										0,
-										1,
-										0.96875,
-										0,
-										0.96875
-									]
-								},
-								"useCollisionPoly": true,
-								"duration": 1,
-								"tag": ""
 							}
 						],
 						"sid": 768656112166874,
 						"name": "WalkLeft12",
-						"isLooping": false,
+						"isLooping": true,
 						"isPingPong": false,
 						"repeatCount": 1,
 						"repeatTo": 0,

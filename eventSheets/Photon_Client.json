@@ -1963,6 +1963,7 @@
 							"id": "create-item-type",
 							"objectClass": "InventoryPlugin",
 							"sid": 272220331537651,
+							"disabled": true,
 							"parameters": {
 								"type": "\"Food\"",
 								"icon": "InventoryObjects",
@@ -42990,6 +42991,23 @@
 									]
 								}
 							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 957582587505374,
+									"parameters": {
+										"first-value": "InventoryPlugin.ItemQuantity(\"\")",
+										"comparison": 0,
+										"second-value": "0"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 225504247528123
 						}
 					]
 				}
@@ -55540,26 +55558,64 @@
 							}
 						}
 					],
-					"actions": [
+					"actions": [],
+					"sid": 626125200975253,
+					"children": [
 						{
-							"id": "copy-text",
-							"objectClass": "Clipboard",
-							"sid": 622070598316227,
-							"parameters": {
-								"text": "WorldText.data"
-							}
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "key-is-down",
+									"objectClass": "Keyboard",
+									"sid": 915750221055024,
+									"parameters": {
+										"key": 16
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "copy-text",
+									"objectClass": "Clipboard",
+									"sid": 796832861012520,
+									"parameters": {
+										"text": "WorldText.data"
+									}
+								},
+								{
+									"id": "open-url-in-new-window",
+									"objectClass": "Browser",
+									"sid": 650355099889352,
+									"parameters": {
+										"url": "WorldText.data",
+										"tag": "\"NewWindow\""
+									}
+								}
+							],
+							"sid": 242938734464852
 						},
 						{
-							"id": "open-url-in-new-window",
-							"objectClass": "Browser",
-							"sid": 327405360093946,
-							"parameters": {
-								"url": "WorldText.data",
-								"tag": "\"NewWindow\""
-							}
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 136129002000023
+								}
+							],
+							"actions": [
+								{
+									"id": "copy-text",
+									"objectClass": "Clipboard",
+									"sid": 103100898074666,
+									"parameters": {
+										"text": "WorldText.data"
+									}
+								}
+							],
+							"sid": 247521795453102
 						}
-					],
-					"sid": 626125200975253
+					]
 				}
 			]
 		},
