@@ -57150,6 +57150,859 @@
 				}
 			],
 			"sid": 319972134209323
+		},
+		{
+			"eventType": "variable",
+			"name": "CommandRegistry",
+			"type": "string",
+			"initialValue": "help; [page];Show the command list;All;|cords;;Print your X and Y;Staff;coordinates,position|clear;;Wipe the debug readout;Staff;cd|nick;<name>;Spoof your username;Staff;spoofname|fakerank;<rank>;Spoof your rank;Staff;spoofrank|faketint;<hexcolour>;Spoof your rank colour;Staff;spooftint|spoofskin;<skinstring>;Overwrite your whole skin;Staff;skinoveride|spoof;<part> <value>;Spoof one skin part;Staff;spf|tp;<username> <x> <y>;Teleport a player;Staff;teleport|world;<layout> <x> <y>;Move yourself to another world;Staff;worldtp,gotoworld,setworld|kick;<username>;Kick a player;Staff;boot|give;<any> <itemID> <count> <animation>;Give yourself an item by ID;Staff;gimmie,giveme,greed|gn;<itemname> [count];Give yourself an item by name;Staff;givename,namegive,gm,ng|gift;<username> <itemname> <count>;Give another player an item;Staff;giftem|authid;<username>;Copy a player's Firebase ID;Staff;getauth|invsee;<authID>;Load another player's inventory;Staff;readinv|uninvsee;;Reload your own inventory;Staff;myinv,noninvsee|invset;<authID>;Overwrite a player's inventory with yours;Staff;setinv,overideinv|invwipe;<authID>;Erase a player's inventory;Staff;wipeinv,clearinv,invclear|writemap;;Re-bake this world's minimap;Staff;bakemap,updatemap|readmap;;Re-pull this world's minimap;Staff;pullmap,getmap,mapread|lblength;<n>;Set leaderboard length;Staff;lengthlb",
+			"comment": "Command autocomplete registry. One entry per | . Fields: name;args;description;rank;aliases . Never use | or ; inside a field.",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 940373298257549
+		},
+		{
+			"eventType": "variable",
+			"name": "CmdLastText",
+			"type": "string",
+			"initialValue": "",
+			"comment": "Last seen ChatBox text, so the suggestion list only rebuilds on a real change.",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 554182460664177
+		},
+		{
+			"eventType": "variable",
+			"name": "CmdMatches",
+			"type": "string",
+			"initialValue": "",
+			"comment": "Pipe-joined CommandRegistry row indices that match what is typed.",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 146858106346871
+		},
+		{
+			"eventType": "variable",
+			"name": "CmdMatchCount",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 522581410236207
+		},
+		{
+			"eventType": "variable",
+			"name": "CmdSelIndex",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "Which match is highlighted.",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 688731087021268
+		},
+		{
+			"eventType": "variable",
+			"name": "CmdArgIndex",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "0 = still typing the command name. 1+ = typing that argument.",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 696018438924341
+		},
+		{
+			"eventType": "comment",
+			"text": "=== COMMAND AUTOCOMPLETE ==="
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 929363137112453
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 804631412109220,
+					"parameters": {
+						"first-value": "ChatBox.Text",
+						"comparison": 1,
+						"second-value": "CmdLastText"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 200508116569415,
+					"parameters": {
+						"variable": "CmdLastText",
+						"value": "ChatBox.Text"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 362664924265554,
+					"parameters": {
+						"variable": "CmdSelIndex",
+						"value": "0"
+					}
+				},
+				{
+					"callFunction": "RefreshCommandUI",
+					"sid": 696377948463212
+				}
+			],
+			"sid": 523309401791646
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-focused",
+					"objectClass": "ChatBox",
+					"sid": 887651863301094,
+					"isInverted": true
+				},
+				{
+					"id": "is-visible",
+					"objectClass": "CmdSuggest",
+					"sid": 692129638571214
+				}
+			],
+			"actions": [
+				{
+					"id": "set-visible",
+					"objectClass": "CmdSuggest",
+					"sid": 354078702711515,
+					"parameters": {
+						"visibility": "invisible"
+					}
+				}
+			],
+			"sid": 275523116026126
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 446019200590423,
+					"parameters": {
+						"key": 9
+					}
+				},
+				{
+					"id": "is-focused",
+					"objectClass": "ChatBox",
+					"sid": 104684897180966
+				},
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 473226087397437,
+					"parameters": {
+						"variable": "CmdMatchCount",
+						"comparison": 4,
+						"value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-text",
+					"objectClass": "ChatBox",
+					"sid": 614308407845074,
+					"parameters": {
+						"text": "\"/\" & tokenat(tokenat(CommandRegistry, int(tokenat(CmdMatches, CmdSelIndex, \"|\")), \"|\"), 0, \";\") & \" \""
+					}
+				}
+			],
+			"sid": 781957669756422
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 244416241887538,
+					"parameters": {
+						"key": 38
+					}
+				},
+				{
+					"id": "is-focused",
+					"objectClass": "ChatBox",
+					"sid": 143058767146192
+				},
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 283843589085522,
+					"parameters": {
+						"variable": "CmdMatchCount",
+						"comparison": 4,
+						"value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 329281870325574,
+					"parameters": {
+						"variable": "CmdSelIndex",
+						"value": "(CmdSelIndex - 1 + CmdMatchCount) % CmdMatchCount"
+					}
+				},
+				{
+					"callFunction": "RefreshCommandUI",
+					"sid": 269756130195529
+				}
+			],
+			"sid": 449478521800249
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 168278808876073,
+					"parameters": {
+						"key": 40
+					}
+				},
+				{
+					"id": "is-focused",
+					"objectClass": "ChatBox",
+					"sid": 446048988559233
+				},
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 884229285061456,
+					"parameters": {
+						"variable": "CmdMatchCount",
+						"comparison": 4,
+						"value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 625568876136534,
+					"parameters": {
+						"variable": "CmdSelIndex",
+						"value": "(CmdSelIndex + 1) % CmdMatchCount"
+					}
+				},
+				{
+					"callFunction": "RefreshCommandUI",
+					"sid": 816246948515316
+				}
+			],
+			"sid": 917457312432302
+		},
+		{
+			"functionName": "RefreshCommandUI",
+			"functionDescription": "Rebuild the command suggestion list / argument tooltip from whatever is currently typed in ChatBox.",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 361251966367104,
+					"parameters": {
+						"variable": "CmdMatches",
+						"value": "\"\""
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 586796248462340,
+					"parameters": {
+						"variable": "CmdMatchCount",
+						"value": "0"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 676960963722921,
+					"parameters": {
+						"variable": "CmdArgIndex",
+						"value": "tokencount(ChatBox.Text, \" \") - 1"
+					}
+				}
+			],
+			"sid": 704349689208193,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 201794536462494,
+							"parameters": {
+								"first-value": "left(ChatBox.Text, 1)",
+								"comparison": 0,
+								"second-value": "\"/\""
+							}
+						},
+						{
+							"id": "is-focused",
+							"objectClass": "ChatBox",
+							"sid": 110145856564808
+						}
+					],
+					"actions": [],
+					"sid": 155051646146726,
+					"children": [
+						{
+							"eventType": "comment",
+							"text": "Still typing the command name: collect every registry row that starts with it."
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 890651917701464,
+									"parameters": {
+										"variable": "CmdArgIndex",
+										"comparison": 0,
+										"value": "0"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 789803134010450,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "for",
+											"objectClass": "System",
+											"sid": 980798094320283,
+											"parameters": {
+												"name": "\"CmdScan\"",
+												"start-index": "0",
+												"end-index": "tokencount(CommandRegistry, \"|\") - 1"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 710959547908794,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 437974101252081,
+													"parameters": {
+														"first-value": "left(lowercase(tokenat(tokenat(CommandRegistry, loopindex(\"CmdScan\"), \"|\"), 0, \";\")), len(ChatBox.Text) - 1)",
+														"comparison": 0,
+														"second-value": "lowercase(right(ChatBox.Text, len(ChatBox.Text) - 1))"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-eventvar-value",
+													"objectClass": "System",
+													"sid": 799115740274433,
+													"parameters": {
+														"variable": "CmdMatches",
+														"value": "CmdMatches & (CmdMatchCount = 0 ? \"\" : \"|\") & loopindex(\"CmdScan\")"
+													}
+												},
+												{
+													"id": "add-to-eventvar",
+													"objectClass": "System",
+													"sid": 374535608961196,
+													"parameters": {
+														"variable": "CmdMatchCount",
+														"value": "1"
+													}
+												}
+											],
+											"sid": 167617074212054
+										}
+									]
+								}
+							]
+						},
+						{
+							"eventType": "comment",
+							"text": "Past the command name: find the one exact command so we can show its argument tooltip."
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 856560880421226
+								}
+							],
+							"actions": [],
+							"sid": 399687050463271,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "for",
+											"objectClass": "System",
+											"sid": 312570342221756,
+											"parameters": {
+												"name": "\"CmdExact\"",
+												"start-index": "0",
+												"end-index": "tokencount(CommandRegistry, \"|\") - 1"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 113319139940954,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 113950143427790,
+													"parameters": {
+														"first-value": "lowercase(tokenat(tokenat(CommandRegistry, loopindex(\"CmdExact\"), \"|\"), 0, \";\"))",
+														"comparison": 0,
+														"second-value": "lowercase(right(tokenat(ChatBox.Text, 0, \" \"), len(tokenat(ChatBox.Text, 0, \" \")) - 1))"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-eventvar-value",
+													"objectClass": "System",
+													"sid": 328390156196642,
+													"parameters": {
+														"variable": "CmdMatches",
+														"value": "str(loopindex(\"CmdExact\"))"
+													}
+												},
+												{
+													"id": "set-eventvar-value",
+													"objectClass": "System",
+													"sid": 507961409055879,
+													"parameters": {
+														"variable": "CmdMatchCount",
+														"value": "1"
+													}
+												},
+												{
+													"id": "set-eventvar-value",
+													"objectClass": "System",
+													"sid": 238306230877716,
+													"parameters": {
+														"variable": "CmdSelIndex",
+														"value": "0"
+													}
+												},
+												{
+													"id": "stop-loop",
+													"objectClass": "System",
+													"sid": 363154079254250
+												}
+											],
+											"sid": 981602512625202
+										}
+									]
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 409794589290393,
+									"parameters": {
+										"variable": "CmdSelIndex",
+										"value": "clamp(CmdSelIndex, 0, max(0, CmdMatchCount - 1))"
+									}
+								}
+							],
+							"sid": 367454397197822,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 106807005060420,
+											"parameters": {
+												"variable": "CmdMatchCount",
+												"comparison": 4,
+												"value": "0"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-text",
+											"objectClass": "CmdSuggest",
+											"sid": 596946512504667,
+											"parameters": {
+												"text": "\"\""
+											}
+										}
+									],
+									"sid": 936312878076227,
+									"children": [
+										{
+											"eventType": "comment",
+											"text": "LIST MODE"
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-eventvar",
+													"objectClass": "System",
+													"sid": 487816668892897,
+													"parameters": {
+														"variable": "CmdArgIndex",
+														"comparison": 0,
+														"value": "0"
+													}
+												}
+											],
+											"actions": [],
+											"sid": 332226394867044,
+											"children": [
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "for",
+															"objectClass": "System",
+															"sid": 950593759733138,
+															"parameters": {
+																"name": "\"CmdDraw\"",
+																"start-index": "0",
+																"end-index": "CmdMatchCount - 1"
+															}
+														}
+													],
+													"actions": [],
+													"sid": 297941984504920,
+													"children": [
+														{
+															"eventType": "block",
+															"conditions": [
+																{
+																	"id": "compare-two-values",
+																	"objectClass": "System",
+																	"sid": 945718346362120,
+																	"parameters": {
+																		"first-value": "loopindex(\"CmdDraw\")",
+																		"comparison": 5,
+																		"second-value": "clamp(CmdSelIndex - 3, 0, max(0, CmdMatchCount - 8))"
+																	}
+																},
+																{
+																	"id": "compare-two-values",
+																	"objectClass": "System",
+																	"sid": 336845593974263,
+																	"parameters": {
+																		"first-value": "loopindex(\"CmdDraw\")",
+																		"comparison": 3,
+																		"second-value": "clamp(CmdSelIndex - 3, 0, max(0, CmdMatchCount - 8)) + 7"
+																	}
+																}
+															],
+															"actions": [
+																{
+																	"id": "set-text",
+																	"objectClass": "CmdSuggest",
+																	"sid": 448846180760152,
+																	"parameters": {
+																		"text": "CmdSuggest.Text & (loopindex(\"CmdDraw\") = CmdSelIndex ? \"[background=#5a4a1e][color=#ffe08a]\" : \"[background=#141414][color=#b9b9b9]\") & \" /\" & tokenat(tokenat(CommandRegistry, int(tokenat(CmdMatches, loopindex(\"CmdDraw\"), \"|\")), \"|\"), 0, \";\") & \" \" & tokenat(tokenat(CommandRegistry, int(tokenat(CmdMatches, loopindex(\"CmdDraw\"), \"|\")), \"|\"), 1, \";\") & \" [/color][/background]\" & newline"
+																	}
+																}
+															],
+															"sid": 325775917391231
+														}
+													]
+												},
+												{
+													"eventType": "block",
+													"conditions": [],
+													"actions": [
+														{
+															"id": "set-text",
+															"objectClass": "CmdSuggest",
+															"sid": 875625333270051,
+															"parameters": {
+																"text": "CmdSuggest.Text & \"[background=#141414][color=#8fd1ff] \" & tokenat(tokenat(CommandRegistry, int(tokenat(CmdMatches, CmdSelIndex, \"|\")), \"|\"), 2, \";\") & \" [/color]\" & (tokenat(tokenat(CommandRegistry, int(tokenat(CmdMatches, CmdSelIndex, \"|\")), \"|\"), 4, \";\") = \"\" ? \"\" : \"[color=#777777]aka /\" & replace(tokenat(tokenat(CommandRegistry, int(tokenat(CmdMatches, CmdSelIndex, \"|\")), \"|\"), 4, \";\"), \",\", \" /\") & \" [/color]\") & \"[/background]\" & newline & \"[background=#141414][color=#666666] Tab complete   Up/Down pick [/color][/background]\""
+															}
+														}
+													],
+													"sid": 615363402764877
+												}
+											]
+										},
+										{
+											"eventType": "comment",
+											"text": "TOOLTIP MODE"
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "else",
+													"objectClass": "System",
+													"sid": 164534882430111
+												}
+											],
+											"actions": [
+												{
+													"id": "set-text",
+													"objectClass": "CmdSuggest",
+													"sid": 171732556446281,
+													"parameters": {
+														"text": "\"[background=#141414][color=#ffe08a] /\" & tokenat(tokenat(CommandRegistry, int(tokenat(CmdMatches, CmdSelIndex, \"|\")), \"|\"), 0, \";\") & \"[/color] \""
+													}
+												}
+											],
+											"sid": 171123778271118,
+											"children": [
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "for",
+															"objectClass": "System",
+															"sid": 980369093758177,
+															"parameters": {
+																"name": "\"CmdArg\"",
+																"start-index": "0",
+																"end-index": "tokencount(tokenat(tokenat(CommandRegistry, int(tokenat(CmdMatches, CmdSelIndex, \"|\")), \"|\"), 1, \";\"), \" \") - 1"
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "set-text",
+															"objectClass": "CmdSuggest",
+															"sid": 743056258088154,
+															"parameters": {
+																"text": "CmdSuggest.Text & (loopindex(\"CmdArg\") = CmdArgIndex - 1 ? \"[b][color=#ffd966]\" : \"[color=#888888]\") & tokenat(tokenat(tokenat(CommandRegistry, int(tokenat(CmdMatches, CmdSelIndex, \"|\")), \"|\"), 1, \";\"), loopindex(\"CmdArg\"), \" \") & (loopindex(\"CmdArg\") = CmdArgIndex - 1 ? \"[/color][/b] \" : \"[/color] \")"
+															}
+														}
+													],
+													"sid": 845797887905715
+												},
+												{
+													"eventType": "block",
+													"conditions": [],
+													"actions": [
+														{
+															"id": "set-text",
+															"objectClass": "CmdSuggest",
+															"sid": 893777811122870,
+															"parameters": {
+																"text": "CmdSuggest.Text & \"[/background]\" & newline & \"[background=#141414][color=#8fd1ff] \" & tokenat(tokenat(CommandRegistry, int(tokenat(CmdMatches, CmdSelIndex, \"|\")), \"|\"), 2, \";\") & \" [/color][/background]\""
+															}
+														}
+													],
+													"sid": 895603151967371
+												}
+											]
+										},
+										{
+											"eventType": "comment",
+											"text": "Size and park the box just above the chat line."
+										},
+										{
+											"eventType": "block",
+											"conditions": [],
+											"actions": [
+												{
+													"id": "set-height",
+													"objectClass": "CmdSuggest",
+													"sid": 246375630122518,
+													"parameters": {
+														"height": "CmdSuggest.TextHeight + 2"
+													}
+												},
+												{
+													"id": "set-position",
+													"objectClass": "CmdSuggest",
+													"sid": 513103085702457,
+													"parameters": {
+														"x": "ChatBox.X",
+														"y": "ChatBox.Y - CmdSuggest.Height - 4"
+													}
+												},
+												{
+													"id": "set-visible",
+													"objectClass": "CmdSuggest",
+													"sid": 738473396132837,
+													"parameters": {
+														"visibility": "visible"
+													}
+												}
+											],
+											"sid": 322588936624181
+										}
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "else",
+											"objectClass": "System",
+											"sid": 941781579163737
+										}
+									],
+									"actions": [
+										{
+											"id": "set-visible",
+											"objectClass": "CmdSuggest",
+											"sid": 250050499784751,
+											"parameters": {
+												"visibility": "invisible"
+											}
+										}
+									],
+									"sid": 412752905547727
+								}
+							]
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 205886488677379
+						}
+					],
+					"actions": [
+						{
+							"id": "set-visible",
+							"objectClass": "CmdSuggest",
+							"sid": 236314640568101,
+							"parameters": {
+								"visibility": "invisible"
+							}
+						}
+					],
+					"sid": 772870912113724
+				}
+			]
+		},
+		{
+			"functionName": "PrintHelp",
+			"functionDescription": "Print a page of the command list into chat.",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "Page",
+					"type": "number",
+					"initialValue": "1",
+					"comment": "",
+					"sid": 141183740208558
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-text",
+					"objectClass": "ChatFlow",
+					"sid": 907309954525155,
+					"parameters": {
+						"text": "ChatFlow.Text & newline & \"[color=#d77bba][b]MythicBound Commands  (page \" & max(1, Page) & \"/\" & ceil(tokencount(CommandRegistry, \"|\") / 8) & \")[/b][/color]\""
+					}
+				}
+			],
+			"sid": 521893888965121,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for",
+							"objectClass": "System",
+							"sid": 139586367201405,
+							"parameters": {
+								"name": "\"HelpRow\"",
+								"start-index": "(max(1, Page) - 1) * 8",
+								"end-index": "min(tokencount(CommandRegistry, \"|\") - 1, (max(1, Page) - 1) * 8 + 7)"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "ChatFlow",
+							"sid": 130343018873319,
+							"parameters": {
+								"text": "ChatFlow.Text & newline & \"[color=#f3b337]/\" & tokenat(tokenat(CommandRegistry, loopindex(\"HelpRow\"), \"|\"), 0, \";\") & \"[/color] [color=#fcda70]\" & tokenat(tokenat(CommandRegistry, loopindex(\"HelpRow\"), \"|\"), 1, \";\") & \"[/color] - \" & tokenat(tokenat(CommandRegistry, loopindex(\"HelpRow\"), \"|\"), 2, \";\")"
+							}
+						}
+					],
+					"sid": 804259793815129
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "ChatFlow",
+							"sid": 798360053740435,
+							"parameters": {
+								"text": "ChatFlow.Text & newline & \"[color=#777777]Tab to autocomplete, Up/Down to pick. /help \" & (max(1, Page) + 1) & \" for more.[/color]\""
+							}
+						}
+					],
+					"sid": 677582715818319
+				}
+			]
 		}
 	],
 	"sid": 660204678520453

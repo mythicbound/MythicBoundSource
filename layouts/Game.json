@@ -40812,6 +40812,55 @@
 							}
 						},
 						{
+							"type": "CmdSuggest",
+							"properties": {
+								"text": "Text",
+								"enable-bbcode": true,
+								"font": "Arial",
+								"size": 4,
+								"line-height": 0,
+								"bold": false,
+								"italic": false,
+								"color": [
+									0,
+									0,
+									0,
+									1
+								],
+								"horizontal-alignment": "left",
+								"vertical-alignment": "top",
+								"wrapping": "word",
+								"text-direction": "ltr",
+								"icon-set": -1,
+								"initially-visible": true,
+								"origin": "top-left",
+								"read-aloud": false
+							},
+							"uid": 399,
+							"sid": 612350627614537,
+							"tags": "",
+							"instanceVariables": {},
+							"behaviors": {},
+							"showing": true,
+							"locked": false,
+							"world": {
+								"x": 317.761962890625,
+								"y": -45.30219650268555,
+								"width": 200,
+								"height": 30,
+								"originX": 0,
+								"originY": 0,
+								"color": [
+									1,
+									1,
+									1,
+									1
+								],
+								"z": 0,
+								"angle": 0
+							}
+						},
+						{
 							"type": "GameMenu",
 							"properties": {
 								"initially-visible": true,
@@ -44198,8 +44247,8 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 312.2038879394531,
-						"y": -40.9731559753418,
+						"x": 501.0145568847656,
+						"y": -144.77813148498535,
 						"width": 159.09502701504977,
 						"height": 21.65207814847861,
 						"originX": 0,

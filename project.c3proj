@@ -467,7 +467,8 @@
 			"CompiledTrades",
 			"CraftCounts",
 			"PopupBGRND",
-			"WaterInfoTxt"
+			"WaterInfoTxt",
+			"CmdSuggest"
 		],
 		"subfolders": [
 			{
