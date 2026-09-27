@@ -30850,6 +30850,135 @@
 					}
 				},
 				{
+					"type": "NonTileworldobjects",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Huge Stone",
+						"initial-frame": 3,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 400,
+					"sid": 720351106802645,
+					"tags": "",
+					"instanceVariables": {
+						"IsFlipFunction": false
+					},
+					"behaviors": {
+						"Solid": {
+							"properties": {
+								"enabled": true,
+								"use-instance-tags": false,
+								"tags": ""
+							}
+						}
+					},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 879,
+						"y": 2625,
+						"width": 95,
+						"height": 61,
+						"originX": 0.531578947368421,
+						"originY": 0.5163934426229508,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"z": 0,
+						"angle": 0
+					}
+				},
+				{
+					"type": "NonTileworldobjects",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Huge Stone",
+						"initial-frame": 3,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 401,
+					"sid": 563480108285391,
+					"tags": "",
+					"instanceVariables": {
+						"IsFlipFunction": false
+					},
+					"behaviors": {
+						"Solid": {
+							"properties": {
+								"enabled": true,
+								"use-instance-tags": false,
+								"tags": ""
+							}
+						}
+					},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 1804,
+						"y": 2259,
+						"width": 95,
+						"height": 61,
+						"originX": 0.531578947368421,
+						"originY": 0.5163934426229508,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"z": 0,
+						"angle": 0
+					}
+				},
+				{
+					"type": "NonTileworldobjects",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Huge Stone",
+						"initial-frame": 3,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 402,
+					"sid": 576370725691986,
+					"tags": "",
+					"instanceVariables": {
+						"IsFlipFunction": false
+					},
+					"behaviors": {
+						"Solid": {
+							"properties": {
+								"enabled": true,
+								"use-instance-tags": false,
+								"tags": ""
+							}
+						}
+					},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 1545,
+						"y": 3181,
+						"width": 95,
+						"height": 61,
+						"originX": 0.531578947368421,
+						"originY": 0.5163934426229508,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"z": 0,
+						"angle": 0
+					}
+				},
+				{
 					"type": "InvisLayoutTeleporter",
 					"properties": {
 						"initially-visible": false,
