@@ -58003,6 +58003,84 @@
 					"sid": 677582715818319
 				}
 			]
+		},
+		{
+			"eventType": "variable",
+			"name": "InvLoaded",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "FALSE from the moment a layout starts until ReadInv has finished rebuilding and loading the inventory. Guards SaveInv so a half-built inventory can never be uploaded over the real one.",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 762003551824527
+		},
+		{
+			"eventType": "variable",
+			"name": "InvOpen",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "TRUE while the player's inventory screen is open. Replaces GameMenu.IsbuttonToggleOn, which is shared with the settings checkboxes.",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 139968780748417
+		},
+		{
+			"eventType": "comment",
+			"text": "Guarded inventory upload. Write Inv calls this, then signals, so the signal always fires even when the save is skipped."
+		},
+		{
+			"functionName": "SaveInv",
+			"functionDescription": "Uploads the inventory to Firebase, but only when it is safe to do so.",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [
+				{
+					"id": "compare-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 448945406586813,
+					"parameters": {
+						"variable": "IsInvSee"
+					},
+					"isInverted": true
+				},
+				{
+					"id": "compare-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 947826302229930,
+					"parameters": {
+						"variable": "InvLoaded"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 716031789443398,
+					"parameters": {
+						"variable": "InventoryData",
+						"value": "InventoryPlugin.AsJSON"
+					}
+				},
+				{
+					"id": "advanced-write-leaderboard",
+					"objectClass": "FirebaseRDBasic",
+					"sid": 188457250368335,
+					"parameters": {
+						"locationlink": "\"Users/\" & FirebaseAuthBasic.userID",
+						"key": "\"Inventory\"",
+						"separator": "\"\"",
+						"value": "InventoryData",
+						"enforce-string": false,
+						"id": "\"\""
+					}
+				}
+			],
+			"sid": 947560574831921
 		}
 	],
 	"sid": 660204678520453
